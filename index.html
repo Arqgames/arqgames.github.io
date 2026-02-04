@@ -221,9 +221,12 @@
         }
 
         .event-card.dragging {
-            opacity: 0.5;
-            background: #eee;
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: #fbc531;
+            background: #fff;
         }
+
 
         .hidden {
             display: none !important;
@@ -254,10 +257,19 @@
             margin-left: 1.2em;
             display: block;
         }
+
+        /* 並び替え時の挿入位置（プレースホルダ） */
+        .sortable-placeholder {
+            height: 64px;
+            /* カードのだいたいの高さ。後で調整OK */
+            margin: 12px 0;
+            border-radius: 15px;
+            border: 3px dashed var(--accent);
+            background: rgba(251, 197, 49, 0.15);
+        }
     </style>
 
 </head>
-
 
 <body>
 
@@ -298,7 +310,7 @@
                 <option value="5" selected data-ja="5問 【ノーマル】" data-en="5 Events [Normal]">5問 【ノーマル】</option>
                 <option value="8" data-ja="8問 【ハード】" data-en="8 Events [Hard]">8問 【ハード】</option>
                 <option value="12" data-ja="12問 【レジェンド】" data-en="12 Events [Legend]">12問 【レジェンド】</option>
-                <option value="30" data-ja="30問 【ゴッド】" data-en="30 Events [God Mode]">30問 【ゴッド】</option>
+                <option value="20" data-ja="20問 【ゴッド】" data-en="20 Events [God Mode]">20問 【ゴッド】</option>
             </select>
             <select id="time-attack-select" style="width:100%; margin-top:10px;">
                 <option value="off" data-ja="タイムアタック：OFF" data-en="Time Attack: OFF">タイムアタック：OFF</option>
@@ -497,7 +509,7 @@
 
             if (isTimeAttack) {
                 document.getElementById('timer-display').classList.remove('hidden');
-                timeLeft = count * 15;
+                timeLeft = count * 12;
                 updateTimerDisplay();
                 timerInterval = setInterval(() => {
                     timeLeft--;
@@ -523,28 +535,103 @@
         function renderGame(shuffle) {
             const list = document.getElementById('event-list');
             list.innerHTML = '';
+
             let displayList = [...currentTask];
             if (shuffle) displayList.sort(() => 0.5 - Math.random());
+
+            // ✅ 念のため：前回のPCドラッグが中途半端に残ってたら掃除
+            draggingItemPC = null;
+            if (pcPlaceholder && pcPlaceholder.parentNode) pcPlaceholder.remove();
+            pcPlaceholder = null;
+
             displayList.forEach(item => {
                 const el = document.createElement('div');
                 el.className = 'event-card';
-                el.draggable = true;
                 el.dataset.id = item.id;
-                el.innerHTML = `<span class="material-icons" style="color:#ccc">drag_indicator</span><div class="event-name" style="flex:1">${item[currentLang]}</div>`;
-                el.addEventListener('dragstart', () => el.classList.add('dragging'));
-                el.addEventListener('dragend', () => el.classList.remove('dragging'));
+
+                el.innerHTML =
+                    `<span class="material-icons drag-handle" style="color:#ccc">drag_indicator</span>` +
+                    `<div class="event-name" style="flex:1">${item[currentLang]}</div>`;
+
+                /* ===== PCドラッグ ===== */
+                el.draggable = true;
+
+                el.addEventListener('dragstart', (e) => {
+                    draggingItemPC = el;
+                    el.classList.add('dragging');
+
+                    // ✅ placeholder を「置換」ではなく「挿入」する（DOMから外さない）
+                    const rect = el.getBoundingClientRect();
+                    pcPlaceholder = document.createElement('div');
+                    pcPlaceholder.className = 'sortable-placeholder';
+                    pcPlaceholder.style.height = rect.height + 'px';
+
+                    // 元カードの直後に入れる（元カードの場所を確保）
+                    el.parentNode.insertBefore(pcPlaceholder, el.nextSibling);
+
+                    // ✅ drag開始が成立してから元カードを消す（Chrome向けの定番）
+                    setTimeout(() => {
+                        if (draggingItemPC === el) el.style.display = 'none';
+                    }, 0);
+
+                    if (e.dataTransfer) {
+                        e.dataTransfer.effectAllowed = 'move';
+                        e.dataTransfer.setData('text/plain', 'x'); // 空だとドラッグ開始しない事がある
+                    }
+                });
+
+                // ✅ drop が来なくても dragend で必ず復帰させる
+                el.addEventListener('dragend', () => {
+                    if (!draggingItemPC) return;
+
+                    // display:none を戻す
+                    draggingItemPC.style.display = '';
+                    draggingItemPC.classList.remove('dragging');
+
+                    // placeholder が残ってたら消す
+                    if (pcPlaceholder && pcPlaceholder.parentNode) pcPlaceholder.remove();
+
+                    pcPlaceholder = null;
+                    draggingItemPC = null;
+                });
+
+                /* ===== スマホ ===== */
                 el.ontouchstart = handleTouchStart;
                 el.ontouchmove = handleTouchMove;
                 el.ontouchend = handleTouchEnd;
+                el.ontouchcancel = handleTouchEnd;
+
                 list.appendChild(el);
             });
-            list.addEventListener('dragover', e => {
+
+            /* PC: placeholder の移動（マウス位置に合わせて枠だけ動かす） */
+            list.ondragover = (e) => {
                 e.preventDefault();
-                const draggingItem = document.querySelector('.dragging');
-                const afterElement = getDragAfterElement(list, e.clientY);
-                if (afterElement == null) list.appendChild(draggingItem);
-                else list.insertBefore(draggingItem, afterElement);
-            });
+                if (!pcPlaceholder) return;
+
+                const after = getDragAfterElement(list, e.clientY);
+
+                if (after == null) list.appendChild(pcPlaceholder);
+                else list.insertBefore(pcPlaceholder, after);
+            };
+
+            /* PC: drop で確定（placeholder の位置にカードを戻す） */
+            list.ondrop = (e) => {
+                e.preventDefault();
+                if (!draggingItemPC || !pcPlaceholder) return;
+
+                // placeholder の位置にドラッグ元カードを戻す
+                list.insertBefore(draggingItemPC, pcPlaceholder);
+
+                // 復帰
+                draggingItemPC.style.display = '';
+                draggingItemPC.classList.remove('dragging');
+
+                // 掃除
+                pcPlaceholder.remove();
+                pcPlaceholder = null;
+                draggingItemPC = null;
+            };
         }
 
         function getDragAfterElement(container, y) {
@@ -558,19 +645,342 @@
         }
 
         let activeItem = null;
-        function handleTouchStart(e) { activeItem = this; this.style.opacity = "0.5"; }
-        function handleTouchMove(e) {
-            e.preventDefault();
-            const touch = e.touches[0];
-            const target = document.elementFromPoint(touch.clientX, touch.clientY);
-            const card = target ? target.closest('.event-card') : null;
-            if (card && card !== activeItem) {
-                const rect = card.getBoundingClientRect();
-                if (touch.clientY < rect.top + rect.height / 2) card.before(activeItem);
-                else card.after(activeItem);
+        let placeholder = null;
+
+        /* 長押しドラッグ（スクロール優先） */
+        let pressTimer = null;
+        let isDragging = false;
+
+        let preMoveListener = null;
+
+        let draggingItemPC = null;
+        let pcPlaceholder = null;
+
+        function attachPreMoveCancel() {
+            if (preMoveListener) return;
+
+            preMoveListener = (ev) => {
+                if (!pressTimer || isDragging) return;
+
+                const t = ev.touches[0];
+                const dx = t.clientX - startX;
+                const dy = t.clientY - startY;
+                const dist = Math.hypot(dx, dy);
+
+                // スクロールのつもり → 長押しキャンセル
+                if (dist > CANCEL_MOVE_THRESHOLD) {
+                    clearTimeout(pressTimer);
+                    pressTimer = null;
+                    detachPreMoveCancel();
+                }
+            };
+
+            // ★ここは passive:true でOK（スクロール邪魔しない）
+            document.addEventListener('touchmove', preMoveListener, { passive: true });
+        }
+
+        function detachPreMoveCancel() {
+            if (!preMoveListener) return;
+            document.removeEventListener('touchmove', preMoveListener);
+            preMoveListener = null;
+        }
+
+        /* タッチ開始位置（長押し成立前の移動判定用） */
+        let startX = 0;
+        let startY = 0;
+
+        /* 好みで調整OK */
+        const LONG_PRESS_MS = 200;          // 長押し時間
+        const CANCEL_MOVE_THRESHOLD = 10;   // これ以上動いたら長押しキャンセル（px）
+
+        /* 指の位置とカード左上の差分（追従用） */
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+
+        /* 追従を滑らかにするための rAF 制御 */
+        let rafId = null;
+        let pendingX = 0;
+        let pendingY = 0;
+
+        /* ===== 自動スクロール（ドラッグ端） ===== */
+        const AUTO_SCROLL_ZONE = 80;   // 画面端から何pxで発動
+        const AUTO_SCROLL_MAX = 14;    // 最大速度（px/frame）
+
+        let autoScrollDir = 0;         // -1:上, 0:停止, +1:下
+        let autoScrollRaf = null;
+
+        /* 端に近いほど速くする（線形で十分） */
+        function calcAutoScrollSpeed(clientY) {
+            if (clientY < AUTO_SCROLL_ZONE) {
+                const t = (AUTO_SCROLL_ZONE - clientY) / AUTO_SCROLL_ZONE; // 0..1
+                return Math.ceil(AUTO_SCROLL_MAX * t);
+            }
+            if (clientY > window.innerHeight - AUTO_SCROLL_ZONE) {
+                const d = clientY - (window.innerHeight - AUTO_SCROLL_ZONE);
+                const t = d / AUTO_SCROLL_ZONE; // 0..1
+                return Math.ceil(AUTO_SCROLL_MAX * t);
+            }
+            return 0;
+        }
+
+        function setAutoScrollByPointer(clientY) {
+            if (clientY < AUTO_SCROLL_ZONE) autoScrollDir = -1;
+            else if (clientY > window.innerHeight - AUTO_SCROLL_ZONE) autoScrollDir = 1;
+            else autoScrollDir = 0;
+
+            if (autoScrollDir !== 0) startAutoScrollLoop();
+            else stopAutoScrollLoop();
+        }
+
+        function startAutoScrollLoop() {
+            if (autoScrollRaf) return;
+
+            const tick = () => {
+                autoScrollRaf = null;
+
+                // ドラッグ中だけ回す
+                if (!isDragging) return;
+
+                const speed = calcAutoScrollSpeed(pendingY);
+
+                if (autoScrollDir !== 0 && speed > 0) {
+                    window.scrollBy(0, autoScrollDir * speed);
+
+                    // スクロールしたぶんも含めて、ドラッグ中カードを追従更新
+                    moveDraggedItem(pendingX, pendingY);
+
+                    // placeholder 判定も「最後の指位置」で更新し続ける
+                    updatePlaceholderByPointer(pendingX, pendingY);
+                }
+
+                // 端にいる限り回し続ける（止めるのは stopAutoScrollLoop）
+                if (autoScrollDir !== 0) {
+                    autoScrollRaf = requestAnimationFrame(tick);
+                }
+            };
+
+            autoScrollRaf = requestAnimationFrame(tick);
+        }
+
+        function stopAutoScrollLoop() {
+            autoScrollDir = 0;
+            if (autoScrollRaf) {
+                cancelAnimationFrame(autoScrollRaf);
+                autoScrollRaf = null;
             }
         }
-        function handleTouchEnd() { if (activeItem) activeItem.style.opacity = "1"; activeItem = null; }
+
+        /* placeholder移動ロジックを関数化（handleTouchMove内の後半を移植） */
+        function updatePlaceholderByPointer(x, y) {
+            if (!placeholder) return;
+
+            // ★保険：自分を一瞬隠して下の要素を正しく拾う
+            const prevVis = activeItem?.style.visibility;
+            if (activeItem) activeItem.style.visibility = 'hidden';
+
+            const target = document.elementFromPoint(x, y);
+
+            if (activeItem) activeItem.style.visibility = prevVis || '';
+
+            const card = target ? target.closest('.event-card') : null;
+            if (!card || card === activeItem || card === placeholder) return;
+
+            const rect = card.getBoundingClientRect();
+            if (y < rect.top + rect.height / 2) card.before(placeholder);
+            else card.after(placeholder);
+        }
+
+        function handleTouchStart(e) {
+            // ここではまだドラッグ開始しない（スクロール優先）
+            isDragging = false;
+
+            // カードを掴んだ扱いにする
+            activeItem = this;
+            if (!activeItem) return;
+
+            // 初期タッチ位置（動いたら長押しキャンセルするため）
+            const touch = e.touches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+            attachPreMoveCancel();
+
+            document.addEventListener(
+                'touchend',
+                () => {
+                    if (!isDragging && pressTimer) {
+                        clearTimeout(pressTimer);
+                        pressTimer = null;
+                    }
+                },
+                { passive: true, once: true }
+            );
+
+            document.addEventListener(
+                'touchcancel',
+                () => {
+                    if (!isDragging && pressTimer) {
+                        clearTimeout(pressTimer);
+                        pressTimer = null;
+                    }
+                },
+                { passive: true, once: true }
+            );
+
+            // 既存タイマーがあればクリア
+            if (pressTimer) {
+                clearTimeout(pressTimer);
+                pressTimer = null;
+            }
+
+            // 長押し成立したら「ここで初めてドラッグ開始」
+            pressTimer = setTimeout(() => {
+                // ★ここに来た時点で、指が離れていたらキャンセルされているはずだが念のため
+                if (isDragging) return;
+                if (!activeItem) return;
+
+                // ここでドラッグ開始
+                isDragging = true;
+                // ★ スクロール検知はもう不要
+                detachPreMoveCancel();
+                activeItem.classList.add('dragging');
+
+                /* ドラッグ中の指の動きを取りこぼさないため */
+                document.addEventListener('touchmove', handleTouchMove, { passive: false });
+                document.addEventListener('touchend', handleTouchEnd, { passive: false });
+                document.addEventListener('touchcancel', handleTouchEnd, { passive: false });
+
+                /* 追従用のオフセット計算（カード左上との差分） */
+                const rect = activeItem.getBoundingClientRect();
+                dragOffsetX = startX - rect.left;
+                dragOffsetY = startY - rect.top;
+
+                /* placeholder を用意（無ければ作る） */
+                if (!placeholder) {
+                    placeholder = document.createElement('div');
+                    placeholder.className = 'sortable-placeholder';
+                }
+                placeholder.style.height = rect.height + "px";
+
+                // 元の場所を placeholder に置き換える（←これは必要）
+                activeItem.replaceWith(placeholder);
+
+                // ★カードはリストに戻さず、body に退避させる
+                document.body.appendChild(activeItem);
+
+
+                /* 見た目：ドラッグ中スタイル */
+                activeItem.style.width = rect.width + "px";
+                activeItem.style.height = rect.height + "px";
+                activeItem.style.position = "fixed";
+                activeItem.style.zIndex = "9999";
+                activeItem.style.pointerEvents = "none";
+                activeItem.style.opacity = "0.9";
+                activeItem.style.margin = "0";              // ★ズレ防止
+                activeItem.style.boxSizing = "border-box";  // ★念のため
+                activeItem.style.left = rect.left + "px";   // ★初期位置固定
+                activeItem.style.top = rect.top + "px";
+
+                /* 最初の位置更新（指に追従） */
+                moveDraggedItem(startX, startY);
+
+                // タイマーを使い捨てにする
+                pressTimer = null;
+            }, LONG_PRESS_MS);
+        }
+
+        function moveDraggedItem(clientX, clientY) {
+            // 指の位置（pending）を更新
+            pendingX = clientX;
+            pendingY = clientY;
+
+            // すでに rAF が回ってるなら予約だけ更新して終わり
+            if (rafId) return;
+
+            rafId = requestAnimationFrame(() => {
+                rafId = null;
+                if (!activeItem) return;
+
+                const left = pendingX - dragOffsetX;
+                const top = pendingY - dragOffsetY;
+
+                activeItem.style.left = left + "px";
+                activeItem.style.top = top + "px";
+            });
+        }
+
+        function handleTouchMove(e) {
+            if (!activeItem) return;
+
+            const touch = e.touches[0];
+            const x = touch.clientX;
+            const y = touch.clientY;
+
+            if (!isDragging) return; // 長押し成立前は何もしない
+
+            e.preventDefault();
+            // 追従（pendingX/pendingYが更新される）
+            moveDraggedItem(x, y);
+            // ★ 自動スクロール判定（端ならスクロール開始）
+            setAutoScrollByPointer(y);
+            // placeholder 更新（通常）
+            updatePlaceholderByPointer(x, y);
+        }
+
+
+        function handleTouchEnd() {
+            if (pressTimer) {
+                clearTimeout(pressTimer);
+                pressTimer = null;
+            }
+
+            // ★追加：自動スクロール停止
+            stopAutoScrollLoop();
+
+            if (!isDragging) {
+                detachPreMoveCancel();
+                activeItem = null;
+                return;
+            }
+
+            isDragging = false;
+
+            if (!activeItem) return;
+
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+
+            const list = document.getElementById('event-list');
+
+            if (placeholder && list && list.contains(placeholder)) {
+                placeholder.replaceWith(activeItem);
+                placeholder = null;
+            } else if (list && activeItem) {
+                list.appendChild(activeItem);
+            }
+
+            activeItem.classList.remove('dragging');
+
+            activeItem.style.position = '';
+            activeItem.style.left = '';
+            activeItem.style.top = '';
+            activeItem.style.right = '';
+            activeItem.style.bottom = '';
+            activeItem.style.width = '';
+            activeItem.style.height = '';
+            activeItem.style.zIndex = '';
+            activeItem.style.pointerEvents = '';
+            activeItem.style.margin = '';
+            activeItem.style.transform = '';
+            activeItem.style.opacity = '1';
+
+            activeItem = null;
+
+            document.removeEventListener('touchmove', handleTouchMove);
+            document.removeEventListener('touchend', handleTouchEnd);
+            document.removeEventListener('touchcancel', handleTouchEnd);
+        }
 
         function checkOrder() {
             clearInterval(timerInterval);
@@ -826,8 +1236,20 @@
             }
         };
 
-
     </script>
+
+    <footer style="margin-top:40px; padding:20px 0; border-top:1px solid #ddd; font-size:14px; text-align:center;">
+            <a href="./about.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
+                About
+            </a>
+            <a href="./privacy.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
+                Privacy Policy
+            </a>
+            <a href="./contact.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
+                Contact
+            </a>
+        </footer>
+
 </body>
 
 </html>
