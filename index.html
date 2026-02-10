@@ -1,104 +1,98 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARQ Games</title>
 
-<title>ARQ Games</title>
+  <!-- （任意）AdSense 自動広告 or 審査後に有効化
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX"
+    crossorigin="anonymous"></script>
+  -->
 
-<!-- ⭐ AdSense（審査通過後に有効化）
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX"
-crossorigin="anonymous"></script>
--->
-
-<style>
-body{
-    font-family:sans-serif;
-    margin:0;
-    background:#111;
-    color:white;
-}
-
-header{
-    padding:24px;
-    text-align:center;
-    background:#1c1c1c;
-    font-size:28px;
-    letter-spacing:2px;
-}
-
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:20px;
-}
-
-.game-card{
-    background:#222;
-    padding:20px;
-    margin-bottom:20px;
-    border-radius:8px;
-    transition:0.2s;
-}
-
-.game-card:hover{
-    background:#333;
-}
-
-a{
-    color:#7ecbff;
-    text-decoration:none;
-    font-size:20px;
-}
-
-.desc{
-    color:#bbb;
-    margin-top:8px;
-}
-
-footer{
-    margin-top:40px;
-    padding:20px;
-    text-align:center;
-    font-size:14px;
-    color:#aaa;
-    background:#1c1c1c;
-}
-</style>
+  <!-- ✅ ここに、あなたが送ってくれた <style> を丸ごと貼る -->
+  <style>
+    :root { --main-bg:#f4e4bc; --card-bg:#fff9e6; --accent:#fbc531; --text:#5d3a1a; }
+    body{ font-family:'Hiragino Kaku Gothic ProN',sans-serif; background-color:var(--main-bg);
+      margin:0; padding:20px 0; color:var(--text); touch-action:manipulation; }
+    .container{ background:var(--card-bg); padding:30px 20px; border-radius:40px;
+      box-shadow:0 10px 0 #d4af37; width:92%; max-width:450px; text-align:center;
+      border:8px solid var(--accent); position:relative; margin:40px auto; box-sizing:border-box; }
+    .top-btn{ position:absolute; top:-65px; width:50px; height:50px; background:#fff; border-radius:50%;
+      border:3px solid var(--accent); display:flex; align-items:center; justify-content:center; cursor:pointer;
+      box-shadow:0 4px 0 #d4af37; z-index:100; font-weight:bold; color:var(--text); font-size:.85em; }
+    .home-btn{ left:10px; border-color:#8b5e3c; box-shadow:0 4px 0 #8b5e3c; color:#8b5e3c; }
+    .header-icon-box{ background:#fff; width:70px; height:70px; margin:-65px auto 10px; border-radius:50%;
+      border:5px solid var(--accent); display:flex; align-items:center; justify-content:center;
+      box-shadow:0 4px 0 #d4af37; }
+    .header-icon{ font-size:35px !important; color:#f39c12; }
+    .event-card{ background:#fff; border-radius:15px; margin:12px 0; padding:18px 15px; cursor:pointer;
+      font-weight:bold; border:2px solid var(--accent); text-align:left; display:flex; align-items:center;
+      gap:12px; box-shadow:0 4px 0 rgba(0,0,0,.05); user-select:none; }
+    .hint-desc{ font-weight:normal; font-size:.9em; color:#8b5e3c; margin-left:1.2em; display:block; }
+    .ad-outside{ width:92%; max-width:450px; margin:-10px auto 24px; padding:12px; box-sizing:border-box;
+      background:rgba(255,255,255,.55); border:2px dashed #ecd4a1; border-radius:18px; }
+    .ad-outside ins.adsbygoogle{ display:block; width:100%; }
+    footer{ margin-top:18px; font-size:14px; }
+    footer a{ color:var(--text); text-decoration:none; margin:0 10px; font-weight:bold; }
+  </style>
 </head>
 
 <body>
 
-<header>
-ARQ Games
-</header>
+  <div class="container">
+    <!-- トップなので home ボタンは “装飾として” 置くだけ（押しても何もしない） -->
+    <div class="top-btn home-btn" title="Home">HOME</div>
 
-<div class="container">
+    <div class="header-icon-box" aria-hidden="true">
+      <div class="header-icon">🦞</div>
+    </div>
 
-<h2>Games</h2>
+    <h1 style="margin:10px 0 0; font-size:1.4em;">ARQ Games</h1>
+    <p style="margin:8px 0 18px; font-size:0.9em; color:#8b5e3c; font-weight:bold;">
+      気分次第で作って公開していく、実験置き場。
+    </p>
 
-<div class="game-card">
-<a href="https://arqgames.github.io/btlq/">▶ Play BTLQ</a>
-<div class="desc">
-シュール寄り実験ゲーム。ブラウザでそのまま遊べます。
-</div>
-</div>
+    <!-- ゲームカード（今は1つ） -->
+    <div class="event-card" onclick="location.href='https://arqgames.github.io/btlq/';">
+      <span style="font-size:1.4em;">▶</span>
+      <div>
+        BTLQ
+        <span class="hint-desc">並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。</span>
+      </div>
+    </div>
 
-<!-- ⭐ 広告表示予定エリア -->
-<div style="margin:40px 0;text-align:center;">
-<!-- adsense unit -->
-</div>
+    <div style="margin-top:18px; font-size:0.85em; color:#8b5e3c;">
+      新作はここに追加していきます。
+    </div>
 
-</div>
+    <!-- フッター（ルート固定） -->
+    <footer style="margin-top:24px; padding-top:16px; border-top:1px solid #ddd;">
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/contact.html">Contact</a>
+      <div style="margin-top:10px; color:#8b5e3c;">© ARQ Games</div>
+    </footer>
+  </div>
 
-<footer>
-<a href="about.html">About</a> |
-<a href="privacy.html">Privacy</a> |
-<a href="contact.html">Contact</a>
-
-<br><br>
-© ARQ Games
-</footer>
+  <!-- （任意）広告枠：箱の外（あなたのCSSに合わせた枠） -->
+  <div class="ad-outside">
+    <!-- 審査通過後に広告ユニットを貼る -->
+    <!--
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-XXXXXXXX"
+      data-ad-slot="YYYYYYYY"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    -->
+    <div style="text-align:center; font-weight:bold; color:#8b5e3c;">
+      Ad space
+    </div>
+  </div>
 
 </body>
 </html>
