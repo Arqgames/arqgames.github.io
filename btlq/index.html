@@ -19,7 +19,7 @@
         content="A free browser game where you arrange Bible events in chronological order. Supports Japanese and English." />
     <!-- TODO: 公開URLが確定したらここを書き換え（GitHub PagesのURL） -->
     <!-- 例: https://btlq.github.io/ -->
-    <link rel="stylesheet" href="/css/ui.css">
+    <meta property="og:url" content="https://arqgames.github.io/btlq/" />
 
     <!-- TODO: サムネ画像を置く場合（/og.png など） -->
     <!-- <meta property="og:image" content="https://arqgames.github.io/.png" /> -->
@@ -228,8 +228,8 @@
             /* 次回アクセス時も同じ言語で開くために保存する */
             localStorage.setItem('lang', currentLang);
             /* ボタン表示を更新（今が日本語なら "JA"、英語なら "EN"） */
-            document.getElementById('lang-btn').innerText =
-                currentLang === 'ja' ? 'JA' : 'EN';
+            document.getElementById('langBtn').innerText =
+                currentLang === 'ja' ? 'EN' : 'JA';
             /* data-ja / data-en を持つ要素のテキストをまとめて差し替える */
             document.querySelectorAll('[data-ja]').forEach(el => {
                 el.innerText = el.getAttribute('data-' + currentLang);
@@ -794,18 +794,9 @@
         ========================================================== */
         function updateResultTexts() {
             if (lastIsWin === null) return;
-
-            const difficulty =
-                parseInt(document.getElementById('count-select').value);
-
-            if (!lastIsWin && difficulty === 30) {
-                document.getElementById('result-title').innerText =
-                    currentLang === 'ja' ? "ゲームオーバー" : "Game Over";
-            } else {
-                document.getElementById('result-title').innerText = lastIsWin
-                    ? (currentLang === 'ja' ? "正解！" : "Correct!")
-                    : (currentLang === 'ja' ? "残念" : "Oops");
-            }
+            document.getElementById('result-title').innerText = lastIsWin
+                ? (currentLang === 'ja' ? "正解！" : "Correct!")
+                : (currentLang === 'ja' ? "残念" : "Oops");
         }
 
         /* ==========================================================
@@ -883,16 +874,8 @@
             document.getElementById('result-icon').innerText =
                 isWin ? "celebration" : "book";
 
-            /* ボタン表示の制御 */
-            if (!isWin && difficulty === 30) {
-                document.getElementById('fail-options').className = "hidden";
-                document.getElementById('success-options').className = "";
-            } else {
-                document.getElementById('fail-options').className =
-                    isWin ? "hidden" : "";
-                document.getElementById('success-options').className =
-                    isWin ? "" : "hidden";
-            }
+            document.getElementById('fail-options').className = isWin ? "hidden" : "";
+            document.getElementById('success-options').className = isWin ? "" : "hidden";
 
             /* ★ 結果タイトルは必ずここで一括更新 */
             updateResultTexts();
@@ -995,9 +978,9 @@
             document.documentElement.lang = currentLang;
 
             /* 2) 言語ボタン（JA/EN）の表示を currentLang に合わせる */
-            const langBtn = document.getElementById('lang-btn');
+            const langBtn = document.getElementById('langBtn');
             if (langBtn) {
-                langBtn.innerText = currentLang === 'ja' ? 'JA' : 'EN';
+                langBtn.innerText = currentLang === 'ja' ? 'EN' : 'JA';
             }
 
             /* 3) data-ja / data-en の文言を currentLang の言語に切り替える
@@ -1043,9 +1026,11 @@
                     if (e.stopImmediatePropagation) e.stopImmediatePropagation();
 
                     // まず「既存の関数」があればそれを呼ぶ（壊さない）
+                    if (typeof window.toggleLang === 'function') { window.toggleLang(); return; }
                     if (typeof window.toggleLanguage === 'function') { window.toggleLanguage(); return; }
                     if (typeof window.switchLanguage === 'function') { window.switchLanguage(); return; }
                     if (typeof window.setLanguage === 'function') { window.setLanguage(); return; }
+
 
                     // 無ければ localStorage を “複数キー” に保存（実装違いを吸収）
                     const saved =
