@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARQ Games</title>
 
-  <!-- （任意）AdSense 自動広告 or 審査後に有効化
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARQ Games</title>
+
+    <!-- （任意）AdSense 自動広告 or 審査後に有効化
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX"
     crossorigin="anonymous"></script>
   -->
 
-  <style>
+    <style>
         :root {
             --main-bg: #f4e4bc;
             --card-bg: #fff9e6;
@@ -263,45 +264,48 @@
 
 <body>
 
-  <div class="container">
-    <!-- トップなので home ボタンは “装飾として” 置くだけ（押しても何もしない） -->
-    <div class="top-btn home-btn" title="Home">HOME</div>
+    <div class="container">
+        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
 
-    <div class="header-icon-box" aria-hidden="true">
-      <div class="header-icon">🦞</div>
+        <div class="header-icon-box" aria-hidden="true">
+            <div class="header-icon">🦞</div>
+        </div>
+
+        <h1 style="margin:10px 0 0; font-size:1.4em;">ARQ Games</h1>
+        <p style="margin:8px 0 18px; font-size:0.9em; color:#8b5e3c; font-weight:bold;">
+            気分次第で作って公開していく、実験置き場。
+        </p>
+
+        <!-- ゲームカード（今は1つ） -->
+        <div class="event-card" onclick="location.href='https://arqgames.github.io/btlq/';">
+            <span style="font-size:1.4em;">▶</span>
+            <div>
+                BTLQ
+                <span class="hint-desc">並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。</span>
+            </div>
+        </div>
+
+        <div style="margin-top:18px; font-size:0.85em; color:#8b5e3c;">
+            新作はここに追加していきます。
+        </div>
+
+        <!-- フッター（ルート固定） -->
+        <footer style="margin-top:24px; padding-top:16px; border-top:1px solid #ddd;">
+            <a href="/about.html">About</a>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/contact.html">Contact</a>
+            <div style="margin-top:10px; color:#8b5e3c;">© ARQ Games</div>
+        </footer>
     </div>
 
-    <h1 style="margin:10px 0 0; font-size:1.4em;">ARQ Games</h1>
-    <p style="margin:8px 0 18px; font-size:0.9em; color:#8b5e3c; font-weight:bold;">
-      気分次第で作って公開していく、実験置き場。
-    </p>
-
-    <!-- ゲームカード（今は1つ） -->
-    <div class="event-card" onclick="location.href='https://arqgames.github.io/btlq/';">
-      <span style="font-size:1.4em;">▶</span>
-      <div>
-        BTLQ
-        <span class="hint-desc">並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。</span>
-      </div>
-    </div>
-
-    <div style="margin-top:18px; font-size:0.85em; color:#8b5e3c;">
-      新作はここに追加していきます。
-    </div>
-
-    <!-- フッター（ルート固定） -->
-    <footer style="margin-top:24px; padding-top:16px; border-top:1px solid #ddd;">
-      <a href="/about.html">About</a>
-      <a href="/privacy.html">Privacy Policy</a>
-      <a href="/contact.html">Contact</a>
-      <div style="margin-top:10px; color:#8b5e3c;">© ARQ Games</div>
-    </footer>
-  </div>
-
-  <!-- （任意）広告枠：箱の外（あなたのCSSに合わせた枠） -->
-  <div class="ad-outside">
-    <!-- 審査通過後に広告ユニットを貼る -->
-    <!--
+    <!-- （任意）広告枠：箱の外（あなたのCSSに合わせた枠） -->
+    <div class="ad-outside">
+        <!-- 審査通過後に広告ユニットを貼る -->
+        <!--
     <ins class="adsbygoogle"
       style="display:block"
       data-ad-client="ca-pub-XXXXXXXX"
@@ -312,10 +316,17 @@
       (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     -->
-    <div style="text-align:center; font-weight:bold; color:#8b5e3c;">
-      Ad space
+        <div style="text-align:center; font-weight:bold; color:#8b5e3c;">
+            Ad space
+        </div>
     </div>
-  </div>
+
+    <script>
+        document.getElementById('homeBtn').onclick = () => {
+            location.href = "/";
+        };
+    </script>
 
 </body>
+
 </html>
