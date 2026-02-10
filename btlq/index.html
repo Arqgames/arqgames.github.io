@@ -1018,16 +1018,16 @@
             }
         };
 
-        <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // --- HOME ---
-    const homeBtn = document.getElementById('homeBtn');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- HOME ---
+            const homeBtn = document.getElementById('homeBtn');
             if (homeBtn) {
                 homeBtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     location.href = '/';
                 });
-    }
+            }
 
             // --- LANG ---
             const langBtn = document.getElementById('langBtn');
@@ -1058,8 +1058,8 @@
                         location.reload();
                     }
                 });
-    }
-  });
+            }
+        });
 
     </script>
 
