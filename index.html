@@ -271,12 +271,16 @@
             </svg>
         </button>
 
+        <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">
+            EN
+        </button>
+
         <div class="header-icon-box" aria-hidden="true">
             <div class="header-icon">🦞</div>
         </div>
 
         <h1 style="margin:10px 0 0; font-size:1.4em;">ARQ Games</h1>
-        <p style="margin:8px 0 18px; font-size:0.9em; color:#8b5e3c; font-weight:bold;">
+        <p data-i18n="tagline" style="margin:8px 0 18px; font-size:0.9em; color:#8b5e3c; font-weight:bold;">
             気分次第で作って公開していく、実験置き場。
         </p>
 
@@ -285,7 +289,7 @@
             <span style="font-size:1.4em;">▶</span>
             <div>
                 BTLQ
-                <span class="hint-desc">並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。</span>
+                <span class="hint-desc" data-i18n="game_desc">並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。</span>
             </div>
         </div>
 
@@ -326,6 +330,49 @@
             location.href = "/";
         };
     </script>
+
+    <script>
+
+// ---------- 辞書 ----------
+const dict = {
+  ja:{
+    title:"ARQ Games",
+    tagline:"気分次第で作って公開していく、実験置き場。",
+    game_desc:"並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。"
+  },
+  en:{
+    title:"ARQ Games",
+    tagline:"A small playground where I publish whatever I make.",
+    game_desc:"An experimental sorting game playable in your browser."
+  }
+};
+
+// ---------- 適用 ----------
+function applyLang(lang){
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.dataset.i18n;
+    if(dict[lang][key]){
+      el.textContent = dict[lang][key];
+    }
+  });
+
+  document.getElementById("langBtn").textContent =
+    (lang==="ja") ? "EN" : "JA";
+
+  localStorage.setItem("arq_lang",lang);
+}
+
+// ---------- 初期言語 ----------
+let lang = localStorage.getItem("arq_lang") || "ja";
+applyLang(lang);
+
+// ---------- 切替 ----------
+document.getElementById("langBtn").onclick = ()=>{
+  lang = (lang==="ja") ? "en" : "ja";
+  applyLang(lang);
+};
+
+</script>
 
 </body>
 
