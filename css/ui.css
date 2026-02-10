@@ -1,0 +1,249 @@
+<style>
+        :root {
+            --main-bg: #f4e4bc;
+            --card-bg: #fff9e6;
+            --accent: #fbc531;
+            --text: #5d3a1a;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+            background-color: var(--main-bg);
+            margin: 0;
+            padding: 20px 0;
+            color: var(--text);
+            touch-action: manipulation;
+        }
+
+        .container {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 40px;
+            box-shadow: 0 10px 0 #d4af37;
+            width: 92%;
+            max-width: 450px;
+            text-align: center;
+            border: 8px solid var(--accent);
+            position: relative;
+            margin: 40px auto;
+            box-sizing: border-box;
+        }
+
+        .top-btn {
+            position: absolute;
+            top: -65px;
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #d4af37;
+            z-index: 100;
+            font-weight: bold;
+            color: var(--text);
+            font-size: 0.85em;
+        }
+
+        .home-btn {
+            left: 10px;
+            border-color: #8b5e3c;
+            box-shadow: 0 4px 0 #8b5e3c;
+            color: #8b5e3c;
+        }
+
+        .lang-switch {
+            right: 10px;
+        }
+
+        .header-icon-box {
+            background: #fff;
+            width: 70px;
+            height: 70px;
+            margin: -65px auto 10px;
+            border-radius: 50%;
+            border: 5px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 0 #d4af37;
+        }
+
+        .header-icon {
+            font-size: 35px !important;
+            color: #f39c12;
+        }
+
+        .quick-btn-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .q-btn {
+            background: #8b5e3c;
+            color: white;
+            border: none;
+            padding: 12px 5px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #5d3a1a;
+        }
+
+        .q-btn.full {
+            grid-column: span 2;
+            background: #5d3a1a;
+        }
+
+        .q-btn.active {
+            background: #d35400;
+            box-shadow: 0 4px 0 #a04000;
+            outline: 2px solid #fff;
+        }
+
+        .picker-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 12px;
+            border-radius: 15px;
+            border: 2px solid #ecd4a1;
+            margin: 10px 0;
+        }
+
+        .picker-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid var(--accent);
+            font-weight: bold;
+            background: #fff;
+            font-size: 0.9em;
+        }
+
+        .btn {
+            background: linear-gradient(to bottom, #ffc048, #ff9f1a);
+            color: #fff;
+            border: none;
+            padding: 18px;
+            border-radius: 35px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            box-shadow: 0 6px 0 #cc8e35;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .btn-sub {
+            background: #8b5e3c;
+            box-shadow: 0 6px 0 #5d3a1a;
+        }
+
+        #error-msg {
+            color: #d63031;
+            font-weight: bold;
+            font-size: 0.85em;
+            height: 1.2em;
+            margin-bottom: 5px;
+            transition: 0.3s;
+        }
+
+        .event-card {
+            background: #fff;
+            border-radius: 15px;
+            margin: 12px 0;
+            padding: 18px 15px;
+            cursor: grab;
+            font-weight: bold;
+            border: 2px solid var(--accent);
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.05);
+            user-select: none;
+        }
+
+        .event-card.dragging {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: #fbc531;
+            background: #fff;
+        }
+
+
+        .hidden {
+            display: none !important;
+        }
+
+        #hint-area {
+            background: #fff5d7;
+            border: 3px dashed #f39c12;
+            border-radius: 20px;
+            padding: 15px;
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: left;
+            font-size: 0.85em;
+            white-space: pre-line;
+        }
+
+        .hint-item {
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ecd4a1;
+        }
+
+        .hint-desc {
+            font-weight: normal;
+            font-size: 0.9em;
+            color: #8b5e3c;
+            margin-left: 1.2em;
+            display: block;
+        }
+
+        /* 並び替え時の挿入位置（プレースホルダ） */
+        .sortable-placeholder {
+            height: 64px;
+            /* カードのだいたいの高さ。後で調整OK */
+            margin: 12px 0;
+            border-radius: 15px;
+            border: 3px dashed var(--accent);
+            background: rgba(251, 197, 49, 0.15);
+        }
+
+        /* --- AdSense：箱の外に置く広告枠（箱は広げない） --- */
+        .ad-outside {
+            width: 92%;
+            max-width: 450px;
+            /* .container と同じ */
+            margin: -10px auto 24px;
+            /* 箱の直後に“はさむ”感じ。好みで調整OK */
+            padding: 12px;
+            box-sizing: border-box;
+
+            background: rgba(255, 255, 255, 0.55);
+            border: 2px dashed #ecd4a1;
+            border-radius: 18px;
+        }
+
+        /* 広告は枠の横幅いっぱい */
+        .ad-outside ins.adsbygoogle {
+            display: block;
+            width: 100%;
+        }
+    </style>
