@@ -1018,6 +1018,49 @@
             }
         };
 
+        <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // --- HOME ---
+    const homeBtn = document.getElementById('homeBtn');
+            if (homeBtn) {
+                homeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    location.href = '/';
+                });
+    }
+
+            // --- LANG ---
+            const langBtn = document.getElementById('langBtn');
+            if (langBtn) {
+                langBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    // 既存の言語切替関数があるならそれを優先して呼ぶ（壊さない）
+                    if (typeof window.toggleLanguage === 'function') {
+                        window.toggleLanguage();
+                        return;
+                    }
+                    if (typeof window.switchLanguage === 'function') {
+                        window.switchLanguage();
+                        return;
+                    }
+
+                    // ない場合は localStorage をトグルして、ページ側の初期化に任せる
+                    const saved = localStorage.getItem('arq_lang');
+                    const current = saved || (navigator.language && navigator.language.startsWith('ja') ? 'ja' : 'en');
+                    const next = (current === 'ja') ? 'en' : 'ja';
+                    localStorage.setItem('arq_lang', next);
+
+                    // ゲーム側に applyLang があるなら即時反映、なければリロードで反映
+                    if (typeof window.applyLang === 'function') {
+                        window.applyLang(next);
+                    } else {
+                        location.reload();
+                    }
+                });
+    }
+  });
+
     </script>
 
     <footer style="margin-top:40px; padding:20px 0; border-top:1px solid #ddd; font-size:14px; text-align:center;">
