@@ -2746,7 +2746,7 @@
 });
 
 async function loadEvents() {
-  const url = "./data/events/events01.json";
+  const url = "../data/events/events01.json";
   const res = await fetch(url);
 
   // ✅ 404/500対策（HTMLが返る事故を防ぐ）
@@ -2759,7 +2759,28 @@ async function loadEvents() {
 
   const data = await res.json();
   console.log("Loaded events:", data);
+  
 }
+
+// ===== イベントJSON読み込み（ここから） =====
+window.EVENTS = [];
+
+async function loadEvents() {
+    try {
+        const res = await fetch("/btlq/data/events/events_all.json");
+        const data = await res.json();
+
+        window.EVENTS = data;
+
+        console.log("EVENTS loaded:", window.EVENTS.length);
+    } catch (e) {
+        console.error("Event load failed:", e);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", loadEvents);
+// ===== ここまで =====
+
 
     </script>
 
