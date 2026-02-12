@@ -2741,46 +2741,40 @@
     }, true); // capture=true
   }
 
-  // ✅ DOMが整ってから呼ぶ（安全）
-  loadEvents();
-});
-
-async function loadEvents() {
-  const url = "../data/events/events01.json";
-  const res = await fetch(url);
-
-  // ✅ 404/500対策（HTMLが返る事故を防ぐ）
-  if (!res.ok) {
-    const text = await res.text();
-    console.error("Fetch failed:", res.status, res.statusText, "url=", url);
-    console.error("Response head:", text.slice(0, 120));
-    return;
-  }
-
-  const data = await res.json();
-  console.log("Loaded events:", data);
-  
-}
-
-// ===== イベントJSON読み込み（ここから） =====
+  // ===== イベントJSON読み込み（統一版） =====
 window.EVENTS = [];
 
 async function loadEvents() {
-    try {
-        const res = await fetch("/btlq/data/events/events_all.json");
-        const data = await res.json();
+  const url = "/btlq/data/events/events_all.json"; // ←GitHub Pagesで確実
 
-        window.EVENTS = data;
+  try {
+    const res = await fetch(url, { cache: "no-store" });
 
-        console.log("EVENTS loaded:", window.EVENTS.length);
-    } catch (e) {
-        console.error("Event load failed:", e);
+    // ✅ 404/500対策（HTMLが返る事故を防ぐ）
+    if (!res.ok) {
+      const text = await res.text();
+      console.error("Fetch failed:", res.status, res.statusText, "url=", url);
+      console.error("Response head:", text.slice(0, 200));
+      return;
     }
+
+    const data = await res.json();
+
+    if (!Array.isArray(data)) {
+      console.error("Invalid JSON: expected an Array, got:", typeof data, data);
+      return;
+    }
+
+    window.EVENTS = data;
+    console.log("EVENTS loaded:", window.EVENTS.length);
+  } catch (e) {
+    console.error("Event load failed:", e, "url=", url);
+  }
 }
 
+// ✅ DOMが整ってから呼ぶ（安全）
 document.addEventListener("DOMContentLoaded", loadEvents);
 // ===== ここまで =====
-
 
     </script>
 
