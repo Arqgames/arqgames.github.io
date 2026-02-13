@@ -133,6 +133,7 @@
         /* ヒント再描画用：直前に表示したヒントのIDを覚える */
         let lastHintIds = null;
         let lastHintWasEmpty = null;
+        let EVENTS = [];
 
         const refMap = {
             "Gen": "創", "Exo": "出", "Lev": "レビ", "Num": "民", "Deut": "申",
@@ -1011,9 +1012,6 @@
                 el.innerText = el.getAttribute('data-' + currentLang);
             });
 
-            /* 4) 年代セレクト等を currentLang で描画する（BCE/CE表示も含む） */
-            initPickers();
-
             /* 5) 初期の開始/終了をセット（select が存在するページだけ） */
             const startSel = document.getElementById('select-start');
             const endSel = document.getElementById('select-end');
@@ -1098,7 +1096,8 @@
                         return;
                     }
 
-                    window.EVENTS = data;
+                    EVENTS = data;          // ★追加
+                    window.EVENTS = EVENTS; // ★保険（どっち参照でも動く）
                     console.log("EVENTS loaded:", window.EVENTS.length);
                     initPickers();
 
