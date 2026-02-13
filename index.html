@@ -19,12 +19,6 @@
 <body>
 
     <div class="container">
-        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home">
-            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
-                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
-            </svg>
-        </button>
-
         <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">
             EN
         </button>
@@ -39,31 +33,25 @@
         </p>
 
         <!-- ゲームカード（今は1つ） -->
-        <div class="event-card" onclick="location.href='https://arqgames.github.io/btlq/';">
-            <span style="font-size:1.4em;">▶</span>
-            <div>
-                BTLQ
-                <span class="hint-desc" data-i18n="game_desc">並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。</span>
+        <div class="event-card" onclick="window.open('https://arqgames.github.io/btlq/', '_blank', 'noopener');">
+
+            <div data-i18n="coming" style="margin-top:18px; font-size:0.85em; color:#8b5e3c;">
+                新作はここに追加していきます。
             </div>
+
+            <!-- フッター（ルート固定） -->
+            <footer style="margin-top:24px; padding-top:16px; border-top:1px solid #ddd;">
+                <a href="/about.html">About</a>
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/contact.html">Contact</a>
+                <div style="margin-top:10px; color:#8b5e3c;">© ARQ Games</div>
+            </footer>
         </div>
 
-        <div data-i18n="coming" style="margin-top:18px; font-size:0.85em; color:#8b5e3c;">
-            新作はここに追加していきます。
-        </div>
-
-        <!-- フッター（ルート固定） -->
-        <footer style="margin-top:24px; padding-top:16px; border-top:1px solid #ddd;">
-            <a href="/about.html">About</a>
-            <a href="/privacy.html">Privacy Policy</a>
-            <a href="/contact.html">Contact</a>
-            <div style="margin-top:10px; color:#8b5e3c;">© ARQ Games</div>
-        </footer>
-    </div>
-
-    <!-- （任意）広告枠：箱の外（あなたのCSSに合わせた枠） -->
-    <div class="ad-outside">
-        <!-- 審査通過後に広告ユニットを貼る -->
-        <!--
+        <!-- （任意）広告枠：箱の外（あなたのCSSに合わせた枠） -->
+        <div class="ad-outside">
+            <!-- 審査通過後に広告ユニットを貼る -->
+            <!--
     <ins class="adsbygoogle"
       style="display:block"
       data-ad-client="ca-pub-XXXXXXXX"
@@ -74,64 +62,58 @@
       (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
     -->
-        <div style="text-align:center; font-weight:bold; color:#8b5e3c;">
-            Ad space
+            <div style="text-align:center; font-weight:bold; color:#8b5e3c;">
+                Ad space
+            </div>
         </div>
-    </div>
 
-    <script>
-
-        // ---------- HOME ----------
-        document.getElementById('homeBtn').onclick = () => {
-            location.href = "/";
-        };
-
-        // ---------- 辞書 ----------
-        const dict = {
-            ja: {
-                title: "ARQ Games",
-                tagline: "気分次第で作って公開していく、実験置き場。",
-                game_desc: "並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。",
-                coming: "新作はここに追加していきます。"
-            },
-            en: {
-                title: "ARQ Games",
-                tagline: "A small playground where I publish whatever I make.",
-                game_desc: "An experimental sorting game playable in your browser.",
-                coming: "New games will appear here."
-            }
-        };
-
-        // ---------- 言語適用 ----------
-        function applyLang(lang) {
-
-            document.querySelectorAll("[data-i18n]").forEach(el => {
-                const key = el.dataset.i18n;
-                if (dict[lang] && dict[lang][key]) {
-                    el.textContent = dict[lang][key];
+        <script>
+            // ---------- 辞書 ----------
+            const dict = {
+                ja: {
+                    title: "ARQ Games",
+                    tagline: "気分次第で作って公開していく、実験置き場。",
+                    game_desc: "並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。",
+                    coming: "新作はここに追加していきます。"
+                },
+                en: {
+                    title: "ARQ Games",
+                    tagline: "A small playground where I publish whatever I make.",
+                    game_desc: "An experimental sorting game playable in your browser.",
+                    coming: "New games will appear here."
                 }
-            });
+            };
 
-            document.getElementById("langBtn").textContent =
-                (lang === "ja") ? "EN" : "JA";
+            // ---------- 言語適用 ----------
+            function applyLang(lang) {
 
-            localStorage.setItem("arq_lang", lang);
-        }
+                document.querySelectorAll("[data-i18n]").forEach(el => {
+                    const key = el.dataset.i18n;
+                    if (dict[lang] && dict[lang][key]) {
+                        el.textContent = dict[lang][key];
+                    }
+                });
 
-        // ---------- 初期言語 ----------
-        const saved = localStorage.getItem("arq_lang");
-        let lang = saved ||
-            (navigator.language && navigator.language.startsWith("ja") ? "ja" : "en");
+                document.getElementById("langBtn").textContent =
+                    (lang === "ja") ? "EN" : "JA";
 
-        applyLang(lang);
+                localStorage.setItem("arq_lang", lang);
+            }
 
-        // ---------- 切替 ----------
-        document.getElementById("langBtn").onclick = () => {
-            lang = (lang === "ja") ? "en" : "ja";
+            // ---------- 初期言語 ----------
+            const saved = localStorage.getItem("arq_lang");
+            let lang = saved ||
+                (navigator.language && navigator.language.startsWith("ja") ? "ja" : "en");
+
             applyLang(lang);
-        };
 
-    </script>
+            // ---------- 切替 ----------
+            document.getElementById("langBtn").onclick = () => {
+                lang = (lang === "ja") ? "en" : "ja";
+                applyLang(lang);
+            };
+
+        </script>
 
 </body>
 
