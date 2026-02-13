@@ -1074,58 +1074,6 @@
                 }, true);
             }
 
-            function initSetupScreen() {
-                console.log("initSetupScreen: start");
-
-                // もし既存の初期化関数が別名で残ってたら、それを優先して呼ぶ
-                if (typeof window.populateYearSelectors === "function") {
-                    window.populateYearSelectors();
-                    return;
-                }
-                if (typeof window.setupSelectors === "function") {
-                    window.setupSelectors();
-                    return;
-                }
-
-                // 最低限：開始/終了のセレクトを EVENTS の year から埋める
-                const startSel = document.getElementById("select-start");
-                const endSel = document.getElementById("select-end");
-                if (!startSel || !endSel) {
-                    console.warn("initSetupScreen: selectors not found");
-                    return;
-                }
-
-                const years = [...new Set((window.EVENTS || [])
-                    .map(e => e && typeof e.year === "number" ? e.year : null)
-                    .filter(v => v !== null)
-                )].sort((a, b) => a - b);
-
-                if (years.length === 0) {
-                    console.warn("initSetupScreen: no years in EVENTS");
-                    return;
-                }
-
-                startSel.innerHTML = "";
-                endSel.innerHTML = "";
-
-                for (const y of years) {
-                    const opt1 = document.createElement("option");
-                    opt1.value = String(y);
-                    opt1.textContent = String(y);
-                    startSel.appendChild(opt1);
-
-                    const opt2 = document.createElement("option");
-                    opt2.value = String(y);
-                    opt2.textContent = String(y);
-                    endSel.appendChild(opt2);
-                }
-
-                // デフォルト：最初と最後
-                startSel.value = String(years[0]);
-                endSel.value = String(years[years.length - 1]);
-
-                console.log("initSetupScreen: done", { min: years[0], max: years[years.length - 1] });
-            }
             // ===== イベントJSON読み込み（統一版） =====
             window.EVENTS = [];
 
@@ -1154,12 +1102,6 @@
                     console.log("EVENTS loaded:", window.EVENTS.length);
                     initPickers();
 
-                    // initSetupScreen が存在する前提
-                    if (typeof window.initSetupScreen === "function") {
-                        window.initSetupScreen();
-                    } else {
-                        console.warn("initSetupScreen is not defined yet.");
-                    }
                 } catch (e) {
                     console.error("Event load failed:", e, "url=", url);
                 }
