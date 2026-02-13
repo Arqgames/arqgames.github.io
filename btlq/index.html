@@ -994,31 +994,25 @@
         }
         /* ページを開いた瞬間にやること（初期化） */
         window.onload = () => {
-
-            /* 1) ブラウザ言語 or 保存済み言語を見て currentLang を決める */
+            // 1) ブラウザ言語 or 保存済み言語を見て currentLang を決める
             detectLanguage();
             document.documentElement.lang = currentLang;
 
-            /* 2) 言語ボタン（JA/EN）の表示を currentLang に合わせる */
+            // 2) 言語ボタン（JA/EN）の表示を currentLang に合わせる
             const langBtn = document.getElementById('langBtn');
             if (langBtn) {
                 langBtn.innerText = currentLang === 'ja' ? 'EN' : 'JA';
             }
 
-            /* 3) data-ja / data-en の文言を currentLang の言語に切り替える
-                  ※ これをやらないと、HTMLに直書きされた初期表示のままになる */
+            // 3) data-ja / data-en の文言を currentLang の言語に切り替える
             document.querySelectorAll('[data-ja]').forEach(el => {
                 el.innerText = el.getAttribute('data-' + currentLang);
             });
 
-            /* 5) 初期の開始/終了をセット（select が存在するページだけ） */
-            const startSel = document.getElementById('select-start');
-            const endSel = document.getElementById('select-end');
-            if (startSel && endSel) {
-                startSel.value = -4026;
-                endSel.value = 98;
-            }
+            // ✅ここでは initPickers() を呼ばない（イベント未ロードで壊れる）
+            // ✅ここでは startSel/endSel の value を触らない
         };
+
 
         document.addEventListener('DOMContentLoaded', () => {
             // --- HOME ---
@@ -1072,35 +1066,49 @@
             }
 
             async function loadEvents() {
-                // 先頭スラッシュは「ドメイン直下起点」なので、GitHub PagesではOK
-                const url = "/btlq/data/events/events_all.json";
+    const url = "/btlq/data/events/events_all.json";
 
-                try {
-                    const res = await fetch(url, { cache: "no-store" });
+    try {
+        const res = await fetch(url, { cache: "no-store" });
 
-                    if (!res.ok) {
-                        const text = await res.text();
-                        console.error("Fetch failed:", res.status, res.statusText, "url=", url);
-                        console.error("Response head:", text.slice(0, 200));
-                        return;
-                    }
+        if (!res.ok) {
+            const text = await res.text();
+            console.error("Fetch failed:", res.status, res.statusText, "url=", url);
+            console.error("Response head:", text.slice(0, 200));
+            return;
+        }
 
-                    const data = await res.json();
+        const data = await res.json();
 
-                    if (!Array.isArray(data)) {
-                        console.error("Invalid JSON: expected an Array, got:", typeof data, data);
-                        return;
-                    }
+        if (!Array.isArray(data)) {
+            console.error("Invalid JSON: expected an Array, got:", typeof data, data);
+            return;
+        }
 
-                    EVENTS = data;          // ★追加
-                    window.EVENTS = data;   // これは残してOK
-                    console.log("EVENTS loaded:", EVENTS.length);
-                    initPickers();
+        EVENTS = data;
+        window.EVENTS = data;
 
-                } catch (e) {
-                    console.error("Event load failed:", e, "url=", url);
-                }
-            }
+        console.log("EVENTS loaded:", EVENTS.length);
+
+        // ★① セレクト構築
+        initPickers();
+
+        // ★② デフォルト期間をここで設定（重要）
+        const startSel = document.getElementById('select-start');
+        const endSel = document.getElementById('select-end');
+
+        if (startSel && endSel) {
+            startSel.value = EVENTS[0].year;                         // 最古
+            endSel.value = EVENTS[EVENTS.length - 1].year;           // 最新
+        }
+
+        // ★③ エラーメッセージ消去（保険）
+        document.getElementById('error-msg').innerText = "";
+
+    } catch (e) {
+        console.error("Event load failed:", e, "url=", url);
+    }
+}
 
             // 外側が DOMContentLoaded なので、ここは直接呼ぶだけでOK
             loadEvents();
