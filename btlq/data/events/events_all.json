@@ -1,3 +1,4 @@
+[
   {
     "id": "001000",
     "ja": "アダムの創造",
@@ -1623,7 +1624,6 @@
   "hint_ja": "ルカ2:41-52は少年期唯一の具体記事で、前後の沈黙期を区切る\n「約30歳」（ルカ3:23）へ跳ぶ前の中間アンカーとして便利",
   "hint_en": "Luke 2:41-52 is the lone detailed youth account, dividing the silent years\nUseful midpoint anchor before Luke 3:23 (~30)"
 },
-[
   {
     "id": "70000",
     "ja": "バプテスマを施すヨハネが宣教を開始する",
@@ -2651,6 +2651,4 @@
     "hint_ja": "使徒時代の終端アンカー（記述期が閉じる）\n黙示録末尾の警告を“終端”として読む",
     "hint_en": "Terminal anchor for the close of the apostolic writing era\nRead the warning at the end of Revelation as the end-marker"
   }
-
-
-
+]
