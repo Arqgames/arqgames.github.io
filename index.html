@@ -304,35 +304,29 @@
                     draggingItemPC = el;
                     el.classList.add('dragging');
 
-                    // ✅ placeholder を「置換」ではなく「挿入」する（DOMから外さない）
                     const rect = el.getBoundingClientRect();
                     pcPlaceholder = document.createElement('div');
                     pcPlaceholder.className = 'sortable-placeholder';
                     pcPlaceholder.style.height = rect.height + 'px';
 
-                    // 元カードの直後に入れる（元カードの場所を確保）
                     el.parentNode.insertBefore(pcPlaceholder, el.nextSibling);
 
-                    // ✅ drag開始が成立してから元カードを消す（Chrome向けの定番）
                     setTimeout(() => {
                         if (draggingItemPC === el) el.style.display = 'none';
                     }, 0);
 
                     if (e.dataTransfer) {
                         e.dataTransfer.effectAllowed = 'move';
-                        e.dataTransfer.setData('text/plain', 'x'); // 空だとドラッグ開始しない事がある
+                        e.dataTransfer.setData('text/plain', 'x');
                     }
                 });
 
-                // ✅ drop が来なくても dragend で必ず復帰させる
                 el.addEventListener('dragend', () => {
                     if (!draggingItemPC) return;
 
-                    // display:none を戻す
                     draggingItemPC.style.display = '';
                     draggingItemPC.classList.remove('dragging');
 
-                    // placeholder が残ってたら消す
                     if (pcPlaceholder && pcPlaceholder.parentNode) pcPlaceholder.remove();
 
                     pcPlaceholder = null;
@@ -348,30 +342,26 @@
                 list.appendChild(el);
             });
 
-            /* PC: placeholder の移動（マウス位置に合わせて枠だけ動かす） */
+            /* PC: placeholder の移動 */
             list.ondragover = (e) => {
                 e.preventDefault();
                 if (!pcPlaceholder) return;
 
                 const after = getDragAfterElement(list, e.clientY);
-
                 if (after == null) list.appendChild(pcPlaceholder);
                 else list.insertBefore(pcPlaceholder, after);
             };
 
-            /* PC: drop で確定（placeholder の位置にカードを戻す） */
+            /* PC: drop で確定 */
             list.ondrop = (e) => {
                 e.preventDefault();
                 if (!draggingItemPC || !pcPlaceholder) return;
 
-                // placeholder の位置にドラッグ元カードを戻す
                 list.insertBefore(draggingItemPC, pcPlaceholder);
 
-                // 復帰
                 draggingItemPC.style.display = '';
                 draggingItemPC.classList.remove('dragging');
 
-                // 掃除
                 pcPlaceholder.remove();
                 pcPlaceholder = null;
                 draggingItemPC = null;
