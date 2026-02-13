@@ -1035,37 +1035,36 @@
             if (homeBtn) {
                 homeBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    location.href = "/btlq/";
+                    // GitHub Pagesの /btlq/ に戻すならこっち推奨
+                    location.href = '/btlq/';
+                    // ルート（ arqgames.github.io/ ）に戻したいなら '/' のままでOK
+                    // location.href = '/';
                 });
             }
 
             // --- LANG（確実版）---
             const langBtn0 = document.getElementById('langBtn');
             if (langBtn0) {
-                // 既存のonclick / addEventListener を全部剥がすためにボタンを差し替える
                 const langBtn = langBtn0.cloneNode(true);
                 langBtn0.parentNode.replaceChild(langBtn, langBtn0);
 
-                // キャプチャで最優先、他の処理を止める
                 langBtn.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     if (e.stopImmediatePropagation) e.stopImmediatePropagation();
 
-                    // まず「既存の関数」があればそれを呼ぶ（壊さない）
                     if (typeof window.toggleLang === 'function') { window.toggleLang(); return; }
                     if (typeof window.toggleLanguage === 'function') { window.toggleLanguage(); return; }
                     if (typeof window.switchLanguage === 'function') { window.switchLanguage(); return; }
                     if (typeof window.setLanguage === 'function') { window.setLanguage(); return; }
 
-                    // 無ければ localStorage を “複数キー” に保存（実装違いを吸収）
                     const saved =
                         localStorage.getItem('arq_lang') ||
                         localStorage.getItem('lang') ||
                         localStorage.getItem('language') ||
                         localStorage.getItem('btlq_lang');
 
-                    const current = saved || (navigator.language && navigator.language.startsWith('ja') ? 'ja' : 'en');
+                    const current = saved || (navigator.language?.startsWith('ja') ? 'ja' : 'en');
                     const next = (current === 'ja') ? 'en' : 'ja';
 
                     localStorage.setItem('arq_lang', next);
@@ -1073,27 +1072,24 @@
                     localStorage.setItem('language', next);
                     localStorage.setItem('btlq_lang', next);
 
-                    // もしグローバルに applyLang があるなら即反映
                     if (typeof window.applyLang === 'function') {
                         window.applyLang(next);
                         return;
                     }
-
-                    // 無ければリロードして初期化に任せる（確実）
                     location.reload();
-                }, true); // capture=true
+                }, true);
             }
 
             // ===== イベントJSON読み込み（統一版） =====
             window.EVENTS = [];
 
             async function loadEvents() {
-                const url = "/btlq/data/events/events_all.json"; // ←GitHub Pagesで確実
+                // 先頭スラッシュは「ドメイン直下起点」なので、GitHub PagesではOK
+                const url = "/btlq/data/events/events_all.json";
 
                 try {
                     const res = await fetch(url, { cache: "no-store" });
 
-                    // ✅ 404/500対策（HTMLが返る事故を防ぐ）
                     if (!res.ok) {
                         const text = await res.text();
                         console.error("Fetch failed:", res.status, res.statusText, "url=", url);
@@ -1110,15 +1106,21 @@
 
                     window.EVENTS = data;
                     console.log("EVENTS loaded:", window.EVENTS.length);
-                    initSetupScreen();
+
+                    // initSetupScreen が存在する前提
+                    if (typeof window.initSetupScreen === "function") {
+                        window.initSetupScreen();
+                    } else {
+                        console.warn("initSetupScreen is not defined yet.");
+                    }
                 } catch (e) {
                     console.error("Event load failed:", e, "url=", url);
                 }
             }
 
-            // ✅ DOMが整ってから呼ぶ（安全）
-            document.addEventListener("DOMContentLoaded", loadEvents);
-        
+            // 外側が DOMContentLoaded なので、ここは直接呼ぶだけでOK
+            loadEvents();
+        });
 
     </script>
 
