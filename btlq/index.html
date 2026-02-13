@@ -126,6 +126,7 @@
     <script>
         let currentLang = 'ja';
         let EVENTS = []; // ★追加：全関数が参照できる共通EVENTS
+        window.EVENTS = EVENTS; // 任意（どっち参照でもOKにする）
         let currentTask = [];
         let timerInterval;
         let timeLeft;
@@ -134,7 +135,6 @@
         /* ヒント再描画用：直前に表示したヒントのIDを覚える */
         let lastHintIds = null;
         let lastHintWasEmpty = null;
-        let EVENTS = [];
 
         const refMap = {
             "Gen": "創", "Exo": "出", "Lev": "レビ", "Num": "民", "Deut": "申",
@@ -233,8 +233,6 @@
         }
 
         function startGame() {
-            const EVENTS = window.EVENTS || []; // ★追加：fetchした配列を必ず参照
-
             const s = parseInt(document.getElementById('select-start').value);
             const e = parseInt(document.getElementById('select-end').value);
             const count = parseInt(document.getElementById('count-select').value);
@@ -723,20 +721,20 @@
             return (a.year - b.year) ||
                 ((a.month ?? 1) - (b.month ?? 1)) ||
                 ((a.day ?? 1) - (b.day ?? 1)) ||
-                (a.id - b.id);
+                (Number(a.id) - Number(b.id)); // ←ここだけ数値に
         }
 
         // ✅ 共通：currentTask から正解ID配列を作る
         function getCorrectIds() {
             if (!Array.isArray(currentTask) || currentTask.length === 0) return [];
-            return [...currentTask].sort(sortEventsChrono).map(e => e.id);
+            return [...currentTask].sort(sortEventsChrono).map(e => String(e.id));
         }
 
         // ✅ 共通：画面上の並び（ID配列）
         function getUserIds() {
-            return [...document.querySelectorAll('.event-card')]
-                .map(el => parseInt(el.dataset.id, 10))
-                .filter(n => Number.isFinite(n));
+            return [...document.querySelectorAll('#event-list .event-card')]
+                .map(el => el.dataset.id)     // ←文字列のまま
+                .filter(Boolean);
         }
 
         // ✅ 共通：配列一致（JSON stringifyより安全）
@@ -1072,9 +1070,6 @@
                     location.reload();
                 }, true);
             }
-
-            // ===== イベントJSON読み込み（統一版） =====
-            window.EVENTS = [];
 
             async function loadEvents() {
                 // 先頭スラッシュは「ドメイン直下起点」なので、GitHub PagesではOK
