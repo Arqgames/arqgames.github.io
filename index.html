@@ -231,10 +231,14 @@
         }
 
         function startGame() {
+            const EVENTS = window.EVENTS || []; // ★追加：fetchした配列を必ず参照
+
             const s = parseInt(document.getElementById('select-start').value);
             const e = parseInt(document.getElementById('select-end').value);
             const count = parseInt(document.getElementById('count-select').value);
+
             let filtered = EVENTS.filter(ev => ev.year >= s && ev.year <= e);
+
             if (filtered.length < count) {
                 const msg = currentLang === 'ja' ? `イベントが足りません（現在${filtered.length}個）` : `Not enough events (Only ${filtered.length} available)`;
                 document.getElementById('error-msg').innerText = msg;
@@ -1081,57 +1085,57 @@
             }
 
             function initSetupScreen() {
-  console.log("initSetupScreen: start");
+                console.log("initSetupScreen: start");
 
-  // もし既存の初期化関数が別名で残ってたら、それを優先して呼ぶ
-  if (typeof window.populateYearSelectors === "function") {
-    window.populateYearSelectors();
-    return;
-  }
-  if (typeof window.setupSelectors === "function") {
-    window.setupSelectors();
-    return;
-  }
+                // もし既存の初期化関数が別名で残ってたら、それを優先して呼ぶ
+                if (typeof window.populateYearSelectors === "function") {
+                    window.populateYearSelectors();
+                    return;
+                }
+                if (typeof window.setupSelectors === "function") {
+                    window.setupSelectors();
+                    return;
+                }
 
-  // 最低限：開始/終了のセレクトを EVENTS の year から埋める
-  const startSel = document.getElementById("select-start");
-  const endSel   = document.getElementById("select-end");
-  if (!startSel || !endSel) {
-    console.warn("initSetupScreen: selectors not found");
-    return;
-  }
+                // 最低限：開始/終了のセレクトを EVENTS の year から埋める
+                const startSel = document.getElementById("select-start");
+                const endSel = document.getElementById("select-end");
+                if (!startSel || !endSel) {
+                    console.warn("initSetupScreen: selectors not found");
+                    return;
+                }
 
-  const years = [...new Set((window.EVENTS || [])
-    .map(e => e && typeof e.year === "number" ? e.year : null)
-    .filter(v => v !== null)
-  )].sort((a,b)=>a-b);
+                const years = [...new Set((window.EVENTS || [])
+                    .map(e => e && typeof e.year === "number" ? e.year : null)
+                    .filter(v => v !== null)
+                )].sort((a, b) => a - b);
 
-  if (years.length === 0) {
-    console.warn("initSetupScreen: no years in EVENTS");
-    return;
-  }
+                if (years.length === 0) {
+                    console.warn("initSetupScreen: no years in EVENTS");
+                    return;
+                }
 
-  startSel.innerHTML = "";
-  endSel.innerHTML = "";
+                startSel.innerHTML = "";
+                endSel.innerHTML = "";
 
-  for (const y of years) {
-    const opt1 = document.createElement("option");
-    opt1.value = String(y);
-    opt1.textContent = String(y);
-    startSel.appendChild(opt1);
+                for (const y of years) {
+                    const opt1 = document.createElement("option");
+                    opt1.value = String(y);
+                    opt1.textContent = String(y);
+                    startSel.appendChild(opt1);
 
-    const opt2 = document.createElement("option");
-    opt2.value = String(y);
-    opt2.textContent = String(y);
-    endSel.appendChild(opt2);
-  }
+                    const opt2 = document.createElement("option");
+                    opt2.value = String(y);
+                    opt2.textContent = String(y);
+                    endSel.appendChild(opt2);
+                }
 
-  // デフォルト：最初と最後
-  startSel.value = String(years[0]);
-  endSel.value   = String(years[years.length - 1]);
+                // デフォルト：最初と最後
+                startSel.value = String(years[0]);
+                endSel.value = String(years[years.length - 1]);
 
-  console.log("initSetupScreen: done", { min: years[0], max: years[years.length-1] });
-}
+                console.log("initSetupScreen: done", { min: years[0], max: years[years.length - 1] });
+            }
             // ===== イベントJSON読み込み（統一版） =====
             window.EVENTS = [];
 
@@ -1158,6 +1162,7 @@
 
                     window.EVENTS = data;
                     console.log("EVENTS loaded:", window.EVENTS.length);
+                    initSetupScreen();
 
                     // initSetupScreen が存在する前提
                     if (typeof window.initSetupScreen === "function") {
