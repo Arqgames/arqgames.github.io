@@ -125,6 +125,7 @@
 
     <script>
         let currentLang = 'ja';
+        let EVENTS = []; // ★追加：全関数が参照できる共通EVENTS
         let currentTask = [];
         let timerInterval;
         let timeLeft;
@@ -1097,8 +1098,8 @@
                     }
 
                     EVENTS = data;          // ★追加
-                    window.EVENTS = EVENTS; // ★保険（どっち参照でも動く）
-                    console.log("EVENTS loaded:", window.EVENTS.length);
+                    window.EVENTS = data;   // これは残してOK
+                    console.log("EVENTS loaded:", EVENTS.length);
                     initPickers();
 
                 } catch (e) {
@@ -1114,21 +1115,21 @@
 
     <footer style="margin-top:40px; padding:20px 0; border-top:1px solid #ddd; font-size:14px; text-align:center;">
 
-    <!-- ★追加：トップページ -->
-    <a href="../" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
-        ARQ Games
-    </a>
-    <a href="/about.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
-        About
-    </a>
-    <a href="/privacy.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
-        Privacy Policy
-    </a>
-    <a href="/contact.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
-        Contact
-    </a>
+        <!-- ★追加：トップページ -->
+        <a href="../" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
+            ARQ Games
+        </a>
+        <a href="/about.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
+            About
+        </a>
+        <a href="/privacy.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
+            Privacy Policy
+        </a>
+        <a href="/contact.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
+            Contact
+        </a>
 
-</footer>
+    </footer>
 
 
 </body>
