@@ -133,6 +133,7 @@
         /* ヒント再描画用：直前に表示したヒントのIDを覚える */
         let lastHintIds = null;
         let lastHintWasEmpty = null;
+        let EVENTS = [];
 
         const refMap = {
             "Gen": "創", "Exo": "出", "Lev": "レビ", "Num": "民", "Deut": "申",
@@ -231,10 +232,14 @@
         }
 
         function startGame() {
+            const EVENTS = window.EVENTS || []; // ★追加：fetchした配列を必ず参照
+
             const s = parseInt(document.getElementById('select-start').value);
             const e = parseInt(document.getElementById('select-end').value);
             const count = parseInt(document.getElementById('count-select').value);
+
             let filtered = EVENTS.filter(ev => ev.year >= s && ev.year <= e);
+
             if (filtered.length < count) {
                 const msg = currentLang === 'ja' ? `イベントが足りません（現在${filtered.length}個）` : `Not enough events (Only ${filtered.length} available)`;
                 document.getElementById('error-msg').innerText = msg;
@@ -300,35 +305,29 @@
                     draggingItemPC = el;
                     el.classList.add('dragging');
 
-                    // ✅ placeholder を「置換」ではなく「挿入」する（DOMから外さない）
                     const rect = el.getBoundingClientRect();
                     pcPlaceholder = document.createElement('div');
                     pcPlaceholder.className = 'sortable-placeholder';
                     pcPlaceholder.style.height = rect.height + 'px';
 
-                    // 元カードの直後に入れる（元カードの場所を確保）
                     el.parentNode.insertBefore(pcPlaceholder, el.nextSibling);
 
-                    // ✅ drag開始が成立してから元カードを消す（Chrome向けの定番）
                     setTimeout(() => {
                         if (draggingItemPC === el) el.style.display = 'none';
                     }, 0);
 
                     if (e.dataTransfer) {
                         e.dataTransfer.effectAllowed = 'move';
-                        e.dataTransfer.setData('text/plain', 'x'); // 空だとドラッグ開始しない事がある
+                        e.dataTransfer.setData('text/plain', 'x');
                     }
                 });
 
-                // ✅ drop が来なくても dragend で必ず復帰させる
                 el.addEventListener('dragend', () => {
                     if (!draggingItemPC) return;
 
-                    // display:none を戻す
                     draggingItemPC.style.display = '';
                     draggingItemPC.classList.remove('dragging');
 
-                    // placeholder が残ってたら消す
                     if (pcPlaceholder && pcPlaceholder.parentNode) pcPlaceholder.remove();
 
                     pcPlaceholder = null;
@@ -344,30 +343,26 @@
                 list.appendChild(el);
             });
 
-            /* PC: placeholder の移動（マウス位置に合わせて枠だけ動かす） */
+            /* PC: placeholder の移動 */
             list.ondragover = (e) => {
                 e.preventDefault();
                 if (!pcPlaceholder) return;
 
                 const after = getDragAfterElement(list, e.clientY);
-
                 if (after == null) list.appendChild(pcPlaceholder);
                 else list.insertBefore(pcPlaceholder, after);
             };
 
-            /* PC: drop で確定（placeholder の位置にカードを戻す） */
+            /* PC: drop で確定 */
             list.ondrop = (e) => {
                 e.preventDefault();
                 if (!draggingItemPC || !pcPlaceholder) return;
 
-                // placeholder の位置にドラッグ元カードを戻す
                 list.insertBefore(draggingItemPC, pcPlaceholder);
 
-                // 復帰
                 draggingItemPC.style.display = '';
                 draggingItemPC.classList.remove('dragging');
 
-                // 掃除
                 pcPlaceholder.remove();
                 pcPlaceholder = null;
                 draggingItemPC = null;
@@ -1017,9 +1012,6 @@
                 el.innerText = el.getAttribute('data-' + currentLang);
             });
 
-            /* 4) 年代セレクト等を currentLang で描画する（BCE/CE表示も含む） */
-            initPickers();
-
             /* 5) 初期の開始/終了をセット（select が存在するページだけ） */
             const startSel = document.getElementById('select-start');
             const endSel = document.getElementById('select-end');
@@ -1104,15 +1096,11 @@
                         return;
                     }
 
-                    window.EVENTS = data;
+                    EVENTS = data;          // ★追加
+                    window.EVENTS = EVENTS; // ★保険（どっち参照でも動く）
                     console.log("EVENTS loaded:", window.EVENTS.length);
+                    initPickers();
 
-                    // initSetupScreen が存在する前提
-                    if (typeof window.initSetupScreen === "function") {
-                        window.initSetupScreen();
-                    } else {
-                        console.warn("initSetupScreen is not defined yet.");
-                    }
                 } catch (e) {
                     console.error("Event load failed:", e, "url=", url);
                 }
