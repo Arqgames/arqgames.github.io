@@ -253,14 +253,33 @@ select {
     appearance: none;
 }
 
-.site-footer{
-    margin-top:40px;
-    padding:20px 0;
-    border-top:1px solid #ddd;
-    font-size:14px;
-    text-align:center;
+.result-events { margin-top: 14px; text-align: left; }
+
+.result-events-card{
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 12px;
+  padding: 12px 12px 10px;
+  background: rgba(255,255,255,.55);
 }
 
-.site-footer a{
-    margin:0 10px;
+.result-events-title{
+  font-weight: 800;
+  margin: 0 0 4px;
+  letter-spacing: .02em;
+}
+
+.result-events-sub{
+  font-size: .9em;
+  opacity: .75;
+  margin-bottom: 10px;
+}
+
+.result-event-list{
+  margin: 0;
+  padding-left: 1.2em; /* olの番号用 */
+}
+
+.result-event-item{
+  margin: 6px 0;
+  line-height: 1.35;
 }
