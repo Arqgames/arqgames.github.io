@@ -6,12 +6,12 @@
 }
 
 body {
-    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
-    background-color: var(--main-bg);
-    margin: 0;
-    padding: 20px 0;
-    color: var(--text);
-    touch-action: manipulation;
+  font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+  background-color: var(--main-bg);
+  margin: 0;
+  padding: 20px; /* ← 20px 0 から変更 */
+  color: var(--text);
+  touch-action: manipulation;
 }
 
 .container {
@@ -33,18 +33,42 @@ body {
     top: -65px;
     width: 50px;
     height: 50px;
+
     background: #fff;
     border-radius: 50%;
     border: 3px solid var(--accent);
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     cursor: pointer;
     box-shadow: 0 4px 0 #d4af37;
     z-index: 100;
+
     font-weight: bold;
     color: var(--text);
     font-size: 0.85em;
+
+    /* 安定化（buttonデフォルト除去） */
+    padding: 0;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+
+    /* iOSタップ時の青いハイライト消す */
+    -webkit-tap-highlight-color: transparent;
+
+    /* クリック時のテキスト選択防止 */
+    user-select: none;
+}
+
+/* フォーカス時（キーボード操作のみ見える） */
+.top-btn:focus { outline: none; }
+
+.top-btn:focus-visible {
+    outline: 3px solid rgba(251,197,49,.6);
+    outline-offset: 3px;
 }
 
 .home-btn {
@@ -246,13 +270,6 @@ select {
     width: 100%;
 }
 
-.top-btn {
-    padding: 0;
-    outline: none;
-    -webkit-appearance: none;
-    appearance: none;
-}
-
 .result-events { margin-top: 14px; text-align: left; }
 
 .result-events-card{
@@ -282,4 +299,34 @@ select {
 .result-event-item{
   margin: 6px 0;
   line-height: 1.35;
+}
+
+/* ===== 横はみ出し防止（安全装置） ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: hidden; }
+
+/* ===== Footer を container と同じ幅で中央寄せ ===== */
+.site-footer{
+  width: 92%;
+  max-width: 450px;
+  margin: 0 auto 24px;
+  box-sizing: border-box;
+
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  justify-content: center;
+}
+
+/* footerリンク（任意：見やすくする） */
+.site-footer a{
+  color: var(--text);
+  text-decoration: none;
+  font-weight: bold;
+  opacity: .85;
+}
+.site-footer a:hover{
+  opacity: 1;
+  text-decoration: underline;
 }
