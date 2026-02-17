@@ -800,21 +800,17 @@
             showResultScreen(isWin);
         }
 
-        /* ==========================================================
-        結果画面の文言を currentLang に合わせて更新する
-        - toggleLang() からも呼ばれる
-        - 勝敗（lastIsWin）を元に表示を決める
-        ========================================================== */
         function updateResultTexts() {
             if (lastIsWin === null) return;
+
             document.getElementById('result-title').innerText = lastIsWin
                 ? (currentLang === 'ja' ? "正解！" : "Correct!")
                 : (currentLang === 'ja' ? "残念" : "Oops");
-            // ✅ 結果画面が出ている時だけ、一覧も言語で更新
-            if (!document.getElementById('screen-result').classList.contains('hidden')) {
+
+            // ✅ 正解時のみ：結果画面が出ている時だけ、一覧も言語で更新
+            if (!document.getElementById('screen-result').classList.contains('hidden') && lastIsWin) {
                 renderResultEvents(getUserIds());
             }
-
         }
 
         /* ==========================================================
@@ -885,7 +881,6 @@
 
             switchScreen('screen-result');
 
-            /* アイコンだけはここで決定してOK */
             document.getElementById('result-icon').innerText =
                 isWin ? "celebration" : "book";
 
@@ -895,8 +890,13 @@
             /* ★ 結果タイトルは必ずここで一括更新 */
             updateResultTexts();
 
-            // ✅ 追加：勝敗に関係なく「今回の並び」を結果画面に出す（ユーザーの並び順そのまま）
-            renderResultEvents(getUserIds());
+            // ✅ここだけ変更：正解時のみ並びを表示／不正解時は消す
+            if (isWin) {
+                renderResultEvents(getUserIds());   // ユーザーの並び順そのまま
+            } else {
+                const wrap = document.getElementById("result-events");
+                if (wrap) wrap.innerHTML = "";      // 残念時は表示しない
+            }
         }
 
         function showHint() {
