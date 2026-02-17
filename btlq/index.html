@@ -1066,73 +1066,61 @@
             }
 
             async function loadEvents() {
-    const url = "/btlq/data/events/events_all.json";
+                const url = "/btlq/data/events/events_all.json";
 
-    try {
-        const res = await fetch(url, { cache: "no-store" });
+                try {
+                    const res = await fetch(url, { cache: "no-store" });
 
-        if (!res.ok) {
-            const text = await res.text();
-            console.error("Fetch failed:", res.status, res.statusText, "url=", url);
-            console.error("Response head:", text.slice(0, 200));
-            return;
-        }
+                    if (!res.ok) {
+                        const text = await res.text();
+                        console.error("Fetch failed:", res.status, res.statusText, "url=", url);
+                        console.error("Response head:", text.slice(0, 200));
+                        return;
+                    }
 
-        const data = await res.json();
+                    const data = await res.json();
 
-        if (!Array.isArray(data)) {
-            console.error("Invalid JSON: expected an Array, got:", typeof data, data);
-            return;
-        }
+                    if (!Array.isArray(data)) {
+                        console.error("Invalid JSON: expected an Array, got:", typeof data, data);
+                        return;
+                    }
 
-        EVENTS = data;
-        window.EVENTS = data;
+                    EVENTS = data;
+                    window.EVENTS = data;
 
-        console.log("EVENTS loaded:", EVENTS.length);
+                    console.log("EVENTS loaded:", EVENTS.length);
 
-        // ★① セレクト構築
-        initPickers();
+                    // ★① セレクト構築
+                    initPickers();
 
-        // ★② デフォルト期間をここで設定（重要）
-        const startSel = document.getElementById('select-start');
-        const endSel = document.getElementById('select-end');
+                    // ★② デフォルト期間をここで設定（重要）
+                    const startSel = document.getElementById('select-start');
+                    const endSel = document.getElementById('select-end');
 
-        if (startSel && endSel) {
-            startSel.value = EVENTS[0].year;                         // 最古
-            endSel.value = EVENTS[EVENTS.length - 1].year;           // 最新
-        }
+                    if (startSel && endSel) {
+                        startSel.value = EVENTS[0].year;                         // 最古
+                        endSel.value = EVENTS[EVENTS.length - 1].year;           // 最新
+                    }
 
-        // ★③ エラーメッセージ消去（保険）
-        document.getElementById('error-msg').innerText = "";
+                    // ★③ エラーメッセージ消去（保険）
+                    document.getElementById('error-msg').innerText = "";
 
-    } catch (e) {
-        console.error("Event load failed:", e, "url=", url);
-    }
-}
+                } catch (e) {
+                    console.error("Event load failed:", e, "url=", url);
+                }
+            }
 
             // 外側が DOMContentLoaded なので、ここは直接呼ぶだけでOK
             loadEvents();
         });
 
+        fetch('/parts/footer.html')
+            .then(r => r.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+            });
+
     </script>
-
-    <footer style="margin-top:40px; padding:20px 0; border-top:1px solid #ddd; font-size:14px; text-align:center;">
-
-        <!-- ★追加：トップページ -->
-        <a href="../" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
-            ARQ Games
-        </a>
-        <a href="/about.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
-            About
-        </a>
-        <a href="/privacy.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
-            Privacy Policy
-        </a>
-        <a href="/contact.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
-            Contact
-        </a>
-
-    </footer>
 
 
 </body>
