@@ -252,3 +252,15 @@ select {
     -webkit-appearance: none;
     appearance: none;
 }
+
+.site-footer{
+    margin-top:40px;
+    padding:20px 0;
+    border-top:1px solid #ddd;
+    font-size:14px;
+    text-align:center;
+}
+
+.site-footer a{
+    margin:0 10px;
+}
