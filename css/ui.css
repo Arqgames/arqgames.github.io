@@ -318,9 +318,13 @@ select {
     /* olの番号用 */
 }
 
-.result-event-item {
-    margin: 6px 0;
-    line-height: 1.35;
+.result-event-item{
+  margin: 8px 0;
+  line-height: 1.45;
+  padding: 6px 6px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.55);
+  border: 1px dashed rgba(0,0,0,.06);
 }
 
 /* ===== 横はみ出し防止（安全装置） ===== */
@@ -372,4 +376,27 @@ body {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+}
+
+/* ===== 正解時だけ：勝利モードの強調 ===== */
+#screen-result.is-win #result-title{
+  color: #d18b00;
+  text-shadow: 0 2px 0 rgba(0,0,0,.06);
+  letter-spacing: .03em;
+}
+
+#screen-result.is-win .header-icon-box{
+  border-color: #ffd86b;
+  box-shadow: 0 6px 0 #d4af37, 0 0 0 6px rgba(251,197,49,.22);
+}
+
+#screen-result.is-win .btn{
+  box-shadow: 0 8px 0 #cc8e35, 0 0 0 6px rgba(251,197,49,.18);
+}
+
+/* サブ文（任意で使う） */
+#result-sub{
+  margin: 6px 0 2px;
+  font-weight: 700;
+  opacity: .85;
 }
