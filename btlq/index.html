@@ -120,6 +120,7 @@
             </div>
             <div id="success-options" class="hidden"><button class="btn" onclick="location.reload()" data-ja="次へ"
                     data-en="Next">次へ</button></div>
+            <div id="result-events" class="result-events"></div>
         </div>
     </div>
 
@@ -737,6 +738,43 @@
                 .filter(Boolean);
         }
 
+        // ✅ HTMLエスケープ（念のため）
+        function escapeHtml(s) {
+            return String(s)
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+        }
+
+        // ✅ 結果画面に「今回の並び」を表示（ユーザーの並び順をそのまま）
+        function renderResultEvents(ids) {
+            const wrap = document.getElementById("result-events");
+            if (!wrap) return;
+
+            // ids が空なら消す（保険）
+            if (!Array.isArray(ids) || ids.length === 0) {
+                wrap.innerHTML = "";
+                return;
+            }
+
+            // id → event を高速に引けるMap
+            const map = new Map(EVENTS.map(e => [String(e.id), e]));
+
+            const title = currentLang === 'ja' ? "今回の並び" : "Your order";
+            const itemsHtml = ids.map((id, i) => {
+                const ev = map.get(String(id));
+                const label = ev ? (ev[currentLang] ?? ev.ja ?? ev.en ?? id) : id;
+                return `<li class="result-event-item"><span class="no">${i + 1}.</span> ${escapeHtml(label)}</li>`;
+            }).join("");
+
+            wrap.innerHTML = `
+        <div class="result-events-title">${title}</div>
+        <ol class="result-event-list">${itemsHtml}</ol>
+    `;
+        }
+
         // ✅ 共通：配列一致（JSON stringifyより安全）
         function arraysEqual(a, b) {
             if (a.length !== b.length) return false;
@@ -772,6 +810,11 @@
             document.getElementById('result-title').innerText = lastIsWin
                 ? (currentLang === 'ja' ? "正解！" : "Correct!")
                 : (currentLang === 'ja' ? "残念" : "Oops");
+            // ✅ 結果画面が出ている時だけ、一覧も言語で更新
+            if (!document.getElementById('screen-result').classList.contains('hidden')) {
+                renderResultEvents(getUserIds());
+            }
+
         }
 
         /* ==========================================================
@@ -841,9 +884,6 @@
             lastIsWin = isWin;
 
             switchScreen('screen-result');
-            const difficulty = parseInt(
-                document.getElementById('count-select').value
-            );
 
             /* アイコンだけはここで決定してOK */
             document.getElementById('result-icon').innerText =
@@ -854,6 +894,9 @@
 
             /* ★ 結果タイトルは必ずここで一括更新 */
             updateResultTexts();
+
+            // ✅ 追加：勝敗に関係なく「今回の並び」を結果画面に出す（ユーザーの並び順そのまま）
+            renderResultEvents(getUserIds());
         }
 
         function showHint() {
