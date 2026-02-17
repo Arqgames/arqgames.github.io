@@ -301,7 +301,8 @@
                 /* ===== PCドラッグ ===== */
                 el.draggable = true;
 
-                el.addEventListener('dragstart', (e) => {
+                el.addEventListener('dragend', () => {
+                    cleanupPCDrag();
                     draggingItemPC = el;
                     el.classList.add('dragging');
 
@@ -318,8 +319,13 @@
 
                     if (e.dataTransfer) {
                         e.dataTransfer.effectAllowed = 'move';
-                        e.dataTransfer.setData('text/plain', 'x');
+                        e.dataTransfer.setData('text/plain', ' ');
                     }
+
+                    // ✅ 保険：dragend が来ない事故でも数秒後に復旧
+                    setTimeout(() => {
+                        if (draggingItemPC === el) cleanupPCDrag();
+                    }, 3000);
                 });
 
                 el.addEventListener('dragend', () => {
@@ -390,6 +396,30 @@
 
         let draggingItemPC = null;
         let pcPlaceholder = null;
+
+        function cleanupPCDrag() {
+            if (!draggingItemPC && !pcPlaceholder) return;
+
+            try {
+                if (draggingItemPC) {
+                    draggingItemPC.style.display = '';
+                    draggingItemPC.classList.remove('dragging');
+                }
+                if (pcPlaceholder && pcPlaceholder.parentNode) {
+                    pcPlaceholder.remove();
+                }
+            } finally {
+                pcPlaceholder = null;
+                draggingItemPC = null;
+            }
+        }
+
+        // ✅ “URLバーに落とした”など dragend が来ない事故の保険
+        window.addEventListener('blur', cleanupPCDrag);
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) cleanupPCDrag();
+        });
+        window.addEventListener('drop', cleanupPCDrag, true);
 
         function attachPreMoveCancel() {
             if (preMoveListener) return;
