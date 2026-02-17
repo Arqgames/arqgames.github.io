@@ -299,22 +299,30 @@
                     `<div class="event-name" style="flex:1">${item[currentLang]}</div>`;
 
                 /* ===== PCドラッグ ===== */
+                /* ===== PCドラッグ ===== */
                 el.draggable = true;
 
-                el.addEventListener('dragend', () => {
+                el.addEventListener('dragstart', (e) => {
+
                     cleanupPCDrag();
+
                     draggingItemPC = el;
                     el.classList.add('dragging');
 
                     const rect = el.getBoundingClientRect();
+
                     pcPlaceholder = document.createElement('div');
                     pcPlaceholder.className = 'sortable-placeholder';
                     pcPlaceholder.style.height = rect.height + 'px';
 
                     el.parentNode.insertBefore(pcPlaceholder, el.nextSibling);
 
+                    // display:none は事故るので opacity方式
                     setTimeout(() => {
-                        if (draggingItemPC === el) el.style.display = 'none';
+                        if (draggingItemPC === el) {
+                            el.style.opacity = '0';
+                            el.style.pointerEvents = 'none';
+                        }
                     }, 0);
 
                     if (e.dataTransfer) {
@@ -322,11 +330,16 @@
                         e.dataTransfer.setData('text/plain', ' ');
                     }
 
-                    // ✅ 保険：dragend が来ない事故でも数秒後に復旧
+                    // 保険（dragend来ない事故対策）
                     setTimeout(() => {
                         if (draggingItemPC === el) cleanupPCDrag();
                     }, 3000);
                 });
+
+                el.addEventListener('dragend', () => {
+                    cleanupPCDrag();
+                });
+
 
                 el.addEventListener('dragend', () => {
                     if (!draggingItemPC) return;
@@ -402,7 +415,8 @@
 
             try {
                 if (draggingItemPC) {
-                    draggingItemPC.style.display = '';
+                    draggingItemPC.style.opacity = '';
+                    draggingItemPC.style.pointerEvents = '';
                     draggingItemPC.classList.remove('dragging');
                 }
                 if (pcPlaceholder && pcPlaceholder.parentNode) {
