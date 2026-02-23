@@ -285,7 +285,6 @@
             if (shuffle) displayList.sort(() => 0.5 - Math.random());
 
             draggingItemPC = null;
-            pcPlaceholder = null;
 
             displayList.forEach(item => {
                 const el = document.createElement('div');
@@ -301,28 +300,17 @@
                     draggingItemPC = el;
                     el.classList.add('dragging');
 
-                    pcPlaceholder = document.createElement('div');
-                    pcPlaceholder.className = 'sortable-placeholder';
-                    pcPlaceholder.style.height = el.offsetHeight + 'px';
-
-                    // 元位置に placeholder を入れる（removeしない）
-                    el.parentNode.insertBefore(pcPlaceholder, el);
-
                     if (e.dataTransfer) {
                         e.dataTransfer.effectAllowed = 'move';
-                        e.dataTransfer.setData('text/plain', '');
+                        e.dataTransfer.setData('text/html', el.innerHTML);
                     }
                 });
 
                 el.addEventListener('dragend', () => {
-                    if (pcPlaceholder && pcPlaceholder.parentNode) {
-                        pcPlaceholder.remove();
-                    }
                     if (draggingItemPC) {
                         draggingItemPC.classList.remove('dragging');
                     }
                     draggingItemPC = null;
-                    pcPlaceholder = null;
                 });
 
                 list.appendChild(el);
@@ -330,33 +318,28 @@
 
             list.ondragover = (e) => {
                 e.preventDefault();
-                if (!pcPlaceholder || !draggingItemPC) return;
+                if (!draggingItemPC) return;
 
                 const after = getDragAfterElement(list, e.clientY);
 
                 if (after == null) {
-                    list.appendChild(pcPlaceholder);
-                } else {
-                    list.insertBefore(pcPlaceholder, after);
+                    // リストの最後に移動
+                    if (draggingItemPC.nextSibling !== null) {
+                        list.appendChild(draggingItemPC);
+                    }
+                } else if (after !== draggingItemPC) {
+                    // after の前に挿入
+                    list.insertBefore(draggingItemPC, after);
                 }
             };
 
             list.ondrop = (e) => {
                 e.preventDefault();
-                if (!draggingItemPC || !pcPlaceholder) return;
-
-                list.insertBefore(draggingItemPC, pcPlaceholder);
-
-                draggingItemPC.classList.remove('dragging');
-                pcPlaceholder.remove();
-
-                draggingItemPC = null;
-                pcPlaceholder = null;
             };
         }
 
         function getDragAfterElement(container, y) {
-            const elements = [...container.querySelectorAll('.event-card:not(.dragging)')];
+            const elements = [...container.querySelectorAll('.event-card')].filter(el => el !== draggingItemPC);
 
             return elements.reduce((closest, child) => {
                 const box = child.getBoundingClientRect();
@@ -383,19 +366,13 @@
         let pcPlaceholder = null;
 
         function cleanupPCDrag() {
-            if (!draggingItemPC && !pcPlaceholder) return;
+            if (!draggingItemPC) return;
 
             try {
-                if (draggingItemPC) {
-                    draggingItemPC.style.opacity = '';
-                    draggingItemPC.style.pointerEvents = '';
-                    draggingItemPC.classList.remove('dragging');
-                }
-                if (pcPlaceholder && pcPlaceholder.parentNode) {
-                    pcPlaceholder.remove();
-                }
+                draggingItemPC.classList.remove('dragging');
+                draggingItemPC.style.opacity = '';
+                draggingItemPC.style.pointerEvents = '';
             } finally {
-                pcPlaceholder = null;
                 draggingItemPC = null;
             }
         }
