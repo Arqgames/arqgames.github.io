@@ -305,17 +305,14 @@
                     draggingItemPC = el;
                     el.classList.add('dragging');
 
-                    console.log("dragstart");
-
                     pcPlaceholder = document.createElement('div');
                     pcPlaceholder.className = 'sortable-placeholder';
                     pcPlaceholder.style.height = el.offsetHeight + 'px';
 
-                    // ★ 元位置に placeholder を挿入
-                    el.parentNode.insertBefore(pcPlaceholder, el.nextSibling);
+                    el.parentNode.insertBefore(pcPlaceholder, el);
 
-                    // ★ remove しない。非表示にするだけ
-                    el.style.visibility = 'hidden';
+                    // ★ visibility は使わない
+                    el.style.opacity = '0';
 
                     if (e.dataTransfer) {
                         e.dataTransfer.effectAllowed = 'move';
@@ -325,7 +322,7 @@
 
                 el.addEventListener('dragend', () => {
                     if (draggingItemPC) {
-                        draggingItemPC.style.visibility = '';
+                        draggingItemPC.style.opacity = '';
                         draggingItemPC.classList.remove('dragging');
                     }
 
