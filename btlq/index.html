@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-    
 <head>
     <meta charset="UTF-8" />
 
@@ -306,16 +305,15 @@
                     draggingItemPC = el;
                     el.classList.add('dragging');
 
-                    // placeholder作成（リストにはまだ挿入しない）
                     pcPlaceholder = document.createElement('div');
                     pcPlaceholder.className = 'sortable-placeholder';
                     pcPlaceholder.style.height = el.offsetHeight + 'px';
 
-                    // 元の要素は透明にしてイベント無効化
-                    setTimeout(() => {
-                        el.style.opacity = '0';
-                        el.style.pointerEvents = 'none';
-                    }, 0);
+                    // ★ 先に placeholder を元位置に入れる
+                    el.parentNode.insertBefore(pcPlaceholder, el);
+
+                    // ★ 元の要素をDOMから外す
+                    el.parentNode.removeChild(el);
 
                     if (e.dataTransfer) {
                         e.dataTransfer.effectAllowed = 'move';
@@ -324,16 +322,9 @@
                 });
 
                 el.addEventListener('dragend', () => {
-                    if (!draggingItemPC) return;
-
-                    draggingItemPC.style.opacity = '';
-                    draggingItemPC.style.pointerEvents = '';
-                    draggingItemPC.classList.remove('dragging');
-
-                    if (pcPlaceholder && pcPlaceholder.parentNode) pcPlaceholder.remove();
-
-                    pcPlaceholder = null;
+                    if (pcPlaceholder?.parentNode) pcPlaceholder.remove();
                     draggingItemPC = null;
+                    pcPlaceholder = null;
                 });
 
                 /* ===== スマホ用タッチ ===== */
