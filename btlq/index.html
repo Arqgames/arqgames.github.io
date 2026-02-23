@@ -305,6 +305,8 @@
                     draggingItemPC = el;
                     el.classList.add('dragging');
 
+                    console.log("dragstart");
+
                     pcPlaceholder = document.createElement('div');
                     pcPlaceholder.className = 'sortable-placeholder';
                     pcPlaceholder.style.height = el.offsetHeight + 'px';
