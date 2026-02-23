@@ -322,11 +322,24 @@
                 });
 
                 el.addEventListener('dragend', () => {
-                    if (draggingItemPC) {
-                        draggingItemPC.style.opacity = '';
-                        draggingItemPC.classList.remove('dragging');
+                    if (!draggingItemPC) return;
+
+                    // まだDOMに戻っていない場合の保険
+                    if (!list.contains(draggingItemPC)) {
+                        if (pcPlaceholder && pcPlaceholder.parentNode) {
+                            list.insertBefore(draggingItemPC, pcPlaceholder);
+                        } else {
+                            list.appendChild(draggingItemPC);
+                        }
                     }
-                    if (pcPlaceholder?.parentNode) pcPlaceholder.remove();
+
+                    draggingItemPC.classList.remove('dragging');
+                    draggingItemPC.style.opacity = '';
+                    draggingItemPC.style.pointerEvents = '';
+
+                    if (pcPlaceholder && pcPlaceholder.parentNode) {
+                        pcPlaceholder.remove();
+                    }
 
                     draggingItemPC = null;
                     pcPlaceholder = null;
