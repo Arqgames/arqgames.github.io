@@ -309,11 +309,6 @@
                     pcPlaceholder.className = 'sortable-placeholder';
                     pcPlaceholder.style.height = el.offsetHeight + 'px';
 
-                    el.parentNode.insertBefore(pcPlaceholder, el);
-
-                    // ★ visibility は使わない
-                    el.style.opacity = '0';
-
                     if (e.dataTransfer) {
                         e.dataTransfer.effectAllowed = 'move';
                         e.dataTransfer.setData('text/plain', ' ');
@@ -325,16 +320,12 @@
                         draggingItemPC.style.opacity = '';
                         draggingItemPC.classList.remove('dragging');
                     }
-
-                    if (pcPlaceholder?.parentNode) {
-                        pcPlaceholder.remove();
-                    }
+                    if (pcPlaceholder?.parentNode) pcPlaceholder.remove();
 
                     draggingItemPC = null;
                     pcPlaceholder = null;
                 });
 
-                
                 list.appendChild(el);
             });
 
@@ -342,6 +333,12 @@
             list.ondragover = (e) => {
                 e.preventDefault();
                 if (!pcPlaceholder || !draggingItemPC) return;
+
+                // ★ まだ入っていなければここで入れる
+                if (!pcPlaceholder.parentNode) {
+                    draggingItemPC.parentNode.insertBefore(pcPlaceholder, draggingItemPC);
+                    draggingItemPC.style.opacity = '0';
+                }
 
                 const after = getDragAfterElement(list, e.clientY);
                 if (after == null) list.appendChild(pcPlaceholder);
@@ -1193,7 +1190,6 @@
             });
 
     </script>
-
 
 </body>
 
