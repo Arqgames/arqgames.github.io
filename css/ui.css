@@ -210,12 +210,16 @@ select {
 }
 
 .event-card.dragging {
-    transform: scale(1.03);
+    /* transform: scale(1.03); ← 削除 */
+    opacity: 0.5;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     border-color: #fbc531;
     background: #fff;
 }
 
+.drag-handle {
+    pointer-events: none;
+}
 
 .hidden {
     display: none !important;
