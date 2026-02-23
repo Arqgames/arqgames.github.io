@@ -284,22 +284,18 @@
             let displayList = [...currentTask];
             if (shuffle) displayList.sort(() => 0.5 - Math.random());
 
-            // PCドラッグ関連リセット
             draggingItemPC = null;
-            if (pcPlaceholder && pcPlaceholder.parentNode) pcPlaceholder.remove();
             pcPlaceholder = null;
 
             displayList.forEach(item => {
                 const el = document.createElement('div');
                 el.className = 'event-card';
                 el.dataset.id = item.id;
+                el.draggable = true;
 
                 el.innerHTML =
                     `<span class="material-icons drag-handle" style="color:#ccc">drag_indicator</span>` +
                     `<div class="event-name" style="flex:1">${item[currentLang]}</div>`;
-
-                /* ===== PCドラッグ設定 ===== */
-                el.draggable = true;
 
                 el.addEventListener('dragstart', (e) => {
                     draggingItemPC = el;
@@ -309,38 +305,22 @@
                     pcPlaceholder.className = 'sortable-placeholder';
                     pcPlaceholder.style.height = el.offsetHeight + 'px';
 
-                    // 元の位置に placeholder を入れる
+                    // 元位置に placeholder を入れる（removeしない）
                     el.parentNode.insertBefore(pcPlaceholder, el);
-
-                    // 本体を一度リストから外す
-                    el.remove();
 
                     if (e.dataTransfer) {
                         e.dataTransfer.effectAllowed = 'move';
-                        e.dataTransfer.setData('text/plain', ' ');
+                        e.dataTransfer.setData('text/plain', '');
                     }
                 });
 
                 el.addEventListener('dragend', () => {
-                    if (!draggingItemPC) return;
-
-                    // まだDOMに戻っていない場合の保険
-                    if (!list.contains(draggingItemPC)) {
-                        if (pcPlaceholder && pcPlaceholder.parentNode) {
-                            list.insertBefore(draggingItemPC, pcPlaceholder);
-                        } else {
-                            list.appendChild(draggingItemPC);
-                        }
-                    }
-
-                    draggingItemPC.classList.remove('dragging');
-                    draggingItemPC.style.opacity = '';
-                    draggingItemPC.style.pointerEvents = '';
-
                     if (pcPlaceholder && pcPlaceholder.parentNode) {
                         pcPlaceholder.remove();
                     }
-
+                    if (draggingItemPC) {
+                        draggingItemPC.classList.remove('dragging');
+                    }
                     draggingItemPC = null;
                     pcPlaceholder = null;
                 });
@@ -348,7 +328,6 @@
                 list.appendChild(el);
             });
 
-            /* PC: placeholder の移動 */
             list.ondragover = (e) => {
                 e.preventDefault();
                 if (!pcPlaceholder || !draggingItemPC) return;
@@ -360,23 +339,19 @@
                 } else {
                     list.insertBefore(pcPlaceholder, after);
                 }
-
             };
 
-            /* PC: drop で確定 */
             list.ondrop = (e) => {
                 e.preventDefault();
                 if (!draggingItemPC || !pcPlaceholder) return;
 
                 list.insertBefore(draggingItemPC, pcPlaceholder);
 
-                draggingItemPC.style.opacity = '';
-                draggingItemPC.style.pointerEvents = '';
                 draggingItemPC.classList.remove('dragging');
-
                 pcPlaceholder.remove();
-                pcPlaceholder = null;
+
                 draggingItemPC = null;
+                pcPlaceholder = null;
             };
         }
 
