@@ -284,7 +284,7 @@
             let displayList = [...currentTask];
             if (shuffle) displayList.sort(() => 0.5 - Math.random());
 
-            // ✅ 念のため：前回のPCドラッグが中途半端に残ってたら掃除
+            // PCドラッグ関連リセット
             draggingItemPC = null;
             if (pcPlaceholder && pcPlaceholder.parentNode) pcPlaceholder.remove();
             pcPlaceholder = null;
@@ -298,53 +298,35 @@
                     `<span class="material-icons drag-handle" style="color:#ccc">drag_indicator</span>` +
                     `<div class="event-name" style="flex:1">${item[currentLang]}</div>`;
 
-                /* ===== PCドラッグ ===== */
-                /* ===== PCドラッグ ===== */
+                /* ===== PCドラッグ設定 ===== */
                 el.draggable = true;
 
                 el.addEventListener('dragstart', (e) => {
-
-                    cleanupPCDrag();
-
                     draggingItemPC = el;
                     el.classList.add('dragging');
 
-                    const rect = el.getBoundingClientRect();
-
+                    // placeholder作成（リストにはまだ挿入しない）
                     pcPlaceholder = document.createElement('div');
                     pcPlaceholder.className = 'sortable-placeholder';
-                    pcPlaceholder.style.height = rect.height + 'px';
+                    pcPlaceholder.style.height = el.offsetHeight + 'px';
 
-                    el.parentNode.insertBefore(pcPlaceholder, el.nextSibling);
-
-                    // display:none は事故るので opacity方式
+                    // 元の要素は透明にしてイベント無効化
                     setTimeout(() => {
-                        if (draggingItemPC === el) {
-                            el.style.opacity = '0';
-                            el.style.pointerEvents = 'none';
-                        }
+                        el.style.opacity = '0';
+                        el.style.pointerEvents = 'none';
                     }, 0);
 
                     if (e.dataTransfer) {
                         e.dataTransfer.effectAllowed = 'move';
                         e.dataTransfer.setData('text/plain', ' ');
                     }
-
-                    // 保険（dragend来ない事故対策）
-                    setTimeout(() => {
-                        if (draggingItemPC === el) cleanupPCDrag();
-                    }, 3000);
                 });
-
-                el.addEventListener('dragend', () => {
-                    cleanupPCDrag();
-                });
-
 
                 el.addEventListener('dragend', () => {
                     if (!draggingItemPC) return;
 
-                    draggingItemPC.style.display = '';
+                    draggingItemPC.style.opacity = '';
+                    draggingItemPC.style.pointerEvents = '';
                     draggingItemPC.classList.remove('dragging');
 
                     if (pcPlaceholder && pcPlaceholder.parentNode) pcPlaceholder.remove();
@@ -353,7 +335,7 @@
                     draggingItemPC = null;
                 });
 
-                /* ===== スマホ ===== */
+                /* ===== スマホ用タッチ ===== */
                 el.ontouchstart = handleTouchStart;
                 el.ontouchmove = handleTouchMove;
                 el.ontouchend = handleTouchEnd;
@@ -365,7 +347,7 @@
             /* PC: placeholder の移動 */
             list.ondragover = (e) => {
                 e.preventDefault();
-                if (!pcPlaceholder) return;
+                if (!pcPlaceholder || !draggingItemPC) return;
 
                 const after = getDragAfterElement(list, e.clientY);
                 if (after == null) list.appendChild(pcPlaceholder);
@@ -379,7 +361,8 @@
 
                 list.insertBefore(draggingItemPC, pcPlaceholder);
 
-                draggingItemPC.style.display = '';
+                draggingItemPC.style.opacity = '';
+                draggingItemPC.style.pointerEvents = '';
                 draggingItemPC.classList.remove('dragging');
 
                 pcPlaceholder.remove();
