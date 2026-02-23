@@ -309,11 +309,11 @@
                     pcPlaceholder.className = 'sortable-placeholder';
                     pcPlaceholder.style.height = el.offsetHeight + 'px';
 
-                    // ★ 先に placeholder を元位置に入れる
-                    el.parentNode.insertBefore(pcPlaceholder, el);
+                    // ★ 元位置に placeholder を挿入
+                    el.parentNode.insertBefore(pcPlaceholder, el.nextSibling);
 
-                    // ★ 元の要素をDOMから外す
-                    el.parentNode.removeChild(el);
+                    // ★ remove しない。非表示にするだけ
+                    el.style.visibility = 'hidden';
 
                     if (e.dataTransfer) {
                         e.dataTransfer.effectAllowed = 'move';
@@ -322,7 +322,15 @@
                 });
 
                 el.addEventListener('dragend', () => {
-                    if (pcPlaceholder?.parentNode) pcPlaceholder.remove();
+                    if (draggingItemPC) {
+                        draggingItemPC.style.visibility = '';
+                        draggingItemPC.classList.remove('dragging');
+                    }
+
+                    if (pcPlaceholder?.parentNode) {
+                        pcPlaceholder.remove();
+                    }
+
                     draggingItemPC = null;
                     pcPlaceholder = null;
                 });
