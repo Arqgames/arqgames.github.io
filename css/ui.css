@@ -207,6 +207,9 @@ select {
     gap: 12px;
     box-shadow: 0 4px 0 rgba(0, 0, 0, 0.05);
     user-select: none;
+    /* スマートフォン対応 */
+    touch-action: none;
+    -webkit-user-select: none;
 }
 
 .event-card.dragging {
