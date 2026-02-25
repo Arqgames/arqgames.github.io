@@ -1161,7 +1161,7 @@
             loadEvents();
         });
 
-        fetch('parts/footer.html')
+        fetch('../parts/footer.html')
             .then(r => r.text())
             .then(html => {
                 document.body.insertAdjacentHTML('beforeend', html);
