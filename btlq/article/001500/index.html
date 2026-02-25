@@ -21,18 +21,47 @@
             </svg>
         </button>
         <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
-        <div class="article-wrapper">
+        <div id="article-content" class="article-wrapper">
             <div class="header-icon-box"><span class="material-icons header-icon">article</span></div>
-            <h1 id="article-title" data-ja="創世から130年 — セツの誕生（聖書年表の最初の基準点）" data-en="Year 130 from Creation — The Birth of Seth (The First Fixed Point in Biblical Chronology)">創世から130年 — セツの誕生（聖書年表の最初の基準点）</h1>
+            <h1 id="article-title">創世から130年 — セツの誕生と聖書年表の基準点</h1>
             <article class="article-body">
-                <div data-ja="" data-en="Genesis 5 indicates that Adam fathered Seth at a specified age. In the Masoretic textual tradition, that age is 130 years. This constitutes the first explicit chronological datum in Scripture and marks the starting point of the Bible’s internal chronological framework. From this point onward, the genealogy is structured by consistently recording the age of each patriarch at the birth of his successor, allowing a cumulative calculation down to the Flood."></div>
-                <div data-ja="創世記5章によれば、アダムは130歳でセツをもうけたとされる。これは聖書中で最初に明示される年代データであり、聖書内部の年表構築の出発点となる。以降、各族長が後継者をもうけた年齢が一貫して記録されており、洪水までの累積計算が可能となる。" data-en="The same genealogical line is reflected in 1 Chronicles and in the Gospel of Luke, demonstrating that Seth’s lineage was understood as the continuous and authoritative line of descent. Genesis 7 provides Noah’s age at the time of the Flood, which enables a total calculation from creation to the Flood. Following the Masoretic Text, this yields a total of 1,656 years."></div>
-                <div data-ja="この系譜は歴代誌上やルカ福音書にも反映されており、セツの系統が正統な血統として理解されていたことが分かる。創世記7章はノアの洪水時の年齢も記しており、創世から洪水までの合計年数を算出できる。マソラ本文に従えば、その合計は1,656年となる。" data-en="However, the numerical data vary across textual traditions. The Septuagint records Adam’s age at Seth’s birth as 230 years rather than 130, which extends the pre-Flood total by several centuries. The Samaritan Pentateuch preserves yet another numerical scheme. Modern critical editions of the Hebrew Bible, such as Biblia Hebraica Stuttgartensia and Biblia Hebraica Quinta, are based on the Masoretic tradition."></div>
-                <div data-ja="ただし、この数値は写本伝承によって異なる。七十人訳聖書（LXX）ではアダムがセツをもうけた年齢は130歳ではなく230歳とされ、洪水前の合計年数が数百年延びる。サマリア五書はさらに異なる数値体系を持つ。現代の批判校訂版（BHSやBHQ）はマソラ本文に基づいている。" data-en="Accordingly, while the birth of Seth represents the earliest internally fixed chronological anchor in Scripture, the absolute calculation depends on which textual tradition is adopted."></div>
-                <div data-ja="このように、セツの誕生は聖書内部で最初に固定される年代的アンカーだが、絶対年代の計算はどの伝承を採用するかによって異なる。" data-en=""></div>
+                <p>聖書年表の最初の明確な基準点は、アダムが130歳でセツをもうけた出来事です（創世記5章）。この年齢はマソラ本文に基づくもので、聖書内部で最初に明示される年代データとなります。</p>
+
+                <h2>セツの誕生と系譜の意義</h2>
+                <p>この系譜は『ユダヤ古代誌』や『ルカによる福音書』にも反映されており、セツの系統が正統な血統として理解されていたことが分かります。創世記7章はノアの洪水時の年齢も記しており、創世から洪水までの合計年数を算出できます。マソラ本文に従えば、その合計は1,656年となります。</p>
+
+                <h2>伝承ごとの数値の違い</h2>
+                <p>ただし、この数値は写本伝承によって異なります。七十人訳聖書（LXX）ではアダムがセツをもうけた年齢は130歳ではなく230歳とされ、洪水前の合計年数が数百年延びます。サマリア五書はさらに異なる数値体系を持ちます。現代の批判校訂版（BHSやBHQ）はマソラ本文に基づいています。</p>
+
+                <h2>絶対年代の計算と意義</h2>
+                <p>このように、セツの誕生は聖書内部で最初に固定される年代的アンカーですが、絶対年代の計算はどの伝承を採用するかによって異なります。</p>
             </article>
+            <div style="margin-top: 30px; text-align: center;">
+                <button class="btn" onclick="goBack()" data-ja="戻る" data-en="Back">戻る</button>
+            </div>
         </div>
+        <script>
+            function goBack() {
+                if (history.length > 1) history.back();
+                else location.href = '/btlq/';
+            }
+            document.getElementById('homeBtn').onclick = function() {
+                location.href = '/btlq/';
+            };
+        </script>
+        <script>
+            fetch('../../../../parts/footer.html')
+                .then(r => r.text())
+                .then(html => {
+                    document.body.insertAdjacentHTML('beforeend', html);
+                });
+        </script>
     </div>
+    <script>
+        function goBack() {
+            if (history.length > 1) history.back();
+            else location.href = '/btlq/';
+        }
     <script>
         // 言語切替（ゲーム本体と同じ仕組み）
         function toggleLang() {
