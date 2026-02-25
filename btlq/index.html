@@ -134,18 +134,8 @@
             </div>
             <div id="success-options" class="hidden">
                 <button class="btn" onclick="location.reload()" data-ja="次へ" data-en="Next">次へ</button>
-                <button class="btn btn-sub" onclick="openArticleModal()" id="article-btn" data-ja="📖 記事を読む" data-en="📖 Read Article">📖 記事を読む</button>
             </div>
             <div id="result-events" class="result-events"></div>
-        </div>
-
-        <!-- 記事リンク用モーダル -->
-        <div id="article-modal" class="hidden modal-overlay" onclick="if(event.target.id === 'article-modal') closeArticleModal()">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeArticleModal()">&times;</button>
-                <h3 class="modal-title" data-ja="この記事を読む" data-en="Read the Article">この記事を読む</h3>
-                <div id="article-links" class="article-links"></div>
-            </div>
         </div>
     </div>
 
@@ -231,11 +221,6 @@
             updateResultTexts();
             /* ヒント表示中なら、ヒント文章を現在言語で再描画 */
             updateHintTexts();
-            /* モーダルが表示中なら、記事リンクを言語で再描画 */
-            const modal = document.getElementById('article-modal');
-            if (modal && !modal.classList.contains('hidden')) {
-                openArticleModal();
-            }
         }
 
         function updateCardTexts() {
@@ -957,35 +942,7 @@
             }
         }
 
-        // ===== 記事モーダル関連 =====
-        function openArticleModal() {
-            const modal = document.getElementById('article-modal');
-            const linksContainer = document.getElementById('article-links');
-
-            linksContainer.innerHTML = '';
-
-            // currentTask のイベントIDから記事へのリンクを生成
-            if (!Array.isArray(currentTask) || currentTask.length === 0) {
-                linksContainer.innerHTML = `<p>${currentLang === 'ja' ? 'イベント情報がありません。' : 'No events available.'}</p>`;
-                modal.classList.remove('hidden');
-                return;
-            }
-
-            const linkHtml = currentTask.map(ev => {
-                const eventId = String(ev.id);
-                const eventName = ev[currentLang] || ev.ja || '';
-                const articlePath = `/btlq/article/${eventId}/`;
-                return `<a href="${articlePath}" target="_blank" rel="noopener noreferrer">${eventName}</a>`;
-            }).join('');
-
-            linksContainer.innerHTML = linkHtml;
-            modal.classList.remove('hidden');
-        }
-
-        function closeArticleModal() {
-            const modal = document.getElementById('article-modal');
-            modal.classList.add('hidden');
-        }
+        // ===== 記事モーダル関連（削除済み） =====
 
         function testResultScreen() {
             // デバッグ用：最初の5イベントをタスクとして使用
