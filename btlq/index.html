@@ -138,7 +138,7 @@
         </div>
 
         <!-- 記事リンク用モーダル -->
-        <div id="article-modal" class="hidden modal-overlay">
+        <div id="article-modal" class="hidden modal-overlay" onclick="if(event.target.id === 'article-modal') closeArticleModal()">
             <div class="modal-content">
                 <button class="modal-close" onclick="closeArticleModal()">&times;</button>
                 <h3 class="modal-title" data-ja="この記事を読む" data-en="Read the Article">この記事を読む</h3>
