@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Test Article 01</title>
+    <meta name="description" content="Bible Timeline Quiz - Test Article 01" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Test Article 01" />
+    <meta property="og:url" content="https://arqgames.github.io/btlq/article/testArticle01/" />
+
+    <meta name="theme-color" content="#f4e4bc" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
+
+        <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
+
+        <div id="article-content" class="article-wrapper">
+            <div class="header-icon-box"><span class="material-icons header-icon">article</span></div>
+            
+            <h1 id="article-title" data-ja="テスト記事01" data-en="Test Article 01">テスト記事01</h1>
+
+            <div class="article-meta">
+                <span id="article-date">2026年2月25日</span>
+            </div>
+
+            <article class="article-body">
+                <p data-ja="これはテスト記事です。" data-en="This is a test article.">これはテスト記事です。</p>
+                
+                <p data-ja="btlqのブログ記事機能をテストしています。" data-en="Testing the blog article feature for btlq.">btlqのブログ記事機能をテストしています。</p>
+
+                <h2 data-ja="セクション1" data-en="Section 1">セクション1</h2>
+                
+                <p data-ja="ここにコンテンツが入ります。" data-en="Content goes here.">ここにコンテンツが入ります。</p>
+            </article>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <button class="btn" onclick="goBack()" data-ja="戻る" data-en="Back">戻る</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'ja';
+
+        function detectLanguage() {
+            const savedLang =
+                localStorage.getItem('arq_lang') ||
+                localStorage.getItem('lang') ||
+                localStorage.getItem('language') ||
+                localStorage.getItem('btlq_lang');
+
+            if (savedLang) { currentLang = savedLang; return; }
+
+            const browserLang = navigator.language || navigator.userLanguage || '';
+            currentLang = browserLang.toLowerCase().startsWith('ja') ? 'ja' : 'en';
+        }
+
+        function toggleLang() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            document.documentElement.lang = currentLang;
+            localStorage.setItem('lang', currentLang);
+            document.getElementById('langBtn').innerText =
+                currentLang === 'ja' ? 'EN' : 'JA';
+            updateTexts();
+        }
+
+        function updateTexts() {
+            document.querySelectorAll('[data-ja]').forEach(el => {
+                el.innerText = el.getAttribute('data-' + currentLang);
+            });
+        }
+
+        function goBack() {
+            history.back();
+        }
+
+        window.onload = () => {
+            detectLanguage();
+            document.documentElement.lang = currentLang;
+            
+            const langBtn = document.getElementById('langBtn');
+            if (langBtn) {
+                langBtn.innerText = currentLang === 'ja' ? 'EN' : 'JA';
+            }
+
+            updateTexts();
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const homeBtn = document.getElementById('homeBtn');
+            if (homeBtn) {
+                homeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    location.href = '/btlq/';
+                });
+            }
+
+            const langBtn0 = document.getElementById('langBtn');
+            if (langBtn0) {
+                const langBtn = langBtn0.cloneNode(true);
+                langBtn0.parentNode.replaceChild(langBtn, langBtn0);
+
+                langBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                    toggleLang();
+                }, true);
+            }
+        });
+
+        fetch('../../../../parts/footer.html')
+            .then(r => r.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+            });
+
+    </script>
+
+</body>
+
+</html>

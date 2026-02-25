@@ -431,3 +431,37 @@ html {overflow-x: hidden; }
   font-weight: 700;
   opacity: .85;
 }
+
+/* 記事ページ */
+.article-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.article-meta {
+  font-size: 0.85em;
+  color: #8b5e3c;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ecd4a1;
+}
+
+.article-body {
+  line-height: 1.8;
+  font-size: 0.95em;
+  color: var(--text);
+  text-align: left;
+}
+
+.article-body h2 {
+  margin-top: 25px;
+  margin-bottom: 12px;
+  font-size: 1.2em;
+  color: #8b5e3c;
+  border-left: 4px solid var(--accent);
+  padding-left: 10px;
+}
+
+.article-body p {
+  margin-bottom: 15px;
+}
