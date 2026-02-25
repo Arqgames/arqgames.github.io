@@ -75,6 +75,10 @@
 
         function goBack() {
             window.close();
+            // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
+            setTimeout(() => {
+                location.href = '/btlq/';
+            }, 100);
         }
 
         window.onload = () => {
