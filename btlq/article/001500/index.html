@@ -37,7 +37,7 @@
                 <p data-ja="このように、セツの誕生は聖書内部で最初に固定される年代的アンカーですが、絶対年代の計算はどの伝承を採用するかによって異なります。" data-en="Thus, the birth of Seth is the first chronological anchor fixed within the Bible, but the calculation of absolute dates varies depending on which textual tradition is adopted.">このように、セツの誕生は聖書内部で最初に固定される年代的アンカーですが、絶対年代の計算はどの伝承を採用するかによって異なります。</p>
             </article>
             <div style="margin-top: 30px; text-align: center;">
-                <button class="btn" onclick="goBack()" data-ja="戻る" data-en="Back">戻る</button>
+                <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
             </div>
         </div>
     </div>
@@ -74,8 +74,7 @@
         }
 
         function goBack() {
-            if (history.length > 1) history.back();
-            else location.href = '/btlq/';
+            window.close();
         }
 
         window.onload = () => {

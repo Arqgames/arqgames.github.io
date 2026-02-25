@@ -55,7 +55,7 @@
             </article>
 
             <div style="margin-top: 30px; text-align: center;">
-                <button class="btn" onclick="goBack()" data-ja="戻る" data-en="Back">戻る</button>
+                <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
             </div>
         </div>
     </div>
@@ -92,7 +92,7 @@
         }
 
         function goBack() {
-            history.back();
+            window.close();
         }
 
         window.onload = () => {
