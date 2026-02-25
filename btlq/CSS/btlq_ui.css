@@ -465,3 +465,88 @@ html {overflow-x: hidden; }
 .article-body p {
   margin-bottom: 15px;
 }
+
+/* ===== モーダル（記事リンク） ===== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 15px;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 90vw;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  position: relative;
+  border: 3px solid var(--accent);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: var(--text);
+}
+
+.modal-title {
+  margin: 0 0 20px 0;
+  font-size: 1.2em;
+  color: var(--text);
+  font-weight: bold;
+}
+
+.article-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.article-links a {
+  display: block;
+  padding: 12px 15px;
+  background: #fff;
+  text-decoration: none;
+  color: var(--text);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.article-links a:hover {
+  background: var(--main-bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
