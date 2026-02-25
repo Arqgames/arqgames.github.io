@@ -313,6 +313,9 @@
                     draggingItemPC = null;
                 });
 
+                // ★スマートフォン対応：タッチイベント登録
+                el.addEventListener('touchstart', handleTouchStart, { passive: true });
+
                 list.appendChild(el);
             });
 
