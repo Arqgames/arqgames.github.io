@@ -133,6 +133,32 @@ body {
     outline: 2px solid #fff;
 }
 
+/* レベル選択ボタン */
+.level-btn-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.level-btn {
+    background: #8b5e3c;
+    color: white;
+    border: none;
+    padding: 12px 5px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #5d3a1a;
+}
+
+.level-btn.active {
+    background: #d35400;
+    box-shadow: 0 4px 0 #a04000;
+    outline: 2px solid #fff;
+}
+
 .picker-group {
     display: flex;
     justify-content: space-between;
