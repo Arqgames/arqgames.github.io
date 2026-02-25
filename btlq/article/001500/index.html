@@ -48,13 +48,13 @@
             document.getElementById('homeBtn').onclick = function() {
                 location.href = '/btlq/';
             };
+            // 言語切替（英語ページへ遷移）
+            document.getElementById('langBtn').onclick = function() {
+                location.href = 'index_en.html';
+            };
         </script>
         <script>
-            fetch('../../../../parts/footer.html')
-                .then(r => r.text())
-                .then(html => {
-                    document.body.insertAdjacentHTML('beforeend', html);
-                });
+            // フッターの二重読み込み防止のため、このfetchは削除
         </script>
     </div>
     <script>

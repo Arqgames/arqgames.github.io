@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>537 BCE - End of the Babylonian Exile</title>
+    <meta name="description" content="The end of the Babylonian Exile as a key chronological anchor in biblical dating." />
+    <meta name="article-id" content="061000">
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="537 BCE - End of the Babylonian Exile and Chronological Anchor" />
+    <meta property="og:description" content="The end of the Babylonian Exile as a key chronological anchor in biblical dating." />
+    <meta name="theme-color" content="#f4e4bc" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
+</head>
+<body>
+    <div class="container">
+        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
+        <div id="article-content" class="article-wrapper">
+            <div class="header-icon-box"><span class="material-icons header-icon">article</span></div>
+            <h1 id="article-title">537 BCE (or 538 BCE)<br>End of the Babylonian Exile and Chronological Anchor</h1>
+            <article class="article-body">
+                <p>One of the most important chronological anchors in biblical dating is the end of the Babylonian Exile. Jeremiah 25:11–12 and 29:10 explicitly state that Judah would serve Babylon for seventy years. This period is linked in 2 Chronicles 36:20–23 to the return under the decree of Cyrus, king of Persia. Daniel 9:2 shows that this seventy years was understood as a fulfillment of prophecy, and Ezra 1:1–4 records the return order in Cyrus’s first year. The mutual testimony of these books makes the end of the exile a pivotal event for biblical chronology, even within the internal scriptural framework.</p>
+                <h2>The 537 BCE View</h2>
+                <p>However, the absolute date is debated. The 537 BCE view takes the seventy years as a literal period, starting with the complete desolation of Jerusalem in 607 BCE. In this view, the seventy years end with the beginning of the return, i.e., 537 BCE.</p>
+                <h2>Mainstream Historical View</h2>
+                <p>By contrast, mainstream history and biblical scholarship date the fall of Jerusalem to 587/586 BCE, the conquest of Babylon by Cyrus to 539 BCE, and the return decree to 538 BCE. The seventy years are often understood as a symbolic or theological period representing the entire span of Babylonian dominance, rather than a strict chronological interval. These dates are anchored by ancient sources such as the Babylonian Chronicle, the Nabonidus Cylinder, and the astronomical clay tablet VAT4956.</p>
+                <h2>Issues in Chronological Calculation</h2>
+                <p>Thus, while the end of the exile is a crucial chronological anchor, its conversion to the Gregorian calendar depends on interpretive methods and the evaluation of extra-biblical sources.</p>
+            </article>
+            <div style="margin-top: 30px; text-align: center;">
+                <button class="btn" onclick="goBack()">Back</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function goBack() {
+            if (history.length > 1) history.back();
+            else location.href = '/btlq/';
+        }
+        document.getElementById('homeBtn').onclick = function() {
+            location.href = '/btlq/';
+        };
+    </script>
+    <script>
+        fetch('../../../../parts/footer.html')
+            .then(r => r.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+            });
+    </script>
+</body>
+</html>
