@@ -794,28 +794,37 @@
             const wrap = document.getElementById("result-events");
             if (!wrap) return;
 
-            // ids が空なら消す（保険）
-            if (!Array.isArray(ids) || ids.length === 0) {
-                wrap.innerHTML = `
-  <div class="result-events-card">
-    <div class="result-events-title">${title}</div>
-    <div class="result-events-sub">
-      ${currentLang === 'ja' ? "あなたの並べ替えた順です。" : "This is the order you arranged."}
-    </div>
-    <ol class="result-event-list">${itemsHtml}</ol>
-  </div>
-`;
-
-            }
-
             // id → event を高速に引けるMap
             const map = new Map(EVENTS.map(e => [String(e.id), e]));
-
             const title = currentLang === 'ja' ? "今回の並び" : "Your order";
+
+            // 記事ページ存在チェック用キャッシュ
+            if (!window._articleExistCache) window._articleExistCache = {};
+            const articleExistCache = window._articleExistCache;
+
+            // 各イベントごとにリスト生成
             const itemsHtml = ids.map((id, i) => {
                 const ev = map.get(String(id));
                 const label = ev ? (ev[currentLang] ?? ev.ja ?? ev.en ?? id) : id;
-                return `<li class="result-event-item">${escapeHtml(label)}</li>`;
+                const articlePath = `/btlq/article/${id}/index.html`;
+                // 記事ボタン仮置き
+                let articleBtn = '';
+                // 記事存在チェック（キャッシュ優先）
+                if (articleExistCache[id] === true) {
+                    articleBtn = `<a href="${articlePath}" class="article-link-btn" target="_blank" rel="noopener" style="margin-left:8px;">${currentLang === 'ja' ? '解説を読む' : 'Read Article'}</a>`;
+                } else if (articleExistCache[id] === false) {
+                    articleBtn = '';
+                } else {
+                    // 未チェックならHEADリクエスト
+                    fetch(articlePath, { method: 'HEAD' }).then(r => {
+                        articleExistCache[id] = r.ok;
+                        // 再描画（1回だけ）
+                        if (r.ok) renderResultEvents(ids);
+                    }).catch(() => {
+                        articleExistCache[id] = false;
+                    });
+                }
+                return `<li class="result-event-item">${escapeHtml(label)}${articleBtn}</li>`;
             }).join("");
 
             wrap.innerHTML = `
