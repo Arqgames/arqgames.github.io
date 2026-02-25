@@ -112,6 +112,9 @@
             </select>
             <div id="error-msg"></div>
             <button class="btn" onclick="startGame()" data-ja="冒険を開始" data-en="Start Adventure">冒険を開始</button>
+            
+            <!-- デバッグ用：結果画面テスト -->
+            <button class="btn" onclick="testResultScreen()" style="margin-top:10px; background:#999; font-size:0.8em;">🔧 結果画面をテスト</button>
         </div>
 
         <div id="screen-game" class="hidden">
@@ -974,6 +977,16 @@
         function closeArticleModal() {
             const modal = document.getElementById('article-modal');
             modal.classList.add('hidden');
+        }
+
+        function testResultScreen() {
+            // デバッグ用：最初の5イベントをタスクとして使用
+            if (!Array.isArray(EVENTS) || EVENTS.length === 0) {
+                alert('イベントが読み込まれていません。');
+                return;
+            }
+            currentTask = EVENTS.slice(0, 5);
+            showResultScreen(true);
         }
 
         function showHint() {
