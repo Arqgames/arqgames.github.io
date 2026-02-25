@@ -44,7 +44,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8810957223833437"
         crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="/CSS/ui.css">
+    <link rel="stylesheet" href="CSS/ui.css">
 
 </head>
 
@@ -1113,7 +1113,7 @@
             }
 
             async function loadEvents() {
-                const url = "/btlq/data/events/events_all.json";
+                const url = "data/events/events_all.json";
 
                 try {
                     const res = await fetch(url, { cache: "no-store" });
@@ -1161,7 +1161,7 @@
             loadEvents();
         });
 
-        fetch('/parts/footer.html')
+        fetch('parts/footer.html')
             .then(r => r.text())
             .then(html => {
                 document.body.insertAdjacentHTML('beforeend', html);
