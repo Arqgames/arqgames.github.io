@@ -69,7 +69,7 @@
 
         function updateTexts() {
             document.querySelectorAll('[data-ja]').forEach(el => {
-                el.innerText = el.getAttribute('data-' + currentLang);
+                el.innerHTML = el.getAttribute('data-' + currentLang);
             });
         }
 
