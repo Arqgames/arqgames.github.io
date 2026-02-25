@@ -1,3 +1,4 @@
+            <button class="btn" onclick="window.open('/btlq/article/061000/', '_blank')" style="margin-top:10px; background:#8b5e3c; color:#fff; font-size:0.8em;">📖 記事をテスト</button>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -114,7 +115,13 @@
             <button class="btn" onclick="startGame()" data-ja="冒険を開始" data-en="Start Adventure">冒険を開始</button>
             
             <!-- デバッグ用：結果画面テスト -->
-            <button class="btn" onclick="testResultScreen()" style="margin-top:10px; background:#999; font-size:0.8em;">🔧 結果画面をテスト</button>
+            <div style="margin-top:15px; padding:10px; background:#f0f0f0; border-radius:8px;">
+                <div style="font-size:0.75em; font-weight:bold; margin-bottom:8px;">🔧 デバッグ：イベントを選んでテスト</div>
+                <select id="debug-event-select" style="width:100%; margin-bottom:8px;">
+                    <option value="">-- イベントを選択 --</option>
+                </select>
+                <button class="btn" onclick="testWithSelectedEvent()" style="background:#999; font-size:0.8em; width: 100%;">結果画面をテスト</button>
+            </div>
         </div>
 
         <div id="screen-game" class="hidden">
