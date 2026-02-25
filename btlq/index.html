@@ -132,7 +132,6 @@
             </div>
             <div id="success-options" class="hidden">
                 <button class="btn" onclick="location.reload()" data-ja="次へ" data-en="Next">次へ</button>
-                <button class="btn btn-sub" onclick="openArticleWindow()" id="article-btn" data-ja="🔍 深掘りする" data-en="🔍 Explore More">🔍 深掘りする</button>
             </div>
             <div id="result-events" class="result-events"></div>
         </div>
@@ -939,18 +938,6 @@
                 const wrap = document.getElementById("result-events");
                 if (wrap) wrap.innerHTML = "";      // 残念時は表示しない
             }
-        }
-
-        // ===== 記事リンク関連 =====
-        function openArticleWindow() {
-            if (!Array.isArray(currentTask) || currentTask.length === 0) {
-                alert(currentLang === 'ja' ? 'イベント情報がありません。' : 'No events available.');
-                return;
-            }
-            // 最初のイベントの記事を開く（複数ある場合は最初の1つ）
-            const eventId = String(currentTask[0].id).padStart(6, '0');
-            const articleUrl = `/btlq/article/${eventId}/`;
-            window.open(articleUrl, '_blank', 'width=800,height=600');
         }
 
         // ===== 記事モーダル関連（削除済み） =====
