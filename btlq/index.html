@@ -795,7 +795,7 @@
                 let articleBtn = '';
                 // 記事存在チェック（キャッシュ優先）
                 if (articleExistCache[id] === true) {
-                    articleBtn = `<a href="${articlePath}" class="article-link-btn" target="_blank" rel="noopener" style="margin-left:8px;">${currentLang === 'ja' ? '解説を読む' : 'Read Article'}</a>`;
+                    articleBtn = `<button onclick="window.open('${articlePath}', '_blank', 'width=800,height=600')" class="article-link-btn" style="margin-left:8px; cursor:pointer; background:none; border:none; font-size:1.2em;" title="${currentLang === 'ja' ? '解説を読む' : 'Read Article'}">🔍</button>`;
                 } else if (articleExistCache[id] === false) {
                     articleBtn = '';
                 } else {
