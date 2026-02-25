@@ -136,7 +136,7 @@ body {
 /* レベル選択ボタン */
 .level-btn-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 8px;
     margin: 15px 0;
 }
