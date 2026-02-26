@@ -13,6 +13,7 @@
 <body>
 
     <div class="container">
+
         <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
 
         <div class="header-icon-box" aria-hidden="true">
@@ -22,132 +23,96 @@
         <h1 style="margin:10px 0 0; font-size:1.4em;" data-i18n="title">Privacy Policy</h1>
 
         <div style="text-align:left; margin-top:20px; line-height:1.7;">
+            <p data-i18n="intro"><strong>ARQ Games</strong> respects user privacy and handles personal information appropriately in accordance with the following policy.</p>
 
-  <h3>Privacy Policy</h3>
+            <h3 data-i18n="ads_heading">Advertising</h3>
+            <p data-i18n="ads_text">This site uses third-party advertising services, including <strong>Google AdSense</strong>. Google and its partners may use cookies to display advertisements based on users' previous visits to this website or other websites.</p>
+            <p>Users may opt out of personalized advertising by visiting the following page:<br /><a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">https://adssettings.google.com</a></p>
 
-  <p>
-    <strong>Arquiz</strong> (hereinafter referred to as “this site”) respects user privacy
-    and handles personal information appropriately in accordance with the following policy.
-  </p>
+            <h3 data-i18n="cookies_heading">Cookies</h3>
+            <p data-i18n="cookies_text">This site may use cookies to improve user experience and deliver advertisements. You can disable cookies through your browser settings; however, some features of the site may not function properly as a result.</p>
 
-  <h4>Advertising</h4>
-  <p>
-    This site uses third-party advertising services, including <strong>Google AdSense</strong>.
-    Google and its partners may use cookies to display advertisements based on users’
-    previous visits to this website or other websites.
-  </p>
-  <p>
-    Users may opt out of personalized advertising by visiting the following page:<br />
-    <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">
-      https://adssettings.google.com
-    </a>
-  </p>
+            <h3 data-i18n="analytics_heading">Analytics</h3>
+            <p data-i18n="analytics_text">This site may use access analysis tools to improve content. The data collected does not include personally identifiable information.</p>
 
-  <h4>Cookies</h4>
-  <p>
-    This site may use cookies to improve user experience and deliver advertisements.
-    You can disable cookies through your browser settings; however, some features of the site
-    may not function properly as a result.
-  </p>
+            <h3 data-i18n="disclaimer_heading">Disclaimer</h3>
+            <p data-i18n="disclaimer_text">All content on this site is provided for educational and entertainment purposes. This site does not promote or represent any specific organization, ideology, or belief.</p>
 
-  <h4>Analytics</h4>
-  <p>
-    This site may use access analysis tools to improve content.
-    The data collected does not include personally identifiable information.
-  </p>
+            <h3 data-i18n="changes_heading">Changes to This Policy</h3>
+            <p data-i18n="changes_text">This privacy policy may be updated without prior notice. Any changes will be posted on this page promptly.</p>
 
-  <h4>Disclaimer</h4>
-  <p>
-    All content on this site is provided for educational and entertainment purposes.
-    This site does not promote or represent any specific organization, ideology, or belief.
-  </p>
+            <h3 data-i18n="contact_heading">Contact</h3>
+            <p data-i18n="contact_text">For inquiries regarding this policy, please contact us via the <a href="/footer/contact/">Contact</a> page.</p>
+        </div>
 
-  <h4>Changes to This Policy</h4>
-  <p>
-    This privacy policy may be updated without prior notice.
-    Any changes will be posted on this page promptly.
-  </p>
+    </div>
 
-  <h4>Contact</h4>
-  <p>
-    For inquiries regarding this policy, please contact us via the Contact page.
-  </p>
+    <div class="ad-outside">
+        <div style="text-align:center; font-weight:bold; color:#8b5e3c;">Ad space</div>
+    </div>
 
-  <hr style="margin:40px 0;">
+    <script>
+        const dict = {
+            ja: {
+                title: "プライバシーポリシー",
+                intro: "<strong>ARQ Games</strong>では、利用者のプライバシーを尊重し、以下の方針に基づき個人情報を適切に取り扱います。",
+                ads_heading: "広告について",
+                ads_text: "当サイトでは、第三者配信の広告サービスである Google AdSense を利用しています。Google およびそのパートナーは、ユーザーの過去のアクセス情報に基づき広告を表示するため、Cookie を使用することがあります。",
+                cookies_heading: "Cookie について",
+                cookies_text: "当サイトでは、利便性向上および広告配信のため Cookie を使用する場合があります。Cookie を無効にする設定はご利用のブラウザで変更できますが、その場合一部機能が正しく動作しないことがあります。",
+                analytics_heading: "アクセス解析について",
+                analytics_text: "当サイトでは、コンテンツ改善のためアクセス解析ツールを使用することがあります。取得されるデータには、個人を特定する情報は含まれません。",
+                disclaimer_heading: "免責事項",
+                disclaimer_text: "当サイトの内容は、教育および娯楽目的で提供されています。特定の思想、団体、信条を推奨または強制するものではありません。",
+                changes_heading: "プライバシーポリシーの変更",
+                changes_text: "本ポリシーの内容は、予告なく変更されることがあります。変更後の内容は当ページにて速やかに公開されます。",
+                contact_heading: "お問い合わせ",
+                contact_text: "本ポリシーに関するお問い合わせは、<a href=\"/footer/contact/\">お問い合わせ</a>ページよりご連絡ください。"
+            },
+            en: {
+                title: "Privacy Policy",
+                intro: "<strong>ARQ Games</strong> respects user privacy and handles personal information appropriately in accordance with the following policy.",
+                ads_heading: "Advertising",
+                ads_text: "This site uses third-party advertising services, including Google AdSense. Google and its partners may use cookies to display advertisements based on users' previous visits to this website or other websites.",
+                cookies_heading: "Cookies",
+                cookies_text: "This site may use cookies to improve user experience and deliver advertisements. You can disable cookies through your browser settings; however, some features of the site may not function properly as a result.",
+                analytics_heading: "Analytics",
+                analytics_text: "This site may use access analysis tools to improve content. The data collected does not include personally identifiable information.",
+                disclaimer_heading: "Disclaimer",
+                disclaimer_text: "All content on this site is provided for educational and entertainment purposes. This site does not promote or represent any specific organization, ideology, or belief.",
+                changes_heading: "Changes to This Policy",
+                changes_text: "This privacy policy may be updated without prior notice. Any changes will be posted on this page promptly.",
+                contact_heading: "Contact",
+                contact_text: "For inquiries regarding this policy, please contact us via the <a href=\"/footer/contact/\">Contact</a> page."
+            }
+        };
 
-  <h3>プライバシーポリシー</h3>
+        function applyLang(lang) {
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.dataset.i18n;
+                if (dict[lang] && dict[lang][key]) el.innerHTML = dict[lang][key];
+            });
+            document.getElementById("langBtn").textContent = (lang === "ja") ? "EN" : "JA";
+            localStorage.setItem("arq_lang", lang);
+        }
 
-  <p>
-    <strong>Arquiz</strong>（以下「当サイト」）では、利用者のプライバシーを尊重し、
-    以下の方針に基づき個人情報を適切に取り扱います。
-  </p>
+        const saved = localStorage.getItem("arq_lang");
+        let lang = saved || (navigator.language && navigator.language.startsWith("ja") ? "ja" : "en");
+        applyLang(lang);
 
-  <h4>広告について</h4>
-  <p>
-    当サイトでは、第三者配信の広告サービスである <strong>Google AdSense</strong> を利用しています。
-    Google およびそのパートナーは、ユーザーの過去のアクセス情報に基づき広告を表示するため、
-    Cookie を使用することがあります。
-  </p>
-  <p>
-    パーソナライズ広告は、以下のページから無効にできます。<br />
-    <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">
-      https://adssettings.google.com
-    </a>
-  </p>
+        document.getElementById("langBtn").onclick = () => {
+            lang = (lang === "ja") ? "en" : "ja";
+            applyLang(lang);
+        };
 
-  <h4>Cookie について</h4>
-  <p>
-    当サイトでは、利便性向上および広告配信のため Cookie を使用する場合があります。
-    Cookie を無効にする設定はご利用のブラウザで変更できますが、
-    その場合一部機能が正しく動作しないことがあります。
-  </p>
+        fetch('/parts/footer.html')
+            .then(r => r.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+            });
 
-  <h4>アクセス解析について</h4>
-  <p>
-    当サイトでは、コンテンツ改善のためアクセス解析ツールを使用することがあります。
-    取得されるデータには、個人を特定する情報は含まれません。
-  </p>
-
-  <h4>免責事項</h4>
-  <p>
-    当サイトの内容は、教育および娯楽目的で提供されています。
-    特定の思想、団体、信条を推奨または強制するものではありません。
-  </p>
-
-  <h4>プライバシーポリシーの変更</h4>
-  <p>
-    本ポリシーの内容は、予告なく変更されることがあります。
-    変更後の内容は当ページにて速やかに公開されます。
-  </p>
-
-  <h4>お問い合わせ</h4>
-  <p>
-    本ポリシーに関するお問い合わせは、Contact ページよりご連絡ください。
-  </p>
-
-  <p style="margin-top:30px;">
-    <a href="index.html" target="_blank" rel="noopener noreferrer">
-      ▶ Play the game
-    </a>
-  </p>
-
-  <p>
-    <a href="index.html" target="_blank" rel="noopener noreferrer">
-      ▶ ゲームに戻る
-    </a>
-  </p>
-
-  <footer style="margin-top:40px; padding:20px 0; border-top:1px solid #ddd; font-size:14px; text-align:center;">
-    <a href="./about.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
-      About
-    </a>
-    <a href="./privacy.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
-      Privacy Policy
-    </a>
-    <a href="./contact.html" target="_blank" rel="noopener noreferrer" style="margin:0 10px;">
-      Contact
-    </a>
-  </footer>
+    </script>
 
 </body>
+
 </html>
