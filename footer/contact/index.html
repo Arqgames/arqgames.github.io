@@ -8,6 +8,19 @@
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="/css/top_ui.css">
+    <style>
+        .form-embed-wrap {
+            margin: 30px 0;
+        }
+
+        .form-embed {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            min-height: 900px;
+            border: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -25,21 +38,25 @@
         <div style="text-align:left; margin-top:20px; line-height:1.7;">
             <p data-i18n="intro">If you have any questions, feedback, or suggestions regarding ARQ Games, please feel free to contact us using the form below.</p>
 
+            <p data-i18n="end_en">please feel free to contact us using the form below.</p>
+
+            <p data-i18n="end_ja">内容によっては返信できない場合がありますので、あらかじめご了承ください。</p>
+
             <p data-i18n="privacy"><strong>Privacy Notice:</strong> Personal information collected through this contact form will be used solely for responding to your inquiry and providing necessary communications. We will not disclose your information to third parties.</p>
 
-            <div style="margin:30px 0;">
+            <div class="form-embed-wrap">
                 <iframe
+                class="form-embed"
                 src="https://docs.google.com/forms/d/e/1FAIpQLSeu5j_r1XOzNYjxyBY1OLFoIZT1vcEpjyfNi4Q_XU98ngbqbA/viewform?embedded=true"
-                width="640"
-                height="995"
+                height="900"
                 frameborder="0"
                 marginheight="0"
                 marginwidth="0"
-                style="width:100%; max-width:640px; border:none;"
                 >
                 Loading...
                 </iframe>
             </div>
+
         </div>
 
     </div>
@@ -53,19 +70,25 @@
             ja: {
                 title: "お問い合わせ",
                 intro: "ARQ Gamesに関するご質問、ご意見、ご提案がございましたら、以下のフォームからお気軽にお問い合わせください。",
-                privacy: "<strong>プライバシーに関するお知らせ：</strong>このお問い合わせフォームからいただいた個人情報は、ご返信および必要な連絡の目的に限ってのみ利用させていただき、第三者に開示・提供することはありません。"
+                privacy: "<strong>プライバシーに関するお知らせ：</strong>このお問い合わせフォームからいただいた個人情報は、ご返信および必要な連絡の目的に限ってのみ利用させていただき、第三者に開示・提供することはありません。",
+                end_en: "",
+                end_ja: "内容によっては返信できない場合がありますので、あらかじめご了承ください。"
             },
             en: {
                 title: "Contact",
                 intro: "If you have any questions, feedback, or suggestions regarding ARQ Games, please feel free to contact us using the form below.",
-                privacy: "<strong>Privacy Notice:</strong> Personal information collected through this contact form will be used solely for responding to your inquiry and providing necessary communications. We will not disclose your information to third parties."
+                privacy: "<strong>Privacy Notice:</strong> Personal information collected through this contact form will be used solely for responding to your inquiry and providing necessary communications. We will not disclose your information to third parties.",
+                end_en: "please feel free to contact us using the form below.",
+                end_ja: ""
             }
         };
 
         function applyLang(lang) {
             document.querySelectorAll("[data-i18n]").forEach(el => {
                 const key = el.dataset.i18n;
-                if (dict[lang] && dict[lang][key]) el.innerHTML = dict[lang][key];
+                if (dict[lang] && Object.prototype.hasOwnProperty.call(dict[lang], key)) {
+                    el.innerHTML = dict[lang][key];
+                }
             });
             document.getElementById("langBtn").textContent = (lang === "ja") ? "EN" : "JA";
             localStorage.setItem("arq_lang", lang);
