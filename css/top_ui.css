@@ -322,17 +322,18 @@ select {
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
+    position: relative;
 }
 
 .tag:hover {
     background: #f39c12;
-    box-shadow: 0 4px 8px rgba(213, 175, 55, 0.4), 0 2px 0 #d4af37;
-    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(213, 175, 55, 0.5), 0 2px 0 #d4af37;
+    transform: translateY(-4px) scale(1.05);
 }
 
 .tag:active {
-    transform: translateY(0);
-    box-shadow: 0 1px 0 #d4af37;
+    transform: translateY(-1px) scale(1.05);
+    box-shadow: 0 2px 4px rgba(213, 175, 55, 0.3), 0 1px 0 #d4af37;
 }
 
 .topic-list {
