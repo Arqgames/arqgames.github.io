@@ -31,52 +31,85 @@
             年代がどう研究され、どんな議論があるのかを整理する解説記事の一覧です。宗教的な立場に依らず、方法と根拠に焦点を当てています。
         </p>
 
+        <!-- なぜ年代理解が重要か -->
+        <div class="section-block" style="background: linear-gradient(135deg, #faf5ef 0%, #f5ede1 100%); border-left: 4px solid #d4a574; padding: 20px; margin-bottom: 30px;">
+            <h2 style="font-size: 1.1em; color: #8b5e3c; margin: 0 0 12px 0;" data-i18n="why_title">なぜ年代理解が重要か</h2>
+            <p style="line-height: 1.8; margin: 0 0 10px 0; color: #5d4e42;" data-i18n="why_p1">
+                歴史は単なる出来事の集積ではありません。どの出来事が先に起こり、何がその原因や結果となったのかを理解することで、歴史は初めて立体的に把握できます。年代はその骨格にあたります。
+            </p>
+            <p style="line-height: 1.8; margin: 0; color: #5d4e42;" data-i18n="why_p2">
+                また、歴史上の年代は無根拠に決められているわけではありません。放射性炭素年代測定、年輪年代学、地層学的分析、文献史料の比較研究など、複数の学術的方法によって検証されています。本サイトでは、それらの方法と、実際の歴史事例における適用を解説しています。
+            </p>
+        </div>
+
         <div class="section-block">
-            <h2 class="section-title" data-i18n="methods_title">考古学的手法</h2>
+            <h2 class="section-title" data-i18n="methods_title">年代測定の方法</h2>
             <div class="article-list">
-                <div class="article-item">
-                    <a href="radiocarbon/" target="_blank" rel="noopener" data-i18n="article_radiocarbon">放射性炭素年代測定の原理</a>
-                    <div class="article-desc" data-i18n="article_radiocarbon_desc">C14 の崩壊とキャリブレーションで年代範囲を推定する方法。</div>
+                <div class="article-item" onclick="window.open('radiocarbon/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_radiocarbon">放射性炭素年代測定の原理</h3>
+                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_radiocarbon_desc">
+                        大気中に一定割合で存在する放射性炭素（¹⁴C）は、生物の死後、約5730年の半減期で崩壊していきます。遺物に残る¹⁴Cの量を測定することで、その生物が死んでからの経過時間を推定できます。ただし、過去の大気中¹⁴C濃度は変動しているため、年輪年代学などで作られた較正曲線を用いて補正（キャリブレーション）する必要があります。測定精度は±数十年程度で、数万年前までの有機物に適用可能です。
+                    </div>
                 </div>
-                <div class="article-item">
-                    <a href="dendrochronology/" target="_blank" rel="noopener" data-i18n="article_dendrochronology">年輪年代学の仕組み</a>
-                    <div class="article-desc" data-i18n="article_dendrochronology_desc">年輪パターンの照合から年単位で年代を確定する技法。</div>
+                <div class="article-item" onclick="window.open('dendrochronology/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_dendrochronology">年輪年代学の仕組み</h3>
+                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_dendrochronology_desc">
+                        樹木は気候条件に応じて毎年異なる幅の年輪を形成します。同じ地域・時代の樹木は共通のパターンを持つため、年輪幅の変動パターンを照合することで、既知の年代標準曲線と対比し、伐採年を1年単位で特定できます。木造建築の建築年代、過去の気候変動、放射性炭素年代測定の較正曲線作成など、広範な応用があります。ヨーロッパでは1万年以上、日本でも数千年分の標準曲線が構築されています。
+                    </div>
                 </div>
-                <div class="article-item">
-                    <a href="stratigraphy/" target="_blank" rel="noopener" data-i18n="article_stratigraphy">地層学と相対年代の考え方</a>
-                    <div class="article-desc" data-i18n="article_stratigraphy_desc">地層の重なりと層序で時系列を復元する基本原理。</div>
+                <div class="article-item" onclick="window.open('stratigraphy/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_stratigraphy">地層学と相対年代の考え方</h3>
+                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_stratigraphy_desc">
+                        地層は通常、下から上へと時間順に堆積します（地層累重の法則）。発掘現場では、この層序関係を記録することで、出土遺物や遺構の前後関係（相対年代）を確立します。ただし、洪水や地震、人為的な掘り返しなどで地層が乱されることもあるため、慎重な観察が必要です。層序学は絶対年代を直接与えませんが、他の年代測定法と組み合わせることで、遺跡全体の時間軸を構築する基盤となります。
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title" data-i18n="reliability_title">史料の信頼性</h2>
+            <div class="article-list">
+                <div class="article-item" onclick="window.open('medieval-chronicles/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_medieval">中世年代記の信頼性評価</h3>
+                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_medieval_desc">
+                        中世の年代記は、当時の記録者が見聞きした出来事を年次順に記録したものですが、編纂時期と対象年代の時間差、写本の伝来過程での改変、編者の政治的・宗教的立場などが記述に影響します。史料批判では、成立時期、著者の立場、他の同時代資料との整合性を検討し、どの記述がどの程度信頼できるかを評価します。複数の年代記を比較することで、偏りを補正し、より正確な歴史像を復元します。
+                    </div>
+                </div>
+                <div class="article-item" onclick="window.open('numismatic-dating/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_numismatic">貨幣資料が示す年代情報</h3>
+                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_numismatic_desc">
+                        古代・中世の貨幣には、皇帝名、称号、鋳造地、発行年に関わる情報が刻まれており、年代推定の重要な手がかりとなります。貨幣の型式分類と銘文解読により、発行時期を特定し、出土層や共伴遺物と照合することで、遺跡の年代範囲を絞り込めます。ただし、貨幣は長期間流通するため、単独では年代を確定できず、層序や他資料との総合的な検討が必須です。埋蔵貨幣群（コインホード）は、埋蔵時点の下限年代を示す重要な証拠となります。
+                    </div>
+                </div>
+                <div class="article-item" onclick="window.open('calendar-shifts/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_calendar">暦法の変遷と日付のずれ</h3>
+                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_calendar_desc">
+                        ユリウス暦（紀元前45年導入）は実際の太陽年より約11分長く、誤差が蓄積していきました。1582年のグレゴリオ暦改革では10日を飛ばして補正しましたが、地域によって採用時期が異なり（プロテスタント圏は18世紀、ロシアは1918年）、史料の日付解釈には注意が必要です。暦法の違いを無視すると、季節感や出来事の前後関係を誤る可能性があるため、換算表や天文学的検証を用いて現代暦に変換する作業が不可欠です。
+                    </div>
                 </div>
             </div>
 
             <h2 class="section-title" data-i18n="cases_title">具体的歴史事例</h2>
             <div class="article-list">
-                <div class="article-item">
-                    <a href="pompeii-date/" target="_blank" rel="noopener" data-i18n="article_pompeii">ポンペイ埋没年の再検討</a>
-                    <div class="article-desc" data-i18n="article_pompeii_desc">79年8月説と10月説を分ける証拠の整理。</div>
+                <div class="article-item" onclick="window.open('pompeii-date/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_pompeii">ポンペイ埋没年の再検討</h3>
+                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_pompeii_desc">
+                        ヴェスヴィオ火山の噴火によるポンペイ埋没は、古典文献では79年8月24日とされてきました。しかし近年、建物の落書き（秋を示唆する日付）、秋の作物や暖衣の出土、皇帝ティトゥスの貨幣など、複数の物的証拠が「79年10月頃」を支持しています。史料の日付は写本の過程で変化した可能性があり、物証との照合によって年代を再検討する必要性を示す好例です。史料と考古学的証拠の整合が、歴史年代研究の基本であることを明確に示しています。
+                    </div>
                 </div>
-                <div class="article-item">
-                    <a href="roman-empire-foundation/" target="_blank" rel="noopener" data-i18n="article_roman">ローマ帝国成立年の史料的根拠</a>
-                    <div class="article-desc" data-i18n="article_roman_desc">「帝国の始まり」をどう定義するかの論点。</div>
-                </div>
-                <div class="article-item">
-                    <a href="medieval-chronicles/" target="_blank" rel="noopener" data-i18n="article_medieval">中世年代記の信頼性評価</a>
-                    <div class="article-desc" data-i18n="article_medieval_desc">年代記を史料として使うときの評価基準。</div>
+                <div class="article-item" onclick="window.open('roman-empire-foundation/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_roman">ローマ帝国成立年の史料的根拠</h3>
+                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_roman_desc">
+                        「ローマ帝国の始まり」は定義によって変わります。前31年のアクティウムの海戦による権力集中、前27年のアウグストゥス称号授与と政治制度再編、14年のアウグストゥス死去と帝位継承の定着など、複数の候補年があります。元老院決議記録、皇帝称号の変化、貨幣、碑文などの史料が根拠として用いられますが、どの史料を重視するかで結論が異なります。この事例は、歴史年代が「出来事の定義」と密接に結びついていることを示しています。
+                    </div>
                 </div>
             </div>
 
-            <h2 class="section-title" data-i18n="debates_title">年代論争と暦問題</h2>
+            <h2 class="section-title" data-i18n="debates_title">年代論争</h2>
             <div class="article-list">
-                <div class="article-item">
-                    <a href="calendar-shifts/" target="_blank" rel="noopener" data-i18n="article_calendar">暦法の変遷と日付のずれ</a>
-                    <div class="article-desc" data-i18n="article_calendar_desc">ユリウス暦とグレゴリオ暦の違いと補正方法。</div>
-                </div>
-                <div class="article-item">
-                    <a href="numismatic-dating/" target="_blank" rel="noopener" data-i18n="article_numismatic">貨幣資料が示す年代情報</a>
-                    <div class="article-desc" data-i18n="article_numismatic_desc">肖像・銘文・出土状況から年代を推定する流れ。</div>
-                </div>
-                <div class="article-item">
-                    <a href="chronology-revisions/" target="_blank" rel="noopener" data-i18n="article_revisions">歴史年代はなぜ修正されるのか</a>
-                    <div class="article-desc" data-i18n="article_revisions_desc">新資料や再解釈による年代更新の理由。</div>
+                <div class="article-item" onclick="window.open('chronology-revisions/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_revisions">歴史年代はなぜ修正されるのか</h3>
+                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_revisions_desc">
+                        歴史年代は固定されたものではなく、新しい遺物・史料の発見、測定技術の改善、史料の再解釈、暦法換算方法の整理などにより更新されます。例えば、トロイ戦争の年代再設定、エジプト王朝年代の調整、マヤ長期暦の解読、放射性炭素較正曲線の更新、サントリーニ噴火年の再計算など、多くの事例があります。年代修正は誤りの訂正というより、証拠の精度向上による調整であり、むしろ検証が継続していることの証拠です。議論の過程そのものが研究成果となります。
+                    </div>
                 </div>
             </div>
         </div>
@@ -97,53 +130,62 @@
             ja: {
                 title: "年代研究ノート",
                 intro: "年代がどう研究され、どんな議論があるのかを整理する解説記事の一覧です。宗教的な立場に依らず、方法と根拠に焦点を当てています。",
-                methods_title: "考古学的手法",
+                why_title: "なぜ年代理解が重要か",
+                why_p1: "歴史は単なる出来事の集積ではありません。どの出来事が先に起こり、何がその原因や結果となったのかを理解することで、歴史は初めて立体的に把握できます。年代はその骨格にあたります。",
+                why_p2: "また、歴史上の年代は無根拠に決められているわけではありません。放射性炭素年代測定、年輪年代学、地層学的分析、文献史料の比較研究など、複数の学術的方法によって検証されています。本サイトでは、それらの方法と、実際の歴史事例における適用を解説しています。",
+                methods_title: "年代測定の方法",
                 article_radiocarbon: "放射性炭素年代測定の原理",
-                article_radiocarbon_desc: "C14 の崩壊とキャリブレーションで年代範囲を推定する方法。",
+                article_radiocarbon_desc: "大気中に一定割合で存在する放射性炭素（¹⁴C）は、生物の死後、約5730年の半減期で崩壊していきます。遺物に残る¹⁴Cの量を測定することで、その生物が死んでからの経過時間を推定できます。ただし、過去の大気中¹⁴C濃度は変動しているため、年輪年代学などで作られた較正曲線を用いて補正（キャリブレーション）する必要があります。測定精度は±数十年程度で、数万年前までの有機物に適用可能です。",
                 article_dendrochronology: "年輪年代学の仕組み",
-                article_dendrochronology_desc: "年輪パターンの照合から年単位で年代を確定する技法。",
+                article_dendrochronology_desc: "樹木は気候条件に応じて毎年異なる幅の年輪を形成します。同じ地域・時代の樹木は共通のパターンを持つため、年輪幅の変動パターンを照合することで、既知の年代標準曲線と対比し、伐採年を1年単位で特定できます。木造建築の建築年代、過去の気候変動、放射性炭素年代測定の較正曲線作成など、広範な応用があります。ヨーロッパでは1万年以上、日本でも数千年分の標準曲線が構築されています。",
                 article_stratigraphy: "地層学と相対年代の考え方",
-                article_stratigraphy_desc: "地層の重なりと層序で時系列を復元する基本原理。",
+                article_stratigraphy_desc: "地層は通常、下から上へと時間順に堆積します（地層累重の法則）。発掘現場では、この層序関係を記録することで、出土遺物や遺構の前後関係（相対年代）を確立します。ただし、洪水や地震、人為的な掘り返しなどで地層が乱されることもあるため、慎重な観察が必要です。層序学は絶対年代を直接与えませんが、他の年代測定法と組み合わせることで、遺跡全体の時間軸を構築する基盤となります。",
+                reliability_title: "史料の信頼性",
+                article_medieval: "中世年代記の信頼性評価",
+                article_medieval_desc: "中世の年代記は、当時の記録者が見聞きした出来事を年次順に記録したものですが、編纂時期と対象年代の時間差、写本の伝来過程での改変、編者の政治的・宗教的立場などが記述に影響します。史料批判では、成立時期、著者の立場、他の同時代資料との整合性を検討し、どの記述がどの程度信頼できるかを評価します。複数の年代記を比較することで、偏りを補正し、より正確な歴史像を復元します。",
+                article_numismatic: "貨幣資料が示す年代情報",
+                article_numismatic_desc: "古代・中世の貨幣には、皇帝名、称号、鋳造地、発行年に関わる情報が刻まれており、年代推定の重要な手がかりとなります。貨幣の型式分類と銘文解読により、発行時期を特定し、出土層や共伴遺物と照合することで、遺跡の年代範囲を絞り込めます。ただし、貨幣は長期間流通するため、単独では年代を確定できず、層序や他資料との総合的な検討が必須です。埋蔵貨幣群（コインホード）は、埋蔵時点の下限年代を示す重要な証拠となります。",
+                article_calendar: "暦法の変遷と日付のずれ",
+                article_calendar_desc: "ユリウス暦（紀元前45年導入）は実際の太陽年より約11分長く、誤差が蓄積していきました。1582年のグレゴリオ暦改革では10日を飛ばして補正しましたが、地域によって採用時期が異なり（プロテスタント圏は18世紀、ロシアは1918年）、史料の日付解釈には注意が必要です。暦法の違いを無視すると、季節感や出来事の前後関係を誤る可能性があるため、換算表や天文学的検証を用いて現代暦に変換する作業が不可欠です。",
                 cases_title: "具体的歴史事例",
                 article_pompeii: "ポンペイ埋没年の再検討",
-                article_pompeii_desc: "79年8月説と10月説を分ける証拠の整理。",
+                article_pompeii_desc: "ヴェスヴィオ火山の噴火によるポンペイ埋没は、古典文献では79年8月24日とされてきました。しかし近年、建物の落書き（秋を示唆する日付）、秋の作物や暖衣の出土、皇帝ティトゥスの貨幣など、複数の物的証拠が「79年10月頃」を支持しています。史料の日付は写本の過程で変化した可能性があり、物証との照合によって年代を再検討する必要性を示す好例です。史料と考古学的証拠の整合が、歴史年代研究の基本であることを明確に示しています。",
                 article_roman: "ローマ帝国成立年の史料的根拠",
-                article_roman_desc: "「帝国の始まり」をどう定義するかの論点。",
-                article_medieval: "中世年代記の信頼性評価",
-                article_medieval_desc: "年代記を史料として使うときの評価基準。",
-                debates_title: "年代論争と暦問題",
-                article_calendar: "暦法の変遷と日付のずれ",
-                article_calendar_desc: "ユリウス暦とグレゴリオ暦の違いと補正方法。",
-                article_numismatic: "貨幣資料が示す年代情報",
-                article_numismatic_desc: "肖像・銘文・出土状況から年代を推定する流れ。",
+                article_roman_desc: "「ローマ帝国の始まり」は定義によって変わります。前31年のアクティウムの海戦による権力集中、前27年のアウグストゥス称号授与と政治制度再編、14年のアウグストゥス死去と帝位継承の定着など、複数の候補年があります。元老院決議記録、皇帝称号の変化、貨幣、碑文などの史料が根拠として用いられますが、どの史料を重視するかで結論が異なります。この事例は、歴史年代が「出来事の定義」と密接に結びついていることを示しています。",
+                debates_title: "年代論争",
                 article_revisions: "歴史年代はなぜ修正されるのか",
-                article_revisions_desc: "新資料や再解釈による年代更新の理由。",
+                article_revisions_desc: "歴史年代は固定されたものではなく、新しい遺物・史料の発見、測定技術の改善、史料の再解釈、暦法換算方法の整理などにより更新されます。例えば、トロイ戦争の年代再設定、エジプト王朝年代の調整、マヤ長期暦の解読、放射性炭素較正曲線の更新、サントリーニ噴火年の再計算など、多くの事例があります。年代修正は誤りの訂正というより、証拠の精度向上による調整であり、むしろ検証が継続していることの証拠です。議論の過程そのものが研究成果となります。",
                 back_home: "トップページに戻る"
             },
             en: {
                 title: "Chronology Research Notes",
                 intro: "A collection of articles on how historical dates are established and debated. We focus on methods and evidence without regard to religious or ideological perspectives.",
-                methods_title: "Archaeological Methods",
+                why_title: "Why Understanding Chronology Matters",
+                why_p1: "History is not simply a collection of events. By understanding which events preceded others, and what caused or resulted from them, history becomes three-dimensional. Chronology is its skeleton.",
+                why_p2: "Historical dates are not arbitrarily assigned. They are verified through multiple scholarly methods: radiocarbon dating, dendrochronology, stratigraphic analysis, comparative textual studies, and more. This site explains these methods and their application to actual historical cases.",
+                methods_title: "Dating Methods",
                 article_radiocarbon: "Principles of Radiocarbon Dating",
-                article_radiocarbon_desc: "How C14 decay and calibration are used to estimate date ranges.",
+                article_radiocarbon_desc: "Radiocarbon (¹⁴C) exists at a constant ratio in the atmosphere. After an organism dies, ¹⁴C decays with a half-life of about 5,730 years. By measuring remaining ¹⁴C in artifacts, we can estimate elapsed time since death. However, past atmospheric ¹⁴C concentrations varied, so calibration curves built from dendrochronology are needed for correction. Precision is typically ±several decades, applicable to organic materials up to tens of thousands of years old.",
                 article_dendrochronology: "How Dendrochronology Works",
-                article_dendrochronology_desc: "Using tree-ring patterns to pinpoint dates.",
+                article_dendrochronology_desc: "Trees form annual growth rings of varying width depending on climate. Trees from the same region and era share common patterns. By matching ring-width variation patterns against established chronologies, we can pinpoint felling dates to the exact year. Applications include dating wooden architecture, reconstructing past climates, and creating radiocarbon calibration curves. Master chronologies span over 10,000 years in Europe and several thousand years in Japan.",
                 article_stratigraphy: "Stratigraphy and Relative Dating",
-                article_stratigraphy_desc: "How layers and their sequence reveal time order.",
+                article_stratigraphy_desc: "Strata typically accumulate in time order, from bottom to top (law of superposition). At excavation sites, recording stratigraphic relationships establishes the relative sequence (relative chronology) of artifacts and features. However, disturbances from floods, earthquakes, or human activity can disrupt layers, requiring careful observation. While stratigraphy doesn't directly provide absolute dates, it forms the foundation for constructing a site's temporal framework when combined with other dating methods.",
+                reliability_title: "Source Reliability",
+                article_medieval: "Assessing Medieval Chronicles",
+                article_medieval_desc: "Medieval chronicles are year-by-year records of events as witnessed or heard by their compilers. However, the time gap between recording and events, changes during manuscript transmission, and the compiler's political or religious stance all influence the account. Source criticism examines date of composition, authorial perspective, and consistency with other contemporary sources to assess which statements are reliable to what degree. Comparing multiple chronicles allows us to correct biases and reconstruct a more accurate historical picture.",
+                article_numismatic: "What Coins Reveal About Dates",
+                article_numismatic_desc: "Ancient and medieval coins bear crucial dating information: ruler names, titles, mint marks, and issue years. Typological classification and inscription decipherment identify emission periods, which, when correlated with find layers and associated artifacts, narrow down site chronology. However, coins circulate for extended periods, so they cannot fix dates alone—integration with stratigraphy and other sources is essential. Coin hoards provide crucial evidence for the latest possible burial date (terminus post quem).",
+                article_calendar: "Calendar Changes and Date Shifts",
+                article_calendar_desc: "The Julian calendar (introduced 45 BCE) is about 11 minutes longer than the solar year, causing accumulated error. The 1582 Gregorian reform skipped 10 days to correct this, but adoption varied by region (Protestant territories in the 18th century, Russia in 1918), requiring careful interpretation of source dates. Ignoring calendar differences can distort seasonal context and event sequence. Conversion tables and astronomical verification are indispensable for translating to modern calendars.",
                 cases_title: "Historical Case Studies",
                 article_pompeii: "Revisiting the Date of Pompeii",
-                article_pompeii_desc: "Evidence separating the August and October theories.",
+                article_pompeii_desc: "Classical texts long placed Pompeii's burial by Vesuvius on August 24, 79 CE. Yet recent evidence—graffiti suggesting autumn dates, autumn crops and winter clothing in the ruins, and coins of Emperor Titus—supports 'October 79 CE.' Source dates may have changed during manuscript copying, making reconciliation with physical evidence necessary. This exemplifies how integrating textual and archaeological evidence is fundamental to historical chronology research.",
                 article_roman: "Sources for the Founding of the Roman Empire",
-                article_roman_desc: "Debating how to define the start of empire.",
-                article_medieval: "Assessing Medieval Chronicles",
-                article_medieval_desc: "How to evaluate chronicles as historical sources.",
-                debates_title: "Chronological Debates and Calendar Issues",
-                article_calendar: "Calendar Changes and Date Shifts",
-                article_calendar_desc: "Julian and Gregorian calendars and adjustment methods.",
-                article_numismatic: "What Coins Reveal About Dates",
-                article_numismatic_desc: "Estimating dates from portraits, inscriptions, and find contexts.",
+                article_roman_desc: "'The start of the Roman Empire' depends on definition. Candidates include: 31 BCE (Battle of Actium consolidating power), 27 BCE (conferral of the Augustus title and political reforms), and 14 CE (Augustus' death establishing succession). Evidence comes from Senate records, changes in imperial titles, coins, and inscriptions, but conclusions vary with which sources are prioritized. This case shows how historical dates are intimately tied to 'how we define events.'",
+                debates_title: "Chronological Debates",
                 article_revisions: "Why Historical Dates Get Revised",
-                article_revisions_desc: "How new evidence and reinterpretation update chronologies."
+                article_revisions_desc: "Historical dates are not fixed. They are updated through new artifact or document discoveries, improved measurement techniques, source reinterpretation, and refined calendar conversions. Examples include redating the Trojan War, adjusting Egyptian dynasty chronology, deciphering the Maya Long Count, updating radiocarbon calibration curves, and recalculating the Santorini eruption date. Revisions aren't corrections of errors but refinements as evidence improves—proof that verification continues. The debate process itself constitutes research output.",
+                back_home: "Back to Home"
             }
         };
 
