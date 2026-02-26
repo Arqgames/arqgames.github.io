@@ -319,6 +319,20 @@ select {
     font-size: 0.7em;
     font-weight: 800;
     box-shadow: 0 2px 0 #d4af37;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    background: #f39c12;
+    box-shadow: 0 4px 8px rgba(213, 175, 55, 0.4), 0 2px 0 #d4af37;
+    transform: translateY(-2px);
+}
+
+.tag:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 0 #d4af37;
 }
 
 .topic-list {
