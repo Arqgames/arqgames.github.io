@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>中世年代記の信頼性評価 | 年代研究ノート</title>
+    <meta name="description" content="中世年代記を史料として扱う際の評価ポイント。" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="/css/top_ui.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="top-btn home-btn" type="button" title="Home" onclick="location.href='/'">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
+
+        <button class="top-btn lang-switch" type="button" title="Articles" onclick="location.href='/articles/';">LIST</button>
+
+        <div class="header-icon-box" aria-hidden="true">
+            <span class="material-icons header-icon">history</span>
+        </div>
+
+        <h1 style="margin:10px 0 0; font-size:1.35em;" data-i18n="title">中世年代記の信頼性評価</h1>
+
+        <div class="article-body">
+            <p data-i18n="intro">
+                中世年代記は貴重な史料ですが、編纂時期や目的によって記述の正確さが変わります。年代を扱う際は、史料批判の手順が欠かせません。
+            </p>
+
+            <h2 data-i18n="section1_title">評価のポイント</h2>
+            <ul>
+                <li data-i18n="point1">記録の成立時期と対象年代の距離。</li>
+                <li data-i18n="point2">写本の伝来過程での改変可能性。</li>
+                <li data-i18n="point3">編者の政治的・宗教的立場。</li>
+            </ul>
+
+            <h2 data-i18n="section2_title">他資料との照合</h2>
+            <p data-i18n="comparison">
+                年代記単独で結論を出すのではなく、同時代文書、碑文、貨幣、考古学的層序などと照合することで信頼性を高めます。
+            </p>
+
+            <div class="note-box" data-i18n="note">
+                年代記は「出来事の順序」を示す手がかりになる一方、具体的な年号には誤差が含まれる場合があります。
+            </div>
+
+            <h2 data-i18n="section3_title">研究上の注意</h2>
+            <p data-i18n="cautions">
+                編纂の背景や文体の特徴を理解し、複数の年代記を比較することで偏りを見極めることが重要です。
+            </p>
+        </div>
+    </div>
+
+    <div class="ad-outside">
+        <div style="text-align:center; font-weight:bold; color:#8b5e3c;">Ad space</div>
+    </div>
+
+    <script>
+        const dict = {
+            ja: {
+                title: "中世年代記の信頼性評価",
+                intro: "中世年代記は貴重な史料ですが、編纂時期や目的によって記述の正確さが変わります。年代を扱う際は、史料批判の手順が欠かせません。",
+                section1_title: "評価のポイント",
+                point1: "記録の成立時期と対象年代の距離。",
+                point2: "写本の伝来過程での改変可能性。",
+                point3: "編者の政治的・宗教的立場。",
+                section2_title: "他資料との照合",
+                comparison: "年代記単独で結論を出すのではなく、同時代文書、碑文、貨幣、考古学的層序などと照合することで信頼性を高めます。",
+                note: "年代記は「出来事の順序」を示す手がかりになる一方、具体的な年号には誤差が含まれる場合があります。",
+                section3_title: "研究上の注意",
+                cautions: "編纂の背景や文体の特徴を理解し、複数の年代記を比較することで偏りを見極めることが重要です。"
+            },
+            en: {
+                title: "Assessing Medieval Chronicles",
+                intro: "Medieval chronicles are valuable sources, but accuracy varies with when and why they were compiled. Source criticism is essential when dealing with dates.",
+                section1_title: "Evaluation Criteria",
+                point1: "The time gap between recording and the events described.",
+                point2: "Possibility of changes during manuscript copying.",
+                point3: "The compiler's political and religious stance.",
+                section2_title: "Cross-checking with Other Sources",
+                comparison: "Rather than relying on chronicles alone, corroborate with contemporary documents, inscriptions, coins, and archaeological stratigraphy.",
+                note: "Chronicles help establish the order of events, but specific dates may contain errors.",
+                section3_title: "Research Cautions",
+                cautions: "Understand the context and style of compiled works, then compare multiple chronicles to identify bias."
+            }
+        };
+
+        function applyLang(lang) {
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.dataset.i18n;
+                if (dict[lang] && dict[lang][key]) el.textContent = dict[lang][key];
+            });
+            document.querySelector(".lang-switch").textContent = (lang === "ja") ? "EN" : "JA";
+            localStorage.setItem("arq_lang", lang);
+        }
+
+        const saved = localStorage.getItem("arq_lang");
+        let lang = saved || (navigator.language && navigator.language.startsWith("ja") ? "ja" : "en");
+        applyLang(lang);
+
+        document.querySelector(".lang-switch").onclick = () => {
+            lang = (lang === "ja") ? "en" : "ja";
+            applyLang(lang);
+        };
+
+        fetch('/parts/footer.html')
+            .then(r => r.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+            });
+    </script>
+
+</body>
+
+</html>

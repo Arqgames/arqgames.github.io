@@ -22,25 +22,77 @@
         <h1 style="margin:10px 0 0; font-size:1.4em;" data-i18n="title">ARQ Games</h1>
 
         <p data-i18n="tagline" style="margin:8px 0 18px; font-size:0.9em; color:#8b5e3c; font-weight:bold;">
-            気分次第で作って公開していく、実験置き場。
+            歴史年代の学習と実験的ゲームの小さなラボ。
         </p>
 
-        <!-- ✅ ゲームカード（BTLQだけを中に入れる） -->
-        <div class="event-card" role="button" tabindex="0"
-            onclick="window.open('https://arqgames.github.io/btlq/', '_blank', 'noopener');"
-            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); this.click();}">
-            <span style="font-size:1.4em;">▶</span>
-            <div>
-                BTLQ
-                <span class="hint-desc" data-i18n="game_desc">
-                    並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。
-                </span>
+        <div class="section-block" aria-labelledby="history-title">
+            <h2 id="history-title" class="section-title" data-i18n="history_title">年代研究ノート</h2>
+            <p class="section-lead" data-i18n="history_lead">
+                年代がどう研究され、どんな議論があるのかを整理する学習コンテンツです。年代の成り立ちと根拠を丁寧にまとめています。
+            </p>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="tag-row">
+                        <span class="tag" data-i18n="history_tag_methods">考古学的手法</span>
+                    </div>
+                    <h3 data-i18n="history_methods_title">年代測定の仕組み</h3>
+                    <p data-i18n="history_methods_desc">実測や試料分析を通じて年代を推定する方法を解説します。</p>
+                    <ul class="topic-list">
+                        <li data-i18n="history_methods_1">放射性炭素年代測定の原理</li>
+                        <li data-i18n="history_methods_2">年輪年代学の仕組み</li>
+                        <li data-i18n="history_methods_3">地層学と相対年代の考え方</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <div class="tag-row">
+                        <span class="tag" data-i18n="history_tag_cases">具体的歴史事例</span>
+                    </div>
+                    <h3 data-i18n="history_cases_title">史料と物証の突き合わせ</h3>
+                    <p data-i18n="history_cases_desc">出来事の年代がどう検証されるか、具体例で紹介します。</p>
+                    <ul class="topic-list">
+                        <li data-i18n="history_cases_1">ポンペイ埋没年の再検討</li>
+                        <li data-i18n="history_cases_2">ローマ帝国成立年の史料的根拠</li>
+                        <li data-i18n="history_cases_3">中世年代記の信頼性評価</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <div class="tag-row">
+                        <span class="tag" data-i18n="history_tag_debates">年代論争と暦問題</span>
+                    </div>
+                    <h3 data-i18n="history_debates_title">暦の変化と再検討</h3>
+                    <p data-i18n="history_debates_desc">暦法の変遷や資料の読み替えが年代に与える影響を扱います。</p>
+                    <ul class="topic-list">
+                        <li data-i18n="history_debates_1">暦法の変遷と日付のずれ</li>
+                        <li data-i18n="history_debates_2">貨幣資料が示す年代情報</li>
+                        <li data-i18n="history_debates_3">歴史年代はなぜ修正されるのか</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section-cta">
+                <button class="btn btn-sub" type="button" onclick="window.open('/articles/', '_blank', 'noopener');" data-i18n="history_btn">解説記事一覧へ</button>
+            </div>
+        </div>
+
+        <!-- ✅ ゲームカード（年代研究ノート下に配置） -->
+        <div class="section-block">
+            <h2 class="section-title" data-i18n="game_title">Bible Timeline Quiz</h2>
+            <div class="event-card" role="button" tabindex="0"
+                onclick="window.open('https://arqgames.github.io/btlq/', '_blank', 'noopener');"
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); this.click();}">
+                <span style="font-size:1.4em;">▶</span>
+                <div>
+                    <span data-i18n="game_name">聖書年表クイズ</span>
+                    <span class="hint-desc" data-i18n="game_desc">
+                        並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。
+                    </span>
+                </div>
             </div>
         </div>
 
         <!-- ✅ カードの外に置く -->
         <div data-i18n="coming" style="margin-top:18px; font-size:0.85em; color:#8b5e3c;">
             新作はここに追加していきます。
+        </div>
         </div>
 
     </div>
@@ -54,15 +106,61 @@
         const dict = {
             ja: {
                 title: "ARQ Games",
-                tagline: "気分次第で作って公開していく、実験置き場。",
+                tagline: "歴史年代の学習と実験的ゲームの小さなラボ。",
+                game_title: "Bible Timeline Quiz",
+                game_name: "聖書年表クイズ",
                 game_desc: "並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。",
-                coming: "新作はここに追加していきます。"
+                coming: "新作はここに追加していきます。",
+                history_title: "年代研究ノート",
+                history_lead: "年代がどう研究され、どんな議論があるのかを整理する学習コンテンツです。年代の成り立ちと根拠を丁寧にまとめています。",
+                history_tag_methods: "考古学的手法",
+                history_methods_title: "年代測定の仕組み",
+                history_methods_desc: "実測や試料分析を通じて年代を推定する方法を解説します。",
+                history_methods_1: "放射性炭素年代測定の原理",
+                history_methods_2: "年輪年代学の仕組み",
+                history_methods_3: "地層学と相対年代の考え方",
+                history_tag_cases: "具体的歴史事例",
+                history_cases_title: "史料と物証の突き合わせ",
+                history_cases_desc: "出来事の年代がどう検証されるか、具体例で紹介します。",
+                history_cases_1: "ポンペイ埋没年の再検討",
+                history_cases_2: "ローマ帝国成立年の史料的根拠",
+                history_cases_3: "中世年代記の信頼性評価",
+                history_tag_debates: "年代論争と暦問題",
+                history_debates_title: "暦の変化と再検討",
+                history_debates_desc: "暦法の変遷や資料の読み替えが年代に与える影響を扱います。",
+                history_debates_1: "暦法の変遷と日付のずれ",
+                history_debates_2: "貨幣資料が示す年代情報",
+                history_debates_3: "歴史年代はなぜ修正されるのか",
+                history_btn: "解説記事一覧へ"
             },
             en: {
                 title: "ARQ Games",
-                tagline: "A small playground where I publish whatever I make.",
+                tagline: "A small lab for history-chronology learning and experimental games.",
+                game_title: "Bible Timeline Quiz",
+                game_name: "Bible Timeline Quiz",
                 game_desc: "An experimental sorting game playable in your browser.",
-                coming: "New games will appear here."
+                coming: "New games will appear here.",
+                history_title: "Chronology Research Notes",
+                history_lead: "Study notes on how historical dates are established and debated, based on rigorous methods and evidence.",
+                history_tag_methods: "Archaeological Methods",
+                history_methods_title: "How Dating Works",
+                history_methods_desc: "Learn how measurements and samples are used to estimate dates.",
+                history_methods_1: "Principles of radiocarbon dating",
+                history_methods_2: "How dendrochronology works",
+                history_methods_3: "Stratigraphy and relative dating",
+                history_tag_cases: "Historical Case Studies",
+                history_cases_title: "Comparing texts and evidence",
+                history_cases_desc: "Examples of how dates are tested with sources and artifacts.",
+                history_cases_1: "Revisiting the date of Pompeii",
+                history_cases_2: "Sources for the founding of the Roman Empire",
+                history_cases_3: "Assessing medieval chronicles",
+                history_tag_debates: "Debates and Calendars",
+                history_debates_title: "Calendar shifts and revisions",
+                history_debates_desc: "How calendar changes and reinterpretation affect timelines.",
+                history_debates_1: "Calendar reforms and date drift",
+                history_debates_2: "What coins reveal about dates",
+                history_debates_3: "Why historical dates get revised",
+                history_btn: "Read the articles"
             }
         };
 

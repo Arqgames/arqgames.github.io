@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>放射性炭素年代測定の原理 | 年代研究ノート</title>
+    <meta name="description" content="放射性炭素年代測定の仕組みと精度を左右する要因を整理。" />
+    <meta name="tags" content="年代測定, 科学的方法, 有機物, 考古学" data-tags="radiocarbon,scientific,organic,archaeology" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="/css/top_ui.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="top-btn home-btn" type="button" title="Home" onclick="location.href='/'">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
+
+        <button class="top-btn lang-switch" type="button" title="Articles" onclick="location.href='/articles/';">LIST</button>
+
+        <div class="header-icon-box" aria-hidden="true">
+            <span class="material-icons header-icon">science</span>
+        </div>
+
+        <h1 style="margin:10px 0 0; font-size:1.35em;" data-i18n="title">放射性炭素年代測定の原理</h1>
+
+        <div class="article-body">
+            <p data-i18n="intro">
+                放射性炭素年代測定は、有機物に含まれる炭素14（C14）の減少を測定して年代範囲を推定する方法です。C14は大気中で生成され、生物の体内に取り込まれますが、死後は補給されず時間とともに減衰します。
+            </p>
+
+            <h2 data-i18n="section1_title">仕組みの要点</h2>
+            <ul>
+                <li data-i18n="point1">宇宙線によって大気中にC14が生成される。</li>
+                <li data-i18n="point2">生物は生存中にC14を一定割合で取り込む。</li>
+                <li data-i18n="point3">死後はC14が半減期に従って減衰する。</li>
+                <li data-i18n="point4">C14と安定炭素の比率から年代を推定する。</li>
+            </ul>
+
+            <h2 data-i18n="section2_title">精度を左右する要因</h2>
+            <ul>
+                <li data-i18n="factor1">汚染や混入（新しい炭素が混ざると若く見える）。</li>
+                <li data-i18n="factor2">地域ごとの大気C14の変動。</li>
+                <li data-i18n="factor3">海洋リザーバー効果などの環境差。</li>
+                <li data-i18n="factor4">校正曲線（キャリブレーション）の更新。</li>
+            </ul>
+
+            <div class="note-box" data-i18n="note">
+                年代は単一の数値ではなく、統計的な範囲として示されます。測定値と校正曲線の両方が必要です。
+            </div>
+
+            <h2 data-i18n="section3_title">よくある誤解</h2>
+            <p data-i18n="clarification">
+                「一回の測定で絶対年代が確定する」と誤解されがちですが、実際は複数試料の比較と他の方法との整合が重要です。
+            </p>
+
+            <div class="back-to-articles" style="margin-top:20px; text-align:center; padding-top:20px; border-top:1px solid #e0d0bb;">
+                <button type="button" class="btn btn-sub" onclick="location.href='/articles/';" data-i18n="back_articles" style="padding:10px 20px; font-size:0.95em;">
+                    記事一覧に戻る
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ad-outside">
+        <div style="text-align:center; font-weight:bold; color:#8b5e3c;">Ad space</div>
+    </div>
+
+    <script>
+        const dict = {
+            ja: {
+                title: "放射性炭素年代測定の原理",
+                intro: "放射性炭素年代測定は、有機物に含まれる炭素14（C14）の減少を測定して年代範囲を推定する方法です。C14は大気中で生成され、生物の体内に取り込まれますが、死後は補給されず時間とともに減衰します。",
+                section1_title: "仕組みの要点",
+                point1: "宇宙線によって大気中にC14が生成される。",
+                point2: "生物は生存中にC14を一定割合で取り込む。",
+                point3: "死後はC14が半減期に従って減衰する。",
+                point4: "C14と安定炭素の比率から年代を推定する。",
+                section2_title: "精度を左右する要因",
+                factor1: "汚染や混入（新しい炭素が混ざると若く見える）。",
+                factor2: "地域ごとの大気C14の変動。",
+                factor3: "海洋リザーバー効果などの環境差。",
+                factor4: "校正曲線（キャリブレーション）の更新。",
+                note: "年代は単一の数値ではなく、統計的な範囲として示されます。測定値と校正曲線の両方が必要です。",
+                section3_title: "よくある誤解",
+                clarification: "「一回の測定で絶対年代が確定する」と誤解されがちですが、実際は複数試料の比較と他の方法との整合が重要です。",
+                back_articles: "記事一覧に戻る"
+            },
+            en: {
+                title: "Principles of Radiocarbon Dating",
+                intro: "Radiocarbon dating estimates date ranges by measuring the decay of carbon-14 (C14) in organic matter. C14 is generated in the atmosphere and taken up by living organisms, but after death it is not replenished and decays over time.",
+                section1_title: "Key Principles",
+                point1: "C14 is generated in the atmosphere by cosmic rays.",
+                point2: "Living organisms take up C14 at a constant rate.",
+                point3: "After death, C14 decays following a known half-life.",
+                point4: "Dates are estimated from the ratio of C14 to stable carbon.",
+                section2_title: "Factors Affecting Accuracy",
+                factor1: "Contamination or mixing (recent carbon makes samples appear younger).",
+                factor2: "Regional variations in atmospheric C14.",
+                factor3: "Environmental differences like the marine reservoir effect.",
+                factor4: "Updates to calibration curves.",
+                note: "Dates are expressed as statistical ranges, not single values. Both measurements and calibration curves are needed.",
+                section3_title: "Common Misconceptions",
+                clarification: "While some think a single measurement gives an exact date, in reality multiple samples and correlation with other methods are essential.",
+                back_articles: "Back to Articles"
+            }
+        };
+
+        function applyLang(lang) {
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.dataset.i18n;
+                if (dict[lang] && dict[lang][key]) el.textContent = dict[lang][key];
+            });
+            document.querySelector(".lang-switch").textContent = (lang === "ja") ? "EN" : "JA";
+            localStorage.setItem("arq_lang", lang);
+        }
+
+        const saved = localStorage.getItem("arq_lang");
+        let lang = saved || (navigator.language && navigator.language.startsWith("ja") ? "ja" : "en");
+        applyLang(lang);
+
+        document.querySelector(".lang-switch").onclick = () => {
+            lang = (lang === "ja") ? "en" : "ja";
+            applyLang(lang);
+        };
+
+        fetch('/parts/footer.html')
+            .then(r => r.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+            });
+    </script>
+
+</body>
+
+</html>
