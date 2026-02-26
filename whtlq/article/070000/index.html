@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>ティベリウス第15年 - ヨハネ宣教開始（西暦28/29年）</title>
+    <meta name="description" content="ティベリウス第15年という治世年表記は、ヨハネ宣教開始をローマ史の枠に結び付ける。" />
+
+    <!-- イベントID参照用 -->
+    <meta name="article-id" content="070000">
+    <meta name="article-tags" content="JohnBaptist,Ministry,MajorAnchor">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="ティベリウス第15年 - ヨハネ宣教開始（西暦28/29年）" />
+    <meta property="og:description" content="ティベリウス第15年という治世年表記は、ヨハネ宣教開始をローマ史の枠に結び付ける。" />
+
+    <meta name="theme-color" content="#f4e4bc" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
+
+        <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
+
+        <div id="article-content" class="article-wrapper">
+            <div class="header-icon-box"><span class="material-icons header-icon">article</span></div>
+
+            <h1 id="article-title" data-ja="ティベリウス第15年 - ヨハネ宣教開始（西暦28/29年）" data-en="The Fifteenth Year of Tiberius Caesar - The Beginning of John’s Ministry (AD 28/29)">ティベリウス第15年 - ヨハネ宣教開始（西暦28/29年）</h1>
+
+            <article class="article-body">
+                <h2 data-ja="皇帝治世年による年代表示" data-en="Imperial Dating Formula">皇帝治世年による年代表示</h2>
+                <p data-ja="ルカによる福音書3章は、バプテスマのヨハネの宣教開始をティベリウス皇帝第15年と記しています。これは新約聖書の中でも最も明確な年代表示の一つであり、物語をローマ帝国史の枠組みに直接接続しています。" data-en="The Gospel of Luke dates the beginning of John the Baptist’s ministry to the fifteenth year of Tiberius Caesar. This is one of the most explicit chronological synchronisms in the New Testament, connecting the narrative directly to Roman imperial history.">『ルカによる福音書』3章は、バプテスマのヨハネの宣教開始をティベリウス皇帝第15年と記しています。これは新約聖書の中でも最も明確な年代表示の一つであり、物語をローマ帝国史の枠組みに直接接続しています。</p>
+
+                <h2 data-ja="歴史的枠組み" data-en="Historical Framework">歴史的枠組み</h2>
+                <p data-ja="ティベリウスは西暦14年に単独統治を開始しました。そこから数えて第15年は西暦28年または29年にあたります。即位年の数え方による差異はありますが、おおよその年代は確定可能です。" data-en="Tiberius began his sole reign in AD 14 following the death of Augustus. Counting forward, the fifteenth year falls in AD 28/29, depending on inclusive or accession-year reckoning. This allows the ministry of John, and consequently the public activity of Jesus, to be situated within a securely dated imperial framework.">ティベリウスは西暦14年に単独統治を開始しました。そこから数えて第15年は西暦28年または29年にあたります。即位年の数え方による差異はありますが、おおよその年代は確定可能です。</p>
+
+                <h2 data-ja="同時代の統治者" data-en="Multiple Political References">同時代の統治者</h2>
+                <p data-ja="同箇所ではポンテオ・ピラトやヘロデ・アンティパスなどの名も挙げられています。これにより、宣教開始時期が複数の政治的基準によって位置づけられています。" data-en="Luke’s account also mentions regional rulers such as Pontius Pilate and Herod Antipas. These synchronisms strengthen the chronological setting by aligning the narrative with known provincial administrations.">同箇所ではポンテオ・ピラトやヘロデ・アンティパスなどの名も挙げられています。これにより、宣教開始時期が複数の政治的基準によって位置づけられています。</p>
+
+                <h2 data-ja="年代計算上の意義" data-en="Chronological Significance">年代計算上の意義</h2>
+                <p data-ja="特定のローマ皇帝の治世年に基づくため、この記述は初期キリスト教史の年代を再構成する上で重要な基準になる出来事です。" data-en="Because the date is anchored to a well-documented emperor, it serves as a major chronological reference point for reconstructing the timeline of early Christian history.">特定のローマ皇帝の治世年に基づくため、この記述は初期キリスト教史の年代を再構成する上で重要な基準になる出来事です。</p>
+            </article>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'ja';
+
+        function detectLanguage() {
+            const savedLang =
+                localStorage.getItem('arq_lang') ||
+                localStorage.getItem('lang') ||
+                localStorage.getItem('language') ||
+                localStorage.getItem('btlq_lang');
+
+            if (savedLang) { currentLang = savedLang; return; }
+
+            const browserLang = navigator.language || navigator.userLanguage || '';
+            currentLang = browserLang.toLowerCase().startsWith('ja') ? 'ja' : 'en';
+        }
+
+        function toggleLang() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            document.documentElement.lang = currentLang;
+            localStorage.setItem('lang', currentLang);
+            document.getElementById('langBtn').innerText =
+                currentLang === 'ja' ? 'EN' : 'JA';
+            updateTexts();
+        }
+
+        function updateTexts() {
+            document.querySelectorAll('[data-ja]').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + currentLang);
+            });
+        }
+
+        function goBack() {
+            window.close();
+            // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
+            setTimeout(() => {
+                location.href = '/btlq/';
+            }, 100);
+        }
+
+        window.onload = () => {
+            detectLanguage();
+            document.documentElement.lang = currentLang;
+
+            const langBtn = document.getElementById('langBtn');
+            if (langBtn) {
+                langBtn.innerText = currentLang === 'ja' ? 'EN' : 'JA';
+                langBtn.addEventListener('click', toggleLang);
+            }
+
+            const homeBtn = document.getElementById('homeBtn');
+            if (homeBtn) {
+                homeBtn.addEventListener('click', () => {
+                    location.href = '/btlq/';
+                });
+            }
+
+            updateTexts();
+        };
+
+        fetch('../../../../parts/footer.html')
+            .then(r => r.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+            });
+
+    </script>
+
+</body>
+
+</html>

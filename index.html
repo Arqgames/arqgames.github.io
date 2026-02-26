@@ -29,73 +29,45 @@
         </p>
 
         <div class="section-block" aria-labelledby="history-title">
-            <h2 id="history-title" class="section-title" data-i18n="history_title">なぜ年代理解が重要なのか</h2>
+            <h2 id="history-title" class="section-title" data-i18n="history_title">年代研究ノート</h2>
             <p class="section-lead" data-i18n="history_lead">
-                歴史の年代は、放射性炭素年代測定、年輪年代学、地層学的分析、文献史料研究など、複数の学術的方法で検証されています。本サイトでは、それらの方法と実際の歴史事例への適用を解説しています。
+                年代がどう研究され、どんな議論があるのかを整理する学習コンテンツです。年代の成り立ちと根拠を丁寧にまとめています。
             </p>
-        </div>
-
-        <!-- ✅ カテゴリセクション -->
-        <div class="section-block">
-            <h2 class="section-title" data-i18n="category_title">記事カテゴリ</h2>
             <div class="info-grid">
-                <!-- 年代測定の方法 -->
                 <div class="info-card">
-                    <div class="tag-row">
-                        <span class="tag material-icons" style="font-size:0.9em; margin-right:4px;">science</span>
-                        <span data-i18n="methods_tag">年代測定</span>
-                    </div>
-                    <h3 style="cursor:pointer; text-decoration:none; border-bottom:2px solid transparent; transition:border-color 0.2s;" onmouseover="this.style.borderBottom='2px solid #8b5e3c';" onmouseout="this.style.borderBottom='2px solid transparent';" onclick="window.open('/articles/dating-methods/', '_blank', 'noopener');" data-i18n="methods_title">年代測定の方法</h3>
-                    <p data-i18n="methods_desc">放射性炭素測定、年輪年代学、地層学など、年代を推定する科学的手法を解説します。</p>
+                    <button type="button" onclick="window.open('/articles/dating-methods/', '_blank', 'noopener');" style="width:auto; padding:10px 20px; font-size:0.95em; margin:10px 0; display:block; background:#fbc531; color:#5d3a1a; border:none; border-radius:12px; box-shadow:0 4px 0 #d4af37; cursor:pointer; font-weight:800; transition:all 0.2s ease;" onmouseover="this.style.background='#f39c12'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 8px rgba(213,175,55,0.4), 0 4px 0 #d4af37';" onmouseout="this.style.background='#fbc531'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 0 #d4af37';" onmousedown="this.style.transform='translateY(2px)'; this.style.boxShadow='0 2px 0 #d4af37';" onmouseup="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 8px rgba(213,175,55,0.4), 0 4px 0 #d4af37';" data-i18n="methods_title">年代測定の方法</button>
+                    <p data-i18n="history_methods_desc">実測や試料分析を通じて年代を推定する方法を解説します。</p>
                     <ul class="topic-list">
-                        <li data-i18n="methods_article_1">放射性炭素年代測定の原理</li>
-                        <li data-i18n="methods_article_2">年輪年代学の仕組み</li>
-                        <li data-i18n="methods_article_3">地層学と相対年代の考え方</li>
+                        <li style="cursor:pointer; color:#8b5e3c;" onclick="window.open('/articles/dating-methods/radiocarbon/', '_blank', 'noopener');" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';" data-i18n="history_methods_1">放射性炭素年代測定の原理</li>
+                        <li style="cursor:pointer; color:#8b5e3c;" onclick="window.open('/articles/dating-methods/dendrochronology/', '_blank', 'noopener');" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';" data-i18n="history_methods_2">年輪年代学の仕組み</li>
+                        <li style="cursor:pointer; color:#8b5e3c;" onclick="window.open('/articles/dating-methods/stratigraphy/', '_blank', 'noopener');" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';" data-i18n="history_methods_3">地層学と相対年代の考え方</li>
                     </ul>
                 </div>
-
-                <!-- 史料の信頼性 -->
                 <div class="info-card">
-                    <div class="tag-row">
-                        <span class="tag material-icons" style="font-size:0.9em; margin-right:4px;">flare</span>
-                        <span data-i18n="reliability_tag">信頼性評価</span>
-                    </div>
-                    <h3 style="cursor:pointer; text-decoration:none; border-bottom:2px solid transparent; transition:border-color 0.2s;" onmouseover="this.style.borderBottom='2px solid #8b5e3c';" onmouseout="this.style.borderBottom='2px solid transparent';" onclick="window.open('/articles/source-reliability/', '_blank', 'noopener');" data-i18n="reliability_title">史料の信頼性</h3>
-                    <p data-i18n="reliability_desc">年代記、貨幣資料、碑文など、各種史料をどう評価し、年代決定に反映させるかを学びます。</p>
+                    <button type="button" onclick="window.open('/articles/source-reliability/', '_blank', 'noopener');" style="width:auto; padding:10px 20px; font-size:0.95em; margin:10px 0; display:block; background:#fbc531; color:#5d3a1a; border:none; border-radius:12px; box-shadow:0 4px 0 #d4af37; cursor:pointer; font-weight:800; transition:all 0.2s ease;" onmouseover="this.style.background='#f39c12'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 8px rgba(213,175,55,0.4), 0 4px 0 #d4af37';" onmouseout="this.style.background='#fbc531'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 0 #d4af37';" onmousedown="this.style.transform='translateY(2px)'; this.style.boxShadow='0 2px 0 #d4af37';" onmouseup="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 8px rgba(213,175,55,0.4), 0 4px 0 #d4af37';" data-i18n="reliability_title">史料の信頼性</button>
+                    <p data-i18n="history_reliability_desc">年代記、貨幣資料、碑文など、各種史料をどう評価するかを学びます。</p>
                     <ul class="topic-list">
-                        <li data-i18n="reliability_article_1">中世年代記の信頼性評価</li>
-                        <li data-i18n="reliability_article_2">貨幣資料が示す年代情報</li>
-                        <li data-i18n="reliability_article_3">暦法の変遷と日付のずれ</li>
+                        <li style="cursor:pointer; color:#8b5e3c;" onclick="window.open('/articles/source-reliability/medieval-chronicles/', '_blank', 'noopener');" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';" data-i18n="history_reliability_1">中世年代記の信頼性評価</li>
+                        <li style="cursor:pointer; color:#8b5e3c;" onclick="window.open('/articles/source-reliability/numismatic-dating/', '_blank', 'noopener');" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';" data-i18n="history_reliability_2">貨幣資料が示す年代情報</li>
+                        <li style="cursor:pointer; color:#8b5e3c;" onclick="window.open('/articles/source-reliability/calendar-shifts/', '_blank', 'noopener');" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';" data-i18n="history_reliability_3">暦法の変遷と日付のずれ</li>
                     </ul>
                 </div>
-
-                <!-- 具体的歴史事例 -->
                 <div class="info-card">
-                    <div class="tag-row">
-                        <span class="tag material-icons" style="font-size:0.9em; margin-right:4px;">diamond</span>
-                        <span data-i18n="cases_tag">事例研究</span>
-                    </div>
-                    <h3 style="cursor:pointer; text-decoration:none; border-bottom:2px solid transparent; transition:border-color 0.2s;" onmouseover="this.style.borderBottom='2px solid #8b5e3c';" onmouseout="this.style.borderBottom='2px solid transparent';" onclick="window.open('/articles/historical-cases/', '_blank', 'noopener');" data-i18n="cases_title">具体的歴史事例</h3>
-                    <p data-i18n="cases_desc">ポンペイ、ローマ帝国、エジプトなど、実際の歴史上の出来事がどう年代確定されたかを追跡します。</p>
+                    <button type="button" onclick="window.open('/articles/historical-cases/', '_blank', 'noopener');" style="width:auto; padding:10px 20px; font-size:0.95em; margin:10px 0; display:block; background:#fbc531; color:#5d3a1a; border:none; border-radius:12px; box-shadow:0 4px 0 #d4af37; cursor:pointer; font-weight:800; transition:all 0.2s ease;" onmouseover="this.style.background='#f39c12'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 8px rgba(213,175,55,0.4), 0 4px 0 #d4af37';" onmouseout="this.style.background='#fbc531'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 0 #d4af37';" onmousedown="this.style.transform='translateY(2px)'; this.style.boxShadow='0 2px 0 #d4af37';" onmouseup="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 8px rgba(213,175,55,0.4), 0 4px 0 #d4af37';" data-i18n="cases_title">具体的歴史事例</button>
+                    <p data-i18n="history_cases_desc">出来事の年代がどう検証されるか、具体例で紹介します。</p>
                     <ul class="topic-list">
-                        <li data-i18n="cases_article_1">ポンペイ埋没年の再検討</li>
-                        <li data-i18n="cases_article_2">ローマ帝国成立年の史料的根拠</li>
-                        <li data-i18n="cases_article_3">古代オリンピアの年代特定</li>
+                        <li style="cursor:pointer; color:#8b5e3c;" onclick="window.open('/articles/historical-cases/pompeii-date/', '_blank', 'noopener');" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';" data-i18n="history_cases_1">ポンペイ埋没年の再検討</li>
+                        <li style="cursor:pointer; color:#8b5e3c;" onclick="window.open('/articles/historical-cases/roman-empire-foundation/', '_blank', 'noopener');" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';" data-i18n="history_cases_2">ローマ帝国成立年の史料的根拠</li>
+                        <li style="cursor:pointer; color:#8b5e3c;" onclick="window.open('/articles/historical-cases/ancient-olympia/', '_blank', 'noopener');" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';" data-i18n="history_cases_3_alt">古代オリンピアの年代特定</li>
                     </ul>
                 </div>
-
-                <!-- 年代論争 -->
                 <div class="info-card">
-                    <div class="tag-row">
-                        <span class="tag material-icons" style="font-size:0.9em; margin-right:4px;">explore</span>
-                        <span data-i18n="debates_tag">年代論争</span>
-                    </div>
-                    <h3 style="cursor:pointer; text-decoration:none; border-bottom:2px solid transparent; transition:border-color 0.2s;" onmouseover="this.style.borderBottom='2px solid #8b5e3c';" onmouseout="this.style.borderBottom='2px solid transparent';" onclick="window.open('/articles/chronological-debates/', '_blank', 'noopener');" data-i18n="debates_title">年代論争</h3>
-                    <p data-i18n="debates_desc">歴史の年代はなぜ修正されるのか、どんな見方の違いがあるのかを、論争例から学びます。</p>
+                    <button type="button" onclick="window.open('/articles/chronological-debates/', '_blank', 'noopener');" style="width:auto; padding:10px 20px; font-size:0.95em; margin:10px 0; display:block; background:#fbc531; color:#5d3a1a; border:none; border-radius:12px; box-shadow:0 4px 0 #d4af37; cursor:pointer; font-weight:800; transition:all 0.2s ease;" onmouseover="this.style.background='#f39c12'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 8px rgba(213,175,55,0.4), 0 4px 0 #d4af37';" onmouseout="this.style.background='#fbc531'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 0 #d4af37';" onmousedown="this.style.transform='translateY(2px)'; this.style.boxShadow='0 2px 0 #d4af37';" onmouseup="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 8px rgba(213,175,55,0.4), 0 4px 0 #d4af37';" data-i18n="debates_title">年代論争</button>
+                    <p data-i18n="history_debates_desc">暦法の変遷や資料の読み替えが年代に与える影響を扱います。</p>
                     <ul class="topic-list">
-                        <li data-i18n="debates_article_1">歴史年代はなぜ修正されるのか</li>
-                        <li data-i18n="debates_article_2">縄文時代の年代測定</li>
-                        <li data-i18n="debates_article_3">シュリーマン年代論争</li>
+                        <li style="cursor:pointer; color:#8b5e3c;" onclick="window.open('/articles/chronological-debates/chronology-revisions/', '_blank', 'noopener');" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';" data-i18n="history_debates_3">歴史年代はなぜ修正されるのか</li>
+                        <li style="cursor:pointer; color:#8b5e3c;" onclick="window.open('/articles/chronological-debates/jomon-chronology/', '_blank', 'noopener');" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';" data-i18n="history_debates_4">縄文時代の年代測定</li>
+                        <li style="cursor:pointer; color:#8b5e3c;" onclick="window.open('/articles/chronological-debates/schliemann-controversy/', '_blank', 'noopener');" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';" data-i18n="history_debates_5">シュリーマン年代論争</li>
                     </ul>
                 </div>
             </div>
@@ -112,6 +84,18 @@
                     <span data-i18n="game_name">聖書年表クイズ</span>
                     <span class="hint-desc" data-i18n="game_desc">
                         並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。
+                    </span>
+                </div>
+            </div>
+            <div class="event-card" role="button" tabindex="0"
+                onclick="window.open('https://arqgames.github.io/whtlq/', '_blank', 'noopener');"
+                onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); this.click();}"
+                style="margin-top:12px;">
+                <span style="font-size:1.4em;">▶</span>
+                <div>
+                    <span data-i18n="game_name_whtlq">世界史年表クイズ</span>
+                    <span class="hint-desc" data-i18n="game_desc_whtlq">
+                        世界史の重要な出来事を時系列で並べるゲーム。プロトタイプ版です。
                     </span>
                 </div>
             </div>
@@ -139,9 +123,11 @@
                 game_title: "Bible Timeline Quiz",
                 game_name: "聖書年表クイズ",
                 game_desc: "並べ替え系の実験ゲーム。ブラウザでそのまま遊べます。",
+                game_name_whtlq: "世界史年表クイズ",
+                game_desc_whtlq: "世界史の重要な出来事を時系列で並べるゲーム。プロトタイプ版です。",
                 coming: "新作はここに追加していきます。",
-                history_title: "なぜ年代理解が重要なのか",
-                history_lead: "歴史の年代は、放射性炭素年代測定、年輪年代学、地層学的分析、文献史料研究など、複数の学術的方法で検証されています。本サイトでは、それらの方法と実際の歴史事例への適用を解説しています。",
+                history_title: "年代研究ノート",
+                history_lead: "年代がどう研究され、どんな議論があるのかを整理する学習コンテンツです。年代の成り立ちと根拠を丁寧にまとめています。",
                 history_tag_methods: "考古学的手法",
                 history_methods_title: "年代測定の仕組み",
                 history_methods_desc: "実測や試料分析を通じて年代を推定する方法を解説します。",
@@ -226,9 +212,11 @@
                 game_title: "Bible Timeline Quiz",
                 game_name: "Bible Timeline Quiz",
                 game_desc: "An experimental sorting game playable in your browser.",
+                game_name_whtlq: "World History Timeline Quiz",
+                game_desc_whtlq: "Arrange world history events in chronological order. Prototype version.",
                 coming: "New games will appear here.",
-                history_title: "Why Understanding Chronology Matters",
-                history_lead: "Historical chronology is verified through multiple scholarly methods including radiocarbon dating, dendrochronology, stratigraphic analysis, and documentary research. This site explains these methods and their application to historical events.",
+                history_title: "Chronology Research Notes",
+                history_lead: "Study notes on how historical dates are established and debated, based on rigorous methods and evidence.",
                 history_tag_methods: "Archaeological Methods",
                 history_methods_title: "How Dating Works",
                 history_methods_desc: "Learn how measurements and samples are used to estimate dates.",

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>アルタクセルクセス第20年 - ネヘミヤの派遣（前445/444年）</title>
+    <meta name="description" content="アルタクセルクセス第20年に与えられたネヘミヤへの城壁再建許可は、帰還期の貴重な年代基準である。" />
+
+    <!-- イベントID参照用 -->
+    <meta name="article-id" content="064500">
+    <meta name="article-tags" content="Nehemiah,Jerusalem,Walls">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="アルタクセルクセス第20年 - ネヘミヤの派遣（前445/444年）" />
+    <meta property="og:description" content="アルタクセルクセス第20年に与えられたネヘミヤへの城壁再建許可は、帰還期の貴重な年代基準である。" />
+
+    <meta name="theme-color" content="#f4e4bc" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
+
+        <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
+
+        <div id="article-content" class="article-wrapper">
+            <div class="header-icon-box"><span class="material-icons header-icon">article</span></div>
+
+            <h1 id="article-title" data-ja="アルタクセルクセス第20年 - ネヘミヤの派遣（前445/444年）" data-en="20th Year of Artaxerxes - Nehemiah's Mission (445/444 BC)">アルタクセルクセス第20年 - ネヘミヤの派遣（前445/444年）</h1>
+
+            <article class="article-body">
+                <h2 data-ja="王の許可による年代表示" data-en="Chronology According to the King's Permission">王の許可による年代表示</h2>
+                <p data-ja="『ネヘミヤ記』2章には、城壁再建の許可がアルタクセルクセス第20年に与えられたと記しています。月も明示されており、行政的文脈の中で年代が示されています。" data-en="2 Nehemiah 2 records that permission to rebuild the walls was granted in the 20th year of Artaxerxes, with the month explicitly mentioned. The date is given in an administrative context.">『ネヘミヤ記』2章には、城壁再建の許可がアルタクセルクセス第20年に与えられたと記しています。月も明示されており、行政的文脈の中で年代が示されています。</p>
+
+                <h2 data-ja="歴史的同定" data-en="Historical Identification">歴史的同定</h2>
+                <p data-ja="アルタクセルクセス一世の即位は前465年です。その第20年は前445年または444年に相当します。ペルシャ王朝の治世順は外部資料により確定しています。" data-en="Artaxerxes I ascended the throne in 465 BC. His 20th year corresponds to 445 or 444 BC. The sequence of reigns in the Persian Empire is confirmed by external sources.">アルタクセルクセス一世の即位は前465年です。その第20年は前445年または444年に相当します。ペルシャ王朝の治世順は外部資料により確定しています。</p>
+
+                <h2 data-ja="解釈上の論点" data-en="Interpretive Issues">解釈上の論点</h2>
+                <p data-ja="この年代は捕囚後史の再建過程を理解する上で重要であり、預言文学との関連を論じる研究もあります。エズラ・ネヘミヤ書注解が代表的資料です。" data-en="This date is important for understanding the post-exilic rebuilding process, and some studies discuss its relation to prophetic literature. Commentaries on Ezra and Nehemiah are representative sources.">この年代は捕囚後史の再建過程を理解する上で重要であり、預言文学との関連を論じる研究もあります。エズラ・ネヘミヤ書注解が代表的資料です。</p>
+
+                <h2 data-ja="年代計算上の意義" data-en="Significance for Chronological Calculations">年代計算上の意義</h2>
+                <p data-ja="特定のペルシャ王に基づく年代であるため、回復期史の中で安定した基準となります。" data-en="Since the date is based on a specific Persian king, it provides a stable chronological reference within the restoration period.">特定のペルシャ王に基づく年代であるため、回復期史の中で安定した基準となります。</p>
+            </article>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'ja';
+
+        function detectLanguage() {
+            const savedLang =
+                localStorage.getItem('arq_lang') ||
+                localStorage.getItem('lang') ||
+                localStorage.getItem('language') ||
+                localStorage.getItem('btlq_lang');
+
+            if (savedLang) { currentLang = savedLang; return; }
+
+            const browserLang = navigator.language || navigator.userLanguage || '';
+            currentLang = browserLang.toLowerCase().startsWith('ja') ? 'ja' : 'en';
+        }
+
+        function toggleLang() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            document.documentElement.lang = currentLang;
+            localStorage.setItem('lang', currentLang);
+            document.getElementById('langBtn').innerText =
+                currentLang === 'ja' ? 'EN' : 'JA';
+            updateTexts();
+        }
+
+        function updateTexts() {
+            document.querySelectorAll('[data-ja]').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + currentLang);
+            });
+        }
+
+        function goBack() {
+            window.close();
+            // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
+            setTimeout(() => {
+                location.href = '/btlq/';
+            }, 100);
+        }
+
+        window.onload = () => {
+            detectLanguage();
+            document.documentElement.lang = currentLang;
+
+            const langBtn = document.getElementById('langBtn');
+            if (langBtn) {
+                langBtn.innerText = currentLang === 'ja' ? 'EN' : 'JA';
+                langBtn.addEventListener('click', toggleLang);
+            }
+
+            const homeBtn = document.getElementById('homeBtn');
+            if (homeBtn) {
+                homeBtn.addEventListener('click', () => {
+                    location.href = '/btlq/';
+                });
+            }
+
+            updateTexts();
+        };
+
+        fetch('../../../../parts/footer.html')
+            .then(r => r.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+            });
+
+    </script>
+
+</body>
+
+</html>

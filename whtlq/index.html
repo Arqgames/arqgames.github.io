@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <!-- 画面表示（スマホ対応） -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- 基本SEO -->
+    <title>World History Timeline Quiz</title>
+    <meta name="description"
+        content="World History Timeline Quiz is a free browser game where you arrange world history events in chronological order. Supports Japanese and English." />
+
+    <!-- 検索結果の表示強化（Open Graph / Twitter） -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="World History Timeline Quiz" />
+    <meta property="og:description"
+        content="A free browser game where you arrange world history events in chronological order. Supports Japanese and English." />
+    <!-- TODO: 公開URLが確定したらここを書き換え（GitHub PagesのURL） -->
+    <!-- 例: https://whtlq.github.io/ -->
+    <meta property="og:url" content="https://arqgames.github.io/whtlq/" />
+
+    <!-- TODO: サムネ画像を置く場合（/og.png など） -->
+    <!-- <meta property="og:image" content="https://arqgames.github.io/.png" /> -->
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="World History Timeline Quiz" />
+    <meta name="twitter:description"
+        content="A free browser game where you arrange world history events in chronological order. Supports Japanese and English." />
+
+    <!-- 表示の雰囲気（任意） -->
+    <meta name="theme-color" content="#f4e4bc" />
+
+    <!-- アイコン（任意：後で追加してOK） -->
+    <!-- <link rel="icon" href="/favicon.ico" /> -->
+    <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> -->
+
+    <!-- フォント / ライブラリ（あなたの現状を維持） -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Google adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8810957223833437"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="CSS/whtlq_ui.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
+
+        <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
+
+        <div id="screen-setup">
+            <div class="header-icon-box">
+                <span class="material-icons header-icon">public</span>
+            </div>
+            <h1 data-ja="世界史年表クイズ" data-en="World History Timeline Quiz">世界史年表クイズ</h1>
+
+            <!-- レベル選択 -->
+            <div style="margin: 20px 0;">
+                <div style="font-size:1.3em; font-weight:bold; margin-bottom: 10px;" data-ja="レベル" data-en="Level">レベル</div>
+                <div class="level-btn-container">
+                    <button class="level-btn active" data-level="1" onclick="selectLevel(1)">1</button>
+                    <button class="level-btn" data-level="2" onclick="selectLevel(2)">2</button>
+                    <button class="level-btn" data-level="3" onclick="selectLevel(3)">3</button>
+                    <button class="level-btn" data-level="4" onclick="selectLevel(4)">4</button>
+                    <button class="level-btn" data-level="5" onclick="selectLevel(5)">5</button>
+                </div>
+            </div>
+
+            <div class="quick-btn-container">
+                <button class="q-btn full" onclick="quickSet(-3000, 2025, this)" data-ja="全期間"
+                    data-en="All Periods">全期間</button>
+
+                <button class="q-btn" onclick="quickSet(-3000, -500, this)" data-ja="古代文明"
+                    data-en="Ancient Civilizations">古代文明</button>
+
+                <button class="q-btn" onclick="quickSet(-500, 1500, this)" data-ja="古代・中世"
+                    data-en="Classical & Medieval">古代・中世</button>
+
+                <button class="q-btn" onclick="quickSet(1500, 1900, this)" data-ja="近世"
+                    data-en="Early Modern">近世</button>
+
+                <button class="q-btn" onclick="quickSet(1900, 2025, this)" data-ja="現代"
+                    data-en="Modern Era">現代</button>
+            </div>
+
+            <div class="picker-group">
+                <div class="picker-column"><span style="font-size:0.75em; font-weight:bold;" data-ja="開始"
+                        data-en="Start">開始</span><select id="select-start"></select></div>
+                <div class="picker-column"><span style="font-size:0.75em; font-weight:bold;" data-ja="終了"
+                        data-en="End">終了</span><select id="select-end"></select></div>
+            </div>
+
+            <select id="count-select" style="width:100%; margin-top:15px;">
+                <option value="3" data-ja="3問 【初級】" data-en="3 Events [Easy]">3問 【初級】</option>
+                <option value="5" selected data-ja="5問 【ノーマル】" data-en="5 Events [Normal]">5問 【ノーマル】</option>
+                <option value="8" data-ja="8問 【ハード】" data-en="8 Events [Hard]">8問 【ハード】</option>
+                <option value="12" data-ja="12問 【レジェンド】" data-en="12 Events [Legend]">12問 【レジェンド】</option>
+                <option value="20" data-ja="20問 【ゴッド】" data-en="20 Events [God Mode]">20問 【ゴッド】</option>
+            </select>
+            <select id="time-attack-select" style="width:100%; margin-top:10px;">
+                <option value="off" data-ja="タイムアタック：OFF" data-en="Time Attack: OFF">タイムアタック：OFF</option>
+                <option value="on" data-ja="タイムアタック：ON" data-en="Time Attack: ON">タイムアタック：ON</option>
+            </select>
+            <div id="error-msg"></div>
+            <button class="btn" onclick="startGame()" data-ja="冒険を開始" data-en="Start Adventure">冒険を開始</button>
+            <button type="button" class="btn btn-sub" onclick="openAbout()" style="padding:12px; font-size:0.95em; margin-top:8px;" data-ja="このゲームについて" data-en="About This Game">このゲームについて</button>
+        </div>
+
+        <div id="screen-game" class="hidden">
+            <div id="timer-display" style="font-size: 1.5em; font-weight: bold; color: #d63031; margin-bottom: 10px;">
+                ⏱ <span id="time-left">00</span>s
+            </div>
+            <div id="event-list"></div>
+            <div id="hint-area" class="hidden"></div>
+            <button class="btn" onclick="checkOrder()" data-ja="答え合わせ" data-en="Check Answer">答え合わせ</button>
+        </div>
+
+        <div id="screen-result" class="hidden">
+            <div class="header-icon-box"><span class="material-icons header-icon" id="result-icon">star</span></div>
+            <h2 id="result-title"></h2>
+            <div id="fail-options" class="hidden">
+                <button class="btn" onclick="showHint()" data-ja="ヒント" data-en="Hint">ヒント</button>
+                <button class="btn btn-sub" onclick="retryThisTask()" data-ja="再挑戦" data-en="Retry">再挑戦</button>
+            </div>
+            <div id="success-options" class="hidden">
+                <button class="btn" onclick="location.reload()" data-ja="次へ" data-en="Next">次へ</button>
+            </div>
+            <div id="result-events" class="result-events"></div>
+        </div>
+    </div>
+
+    <div class="ad-outside">
+        <div style="text-align:center; font-weight:bold; color:#8b5e3c;">Ad space</div>
+    </div>
+
+    <script>
+        let currentLang = 'ja';
+        let EVENTS = []; // ★追加：全関数が参照できる共通EVENTS
+        window.EVENTS = EVENTS; // 任意（どっち参照でもOKにする）
+        let currentTask = [];
+        let timerInterval;
+        let timeLeft;
+        /* 結果画面の再描画用：直前の勝敗を覚える */
+        let lastIsWin = null;
+        /* ヒント再描画用：直前に表示したヒントのIDを覚える */
+        let lastHintIds = null;
+        let lastHintWasEmpty = null;
+        /* レベル選択 */
+        let currentLevel = 1;
+
+        // 世界史では参照記号をそのまま表示
+        function formatRef(ref) {
+            return ref || "";
+        }
+
+        /* ==========================================================
+        言語の自動判定（初回アクセス時）
+        - 以前ユーザーが手動で選んだ言語があれば、それを優先する
+        - それが無ければ、ブラウザの言語設定を見て判定する
+        - ja（日本語）なら 'ja'
+        - それ以外は全部 'en'
+        ========================================================== */
+        function detectLanguage() {
+            const savedLang =
+                localStorage.getItem('arq_lang') ||
+                localStorage.getItem('lang') ||
+                localStorage.getItem('language') ||
+                localStorage.getItem('whtlq_lang');
+
+            if (savedLang) { currentLang = savedLang; return; }
+
+            const browserLang = navigator.language || navigator.userLanguage || '';
+            currentLang = browserLang.toLowerCase().startsWith('ja') ? 'ja' : 'en';
+        }
+
+        function toggleLang() {
+            /* JA ⇄ EN を切り替える */
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            document.documentElement.lang = currentLang;
+            /* 次回アクセス時も同じ言語で開くために保存する */
+            localStorage.setItem('lang', currentLang);
+            /* ボタン表示を更新（今が日本語なら "JA"、英語なら "EN"） */
+            document.getElementById('langBtn').innerText =
+                currentLang === 'ja' ? 'EN' : 'JA';
+            /* data-ja / data-en を持つ要素のテキストをまとめて差し替える */
+            document.querySelectorAll('[data-ja]').forEach(el => {
+                el.innerText = el.getAttribute('data-' + currentLang);
+            });
+
+            /* ゲーム画面のカード表示も今の言語で更新する */
+            updateCardTexts();
+            /* 年代のセレクトなど、言語依存の表示を再構築する */
+            initPickers();
+            /* 結果画面（正解/残念/ゲームオーバー）を現在言語で再描画 */
+            updateResultTexts();
+            /* ヒント表示中なら、ヒント文章を現在言語で再描画 */
+            updateHintTexts();
+        }
+
+        function updateCardTexts() {
+            document.querySelectorAll('.event-card').forEach(card => {
+                const data = EVENTS.find(e => e.id == card.dataset.id);
+                if (data) card.querySelector('.event-name').innerText = data[currentLang];
+            });
+        }
+
+        function openAbout() {
+            const win = window.open('about_whtlq/', '_blank');
+            if (win) win.opener = null;
+        }
+
+        function openArticles() {
+            const win = window.open('article/', '_blank');
+            if (win) win.opener = null;
+        }
+
+        function initPickers() {
+            const s = document.getElementById('select-start'), e = document.getElementById('select-end');
+            const sOld = s.value, eOld = e.value;
+            s.innerHTML = ''; e.innerHTML = '';
+            const years = [...new Set(EVENTS.map(ev => ev.year))].sort((a, b) => a - b);
+            years.forEach(y => {
+                let label = currentLang === 'ja' ? (y < 0 ? `前 ${Math.abs(y)}年` : `西暦 ${y}年`) : (y < 0 ? `BCE ${Math.abs(y)}` : `CE ${y}`);
+                s.add(new Option(label, y)); e.add(new Option(label, y));
+            });
+            if (sOld) s.value = sOld; if (eOld) e.value = eOld;
+        }
+
+        function quickSet(sVal, eVal, btn) {
+            document.getElementById('select-start').value = sVal;
+            document.getElementById('select-end').value = eVal;
+            document.querySelectorAll('.q-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('error-msg').innerText = "";
+        }
+
+        function selectLevel(level) {
+            currentLevel = level;
+            document.querySelectorAll('.level-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.level-btn[data-level="${level}"]`).classList.add('active');
+            document.getElementById('error-msg').innerText = "";
+        }
+
+        function startGame() {
+            const s = parseInt(document.getElementById('select-start').value);
+            const e = parseInt(document.getElementById('select-end').value);
+            const count = parseInt(document.getElementById('count-select').value);
+
+            let filtered = EVENTS.filter(ev => 
+                ev.year >= s && 
+                ev.year <= e &&
+                (ev.rank !== undefined ? ev.rank <= currentLevel : true)
+            );
+
+            if (filtered.length < count) {
+                const msg = currentLang === 'ja' ? `イベントが足りません（現在${filtered.length}個）` : `Not enough events (Only ${filtered.length} available)`;
+                document.getElementById('error-msg').innerText = msg;
+                return;
+            }
+            document.getElementById('error-msg').innerText = "";
+            currentTask = filtered.sort(() => 0.5 - Math.random()).slice(0, count);
+
+            // タイムアタック設定
+            const isTimeAttack = document.getElementById('time-attack-select').value === 'on';
+            clearInterval(timerInterval);
+
+            if (isTimeAttack) {
+                document.getElementById('timer-display').classList.remove('hidden');
+                timeLeft = count * 12;
+                updateTimerDisplay();
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    updateTimerDisplay();
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        alert(currentLang === 'ja' ? "時間切れ！" : "Time's Up!");
+                        checkOrder();
+                    }
+                }, 1000);
+            } else {
+                document.getElementById('timer-display').classList.add('hidden');
+            }
+
+            renderGame(true);
+            switchScreen('screen-game');
+        }
+
+        function updateTimerDisplay() {
+            document.getElementById('time-left').innerText = timeLeft;
+        }
+
+        function renderGame(shuffle) {
+            const list = document.getElementById('event-list');
+            list.innerHTML = '';
+
+            let displayList = [...currentTask];
+            if (shuffle) displayList.sort(() => 0.5 - Math.random());
+
+            draggingItemPC = null;
+
+            displayList.forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'event-card';
+                el.dataset.id = item.id;
+                el.draggable = true;
+
+                el.innerHTML =
+                    `<span class="material-icons drag-handle" style="color:#ccc">drag_indicator</span>` +
+                    `<div class="event-name" style="flex:1">${item[currentLang]}</div>`;
+
+                el.addEventListener('dragstart', (e) => {
+                    draggingItemPC = el;
+                    el.classList.add('dragging');
+
+                    if (e.dataTransfer) {
+                        e.dataTransfer.effectAllowed = 'move';
+                        e.dataTransfer.setData('text/html', el.innerHTML);
+                    }
+                });
+
+                el.addEventListener('dragend', () => {
+                    if (draggingItemPC) {
+                        draggingItemPC.classList.remove('dragging');
+                    }
+                    draggingItemPC = null;
+                });
+
+                // ★スマートフォン対応：タッチイベント登録
+                el.addEventListener('touchstart', handleTouchStart, { passive: true });
+
+                list.appendChild(el);
+            });
+
+            list.ondragover = (e) => {
+                e.preventDefault();
+                if (!draggingItemPC) return;
+
+                const after = getDragAfterElement(list, e.clientY);
+
+                if (after == null) {
+                    // リストの最後に移動
+                    if (draggingItemPC.nextSibling !== null) {
+                        list.appendChild(draggingItemPC);
+                    }
+                } else if (after !== draggingItemPC) {
+                    // after の前に挿入
+                    list.insertBefore(draggingItemPC, after);
+                }
+            };
+
+            list.ondrop = (e) => {
+                e.preventDefault();
+            };
+        }
+
+        function getDragAfterElement(container, y) {
+            const elements = [...container.querySelectorAll('.event-card')].filter(el => el !== draggingItemPC);
+
+            return elements.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = y - box.top - box.height / 2;
+
+                if (offset < 0 && offset > closest.offset) {
+                    return { offset: offset, element: child };
+                } else {
+                    return closest;
+                }
+            }, { offset: Number.NEGATIVE_INFINITY }).element;
+        }
+
+        let activeItem = null;
+        let placeholder = null;
+
+        /* 長押しドラッグ（スクロール優先） */
+        let pressTimer = null;
+        let isDragging = false;
+
+        let preMoveListener = null;
+
+        let draggingItemPC = null;
+        let pcPlaceholder = null;
+
+        function cleanupPCDrag() {
+            if (!draggingItemPC) return;
+
+            try {
+                draggingItemPC.classList.remove('dragging');
+                draggingItemPC.style.opacity = '';
+                draggingItemPC.style.pointerEvents = '';
+            } finally {
+                draggingItemPC = null;
+            }
+        }
+
+        // ✅ “URLバーに落とした”など dragend が来ない事故の保険
+        window.addEventListener('blur', cleanupPCDrag);
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) cleanupPCDrag();
+        });
+        window.addEventListener('drop', cleanupPCDrag, true);
+
+        function attachPreMoveCancel() {
+            if (preMoveListener) return;
+
+            preMoveListener = (ev) => {
+                if (!pressTimer || isDragging) return;
+
+                const t = ev.touches[0];
+                const dx = t.clientX - startX;
+                const dy = t.clientY - startY;
+                const dist = Math.hypot(dx, dy);
+
+                // スクロールのつもり → 長押しキャンセル
+                if (dist > CANCEL_MOVE_THRESHOLD) {
+                    clearTimeout(pressTimer);
+                    pressTimer = null;
+                    detachPreMoveCancel();
+                }
+            };
+
+            // ★ここは passive:true でOK（スクロール邪魔しない）
+            document.addEventListener('touchmove', preMoveListener, { passive: true });
+        }
+
+        function detachPreMoveCancel() {
+            if (!preMoveListener) return;
+            document.removeEventListener('touchmove', preMoveListener);
+            preMoveListener = null;
+        }
+
+        /* タッチ開始位置（長押し成立前の移動判定用） */
+        let startX = 0;
+        let startY = 0;
+
+        /* 好みで調整OK */
+        const LONG_PRESS_MS = 200;          // 長押し時間
+        const CANCEL_MOVE_THRESHOLD = 10;   // これ以上動いたら長押しキャンセル（px）
+
+        /* 指の位置とカード左上の差分（追従用） */
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+
+        /* 追従を滑らかにするための rAF 制御 */
+        let rafId = null;
+        let pendingX = 0;
+        let pendingY = 0;
+
+        /* ===== 自動スクロール（ドラッグ端） ===== */
+        const AUTO_SCROLL_ZONE = 80;   // 画面端から何pxで発動
+        const AUTO_SCROLL_MAX = 14;    // 最大速度（px/frame）
+
+        let autoScrollDir = 0;         // -1:上, 0:停止, +1:下
+        let autoScrollRaf = null;
+
+        /* 端に近いほど速くする（線形で十分） */
+        function calcAutoScrollSpeed(clientY) {
+            if (clientY < AUTO_SCROLL_ZONE) {
+                const t = (AUTO_SCROLL_ZONE - clientY) / AUTO_SCROLL_ZONE; // 0..1
+                return Math.ceil(AUTO_SCROLL_MAX * t);
+            }
+            if (clientY > window.innerHeight - AUTO_SCROLL_ZONE) {
+                const d = clientY - (window.innerHeight - AUTO_SCROLL_ZONE);
+                const t = d / AUTO_SCROLL_ZONE; // 0..1
+                return Math.ceil(AUTO_SCROLL_MAX * t);
+            }
+            return 0;
+        }
+
+        function setAutoScrollByPointer(clientY) {
+            if (clientY < AUTO_SCROLL_ZONE) autoScrollDir = -1;
+            else if (clientY > window.innerHeight - AUTO_SCROLL_ZONE) autoScrollDir = 1;
+            else autoScrollDir = 0;
+
+            if (autoScrollDir !== 0) startAutoScrollLoop();
+            else stopAutoScrollLoop();
+        }
+
+        function startAutoScrollLoop() {
+            if (autoScrollRaf) return;
+
+            const tick = () => {
+                autoScrollRaf = null;
+
+                // ドラッグ中だけ回す
+                if (!isDragging) return;
+
+                const speed = calcAutoScrollSpeed(pendingY);
+
+                if (autoScrollDir !== 0 && speed > 0) {
+                    window.scrollBy(0, autoScrollDir * speed);
+
+                    // スクロールしたぶんも含めて、ドラッグ中カードを追従更新
+                    moveDraggedItem(pendingX, pendingY);
+
+                    // placeholder 判定も「最後の指位置」で更新し続ける
+                    updatePlaceholderByPointer(pendingX, pendingY);
+                }
+
+                // 端にいる限り回し続ける（止めるのは stopAutoScrollLoop）
+                if (autoScrollDir !== 0) {
+                    autoScrollRaf = requestAnimationFrame(tick);
+                }
+            };
+
+            autoScrollRaf = requestAnimationFrame(tick);
+        }
+
+        function stopAutoScrollLoop() {
+            autoScrollDir = 0;
+            if (autoScrollRaf) {
+                cancelAnimationFrame(autoScrollRaf);
+                autoScrollRaf = null;
+            }
+        }
+
+        /* placeholder移動ロジックを関数化（handleTouchMove内の後半を移植） */
+        function updatePlaceholderByPointer(x, y) {
+            if (!placeholder) return;
+
+            // ★保険：自分を一瞬隠して下の要素を正しく拾う
+            const prevVis = activeItem?.style.visibility;
+            if (activeItem) activeItem.style.visibility = 'hidden';
+
+            const target = document.elementFromPoint(x, y);
+
+            if (activeItem) activeItem.style.visibility = prevVis || '';
+
+            const card = target ? target.closest('.event-card') : null;
+            if (!card || card === activeItem || card === placeholder) return;
+
+            const rect = card.getBoundingClientRect();
+            if (y < rect.top + rect.height / 2) card.before(placeholder);
+            else card.after(placeholder);
+        }
+
+        function handleTouchStart(e) {
+            // ここではまだドラッグ開始しない（スクロール優先）
+            isDragging = false;
+
+            // カードを掴んだ扱いにする
+            activeItem = this;
+            if (!activeItem) return;
+
+            // 初期タッチ位置（動いたら長押しキャンセルするため）
+            const touch = e.touches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+            attachPreMoveCancel();
+
+            document.addEventListener(
+                'touchend',
+                () => {
+                    if (!isDragging && pressTimer) {
+                        clearTimeout(pressTimer);
+                        pressTimer = null;
+                    }
+                },
+                { passive: true, once: true }
+            );
+
+            document.addEventListener(
+                'touchcancel',
+                () => {
+                    if (!isDragging && pressTimer) {
+                        clearTimeout(pressTimer);
+                        pressTimer = null;
+                    }
+                },
+                { passive: true, once: true }
+            );
+
+            // 既存タイマーがあればクリア
+            if (pressTimer) {
+                clearTimeout(pressTimer);
+                pressTimer = null;
+            }
+
+            // 長押し成立したら「ここで初めてドラッグ開始」
+            pressTimer = setTimeout(() => {
+                // ★ここに来た時点で、指が離れていたらキャンセルされているはずだが念のため
+                if (isDragging) return;
+                if (!activeItem) return;
+
+                // ここでドラッグ開始
+                isDragging = true;
+                // ★ スクロール検知はもう不要
+                detachPreMoveCancel();
+                activeItem.classList.add('dragging');
+
+                /* ドラッグ中の指の動きを取りこぼさないため */
+                document.addEventListener('touchmove', handleTouchMove, { passive: false });
+                document.addEventListener('touchend', handleTouchEnd, { passive: false });
+                document.addEventListener('touchcancel', handleTouchEnd, { passive: false });
+
+                /* 追従用のオフセット計算（カード左上との差分） */
+                const rect = activeItem.getBoundingClientRect();
+                dragOffsetX = startX - rect.left;
+                dragOffsetY = startY - rect.top;
+
+                /* placeholder を用意（無ければ作る） */
+                if (!placeholder) {
+                    placeholder = document.createElement('div');
+                    placeholder.className = 'sortable-placeholder';
+                }
+                placeholder.style.height = rect.height + "px";
+
+                // 元の場所を placeholder に置き換える（←これは必要）
+                activeItem.replaceWith(placeholder);
+
+                // ★カードはリストに戻さず、body に退避させる
+                document.body.appendChild(activeItem);
+
+
+                /* 見た目：ドラッグ中スタイル */
+                activeItem.style.width = rect.width + "px";
+                activeItem.style.height = rect.height + "px";
+                activeItem.style.position = "fixed";
+                activeItem.style.zIndex = "9999";
+                activeItem.style.pointerEvents = "none";
+                activeItem.style.opacity = "0.9";
+                activeItem.style.margin = "0";              // ★ズレ防止
+                activeItem.style.boxSizing = "border-box";  // ★念のため
+                activeItem.style.left = rect.left + "px";   // ★初期位置固定
+                activeItem.style.top = rect.top + "px";
+
+                /* 最初の位置更新（指に追従） */
+                moveDraggedItem(startX, startY);
+
+                // タイマーを使い捨てにする
+                pressTimer = null;
+            }, LONG_PRESS_MS);
+        }
+
+        function moveDraggedItem(clientX, clientY) {
+            // 指の位置（pending）を更新
+            pendingX = clientX;
+            pendingY = clientY;
+
+            // すでに rAF が回ってるなら予約だけ更新して終わり
+            if (rafId) return;
+
+            rafId = requestAnimationFrame(() => {
+                rafId = null;
+                if (!activeItem) return;
+
+                const left = pendingX - dragOffsetX;
+                const top = pendingY - dragOffsetY;
+
+                activeItem.style.left = left + "px";
+                activeItem.style.top = top + "px";
+            });
+        }
+
+        function handleTouchMove(e) {
+            if (!activeItem) return;
+
+            const touch = e.touches[0];
+            const x = touch.clientX;
+            const y = touch.clientY;
+
+            if (!isDragging) return; // 長押し成立前は何もしない
+
+            e.preventDefault();
+            // 追従（pendingX/pendingYが更新される）
+            moveDraggedItem(x, y);
+            // ★ 自動スクロール判定（端ならスクロール開始）
+            setAutoScrollByPointer(y);
+            // placeholder 更新（通常）
+            updatePlaceholderByPointer(x, y);
+        }
+
+
+        function handleTouchEnd() {
+            if (pressTimer) {
+                clearTimeout(pressTimer);
+                pressTimer = null;
+            }
+
+            // ★追加：自動スクロール停止
+            stopAutoScrollLoop();
+
+            if (!isDragging) {
+                detachPreMoveCancel();
+                activeItem = null;
+                return;
+            }
+
+            isDragging = false;
+
+            if (!activeItem) return;
+
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+
+            const list = document.getElementById('event-list');
+
+            if (placeholder && list && list.contains(placeholder)) {
+                placeholder.replaceWith(activeItem);
+                placeholder = null;
+            } else if (list && activeItem) {
+                list.appendChild(activeItem);
+            }
+
+            activeItem.classList.remove('dragging');
+
+            activeItem.style.position = '';
+            activeItem.style.left = '';
+            activeItem.style.top = '';
+            activeItem.style.right = '';
+            activeItem.style.bottom = '';
+            activeItem.style.width = '';
+            activeItem.style.height = '';
+            activeItem.style.zIndex = '';
+            activeItem.style.pointerEvents = '';
+            activeItem.style.margin = '';
+            activeItem.style.transform = '';
+            activeItem.style.opacity = '1';
+
+            activeItem = null;
+
+            document.removeEventListener('touchmove', handleTouchMove);
+            document.removeEventListener('touchend', handleTouchEnd);
+            document.removeEventListener('touchcancel', handleTouchEnd);
+        }
+
+        // ✅ 共通：正解順ソート（年→月→日→id）
+        function sortEventsChrono(a, b) {
+            return (a.year - b.year) ||
+                ((a.month ?? 1) - (b.month ?? 1)) ||
+                ((a.day ?? 1) - (b.day ?? 1)) ||
+                (Number(a.id) - Number(b.id)); // ←ここだけ数値に
+        }
+
+        // ✅ 共通：currentTask から正解ID配列を作る
+        function getCorrectIds() {
+            if (!Array.isArray(currentTask) || currentTask.length === 0) return [];
+            return [...currentTask].sort(sortEventsChrono).map(e => String(e.id));
+        }
+
+        // ✅ 共通：画面上の並び（ID配列）
+        function getUserIds() {
+            return [...document.querySelectorAll('#event-list .event-card')]
+                .map(el => el.dataset.id)     // ←文字列のまま
+                .filter(Boolean);
+        }
+
+        // ✅ HTMLエスケープ（念のため）
+        function escapeHtml(s) {
+            return String(s)
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+        }
+
+        // ✅ 結果画面に「今回の並び」を表示（ユーザーの並び順をそのまま）
+        function renderResultEvents(ids) {
+            const wrap = document.getElementById("result-events");
+            if (!wrap) return;
+
+            // id → event を高速に引けるMap
+            const map = new Map(EVENTS.map(e => [String(e.id), e]));
+            const title = currentLang === 'ja' ? "今回の並び" : "Your order";
+
+            // 記事ページ存在チェック用キャッシュ
+            if (!window._articleExistCache) window._articleExistCache = {};
+            const articleExistCache = window._articleExistCache;
+
+            // 各イベントごとにリスト生成
+            const itemsHtml = ids.map((id, i) => {
+                const ev = map.get(String(id));
+                const label = ev ? (ev[currentLang] ?? ev.ja ?? ev.en ?? id) : id;
+                const articlePath = `/btlq/article/${id}/index.html`;
+                // 記事ボタン仮置き
+                let articleBtn = '';
+                // 記事存在チェック（キャッシュ優先）
+                if (articleExistCache[id] === true) {
+                    articleBtn = `<button onclick="window.open('${articlePath}', '_blank', 'width=800,height=600')" class="article-link-btn" style="margin-left:8px; cursor:pointer; background:none; border:none; font-size:1.2em;" title="${currentLang === 'ja' ? '解説を読む' : 'Read Article'}">🔍</button>`;
+                } else if (articleExistCache[id] === false) {
+                    articleBtn = '';
+                } else {
+                    // 未チェックならHEADリクエスト
+                    fetch(articlePath, { method: 'HEAD' }).then(r => {
+                        articleExistCache[id] = r.ok;
+                        // 再描画（1回だけ）
+                        if (r.ok) renderResultEvents(ids);
+                    }).catch(() => {
+                        articleExistCache[id] = false;
+                    });
+                }
+                return `<li class="result-event-item">${escapeHtml(label)}${articleBtn}</li>`;
+            }).join("");
+
+            wrap.innerHTML = `
+        <div class="result-events-title">${title}</div>
+        <ol class="result-event-list">${itemsHtml}</ol>
+    `;
+        }
+
+        // ✅ 共通：配列一致（JSON stringifyより安全）
+        function arraysEqual(a, b) {
+            if (a.length !== b.length) return false;
+            for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+            return true;
+        }
+
+        function checkOrder() {
+            clearInterval(timerInterval);
+
+            const userIds = getUserIds();
+            const correctIds = getCorrectIds();
+
+            const isWin = (userIds.length > 0) && arraysEqual(userIds, correctIds);
+
+            if (isWin) {
+                const fire = (typeof confetti === 'function') ? confetti : (window.confetti || null);
+                if (fire) {
+                    fire({ particleCount: 150, spread: 70, origin: { x: 0.5, y: 0.5 } });
+                }
+            }
+
+            showResultScreen(isWin);
+        }
+
+        function updateResultTexts() {
+            if (lastIsWin === null) return;
+
+            document.getElementById('result-title').innerText = lastIsWin
+                ? (currentLang === 'ja' ? "正解！" : "Correct!")
+                : (currentLang === 'ja' ? "残念" : "Oops");
+
+            // ✅ 正解時のみ：結果画面が出ている時だけ、一覧も言語で更新
+            if (!document.getElementById('screen-result').classList.contains('hidden') && lastIsWin) {
+                renderResultEvents(getUserIds());
+            }
+        }
+
+        /* ==========================================================
+        ヒント表示の文言を currentLang に合わせて更新する
+        - toggleLang() から呼ばれる
+        - 直前に表示したヒントの内容（lastHintIds / lastHintWasEmpty）を元に再構築する
+        - ヒントが表示中でない場合は何もしない
+        ========================================================== */
+        function updateHintTexts() {
+
+            /* ヒント領域が存在しないページなら何もしない */
+            const hintArea = document.getElementById('hint-area');
+            if (!hintArea) return;
+
+            /* ヒントがそもそも表示されていない（hidden）なら何もしない */
+            if (hintArea.classList.contains('hidden')) return;
+
+            /* showHint() がまだ一度も呼ばれていないなら何もしない */
+            if (lastHintIds === null && lastHintWasEmpty === null) return;
+
+            /* タイトル（見出し） */
+            const title = currentLang === 'ja'
+                ? "💡 調査の助け:"
+                : "💡 Clues for misplaced items:";
+
+            let html = `<strong>${title}</strong><br><br>`;
+
+            /* 「並び順は合っている」ケース */
+            if (lastHintWasEmpty) {
+                html += currentLang === 'ja'
+                    ? "並び順は合っているようです。"
+                    : "The order seems correct.";
+
+                hintArea.innerHTML = html;
+                return;
+            }
+
+            /* 通常ケース：lastHintIds からイベントを引いて再構築 */
+            const hints = (lastHintIds || [])
+                .map(id => EVENTS.find(e => e.id === id))
+                .filter(Boolean);
+
+            /* 念のため：復元できなかったら空扱いにする */
+            if (hints.length === 0) {
+                html += currentLang === 'ja'
+                    ? "並び順は合っているようです。"
+                    : "The order seems correct.";
+
+                hintArea.innerHTML = html;
+                return;
+            }
+
+            hints.forEach(s => {
+                const hintDesc = s['hint_' + currentLang] || "";
+                html += `<div class="hint-item">
+                    ・${s[currentLang]} (${formatRef(s.ref)})
+                    <span class="hint-desc">${hintDesc}</span>
+                 </div>`;
+            });
+
+            hintArea.innerHTML = html;
+        }
+
+        function showResultScreen(isWin) {
+
+            /* 直前の勝敗を保存（言語切替時に再描画するため） */
+            lastIsWin = isWin;
+
+            switchScreen('screen-result');
+
+            document.getElementById('result-icon').innerText =
+                isWin ? "celebration" : "book";
+
+            document.getElementById('fail-options').className = isWin ? "hidden" : "";
+            document.getElementById('success-options').className = isWin ? "" : "hidden";
+
+            /* ★ 結果タイトルは必ずここで一括更新 */
+            updateResultTexts();
+
+            // ✅ここだけ変更：正解時のみ並びを表示／不正解時は消す
+            if (isWin) {
+                renderResultEvents(getUserIds());   // ユーザーの並び順そのまま
+            } else {
+                const wrap = document.getElementById("result-events");
+                if (wrap) wrap.innerHTML = "";      // 残念時は表示しない
+            }
+        }
+
+        // ===== 記事モーダル関連（削除済み） =====
+
+        function testResultScreen() {
+            // デバッグ用：最初の5イベントをタスクとして使用
+            if (!Array.isArray(EVENTS) || EVENTS.length === 0) {
+                alert('イベントが読み込まれていません。');
+                return;
+            }
+            currentTask = EVENTS.slice(0, 5);
+            showResultScreen(true);
+        }
+
+        function showHint() {
+            const hintArea = document.getElementById('hint-area');
+            if (!hintArea) return;
+
+            const userIds = getUserIds();
+            const correctIds = getCorrectIds();
+
+            // まだゲームが成立してない保険
+            if (userIds.length === 0 || correctIds.length === 0) {
+                lastHintIds = [];
+                lastHintWasEmpty = true;
+                hintArea.innerHTML =
+                    `<strong>${currentLang === 'ja' ? "💡 調査の助け:" : "💡 Clues:"}</strong><br><br>` +
+                    (currentLang === 'ja' ? "まだ並び替え対象がありません。" : "No items to check yet.");
+                hintArea.classList.remove('hidden');
+                switchScreen('screen-game');
+                return;
+            }
+
+            // id → 正しい位置
+            const posMap = {};
+            correctIds.forEach((id, idx) => posMap[id] = idx);
+
+            // 異常系（重複・欠落・外部ID）
+            const userSet = new Set(userIds);
+            const correctSet = new Set(correctIds);
+            const hasDuplicate = userSet.size !== userIds.length;
+            const hasOutOfTask = userIds.some(id => !correctSet.has(id));
+            const hasMissing = correctIds.some(id => !userSet.has(id));
+
+            // 最初の「逆転している隣接ペア」を探す
+            let conflictPairIds = null;
+            for (let i = 0; i < userIds.length - 1; i++) {
+                const a = userIds[i];
+                const b = userIds[i + 1];
+                const pa = posMap[a];
+                const pb = posMap[b];
+                if (pa == null || pb == null) continue; // task外は保険で無視
+                if (pa > pb) { conflictPairIds = [a, b]; break; }
+            }
+
+            // ヒント対象（最大2）
+            const hintsToShow = conflictPairIds
+                ? conflictPairIds.map(id => EVENTS.find(e => e.id === id)).filter(Boolean)
+                : [];
+
+            // 言語切替の再描画用に保存
+            lastHintIds = hintsToShow.map(e => e.id);
+            lastHintWasEmpty = (hintsToShow.length === 0) && !(hasDuplicate || hasOutOfTask || hasMissing);
+
+            const title = currentLang === 'ja'
+                ? "💡 調査の助け:"
+                : "💡 Clues for misplaced items:";
+
+            let html = `<strong>${title}</strong><br><br>`;
+
+            // まずはセット異常を優先表示
+            if (hasDuplicate || hasOutOfTask || hasMissing) {
+                if (currentLang === 'ja') {
+                    html += "並びの内容に問題があるようです。<br>";
+                    if (hasDuplicate) html += "・同じカードが重複している可能性があります。<br>";
+                    if (hasOutOfTask) html += "・課題に含まれないカードが混ざっています。<br>";
+                    if (hasMissing) html += "・課題に必要なカードが欠けています。<br>";
+                    html += "<br>まずはカードの種類と枚数を整えてください。";
+                } else {
+                    html += "There seems to be a problem with the set of items.<br>";
+                    if (hasDuplicate) html += "• Some items may be duplicated.<br>";
+                    if (hasOutOfTask) html += "• An item not in this task is included.<br>";
+                    if (hasMissing) html += "• A required item is missing.<br>";
+                    html += "<br>Please fix the set of cards first.";
+                }
+            } else if (hintsToShow.length === 0) {
+                // セット正常＆逆転なし → 並び順OK（少なくとも「逆転」はない）
+                html += currentLang === 'ja'
+                    ? "並び順は合っているようです。"
+                    : "The order seems correct.";
+            } else {
+                // 逆転ペアの比較ヒント（あなたの意図どおり）
+                for (const ev of hintsToShow) {
+                    const name = ev[currentLang] || ev.ja || "";
+                    const hintDesc = ev['hint_' + currentLang] || ev.hint_ja || "";
+                    html += `<div class="hint-item">・${name} (${formatRef(ev.ref)})`;
+                    if (hintDesc) html += `<span class="hint-desc">${hintDesc}</span>`;
+                    html += `</div>`;
+                }
+            }
+
+            hintArea.innerHTML = html;
+            hintArea.classList.remove('hidden');
+            switchScreen('screen-game');
+
+            // タイムアタックONの場合のみタイマー再始動（timeLeftは維持）
+            const isTimeAttack = document.getElementById('time-attack-select')?.value === 'on';
+            if (isTimeAttack) {
+                clearInterval(timerInterval);
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    updateTimerDisplay();
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        alert(currentLang === 'ja' ? "時間切れ！" : "Time's Up!");
+                        checkOrder();
+                    }
+                }, 1000);
+            }
+        }
+
+        function retryThisTask() {
+            document.getElementById('hint-area').classList.add('hidden');
+            renderGame(false);
+            switchScreen('screen-game');
+
+            const isTimeAttack = document.getElementById('time-attack-select').value === 'on';
+            if (isTimeAttack) {
+                const count = parseInt(document.getElementById('count-select').value);
+                timeLeft = count * 15;
+                updateTimerDisplay();
+                clearInterval(timerInterval);
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    updateTimerDisplay();
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        alert(currentLang === 'ja' ? "時間切れ！" : "Time's Up!");
+                        checkOrder();
+                    }
+                }, 1000);
+            }
+        }
+
+        function switchScreen(id) {
+            document.getElementById('screen-setup').classList.add('hidden');
+            document.getElementById('screen-game').classList.add('hidden');
+            document.getElementById('screen-result').classList.add('hidden');
+            document.getElementById(id).classList.remove('hidden');
+        }
+        /* ページを開いた瞬間にやること（初期化） */
+        window.onload = () => {
+            // 1) ブラウザ言語 or 保存済み言語を見て currentLang を決める
+            detectLanguage();
+            document.documentElement.lang = currentLang;
+
+            // 2) 言語ボタン（JA/EN）の表示を currentLang に合わせる
+            const langBtn = document.getElementById('langBtn');
+            if (langBtn) {
+                langBtn.innerText = currentLang === 'ja' ? 'EN' : 'JA';
+            }
+
+            // 3) data-ja / data-en の文言を currentLang の言語に切り替える
+            document.querySelectorAll('[data-ja]').forEach(el => {
+                el.innerText = el.getAttribute('data-' + currentLang);
+            });
+
+            // ✅ここでは initPickers() を呼ばない（イベント未ロードで壊れる）
+            // ✅ここでは startSel/endSel の value を触らない
+        };
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- HOME ---
+            const homeBtn = document.getElementById('homeBtn');
+            if (homeBtn) {
+                homeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // GitHub Pages の /whtlq/ に戻る
+                    location.href = '/whtlq/';
+                    // ルート（ arqgames.github.io/ ）に戻したいなら '/' のままでOK
+                    // location.href = '/';
+                });
+            }
+
+            // --- LANG（確実版）---
+            const langBtn0 = document.getElementById('langBtn');
+            if (langBtn0) {
+                const langBtn = langBtn0.cloneNode(true);
+                langBtn0.parentNode.replaceChild(langBtn, langBtn0);
+
+                langBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+                    if (typeof window.toggleLang === 'function') { window.toggleLang(); return; }
+                    if (typeof window.toggleLanguage === 'function') { window.toggleLanguage(); return; }
+                    if (typeof window.switchLanguage === 'function') { window.switchLanguage(); return; }
+                    if (typeof window.setLanguage === 'function') { window.setLanguage(); return; }
+
+                    const saved =
+                        localStorage.getItem('arq_lang') ||
+                        localStorage.getItem('lang') ||
+                        localStorage.getItem('language') ||
+                        localStorage.getItem('whtlq_lang');
+
+                    const current = saved || (navigator.language?.startsWith('ja') ? 'ja' : 'en');
+                    const next = (current === 'ja') ? 'en' : 'ja';
+
+                    localStorage.setItem('arq_lang', next);
+                    localStorage.setItem('lang', next);
+                    localStorage.setItem('language', next);
+                    localStorage.setItem('whtlq_lang', next);
+
+                    if (typeof window.applyLang === 'function') {
+                        window.applyLang(next);
+                        return;
+                    }
+                    location.reload();
+                }, true);
+            }
+
+            async function loadEvents() {
+                const url = "data/events/events_all.json";
+
+                try {
+                    const res = await fetch(url, { cache: "no-store" });
+
+                    if (!res.ok) {
+                        const text = await res.text();
+                        console.error("Fetch failed:", res.status, res.statusText, "url=", url);
+                        console.error("Response head:", text.slice(0, 200));
+                        return;
+                    }
+
+                    const data = await res.json();
+
+                    if (!Array.isArray(data)) {
+                        console.error("Invalid JSON: expected an Array, got:", typeof data, data);
+                        return;
+                    }
+
+                    EVENTS = data;
+                    window.EVENTS = data;
+
+                    console.log("EVENTS loaded:", EVENTS.length);
+
+                    // ★① セレクト構築
+                    initPickers();
+
+                    // ★② デフォルト期間をここで設定（重要）
+                    const startSel = document.getElementById('select-start');
+                    const endSel = document.getElementById('select-end');
+
+                    if (startSel && endSel) {
+                        startSel.value = EVENTS[0].year;                         // 最古
+                        endSel.value = EVENTS[EVENTS.length - 1].year;           // 最新
+                    }
+
+                    // ★③ エラーメッセージ消去（保険）
+                    document.getElementById('error-msg').innerText = "";
+
+                } catch (e) {
+                    console.error("Event load failed:", e, "url=", url);
+                }
+            }
+
+            // 外側が DOMContentLoaded なので、ここは直接呼ぶだけでOK
+            loadEvents();
+        });
+
+        fetch('../parts/footer.html')
+            .then(r => r.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+            });
+
+    </script>
+
+
+</body>
+
+</html>

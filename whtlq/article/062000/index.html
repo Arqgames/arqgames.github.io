@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>ダリウス第6年 - 神殿の再建（前516/515年）</title>
+    <meta name="description" content="ダリウス第6年に完成した第二神殿は、捕囚後史で最も確実性の高い年代基準である。" />
+
+    <!-- イベントID参照用 -->
+    <meta name="article-id" content="062000">
+    <meta name="article-tags" content="Temple,Completion,Persia">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="ダリウス第6年 - 神殿の再建（前516/515年）" />
+    <meta property="og:description" content="ダリウス第6年に完成した第二神殿は、捕囚後史で最も確実性の高い年代基準である。" />
+
+    <meta name="theme-color" content="#f4e4bc" />
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
+
+        <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
+
+        <div id="article-content" class="article-wrapper">
+            <div class="header-icon-box"><span class="material-icons header-icon">article</span></div>
+
+            <h1 id="article-title" data-ja="ダリウス第6年 - 神殿の再建（前516/515年）" data-en="The Sixth Year of Darius - Completion of the Second Temple (515 BCE)">ダリウス第6年 - 神殿の再建（前516/515年）</h1>
+
+            <article class="article-body">
+                <h2 data-ja="治世年による明確な年代表示" data-en="Regnal Dating">治世年による明確な年代表示</h2>
+                <p data-ja="エズラ記6章には、神殿再建がペルシャ王ダリウス第6年に完成したことが記されています。月も示されており、具体的な年代情報を備えています。" data-en="The Book of Ezra records that the Second Temple was completed in the sixth year of Darius, king of Persia. The month is also specified, providing a detailed chronological notice.">『エズラ記』6章には、神殿再建がペルシャ王ダリウス第6年に完成したことが記されています。月も示されており、具体的な年代情報を備えています。</p>
+
+                <h2 data-ja="歴史的同定" data-en="Historical Identification">歴史的同定</h2>
+                <p data-ja="ダリウス一世の即位は前522年と確定しています。その第6年は前516年または515年に相当します。暦法の差によりわずかな幅がありますが、年代はほぼ一致しています。" data-en="Darius I began his reign in 522 BCE. His sixth regnal year therefore corresponds to 516/515 BCE, depending on calendrical reckoning. This dating is widely accepted in Near Eastern historiography.">ダリウス一世の即位は前522年と確定しています。その第6年は前516年または515年に相当します。暦法の差によりわずかな幅がありますが、年代はほぼ一致しています。</p>
+
+                <h2 data-ja="預言書との整合性" data-en="Textual Consistency">預言書との整合性</h2>
+                <p data-ja="ハガイ書およびゼカリヤ書もダリウス第2年を年代表示として用いており、神殿再建の経過が複数の書で整合的に示されています。" data-en="The rebuilding process is also discussed in Haggai and Zechariah, whose prophetic activity is dated to the second year of Darius. These coordinated regnal references create a coherent chronological framework.">『ハガイ書』および『ゼカリヤ書』もダリウス第2年を年代表示として用いており、神殿再建の経過が複数の書で整合的に示されています。</p>
+
+                <h2 data-ja="年代計算上の意義" data-en="Chronological Significance">年代計算上の意義</h2>
+                <p data-ja="ダリウス一世は外部史料によって確定している君主であるため、第二神殿完成は捕囚後史の中でも特に確実性の高い年代基準となります。" data-en="Because Darius I is securely dated through Persian and Babylonian records, the completion of the Temple represents one of the most historically fixed dates in postexilic biblical history.">ダリウス一世は外部史料によって確定している君主であるため、第二神殿完成は捕囚後史の中でも特に確実性の高い年代基準となります。</p>
+            </article>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'ja';
+
+        function detectLanguage() {
+            const savedLang =
+                localStorage.getItem('arq_lang') ||
+                localStorage.getItem('lang') ||
+                localStorage.getItem('language') ||
+                localStorage.getItem('btlq_lang');
+
+            if (savedLang) { currentLang = savedLang; return; }
+
+            const browserLang = navigator.language || navigator.userLanguage || '';
+            currentLang = browserLang.toLowerCase().startsWith('ja') ? 'ja' : 'en';
+        }
+
+        function toggleLang() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            document.documentElement.lang = currentLang;
+            localStorage.setItem('lang', currentLang);
+            document.getElementById('langBtn').innerText =
+                currentLang === 'ja' ? 'EN' : 'JA';
+            updateTexts();
+        }
+
+        function updateTexts() {
+            document.querySelectorAll('[data-ja]').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + currentLang);
+            });
+        }
+
+        function goBack() {
+            window.close();
+            // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
+            setTimeout(() => {
+                location.href = '/btlq/';
+            }, 100);
+        }
+
+        window.onload = () => {
+            detectLanguage();
+            document.documentElement.lang = currentLang;
+
+            const langBtn = document.getElementById('langBtn');
+            if (langBtn) {
+                langBtn.innerText = currentLang === 'ja' ? 'EN' : 'JA';
+                langBtn.addEventListener('click', toggleLang);
+            }
+
+            const homeBtn = document.getElementById('homeBtn');
+            if (homeBtn) {
+                homeBtn.addEventListener('click', () => {
+                    location.href = '/btlq/';
+                });
+            }
+
+            updateTexts();
+        };
+
+        fetch('../../../../parts/footer.html')
+            .then(r => r.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+            });
+
+    </script>
+
+</body>
+
+</html>
