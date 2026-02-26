@@ -114,6 +114,7 @@
             </select>
             <div id="error-msg"></div>
             <button class="btn" onclick="startGame()" data-ja="冒険を開始" data-en="Start Adventure">冒険を開始</button>
+            <button type="button" class="btn btn-sub" onclick="openAbout()" style="padding:12px; font-size:0.95em; margin-top:8px;" data-ja="このゲームについて" data-en="About This Game">このゲームについて</button>
         </div>
 
         <div id="screen-game" class="hidden">
@@ -232,6 +233,16 @@
                 const data = EVENTS.find(e => e.id == card.dataset.id);
                 if (data) card.querySelector('.event-name').innerText = data[currentLang];
             });
+        }
+
+        function openAbout() {
+            const win = window.open('about_btlq/', '_blank');
+            if (win) win.opener = null;
+        }
+
+        function openArticles() {
+            const win = window.open('article/', '_blank');
+            if (win) win.opener = null;
         }
 
         function initPickers() {
