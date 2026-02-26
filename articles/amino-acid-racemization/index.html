@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>アミノ酸ラセミ化年代測定 | 年代研究ノート</title>
+    <meta name="description" content="アミノ酸ラセミ化年代測定の原理と適用範囲を整理。" />
+    <meta name="tags" content="年代測定, アミノ酸, 有機物, 考古学" data-tags="amino-acid,racemization,organic,archaeology" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="/css/top_ui.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="top-btn home-btn" type="button" title="Home" onclick="location.href='/'">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
+
+        <button class="top-btn lang-switch" type="button" title="Articles" onclick="location.href='/articles/';">LIST</button>
+
+        <div class="header-icon-box" aria-hidden="true">
+            <span class="material-icons header-icon">biotech</span>
+        </div>
+
+        <h1 style="margin:10px 0 0; font-size:1.35em;" data-i18n="title">アミノ酸ラセミ化年代測定</h1>
+
+        <div class="article-body">
+            <p data-i18n="intro">
+                アミノ酸ラセミ化年代測定は、生物の死後にL型アミノ酸がD型へと変化していく反応（ラセミ化）を利用して年代を推定する方法です。反応速度は温度や環境条件に影響されます。
+            </p>
+
+            <h2 data-i18n="section1_title">仕組みの要点</h2>
+            <ul>
+                <li data-i18n="point1">生物体内のアミノ酸はL型が主成分。</li>
+                <li data-i18n="point2">死後、L型とD型の比率が時間とともに変化する。</li>
+                <li data-i18n="point3">D/L比率を測定して年代を推定する。</li>
+                <li data-i18n="point4">温度履歴の補正が必要となる。</li>
+            </ul>
+
+            <h2 data-i18n="section2_title">適用できる対象</h2>
+            <ul>
+                <li data-i18n="target1">貝殻やサンゴなどの炭酸塩試料。</li>
+                <li data-i18n="target2">骨や歯に含まれる有機成分。</li>
+                <li data-i18n="target3">卵殻や貝塚などの遺物。</li>
+                <li data-i18n="target4">古環境試料の有機物。</li>
+            </ul>
+
+            <div class="note-box" data-i18n="note">
+                ラセミ化速度は温度に強く依存するため、地域ごとの温度履歴を考慮する必要があります。
+            </div>
+
+            <h2 data-i18n="section3_title">注意点</h2>
+            <p data-i18n="cautions">
+                温度履歴の不確実性や、汚染によるD/L比率の変化が年代推定に影響します。他の年代測定法との併用が推奨されます。
+            </p>
+
+            <h2 data-i18n="applications_title">実際の応用例</h2>
+            <p data-i18n="applications_intro">
+                アミノ酸ラセミ化は、貝塚や古環境研究で年代推定に活用されています。
+            </p>
+            <ul>
+                <li data-i18n="app1"><strong>貝塚年代</strong> — 貝殻のD/L比率から堆積年代を推定。</li>
+                <li data-i18n="app2"><strong>海成段丘</strong> — 貝化石の年代から海水準変動を推定。</li>
+                <li data-i18n="app3"><strong>洞窟堆積</strong> — 有機物のラセミ化で堆積時期を推定。</li>
+                <li data-i18n="app4"><strong>卵殻遺物</strong> — 卵殻の年代から遺跡利用時期を推定。</li>
+                <li data-i18n="app5"><strong>古環境復元</strong> — 温度履歴の推定に活用。</li>
+            </ul>
+
+            <div style="margin-top:30px; text-align:center; padding:20px; background:linear-gradient(135deg, #f39c12 0%, #e67e22 100%); border-radius:8px;">
+                <p style="margin:0 0 12px; color:#fff; font-weight:bold; font-size:1.05em;" data-i18n="game_cta">
+                    年代知識を試してみませんか？
+                </p>
+                <button type="button" class="btn" onclick="window.open('/btlq/', '_blank', 'noopener');" data-i18n="game_btn"
+                        style="background:#fff; color:#e67e22; font-weight:bold; padding:14px 28px; font-size:1.05em; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+                    ゲームに挑戦する
+                </button>
+            </div>
+
+            <div class="back-to-articles" style="margin-top:20px; text-align:center; padding-top:20px; border-top:1px solid #e0d0bb;">
+                <button type="button" class="btn btn-sub" onclick="location.href='/articles/';" data-i18n="back_articles" style="padding:10px 20px; font-size:0.95em;">
+                    記事一覧に戻る
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ad-outside">
+        <div style="text-align:center; font-weight:bold; color:#8b5e3c;">Ad space</div>
+    </div>
+
+    <script>
+        const dict = {
+            ja: {
+                title: "アミノ酸ラセミ化年代測定",
+                intro: "アミノ酸ラセミ化年代測定は、生物の死後にL型アミノ酸がD型へと変化していく反応（ラセミ化）を利用して年代を推定する方法です。反応速度は温度や環境条件に影響されます。",
+                section1_title: "仕組みの要点",
+                point1: "生物体内のアミノ酸はL型が主成分。",
+                point2: "死後、L型とD型の比率が時間とともに変化する。",
+                point3: "D/L比率を測定して年代を推定する。",
+                point4: "温度履歴の補正が必要となる。",
+                section2_title: "適用できる対象",
+                target1: "貝殻やサンゴなどの炭酸塩試料。",
+                target2: "骨や歯に含まれる有機成分。",
+                target3: "卵殻や貝塚などの遺物。",
+                target4: "古環境試料の有機物。",
+                note: "ラセミ化速度は温度に強く依存するため、地域ごとの温度履歴を考慮する必要があります。",
+                section3_title: "注意点",
+                cautions: "温度履歴の不確実性や、汚染によるD/L比率の変化が年代推定に影響します。他の年代測定法との併用が推奨されます。",
+                applications_title: "実際の応用例",
+                applications_intro: "アミノ酸ラセミ化は、貝塚や古環境研究で年代推定に活用されています。",
+                app1: "貝塚年代 — 貝殻のD/L比率から堆積年代を推定。",
+                app2: "海成段丘 — 貝化石の年代から海水準変動を推定。",
+                app3: "洞窟堆積 — 有機物のラセミ化で堆積時期を推定。",
+                app4: "卵殻遺物 — 卵殻の年代から遺跡利用時期を推定。",
+                app5: "古環境復元 — 温度履歴の推定に活用。",
+                game_cta: "年代知識を試してみませんか？",
+                game_btn: "ゲームに挑戦する",
+                back_articles: "記事一覧に戻る"
+            },
+            en: {
+                title: "Amino Acid Racemization",
+                intro: "Amino acid racemization dating estimates age by measuring the conversion of L-amino acids to D-forms after death. Reaction rates depend on temperature and environmental conditions.",
+                section1_title: "Key Principles",
+                point1: "Living organisms are dominated by L-amino acids.",
+                point2: "After death, the D/L ratio increases over time.",
+                point3: "The D/L ratio is measured to estimate age.",
+                point4: "Temperature history must be corrected for.",
+                section2_title: "Applicable Materials",
+                target1: "Shells and corals with carbonate content.",
+                target2: "Organic components in bones and teeth.",
+                target3: "Eggshells and shell midden materials.",
+                target4: "Organic remains in paleoenvironmental samples.",
+                note: "Racemization rates strongly depend on temperature, so local temperature histories are required.",
+                section3_title: "Caveats",
+                cautions: "Uncertain temperature history and contamination can affect D/L ratios. Cross-checking with other dating methods is recommended.",
+                applications_title: "Real-World Applications",
+                applications_intro: "Amino acid racemization is used in shell middens and paleoenvironmental studies.",
+                app1: "Shell Middens — Estimate deposition ages from shell D/L ratios.",
+                app2: "Marine Terraces — Use shell ages to infer sea-level change timing.",
+                app3: "Cave Deposits — Estimate deposition timing from organic remains.",
+                app4: "Eggshell Finds — Infer site use periods from eggshell ages.",
+                app5: "Paleoenvironment Reconstruction — Support temperature-history inference.",
+                game_cta: "Ready to test your chronology knowledge?",
+                game_btn: "Try the Game",
+                back_articles: "Back to Articles"
+            }
+        };
+
+        function applyLang(lang) {
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.dataset.i18n;
+                if (dict[lang] && dict[lang][key]) el.textContent = dict[lang][key];
+            });
+            document.querySelector(".lang-switch").textContent = (lang === "ja") ? "EN" : "JA";
+            localStorage.setItem("arq_lang", lang);
+        }
+
+        const saved = localStorage.getItem("arq_lang");
+        let lang = saved || (navigator.language && navigator.language.startsWith("ja") ? "ja" : "en");
+        applyLang(lang);
+
+        document.querySelector(".lang-switch").onclick = () => {
+            lang = (lang === "ja") ? "en" : "ja";
+            applyLang(lang);
+        };
+
+        fetch('/parts/footer.html')
+            .then(r => r.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+            });
+    </script>
+
+</body>
+
+</html>
