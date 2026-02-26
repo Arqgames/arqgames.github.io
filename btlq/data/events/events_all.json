@@ -1556,7 +1556,7 @@
   "ref": "Luke 2:7",
   "rank": 1,
   "tags": ["Jesus", "Birth", "MajorAnchor"],
-  "hint_ja": "導入アンカー（ここから宣教開始へ相対配置する）\nルカ2章→ルカ3:23（約30歳）へつなぐ基準点",
+  "hint_ja": "ここから宣教開始へとつながる部分\nルカ2章→ルカ3:23（約30歳）へつなぐ基準点",
   "hint_en": "Intro anchor for placing the ministry start relatively from here\nUse Luke 2, then connect forward to Luke 3:23 (~30 years old)"
 },
 {
@@ -1569,7 +1569,7 @@
   "ref": "Luke 2:16",
   "rank": 5,
   "tags": ["Jesus", "Birth", "Shepherds"],
-  "hint_ja": "ルカ2:8-20を続けて読むと「天使の知らせ→訪問」が一続きで固定できる\n誕生イベント（2:7）直後の出来事として並べやすい",
+  "hint_ja": "ルカ2:8-20を続けて読むと「天使の知らせ→訪問」が一続きで掴めるる\n誕生イベント（2:7）直後の出来事として並べやすい",
   "hint_en": "Read Luke 2:8-20 straight to lock announce→visit sequence\nEasy to place immediately after Luke 2:7"
 },
 {
@@ -1582,7 +1582,7 @@
   "ref": "Matt 2:1-12",
   "rank": 4,
   "tags": ["Jesus", "Magi", "Herod"],
-  "hint_ja": "マタ2章を通読すると「訪問→ヘロデ動揺→帰路変更」の流れが固定できる\nルカ2章（羊飼い）と混同せず“別場面”として整理すると順序が崩れない",
+  "hint_ja": "マタ2章を通読すると「訪問→ヘロデ動揺→帰路変更」の流れが掴める\nルカ2章（羊飼い）と混同せず“別場面”として整理すると順序が崩れない",
   "hint_en": "Read Matt 2 to fix visit→Herod alarm→return-by-another-route\nKeep distinct from Luke 2 shepherd scene to avoid mixing"
 },
 {
