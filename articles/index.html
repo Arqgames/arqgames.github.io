@@ -40,7 +40,7 @@
         </div>
 
         <div class="section-block">
-            <h2 class="section-title" data-i18n="methods_title">年代測定の方法</h2>
+            <h2 class="section-title" style="cursor: pointer;" onclick="window.open('dating-methods/', '_blank', 'noopener');" onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';" data-i18n="methods_title">年代測定の方法</h2>
             <div class="article-list">
                 <div class="article-item" onclick="window.open('radiocarbon/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
                     <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_radiocarbon">放射性炭素年代測定の原理</h3>
@@ -60,36 +60,11 @@
                         地層の重なりと層序で時系列を復元する基本原理。
                     </div>
                 </div>
-                <div class="article-item" onclick="window.open('luminescence-dating/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_luminescence">熱ルミネッセンス（TL）・OSL年代測定</h3>
-                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_luminescence_desc">
-                        焼成土器や堆積物の最終加熱・照射時期を推定。
-                    </div>
-                </div>
-                <div class="article-item" onclick="window.open('obsidian-hydration/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_obsidian">黒曜石水和法</h3>
-                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_obsidian_desc">
-                        水和層の成長速度から使用時期を推定。
-                    </div>
-                </div>
-                <div class="article-item" onclick="window.open('archaeomagnetism/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_archaeomag">古地磁気年代測定</h3>
-                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_archaeomag_desc">
-                        地磁気の変動記録から焼成遺構を年代推定。
-                    </div>
-                </div>
-                <div class="article-item" onclick="window.open('uranium-series/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_uranium">ウラン系列年代測定</h3>
-                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_uranium_desc">
-                        炭酸塩や鍾乳石などの年代を推定。
-                    </div>
-                </div>
-                <div class="article-item" onclick="window.open('amino-acid-racemization/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f9f4ee'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(139,94,60,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #8b5e3c;" data-i18n="article_amino">アミノ酸ラセミ化年代測定</h3>
-                    <div class="article-desc" style="line-height: 1.7; color: #6b5d4f;" data-i18n="article_amino_desc">
-                        有機物中のラセミ化率から年代を推定。
-                    </div>
-                </div>
+            </div>
+            <div style="text-align: center; margin-top: 16px;">
+                <button type="button" class="btn btn-sub" onclick="window.open('dating-methods/', '_blank', 'noopener');" data-i18n="view_all" style="padding:8px 16px; font-size:0.95em;">
+                    すべて見る
+                </button>
             </div>
 
             <h2 class="section-title" data-i18n="reliability_title">史料の信頼性</h2>
@@ -271,6 +246,7 @@
                 article_uranium_desc: "炭酸塩や鍾乳石などの年代を推定。",
                 article_amino: "アミノ酸ラセミ化年代測定",
                 article_amino_desc: "有機物中のラセミ化率から年代を推定。",
+                view_all: "すべて見る",
                 reliability_title: "史料の信頼性",
                 article_medieval: "中世年代記の信頼性評価",
                 article_medieval_desc: "年代記を史料として使うときの評価基準。",
@@ -316,6 +292,7 @@
                 article_indus_desc: "インダス文明の繁栄と衰退の年代。",
                 article_mesoamerican: "メソアメリカ暦の年代決定",
                 article_mesoamerican_desc: "マヤ暦のビッグ・バン（スタート・データ）の計算方法。",
+                back_dating_methods: "年代測定の方法に戻る",
                 back_home: "トップページに戻る"
             },
             en: {
@@ -340,6 +317,7 @@
                 article_uranium_desc: "Dates carbonates, speleothems, and related materials.",
                 article_amino: "Amino Acid Racemization",
                 article_amino_desc: "Uses racemization rates in organic materials.",
+                view_all: "View All",
                 reliability_title: "Source Reliability",
                 article_medieval: "Assessing Medieval Chronicles",
                 article_medieval_desc: "How to evaluate chronicles as historical sources.",
@@ -385,6 +363,7 @@
                 article_indus_desc: "Flourishing and decline of Indus civilization.",
                 article_mesoamerican: "Mesoamerican Calendar Dating",
                 article_mesoamerican_desc: "Calculation methods for Maya calendar start dates.",
+                back_dating_methods: "Back to Dating Methods",
                 back_home: "Back to Home"
             }
         };
