@@ -76,7 +76,73 @@
             </div>
         </div>
 
-        <!-- ✅ ゲームカード（年代研究ノート下に配置） -->
+        <!-- ✅ カテゴリセクション -->
+        <div class="section-block">
+            <h2 class="section-title" data-i18n="category_title">記事カテゴリ</h2>
+            <div class="info-grid">
+                <!-- 年代測定の方法 -->
+                <div class="info-card">
+                    <div class="tag-row">
+                        <span class="tag material-icons" style="font-size:0.9em; margin-right:4px;">science</span>
+                        <span data-i18n="methods_tag">年代測定</span>
+                    </div>
+                    <h3 style="cursor:pointer; text-decoration:none; border-bottom:2px solid transparent; transition:border-color 0.2s;" onmouseover="this.style.borderBottom='2px solid #8b5e3c';" onmouseout="this.style.borderBottom='2px solid transparent';" onclick="window.open('/articles/dating-methods/', '_blank', 'noopener');" data-i18n="methods_title">年代測定の方法</h3>
+                    <p data-i18n="methods_desc">放射性炭素測定、年輪年代学、地層学など、年代を推定する科学的手法を解説します。</p>
+                    <ul class="topic-list">
+                        <li data-i18n="methods_article_1">放射性炭素年代測定の原理</li>
+                        <li data-i18n="methods_article_2">年輪年代学の仕組み</li>
+                        <li data-i18n="methods_article_3">地層学と相対年代の考え方</li>
+                    </ul>
+                </div>
+
+                <!-- 史料の信頼性 -->
+                <div class="info-card">
+                    <div class="tag-row">
+                        <span class="tag material-icons" style="font-size:0.9em; margin-right:4px;">flare</span>
+                        <span data-i18n="reliability_tag">信頼性評価</span>
+                    </div>
+                    <h3 style="cursor:pointer; text-decoration:none; border-bottom:2px solid transparent; transition:border-color 0.2s;" onmouseover="this.style.borderBottom='2px solid #8b5e3c';" onmouseout="this.style.borderBottom='2px solid transparent';" onclick="window.open('/articles/source-reliability/', '_blank', 'noopener');" data-i18n="reliability_title">史料の信頼性</h3>
+                    <p data-i18n="reliability_desc">年代記、貨幣資料、碑文など、各種史料をどう評価し、年代決定に反映させるかを学びます。</p>
+                    <ul class="topic-list">
+                        <li data-i18n="reliability_article_1">中世年代記の信頼性評価</li>
+                        <li data-i18n="reliability_article_2">貨幣資料が示す年代情報</li>
+                        <li data-i18n="reliability_article_3">暦法の変遷と日付のずれ</li>
+                    </ul>
+                </div>
+
+                <!-- 具体的歴史事例 -->
+                <div class="info-card">
+                    <div class="tag-row">
+                        <span class="tag material-icons" style="font-size:0.9em; margin-right:4px;">diamond</span>
+                        <span data-i18n="cases_tag">事例研究</span>
+                    </div>
+                    <h3 style="cursor:pointer; text-decoration:none; border-bottom:2px solid transparent; transition:border-color 0.2s;" onmouseover="this.style.borderBottom='2px solid #8b5e3c';" onmouseout="this.style.borderBottom='2px solid transparent';" onclick="window.open('/articles/historical-cases/', '_blank', 'noopener');" data-i18n="cases_title">具体的歴史事例</h3>
+                    <p data-i18n="cases_desc">ポンペイ、ローマ帝国、エジプトなど、実際の歴史上の出来事がどう年代確定されたかを追跡します。</p>
+                    <ul class="topic-list">
+                        <li data-i18n="cases_article_1">ポンペイ埋没年の再検討</li>
+                        <li data-i18n="cases_article_2">ローマ帝国成立年の史料的根拠</li>
+                        <li data-i18n="cases_article_3">古代オリンピアの年代特定</li>
+                    </ul>
+                </div>
+
+                <!-- 年代論争 -->
+                <div class="info-card">
+                    <div class="tag-row">
+                        <span class="tag material-icons" style="font-size:0.9em; margin-right:4px;">explore</span>
+                        <span data-i18n="debates_tag">年代論争</span>
+                    </div>
+                    <h3 style="cursor:pointer; text-decoration:none; border-bottom:2px solid transparent; transition:border-color 0.2s;" onmouseover="this.style.borderBottom='2px solid #8b5e3c';" onmouseout="this.style.borderBottom='2px solid transparent';" onclick="window.open('/articles/chronological-debates/', '_blank', 'noopener');" data-i18n="debates_title">年代論争</h3>
+                    <p data-i18n="debates_desc">歴史の年代はなぜ修正されるのか、どんな見方の違いがあるのかを、論争例から学びます。</p>
+                    <ul class="topic-list">
+                        <li data-i18n="debates_article_1">歴史年代はなぜ修正されるのか</li>
+                        <li data-i18n="debates_article_2">縄文時代の年代測定</li>
+                        <li data-i18n="debates_article_3">シュリーマン年代論争</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ✅ ゲームカード -->
         <div class="section-block">
             <h2 class="section-title" data-i18n="game_title">Bible Timeline Quiz</h2>
             <div class="event-card" role="button" tabindex="0"
@@ -135,12 +201,62 @@
                 history_debates_1: "暦法の変遷と日付のずれ",
                 history_debates_2: "貨幣資料が示す年代情報",
                 history_debates_3: "歴史年代はなぜ修正されるのか",
-                history_btn: "解説記事一覧へ"
+                history_btn: "解説記事一覧へ",
+                category_title: "記事カテゴリ",
+                methods_tag: "年代測定",
+                methods_title: "年代測定の方法",
+                methods_desc: "放射性炭素測定、年輪年代学、地層学など、年代を推定する科学的手法を解説します。",
+                methods_article_1: "放射性炭素年代測定の原理",
+                methods_article_2: "年輪年代学の仕組み",
+                methods_article_3: "地層学と相対年代の考え方",
+                reliability_tag: "信頼性評価",
+                reliability_title: "史料の信頼性",
+                reliability_desc: "年代記、貨幣資料、碑文など、各種史料をどう評価し、年代決定に反映させるかを学びます。",
+                reliability_article_1: "中世年代記の信頼性評価",
+                reliability_article_2: "貨幣資料が示す年代情報",
+                reliability_article_3: "暦法の変遷と日付のずれ",
+                cases_tag: "事例研究",
+                cases_title: "具体的歴史事例",
+                cases_desc: "ポンペイ、ローマ帝国、エジプトなど、実際の歴史上の出来事がどう年代確定されたかを追跡します。",
+                cases_article_1: "ポンペイ埋没年の再検討",
+                cases_article_2: "ローマ帝国成立年の史料的根拠",
+                cases_article_3: "古代オリンピアの年代特定",
+                debates_tag: "年代論争",
+                debates_title: "年代論争",
+                debates_desc: "歴史の年代はなぜ修正されるのか、どんな見方の違いがあるのかを、論争例から学びます。",
+                debates_article_1: "歴史年代はなぜ修正されるのか",
+                debates_article_2: "縄文時代の年代測定",
+                debates_article_3: "シュリーマン年代論争"
             },
             en: {
                 title: "ARQ Games",
                 tagline: "A small lab for history-chronology learning and experimental games.",
-                description: "Explore articles explaining dating methods and historical debates, plus an interactive quiz game where you arrange biblical events in chronological order.",
+                description: "Explore articles e,
+                category_title: "Article Categories",
+                methods_tag: "Dating Methods",
+                methods_title: "How Dating Methods Work",
+                methods_desc: "Learn scientific approaches to dating: radiocarbon, dendrochronology, stratigraphy and more.",
+                methods_article_1: "Principles of radiocarbon dating",
+                methods_article_2: "How dendrochronology works",
+                methods_article_3: "Stratigraphy and relative dating",
+                reliability_tag: "Source Reliability",
+                reliability_title: "Assessing Sources",
+                reliability_desc: "Evaluate chronicles, coins, and inscriptions—learn how evidence is weighed in dating decisions.",
+                reliability_article_1: "Assessing medieval chronicles",
+                reliability_article_2: "What coins reveal about dates",
+                reliability_article_3: "Calendar reforms and date drift",
+                cases_tag: "Case Studies",
+                cases_title: "Historical Case Studies",
+                cases_desc: "How specific events—Pompeii, Rome, Egypt—were dated through careful source and evidence analysis.",
+                cases_article_1: "Revisiting the date of Pompeii",
+                cases_article_2: "Sources for the founding of the Roman Empire",
+                cases_article_3: "Chronology of ancient Olympia",
+                debates_tag: "Chronological Debates",
+                debates_title: "Debates and Revisions",
+                debates_desc: "Why dates change: how new evidence and reinterpretation reshape our understanding of history.",
+                debates_article_1: "Why historical dates get revised",
+                debates_article_2: "Jomon period chronology",
+                debates_article_3: "The Schliemann chronology controversy"xplaining dating methods and historical debates, plus an interactive quiz game where you arrange biblical events in chronological order.",
                 game_title: "Bible Timeline Quiz",
                 game_name: "Bible Timeline Quiz",
                 game_desc: "An experimental sorting game playable in your browser.",
