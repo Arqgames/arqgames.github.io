@@ -1638,7 +1638,7 @@
     "hint_en": "Luke 3:1-2 ruler list is a strong dating anchor (15th year)\nThe narrative flows straight into Jesus’ baptism (Luke 3:21-23)"
   },
   {
-    "id": "71000",
+    "id": "071000",
     "ja": "イエスがバプテスマを受ける",
     "en": "Jesus is baptized",
     "year": 29,
@@ -1651,7 +1651,7 @@
     "hint_en": "Absolute anchor for the start of Jesus’ ministry (the narrative pivots here)\nFix the age clue using Luke 3:23 (“about 30 years old”)”"
   },
   {
-    "id": "71500",
+    "id": "071500",
     "ja": "イエスが荒野で試みに遭う（40日）",
     "en": "Jesus is tempted in the wilderness (40 days)",
     "year": 29,
@@ -1664,7 +1664,7 @@
     "hint_en": "Compare Matt 4 with Luke 4 to verify ordering\nEasily fixed immediately after baptism"
   },
   {
-    "id": "72000",
+    "id": "072000",
     "ja": "イエスの最初の奇跡（カナの婚礼）",
     "en": "Jesus’ first miracle (Cana)",
     "year": 30,
@@ -1677,7 +1677,7 @@
     "hint_en": "John 2:11 labels it the first sign, fixing order\nLink forward to the Passover scene (John 2:13) for stable placement"
   },
   {
-    "id": "73000",
+    "id": "073000",
     "ja": "イエスが神殿を清める（過越の時）",
     "en": "Jesus cleanses the temple (Passover)",
     "year": 30,
@@ -1690,7 +1690,7 @@
     "hint_en": "John 2:13→15-17 fixes Passover→cleansing sequence\nNaturally placed after the Cana first sign (John 2:1-11)"
   },
   {
-    "id": "74500",
+    "id": "074500",
     "ja": "イエスが4人の漁師を弟子として呼ぶ",
     "en": "Jesus calls four fishermen",
     "year": 31,
@@ -1703,7 +1703,7 @@
     "hint_en": "Luke 5 clearly shows call→follow, marking disciple formation stage\nPlace it before the choosing of the Twelve (Luke 6:12-16)"
   },
   {
-    "id": "75000",
+    "id": "075000",
     "ja": "イエスが12使徒を選出する",
     "en": "Jesus chooses the twelve apostles",
     "year": 31,
@@ -1716,7 +1716,7 @@
     "hint_en": "Luke 6:12 (all-night prayer)→6:13 (selection) fixes sequence and weight\nBecomes a recurring anchor since the Twelve are central thereafter"
   },
   {
-    "id": "76400",
+    "id": "076400",
     "ja": "バプテスマを施すヨハネが処刑される",
     "en": "John the Baptist is executed",
     "year": 32,
@@ -1729,7 +1729,7 @@
     "hint_en": "Mark 6 gives banquet→order→execution as a single chain, fixing order\nPlace it before later expansion episodes for narrative flow"
   },
   {
-    "id": "76500",
+    "id": "076500",
     "ja": "イエスが5000人に給食する",
     "en": "Jesus feeds the 5,000",
     "year": 32,
@@ -1742,7 +1742,7 @@
     "hint_en": "John 6 flows feeding→reaction→follow-up, stabilizing the sequence\nPairs naturally with walking on water (Matt 14:25)"
   },
   {
-    "id": "76600",
+    "id": "076600",
     "ja": "イエスが水の上を歩く",
     "en": "Jesus walks on water",
     "year": 32,
@@ -1755,7 +1755,7 @@
     "hint_en": "Linked as a night event following the feeding, fixing its position\nComparing storm-related parallels helps retention"
   },
   {
-    "id": "76700",
+    "id": "076700",
     "ja": "イエスが変貌する",
     "en": "Jesus is transfigured",
     "year": 32,
@@ -1768,7 +1768,7 @@
     "hint_en": "Time cues (e.g., 'after six days') help relative placement within the flow\nCross-check Mark 9 / Luke 9 to lock the scene"
   },
   {
-    "id": "76900",
+    "id": "076900",
     "ja": "イエスが70人の弟子を派遣する",
     "en": "Jesus sends out the seventy",
     "year": 32,
@@ -1781,7 +1781,7 @@
     "hint_en": "Luke 10 links sending→return→instruction, fixing the sequence\nEasy to frame as ministry expansion after the Twelve are chosen"
   },
   {
-    "id": "77000",
+    "id": "077000",
     "ja": "イエスがラザロを復活させる",
     "en": "Jesus raises Lazarus",
     "year": 33,
@@ -1794,7 +1794,7 @@
     "hint_en": "John 11 is a self-contained episode, hard to misplace\nLink with John 11:53 to connect toward the final-week escalation"
   },
   {
-    "id": "77400",
+    "id": "077400",
     "ja": "マリアがイエスに香油を注ぐ（ベタニヤ）",
     "en": "Mary anoints Jesus (Bethany)",
     "year": 33,
@@ -1807,7 +1807,7 @@
     "hint_en": "John 12:1-3 gives 'six days before Passover' as a placement cue\nKeep it just before the entry into Jerusalem (Matt 21)"
   },
   {
-    "id": "78000",
+    "id": "078000",
     "ja": "イエスがエルサレムに入城する",
     "en": "Jesus enters Jerusalem",
     "year": 33,
@@ -1820,7 +1820,7 @@
     "hint_en": "Anchor for the start of the final week\nLink it to the temple action (Matt 21:12-17) to keep the flow"
   },
   {
-    "id": "79000",
+    "id": "079000",
     "ja": "イエスが神殿を清める（受難週）",
     "en": "Jesus cleanses the temple (final week)",
     "year": 33,
@@ -1833,7 +1833,7 @@
     "hint_en": "Matt 21 flows entry→cleansing, fixing order\nDistinguish from the earlier John 2 temple scene to avoid confusion"
   },
   {
-    "id": "79200",
+    "id": "079200",
     "ja": "イエスが終わりの日のしるしを予告する（オリーブ山）",
     "en": "Jesus gives the sign prophecy (Mount of Olives)",
     "year": 33,
@@ -1846,7 +1846,7 @@
     "hint_en": "Strong late-final-week anchor (teaching before the arrest)\nFix its placement by aligning Matt 24 with Luke 21"
   },
   {
-    "id": "79500",
+    "id": "079500",
     "ja": "イエスが弟子の足を洗う",
     "en": "Jesus washes the disciples’ feet",
     "year": 33,
@@ -1859,7 +1859,7 @@
     "hint_en": "John 13 forms part of the continuous last-night narrative\nPair with Luke 22:19-20 to frame the final evening"
   },
   {
-    "id": "80000",
+    "id": "080000",
     "ja": "最後の晩餐",
     "en": "Last Supper",
     "year": 33,
@@ -1872,7 +1872,7 @@
     "hint_en": "Central anchor of the final night (leads straight into the arrest)\nFix sequence and meaning by aligning Luke 22 with Matt 26"
   },
   {
-    "id": "80500",
+    "id": "080500",
     "ja": "イエスが新しいおきてを教える",
     "en": "Jesus gives the new commandment",
     "year": 33,
@@ -1885,7 +1885,7 @@
     "hint_en": "Fixed in John 13 as part of the last-night instruction\nTheme anchor that connects into congregation identity (love)"
   },
   {
-    "id": "81000",
+    "id": "081000",
     "ja": "イエスがゲッセマネで祈り逮捕される",
     "en": "Jesus prays in Gethsemane and is arrested",
     "year": 33,
@@ -1898,7 +1898,7 @@
     "hint_en": "Matt 26 locks prayer→betrayal→arrest as one chain\nStable when placed right after the Last Supper narrative"
   },
   {
-    "id": "81500",
+    "id": "081500",
     "ja": "ペテロがイエスを三度否定する",
     "en": "Peter denies Jesus three times",
     "year": 33,
@@ -1911,7 +1911,7 @@
     "hint_en": "Fixed within Matt 26 flow after arrest and during interrogations\nThe rooster-crow detail serves as a timeline cue"
   },
   {
-    "id": "82000",
+    "id": "082000",
     "ja": "イエスが裁判にかけられる",
     "en": "Jesus is put on trial",
     "year": 33,
@@ -1924,7 +1924,7 @@
     "hint_en": "John 18:28 onward traces the trial stages clearly\nActs as the hinge from night arrest to morning proceedings"
   },
   {
-    "id": "82500",
+    "id": "082500",
     "ja": "バラバが釈放される",
     "en": "Barabbas is released",
     "year": 33,
@@ -1937,7 +1937,7 @@
     "hint_en": "Matt 27 fixes this choice within the trial progression\nRemember it as the pivot from crowd choice to sentencing"
   },
   {
-    "id": "83000",
+    "id": "083000",
     "ja": "イエスが亡くなる",
     "en": "Death of Jesus",
     "year": 33,
@@ -1950,7 +1950,7 @@
     "hint_en": "Central ransom anchor that links into resurrection and ascension\nUse Gospel parallels to lock the late-week sequence"
   },
   {
-    "id": "83500",
+    "id": "083500",
     "ja": "イエスが埋葬される",
     "en": "Jesus is buried",
     "year": 33,
@@ -1963,7 +1963,7 @@
     "hint_en": "John 19 fixes death→burial as a continuous flow\nDirect bridge into the resurrection accounts (Matt 28)"
   },
   {
-    "id": "84000",
+    "id": "084000",
     "ja": "イエスが復活する",
     "en": "Resurrection of Jesus",
     "year": 33,
@@ -1976,7 +1976,7 @@
     "hint_en": "Starting anchor that connects to the 40 days after resurrection (Acts 1:3)\nOrganize the appearance flow by aligning Matt 28 with Luke 24"
   },
   {
-    "id": "84200",
+    "id": "084200",
     "ja": "復活したイエスがエマオ途上で現れる",
     "en": "Risen Jesus appears on the road to Emmaus",
     "year": 33,
@@ -1989,7 +1989,7 @@
     "hint_en": "Locked within Luke 24 as a same-day sequence\nHighlights the post-resurrection teaching pattern"
   },
   {
-    "id": "84500",
+    "id": "084500",
     "ja": "復活したイエスがペテロに『羊を養いなさい』と言う",
     "en": "Risen Jesus tells Peter: 'Feed my sheep'",
     "year": 33,
@@ -2002,7 +2002,7 @@
     "hint_en": "John 21 is a self-contained post-resurrection appearance, hard to misplace\nRestores Peter and links into Acts-era leadership"
   },
   {
-    "id": "85000",
+    "id": "085000",
     "ja": "イエスが昇天する",
     "en": "Ascension of Jesus",
     "year": 33,
@@ -2015,7 +2015,7 @@
     "hint_en": "Acts 1:3 (40 days) plus 1:9 (ascension) gives a firm day-count anchor\nClear divider that leads straight into Pentecost and congregation birth"
   },
   {
-    "id": "85500",
+    "id": "085500",
     "ja": "マッテアが使徒に選ばれる",
     "en": "Matthias chosen as apostle",
     "year": 33,
@@ -2028,7 +2028,7 @@
     "hint_en": "Acts 1 flows ascension→waiting→replacement, fixing it before Pentecost\nRestores the Twelve before moving into Acts 2"
   },
   {
-    "id": "86000",
+    "id": "086000",
     "ja": "ペンテコステ（聖霊が注がれる）",
     "en": "Pentecost",
     "year": 33,
@@ -2041,7 +2041,7 @@
     "hint_en": "Absolute anchor for the birth of the congregation (baseline for later growth/persecution)\nActs 2:1–4 fixes it as a same-day sequence"
   },
   {
-    "id": "86200",
+    "id": "086200",
     "ja": "ペテロとヨハネが逮捕される",
     "en": "Peter and John arrested",
     "year": 33,
@@ -2054,7 +2054,7 @@
     "hint_en": "Acts 3 healing→Acts 4:1-3 arrest fixes the order\nPlace as early persecution soon after Pentecost"
   },
   {
-    "id": "86500",
+    "id": "086500",
     "ja": "アナニアとサッピラが裁きを受ける",
     "en": "Ananias and Sapphira judged",
     "year": 33,
@@ -2067,7 +2067,7 @@
     "hint_en": "Acts 5 is a self-contained internal episode in the formation period\nContrast Acts 4 sharing with Acts 5 deception for the theme"
   },
   {
-    "id": "87000",
+    "id": "087000",
     "ja": "ステファノが殉教する",
     "en": "Martyrdom of Stephen",
     "year": 34,
@@ -2080,7 +2080,7 @@
     "hint_en": "Acts 6 appointment→Acts 7 defense→7:54-60 martyrdom fixes the chain\nIt pivots into the scattering (Acts 8:1)"
   },
   {
-    "id": "87500",
+    "id": "087500",
     "ja": "フィリポがエチオピアの宦官に伝える",
     "en": "Philip and Ethiopian eunuch",
     "year": 34,
@@ -2093,7 +2093,7 @@
     "hint_en": "Acts 8 links this episode to post-scattering expansion with clear order\nScripture explanation→baptism sequence is explicit"
   },
   {
-    "id": "88000",
+    "id": "088000",
     "ja": "サウロ（のちのパウロ）が改宗する",
     "en": "Conversion of Saul",
     "year": 34,
@@ -2106,7 +2106,7 @@
     "hint_en": "Major turning point in Acts (also prepares for the Gentile expansion)\nActs 9:1–19 is continuous, giving a strong fixed order"
   },
   {
-    "id": "90000",
+    "id": "090000",
     "ja": "コルネリオが改宗する（異邦人への拡大）",
     "en": "Conversion of Cornelius",
     "year": 36,
@@ -2119,7 +2119,7 @@
     "hint_en": "Decisive anchor for the turn to the Gentiles\nConfirm it as a turning point by aligning Acts 10 with Acts 11:1–18"
   },
   {
-    "id": "89000",
+    "id": "089000",
     "ja": "パウロがエルサレムを初訪問する（改宗後）",
     "en": "Paul's first visit to Jerusalem (after conversion)",
     "year": 37,
@@ -2132,7 +2132,7 @@
     "hint_en": "Acts 9:26-30 links visit→acceptance→sending in one flow\nRead with Gal 1:18 to grasp the time sense"
   },
   {
-    "id": "92000",
+    "id": "092000",
     "ja": "マタイによる福音書が完成する",
     "en": "Gospel of Matthew finished",
     "year": 41,
@@ -2145,7 +2145,7 @@
     "hint_en": "Matt 28:19-20 summarizes the book’s aim as a closing anchor\nRead alongside Acts expansion to see teaching spread in written form"
   },
   {
-    "id": "93000",
+    "id": "093000",
     "ja": "パウロの第1回宣教旅行が始まる",
     "en": "Paul begins first missionary journey",
     "year": 47,
@@ -2158,7 +2158,7 @@
     "hint_en": "Read Acts 13 commissioning with ch.14 return to frame the journey\nUse it as baseline for numbering later journeys"
   },
   {
-    "id": "93500",
+    "id": "093500",
     "ja": "パウロがルステラで石打ちに遭う",
     "en": "Paul is stoned at Lystra",
     "year": 48,
@@ -2171,7 +2171,7 @@
     "hint_en": "Acts 14 context fixes it near journey’s end\nPlace just before return report (14:26-28)"
   },
   {
-    "id": "94000",
+    "id": "094000",
     "ja": "エルサレム会議（割礼問題）",
     "en": "Council of Jerusalem",
     "year": 49,
@@ -2184,7 +2184,7 @@
     "hint_en": "Major divider between journeys 1 and 2 (doctrinal clarification anchor)\nFix the outline by aligning Acts 15 with Galatians 2"
   },
   {
-    "id": "94500",
+    "id": "094500",
     "ja": "パウロとバルナバが別行動になる",
     "en": "Paul and Barnabas separate",
     "year": 49,
@@ -2197,7 +2197,7 @@
     "hint_en": "Acts 15:36-41 links directly to start of journey two\nPrecedes Silas partnership"
   },
   {
-    "id": "95000",
+    "id": "095000",
     "ja": "パウロの第2回宣教旅行が始まる",
     "en": "Paul begins second missionary journey",
     "year": 49,
@@ -2210,7 +2210,7 @@
     "hint_en": "Pair departure 15:40 with return 18:22\nCompare regions with journey one"
   },
   {
-    "id": "95200",
+    "id": "095200",
     "ja": "テモテが同行者に加わる",
     "en": "Timothy joins Paul",
     "year": 50,
@@ -2223,7 +2223,7 @@
     "hint_en": "Acts 16 opening fixes placement\nMarks Timothy’s later epistle role"
   },
   {
-    "id": "95500",
+    "id": "095500",
     "ja": "パウロがマケドニアへ渡る",
     "en": "Paul crosses to Macedonia",
     "year": 50,
@@ -2236,7 +2236,7 @@
     "hint_en": "Acts 16:6-10 shows vision→travel cause chain\nMarks expansion into Europe"
   },
   {
-    "id": "95600",
+    "id": "095600",
     "ja": "フィリピで投獄と解放が起きる",
     "en": "Imprisonment at Philippi",
     "year": 50,
@@ -2249,7 +2249,7 @@
     "hint_en": "Continuous narrative fixes order\nLinked with jailer conversion"
   },
   {
-    "id": "95800",
+    "id": "095800",
     "ja": "アテネでアレオパゴス演説を行う",
     "en": "Paul speaks at Areopagus",
     "year": 50,
@@ -2262,7 +2262,7 @@
     "hint_en": "Placed via Thessalonica→Berea→Athens route\nClassic cross-culture preaching marker"
   },
   {
-    "id": "96000",
+    "id": "096000",
     "ja": "テサロニケ人への手紙が書かれる",
     "en": "Thessalonian letters written",
     "year": 50,
@@ -2275,7 +2275,7 @@
     "hint_en": "Cross-check with Corinth stay Acts 18\nLinks narrative journeys with epistles"
   },
   {
-    "id": "96200",
+    "id": "096200",
     "ja": "ガラテア書が書かれる",
     "en": "Galatians written",
     "year": 52,
@@ -2288,7 +2288,7 @@
     "hint_en": "Compare with Acts 15 circumcision issue\nEarly doctrinal clarification letter"
   },
   {
-    "id": "97000",
+    "id": "097000",
     "ja": "パウロの第3回宣教旅行が始まる",
     "en": "Paul begins third missionary journey",
     "year": 52,
@@ -2301,7 +2301,7 @@
     "hint_en": "Pair 18:23 departure with ch21 return\nEphesus stay becomes central feature"
   },
   {
-    "id": "97200",
+    "id": "097200",
     "ja": "エフェソスで騒動が起きる",
     "en": "Riot in Ephesus",
     "year": 55,
@@ -2314,7 +2314,7 @@
     "hint_en": "Continuous Acts 19 narrative fixes sequence\nPlace near end of Ephesus stay"
   },
   {
-    "id": "97500",
+    "id": "097500",
     "ja": "コリント第一書が書かれる",
     "en": "1 Corinthians written",
     "year": 55,
@@ -2327,7 +2327,7 @@
     "hint_en": "Aligned with Acts 19 Ephesus stay\nKey sync of narrative and epistle timeline"
   },
   {
-    "id": "97800",
+    "id": "097800",
     "ja": "コリント第二書が書かれる",
     "en": "2 Corinthians written",
     "year": 55,
@@ -2340,7 +2340,7 @@
     "hint_en": "Compare with Acts 20 Macedonia movement\nPlaced after reconciliation context"
   },
   {
-    "id": "98000",
+    "id": "098000",
     "ja": "ローマ書が書かれる",
     "en": "Romans written",
     "year": 56,
@@ -2353,7 +2353,7 @@
     "hint_en": "Aligned with Acts 20 Corinth period\nPlaced near end of third journey"
   },
   {
-    "id": "98500",
+    "id": "098500",
     "ja": "ミレトスでエフェソス長老に別れを告げる",
     "en": "Farewell to Ephesian elders",
     "year": 58,
@@ -2366,7 +2366,7 @@
     "hint_en": "Acts 20:17-38 speech marks journey closure\nServes as terminal anchor for third journey"
   },
   {
-    "id": "99000",
+    "id": "099000",
     "ja": "パウロがエルサレムで逮捕される",
     "en": "Paul arrested in Jerusalem",
     "year": 58,
@@ -2379,7 +2379,7 @@
     "hint_en": "Acts 21 riot→arrest fixes sequence\nMarks transition after third journey"
   },
   {
-    "id": "99200",
+    "id": "099200",
     "ja": "ルカによる福音書が完成する",
     "en": "Gospel of Luke finished",
     "year": 58,
@@ -2392,7 +2392,7 @@
     "hint_en": "Compare Luke 1:1-4 with Acts 1:1 for literary link\nFits near Caesarea custody timeframe"
   },
   {
-    "id": "99500",
+    "id": "099500",
     "ja": "パウロがフェリクスの前で弁明する",
     "en": "Paul defends before Felix",
     "year": 58,
@@ -2405,7 +2405,7 @@
     "hint_en": "Compare Acts 24 with 25:14 to sense detention span\nPlaced before transfer toward Rome"
   },
   {
-    "id": "99800",
+    "id": "099800",
     "ja": "パウロがカエサルへ上訴する",
     "en": "Paul appeals to Caesar",
     "year": 59,
