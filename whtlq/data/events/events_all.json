@@ -7,7 +7,7 @@
     "month": 1,
     "day": 1,
     "ref": "Egypt",
-    "rank": 2,
+    "rank": 1,
     "tags": ["Ancient", "Egypt", "Architecture"],
     "hint_ja": "エジプト古王国時代の記念碑的建造物\nクフ王の時代に建設された世界七不思議の一つ",
     "hint_en": "Monumental structure from Egypt's Old Kingdom\nBuilt during Khufu's reign, one of the Seven Wonders"
@@ -20,7 +20,7 @@
     "month": 1,
     "day": 1,
     "ref": "Babylon",
-    "rank": 3,
+    "rank": 1,
     "tags": ["Ancient", "Mesopotamia", "Law"],
     "hint_ja": "バビロニア王国の法典\n「目には目を」で知られる古代の成文法",
     "hint_en": "Babylonian law code\nFamous for 'eye for an eye' principle"
@@ -33,7 +33,7 @@
     "month": 1,
     "day": 1,
     "ref": "China",
-    "rank": 3,
+    "rank": 1,
     "tags": ["Ancient", "China", "Dynasty"],
     "hint_ja": "中国最古の王朝の一つ\n甲骨文字の使用で知られる",
     "hint_en": "One of China's earliest dynasties\nKnown for oracle bone script"
@@ -46,7 +46,7 @@
     "month": 1,
     "day": 1,
     "ref": "Greece",
-    "rank": 4,
+    "rank": 1,
     "tags": ["Ancient", "Greece", "War"],
     "hint_ja": "ギリシャ神話で有名な戦争\nホメロスの『イリアス』に描かれる",
     "hint_en": "Famous war in Greek mythology\nDepicted in Homer's Iliad"
@@ -59,7 +59,7 @@
     "month": 4,
     "day": 21,
     "ref": "Rome",
-    "rank": 2,
+    "rank": 1,
     "tags": ["Ancient", "Rome", "Founding"],
     "hint_ja": "ロムルスによって建国されたとされる\n後の大帝国の始まり",
     "hint_en": "Traditionally founded by Romulus\nBeginning of a great empire"
@@ -267,7 +267,7 @@
     "month": 1,
     "day": 1,
     "ref": "Egypt",
-    "rank": 3,
+    "rank": 1,
     "tags": ["Ancient", "Egypt", "Dynasty"],
     "hint_ja": "エジプト最後の拡大帝国の終わり\nラムセス11世の後、分裂へ",
     "hint_en": "End of Egypt's last expansionist empire\nDisunion follows Ramesses XI"
@@ -280,7 +280,7 @@
     "month": 1,
     "day": 1,
     "ref": "Mesopotamia",
-    "rank": 3,
+    "rank": 1,
     "tags": ["Ancient", "Mesopotamia", "Empire"],
     "hint_ja": "新アッシリア帝国時代の開始\nアッシュナーナーツァル2世の時代",
     "hint_en": "Beginning of Neo-Assyrian Empire\nRise under Ashurnasirpal II"
@@ -293,7 +293,7 @@
     "month": 1,
     "day": 1,
     "ref": "China",
-    "rank": 2,
+    "rank": 1,
     "tags": ["Ancient", "China", "Dynasty"],
     "hint_ja": "中国最長の王朝の開始\n封建制度の始まり",
     "hint_en": "China's longest dynasty begins\nFeudal system established"
