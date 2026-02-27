@@ -54,6 +54,19 @@
     "articleUrl": "/articles/chronological-debates/schliemann-controversy/"
   },
   {
+    "id": "004500",
+    "ja": "ダヴィデ王によるエルサレム征服",
+    "en": "King David Conquers Jerusalem",
+    "year": -1000,
+    "month": 1,
+    "day": 1,
+    "ref": "Israel",
+    "rank": 2,
+    "tags": ["Ancient", "Israel", "Religion"],
+    "hint_ja": "イスラエル王国の首都となる\nユダヤ教・キリスト教・イスラム教の聖地",
+    "hint_en": "Becomes capital of Israel\nHoly city for Judaism, Christianity, and Islam"
+  },
+  {
     "id": "005500",
     "ja": "古代オリンピア第1回競技開催",
     "en": "First Olympic Games at Olympia",
@@ -149,6 +162,19 @@
     "hint_en": "Unification by First Emperor of Qin\nKnown for Great Wall construction"
   },
   {
+    "id": "008500",
+    "ja": "クレオパトラの死とプトレマイオス朝エジプト滅亡",
+    "en": "Death of Cleopatra and Fall of Ptolemaic Egypt",
+    "year": -30,
+    "month": 8,
+    "day": 12,
+    "ref": "Egypt",
+    "rank": 2,
+    "tags": ["Classical", "Egypt", "Rome"],
+    "hint_ja": "エジプト最後の女王の死\nローマ属州となる",
+    "hint_en": "Death of Egypt's last queen\nBecomes Roman province"
+  },
+  {
     "id": "009000",
     "ja": "カエサル暗殺",
     "en": "Assassination of Julius Caesar",
@@ -216,6 +242,19 @@
     "hint_en": "Muhammad's migration to Medina (Hijra)\nBeginning of Islamic calendar"
   },
   {
+    "id": "013500",
+    "ja": "カノッサの屈辱",
+    "en": "Walk to Canossa",
+    "year": 1077,
+    "month": 1,
+    "day": 25,
+    "ref": "Italy",
+    "rank": 3,
+    "tags": ["Medieval", "Europe", "Religion"],
+    "hint_ja": "神聖ローマ皇帝ハインリヒ4世が教皇に謝罪\n叙任権闘争での出来事",
+    "hint_en": "Emperor Henry IV seeks papal absolution\nInvestiture Controversy incident"
+  },
+  {
     "id": "014000",
     "ja": "ノルマン征服",
     "en": "Norman Conquest of England",
@@ -229,6 +268,19 @@
     "hint_en": "William the Conqueror invades England\nBattle of Hastings"
   },
   {
+    "id": "014500",
+    "ja": "マグナ・カルタ（大憲章）調印",
+    "en": "Signing of Magna Carta",
+    "year": 1215,
+    "month": 6,
+    "day": 15,
+    "ref": "England",
+    "rank": 2,
+    "tags": ["Medieval", "England", "Law"],
+    "hint_ja": "国王の権力を制限する文書\n近代立憲主義の基礎",
+    "hint_en": "Document limiting royal power\nFoundation of constitutional government"
+  },
+  {
     "id": "015000",
     "ja": "第1回十字軍",
     "en": "First Crusade",
@@ -240,6 +292,32 @@
     "tags": ["Medieval", "Religion", "War"],
     "hint_ja": "聖地エルサレム奪還を目指す\nヨーロッパ諸国の遠征",
     "hint_en": "Campaign to reclaim Jerusalem\nExpedition by European nations"
+  },
+  {
+    "id": "015500",
+    "ja": "コンスタンティノープル陥落",
+    "en": "Fall of Constantinople",
+    "year": 1453,
+    "month": 5,
+    "day": 29,
+    "ref": "Byzantine",
+    "rank": 1,
+    "tags": ["Medieval", "Byzantine", "War"],
+    "hint_ja": "オスマン帝国によるビザンツ帝国滅亡\n中世の終わりを象徴する出来事",
+    "hint_en": "Ottoman conquest ends Byzantine Empire\nSymbolic end of Middle Ages"
+  },
+  {
+    "id": "015750",
+    "ja": "百年戦争の終結",
+    "en": "End of Hundred Years' War",
+    "year": 1453,
+    "month": 7,
+    "day": 17,
+    "ref": "France",
+    "rank": 2,
+    "tags": ["Medieval", "War", "Europe"],
+    "hint_ja": "イングランドとフランスの長期戦争が終結\nジャンヌ・ダルクの活躍で知られる",
+    "hint_en": "End of long war between England and France\nFamous for Joan of Arc's role"
   },
   {
     "id": "016000",
@@ -532,6 +610,32 @@
     "hint_en": "British naval victory\nEnd of Spanish naval supremacy"
   },
   {
+    "id": "037500",
+    "ja": "関ヶ原の戦い",
+    "en": "Battle of Sekigahara",
+    "year": 1600,
+    "month": 10,
+    "day": 21,
+    "ref": "Japan",
+    "rank": 2,
+    "tags": ["EarlyModern", "Japan", "War"],
+    "hint_ja": "徳川家康が勝利し江戸幕府成立へ\n日本の天下分け目の戦い",
+    "hint_en": "Tokugawa victory leads to Edo Shogunate\nDecisive battle in Japanese history"
+  },
+  {
+    "id": "037700",
+    "ja": "三十年戦争開始",
+    "en": "Thirty Years' War Begins",
+    "year": 1618,
+    "month": 5,
+    "day": 23,
+    "ref": "Europe",
+    "rank": 2,
+    "tags": ["EarlyModern", "War", "Europe"],
+    "hint_ja": "プラハ窓外放擲事件で開戦\n神聖ローマ帝国を巻き込む宗教戦争",
+    "hint_en": "Sparked by Defenestration of Prague\nReligious war engulfing Holy Roman Empire"
+  },
+  {
     "id": "038000",
     "ja": "清王朝の成立",
     "en": "Establishment of Qing Dynasty",
@@ -546,6 +650,19 @@
   },
   {
     "id": "039000",
+    "ja": "トラファルガー海戦",
+    "en": "Battle of Trafalgar",
+    "year": 1805,
+    "month": 10,
+    "day": 21,
+    "ref": "Spain",
+    "rank": 2,
+    "tags": ["EarlyModern", "War", "Naval"],
+    "hint_ja": "ネルソン提督率いるイギリス海軍の勝利\nナポレオンの英国侵攻計画を挫折",
+    "hint_en": "Admiral Nelson's British victory\nThwarted Napoleon's invasion plans"
+  },
+  {
+    "id": "039500",
     "ja": "ナポレオン戦争終結（ウォータルー）",
     "en": "Battle of Waterloo",
     "year": 1815,
@@ -556,6 +673,33 @@
     "tags": ["EarlyModern", "War", "Europe"],
     "hint_ja": "ナポレオンの最終敗北\nイギリス・プロイセン連合軍の勝利",
     "hint_en": "Final defeat of Napoleon\nVictory of British-Prussian alliance"
+  },
+  {
+    "id": "040500",
+
+    "ja": "第一次アヘン戦争",
+    "en": "First Opium War",
+    "year": 1840,
+    "month": 9,
+    "day": 4,
+    "ref": "China",
+    "rank": 2,
+    "tags": ["Modern", "War", "Asia"],
+    "hint_ja": "イギリスと清の戦争\n不平等条約と香港割譲へ",
+    "hint_en": "Britain vs. Qing China\nLed to unequal treaties and Hong Kong cession"
+  },
+  {
+    "id": "040750",
+    "ja": "クリミア戦争",
+    "en": "Crimean War",
+    "year": 1853,
+    "month": 10,
+    "day": 4,
+    "ref": "Crimea",
+    "rank": 3,
+    "tags": ["Modern", "War", "Europe"],
+    "hint_ja": "ロシアと英仏オスマン連合軍の戦い\n近代初の総力戦",
+    "hint_en": "Russia vs. Britain-France-Ottoman alliance\nFirst modern total war"
   },
   {
     "id": "040000",
@@ -582,6 +726,19 @@
     "tags": ["Modern", "Asia", "Empire"],
     "hint_ja": "ビクトリア女王がインド皇帝に\nイギリス帝国の一部として",
     "hint_en": "Victoria becomes Empress of India\nPart of British Empire"
+  },
+  {
+    "id": "041500",
+    "ja": "リンカーン大統領暗殺",
+    "en": "Assassination of President Lincoln",
+    "year": 1865,
+    "month": 4,
+    "day": 15,
+    "ref": "USA",
+    "rank": 2,
+    "tags": ["Modern", "USA", "Politics"],
+    "hint_ja": "南北戦争終結直後に暗殺される\n奴隷解放を進めた大統領",
+    "hint_en": "Assassinated shortly after Civil War\nPresident who advanced emancipation"
   },
   {
     "id": "042000",
@@ -647,6 +804,19 @@
     "tags": ["Modern", "War", "Asia"],
     "hint_ja": "アジア国家がヨーロッパ列強に勝利\n日本の大国化を証明",
     "hint_en": "Asian nation defeats European power\nProves Japan as a major power"
+  },
+  {
+    "id": "046500",
+    "ja": "タイタニック号沈没",
+    "en": "Sinking of the Titanic",
+    "year": 1912,
+    "month": 4,
+    "day": 15,
+    "ref": "Atlantic",
+    "rank": 3,
+    "tags": ["Modern", "Disaster", "Technology"],
+    "hint_ja": "不沈船と呼ばれた豪華客船の悲劇\n氷山に衝突して沈没",
+    "hint_en": "Tragedy of 'unsinkable' luxury liner\nCollided with iceberg and sank"
   },
   {
     "id": "047000",
@@ -740,6 +910,19 @@
     "hint_en": "Japan attacks American naval base\nUSA enters WWII"
   },
   {
+    "id": "053500",
+    "ja": "ノルマンディー上陸作戦（D-Day）",
+    "en": "D-Day Normandy Landings",
+    "year": 1944,
+    "month": 6,
+    "day": 6,
+    "ref": "France",
+    "rank": 1,
+    "tags": ["Modern", "War", "WorldWar"],
+    "hint_ja": "連合軍のフランス上陸作戦\nヨーロッパ解放の転換点",
+    "hint_en": "Allied invasion of France\nTurning point for European liberation"
+  },
+  {
     "id": "054000",
     "ja": "広島への原爆投下",
     "en": "Atomic Bombing of Hiroshima",
@@ -829,6 +1012,71 @@
     "tags": ["Modern", "War", "Politics"],
     "hint_ja": "米ソが核戦争の寸前まで\n新興国を巻き込む冷戦",
     "hint_en": "US and USSR approach nuclear war\nCold War escalates globally"
+  },
+  {
+    "id": "061000",
+    "ja": "ベトナム戦争開始",
+    "en": "Vietnam War Begins",
+    "year": 1955,
+    "month": 11,
+    "day": 1,
+    "ref": "Vietnam",
+    "rank": 2,
+    "tags": ["Modern", "War", "Asia"],
+    "hint_ja": "アメリカの軍事介入が本格化\n冷戦時代の代理戦争",
+    "hint_en": "US military intervention escalates\nCold War proxy conflict"
+  },
+  {
+    "id": "061500",
+    "ja": "アポロ11号月面着陸",
+    "en": "Apollo 11 Moon Landing",
+    "year": 1969,
+    "month": 7,
+    "day": 20,
+    "ref": "USA",
+    "rank": 1,
+    "tags": ["Modern", "Science", "Space"],
+    "hint_ja": "人類初の月面着陸\nアームストロング船長「人類の大きな一歩」",
+    "hint_en": "First human moon landing\nArmstrong: 'One giant leap for mankind'"
+  },
+  {
+    "id": "062000",
+    "ja": "ベトナム戦争終結",
+    "en": "End of Vietnam War",
+    "year": 1975,
+    "month": 4,
+    "day": 30,
+    "ref": "Vietnam",
+    "rank": 2,
+    "tags": ["Modern", "War", "Asia"],
+    "hint_ja": "サイゴン陥落でアメリカ敗北\nベトナム統一へ",
+    "hint_en": "Fall of Saigon marks US defeat\nVietnam reunification"
+  },
+  {
+    "id": "064500",
+    "ja": "ベルリンの壁崩壊",
+    "en": "Fall of Berlin Wall",
+    "year": 1989,
+    "month": 11,
+    "day": 9,
+    "ref": "Germany",
+    "rank": 1,
+    "tags": ["Modern", "Politics", "Europe"],
+    "hint_ja": "東西ドイツ分断の象徴が崩壊\n冷戦終結の象徴的出来事",
+    "hint_en": "Symbol of division falls\nIconic moment of Cold War's end"
+  },
+  {
+    "id": "065000",
+    "ja": "湾岸戦争勃発",
+    "en": "Gulf War Begins",
+    "year": 1991,
+    "month": 1,
+    "day": 17,
+    "ref": "Iraq",
+    "rank": 2,
+    "tags": ["Modern", "War", "Middle East"],
+    "hint_ja": "イラクのクウェート侵攻に対する多国籍軍の反撃\nテレビ中継された戦争",
+    "hint_en": "Coalition response to Iraqi invasion of Kuwait\nFirst televised war"
   },
   {
     "id": "070000",
