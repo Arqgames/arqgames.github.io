@@ -15,6 +15,10 @@ body {
     touch-action: manipulation;
 }
 
+h1 {
+    white-space: pre-line;
+}
+
 .container {
     background: var(--card-bg);
     padding: 30px 20px;

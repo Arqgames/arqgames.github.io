@@ -63,11 +63,13 @@
             <div class="header-icon-box">
                 <span class="material-icons header-icon">public</span>
             </div>
-            <h1 data-ja="世界史年表クイズ" data-en="World History Timeline Quiz">世界史年表クイズ</h1>
+            <h1 data-ja="世界史年表クイズ" data-en="World History
+Timeline Quiz">世界史年表クイズ</h1>
 
             <!-- レベル選択 -->
             <div style="margin: 20px 0;">
-                <div style="font-size:1.3em; font-weight:bold; margin-bottom: 10px;" data-ja="レベル" data-en="Level">レベル</div>
+                <div style="font-size:1.3em; font-weight:bold; margin-bottom: 10px;" data-ja="レベル" data-en="Level">レベル
+                </div>
                 <div class="level-btn-container">
                     <button class="level-btn active" data-level="1" onclick="selectLevel(1)">1</button>
                     <button class="level-btn" data-level="2" onclick="selectLevel(2)">2</button>
@@ -90,8 +92,7 @@
                 <button class="q-btn" onclick="quickSet(1500, 1900, this)" data-ja="近世"
                     data-en="Early Modern">近世</button>
 
-                <button class="q-btn" onclick="quickSet(1900, 2025, this)" data-ja="現代"
-                    data-en="Modern Era">現代</button>
+                <button class="q-btn" onclick="quickSet(1900, 2025, this)" data-ja="現代" data-en="Modern Era">現代</button>
             </div>
 
             <div class="picker-group">
@@ -114,7 +115,9 @@
             </select>
             <div id="error-msg"></div>
             <button class="btn" onclick="startGame()" data-ja="冒険を開始" data-en="Start Adventure">冒険を開始</button>
-            <button type="button" class="btn btn-sub" onclick="openAbout()" style="padding:12px; font-size:0.95em; margin-top:8px;" data-ja="このゲームについて" data-en="About This Game">このゲームについて</button>
+            <button type="button" class="btn btn-sub" onclick="openAbout()"
+                style="padding:12px; font-size:0.95em; margin-top:8px;" data-ja="このゲームについて"
+                data-en="About This Game">このゲームについて</button>
         </div>
 
         <div id="screen-game" class="hidden">
@@ -275,8 +278,8 @@
             const e = parseInt(document.getElementById('select-end').value);
             const count = parseInt(document.getElementById('count-select').value);
 
-            let filtered = EVENTS.filter(ev => 
-                ev.year >= s && 
+            let filtered = EVENTS.filter(ev =>
+                ev.year >= s &&
                 ev.year <= e &&
                 (ev.rank !== undefined ? ev.rank <= currentLevel : true)
             );
@@ -802,16 +805,16 @@
             const itemsHtml = ids.map((id, i) => {
                 const ev = map.get(String(id));
                 const label = ev ? (ev[currentLang] ?? ev.ja ?? ev.en ?? id) : id;
-                
+
                 // 記事ボタン仮置き
                 let articleBtn = '';
-                
+
                 // articleUrl が指定されている場合
                 if (ev && ev.articleUrl) {
                     const articlePath = ev.articleUrl;
                     articleBtn = `<button onclick="window.open('${articlePath}', '_blank', 'width=800,height=600')" class="article-link-btn" style="margin-left:8px; cursor:pointer; background:none; border:none; font-size:1.2em;" title="${currentLang === 'ja' ? '解説を読む' : 'Read Article'}">🔍</button>`;
                 }
-                
+
                 return `<li class="result-event-item">${escapeHtml(label)}${articleBtn}</li>`;
             }).join("");
 
