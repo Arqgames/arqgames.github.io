@@ -10,7 +10,8 @@
     "rank": 1,
     "tags": ["Ancient", "Egypt", "Architecture"],
     "hint_ja": "エジプト古王国時代の記念碑的建造物\nクフ王の時代に建設された世界七不思議の一つ",
-    "hint_en": "Monumental structure from Egypt's Old Kingdom\nBuilt during Khufu's reign, one of the Seven Wonders"
+    "hint_en": "Monumental structure from Egypt's Old Kingdom\nBuilt during Khufu's reign, one of the Seven Wonders",
+    "articleUrl": "/articles/chronological-debates/egypt-old-kingdom/"
   },
   {
     "id": "002000",
@@ -49,7 +50,8 @@
     "rank": 1,
     "tags": ["Ancient", "Greece", "War"],
     "hint_ja": "ギリシャ神話で有名な戦争\nホメロスの『イリアス』に描かれる",
-    "hint_en": "Famous war in Greek mythology\nDepicted in Homer's Iliad"
+    "hint_en": "Famous war in Greek mythology\nDepicted in Homer's Iliad",
+    "articleUrl": "/articles/chronological-debates/schliemann-controversy/"
   },
   {
     "id": "005000",
@@ -785,5 +787,19 @@
     "tags": ["Modern", "War", "Politics"],
     "hint_ja": "米ソが核戦争の寸前まで\n新興国を巻き込む冷戦",
     "hint_en": "US and USSR approach nuclear war\nCold War escalates globally"
+  },
+  {
+    "id": "070000",
+    "ja": "マヤ古典期の始まり",
+    "en": "Beginning of Classic Maya Period",
+    "year": 250,
+    "month": 1,
+    "day": 1,
+    "ref": "Mesoamerica",
+    "rank": 2,
+    "tags": ["Classical", "Americas", "Civilization"],
+    "hint_ja": "マヤ文明の最盛期が始まる\n階級社会の発展と文字文化の繁栄",
+    "hint_en": "Peak period of Maya civilization begins\nDevelopment of hierarchical society and written culture",
+    "articleUrl": "/articles/chronological-debates/mesoamerican-calendar/"
   }
 ]
