@@ -1,6 +1,48 @@
 [
   {
     "id": "001000",
+    {
+      "id": "061000",
+      "ja": "古代オリンピア第1回競技開催",
+      "en": "First Olympic Games at Olympia",
+      "year": -776,
+      "month": 7,
+      "day": 1,
+      "ref": "Greece",
+      "rank": 1,
+      "tags": ["Ancient", "Greece", "Olympia", "Games"],
+      "hint_ja": "伝説的な創始年。ギリシア暦と考古学的証拠から推定。",
+      "hint_en": "Legendary founding year. Estimated from Greek calendars and archaeological evidence.",
+      "articleUrl": "/articles/historical-cases/ancient-olympia/"
+    },
+    {
+      "id": "062000",
+      "ja": "インカ帝国成立（プレインカ文明含む）",
+      "en": "Establishment of Inca Empire (including Pre-Inca)",
+      "year": 1438,
+      "month": 1,
+      "day": 1,
+      "ref": "Andes",
+      "rank": 1,
+      "tags": ["Pre-Columbian", "Andes", "Inca", "Civilization"],
+      "hint_ja": "15世紀前半にインカ帝国が成立。パナカ伝統では13～14世紀説も。",
+      "hint_en": "Inca Empire established in early 15th century. Panaca traditions suggest 13th-14th century origins.",
+      "articleUrl": "/articles/historical-cases/inca-prehispanic/"
+    },
+    {
+      "id": "063000",
+      "ja": "ポンペイ埋没（ヴェスヴィオ火山噴火）",
+      "en": "Burial of Pompeii (Vesuvius Eruption)",
+      "year": 79,
+      "month": 10,
+      "day": 24,
+      "ref": "Rome",
+      "rank": 1,
+      "tags": ["Ancient", "Rome", "Pompeii", "Disaster"],
+      "hint_ja": "従来8月説だが近年は10月説有力。出土物・史料照合による再検討。",
+      "hint_en": "Traditionally August, but recent evidence supports October. Re-examined via artifacts and sources.",
+      "articleUrl": "/articles/historical-cases/pompeii-date/"
+    },
     "ja": "古代エジプト・ギザの大ピラミッド建設",
     "en": "Construction of the Great Pyramid of Giza",
     "year": -2560,
