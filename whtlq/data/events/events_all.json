@@ -62,7 +62,8 @@
     "rank": 1,
     "tags": ["Ancient", "Rome", "Founding"],
     "hint_ja": "ロムルスによって建国されたとされる\n後の大帝国の始まり",
-    "hint_en": "Traditionally founded by Romulus\nBeginning of a great empire"
+    "hint_en": "Traditionally founded by Romulus\nBeginning of a great empire",
+    "articleUrl": "/articles/historical-cases/roman-empire-foundation/"
   },
   {
     "id": "006000",
@@ -140,7 +141,8 @@
     "rank": 2,
     "tags": ["Classical", "Rome", "Politics"],
     "hint_ja": "テオドシウス帝の死後に分裂\n東ローマ（ビザンツ）と西ローマに",
-    "hint_en": "Split after Theodosius I's death\nInto Eastern (Byzantine) and Western Rome"
+    "hint_en": "Split after Theodosius I's death\nInto Eastern (Byzantine) and Western Rome",
+    "articleUrl": "/articles/historical-cases/roman-empire-foundation/"
   },
   {
     "id": "012000",
@@ -153,7 +155,8 @@
     "rank": 1,
     "tags": ["Medieval", "Rome", "Fall"],
     "hint_ja": "オドアケルによる皇帝廃位\n古代の終わりとされる",
-    "hint_en": "Deposition of emperor by Odoacer\nMarks end of ancient era"
+    "hint_en": "Deposition of emperor by Odoacer\nMarks end of ancient era",
+    "articleUrl": "/articles/historical-cases/roman-empire-foundation/"
   },
   {
     "id": "013000",
@@ -270,7 +273,8 @@
     "rank": 1,
     "tags": ["Ancient", "Egypt", "Dynasty"],
     "hint_ja": "エジプト最後の拡大帝国の終わり\nラムセス11世の後、分裂へ",
-    "hint_en": "End of Egypt's last expansionist empire\nDisunion follows Ramesses XI"
+    "hint_en": "End of Egypt's last expansionist empire\nDisunion follows Ramesses XI",
+    "articleUrl": "/articles/historical-cases/egypt-new-kingdom/"
   },
   {
     "id": "022000",
@@ -348,7 +352,8 @@
     "rank": 3,
     "tags": ["Classical", "Persia", "Empire"],
     "hint_ja": "セレウコス朝を崩壊させた帝国\nシルクロードの中心的勢力",
-    "hint_en": "Empire that overthrew Seleucids\nCentral power on Silk Road"
+    "hint_en": "Empire that overthrew Seleucids\nCentral power on Silk Road",
+    "articleUrl": "/articles/historical-cases/silk-road/"
   },
   {
     "id": "028000",
@@ -374,7 +379,8 @@
     "rank": 2,
     "tags": ["Classical", "Rome", "Empire"],
     "hint_ja": "ローマの最盛期（ネルウァ～マルクス・アウレリウス）\nPax Romana（ローマの平和）の頂点",
-    "hint_en": "Rome's zenith (Nerva to Marcus Aurelius)\nPeak of Pax Romana"
+    "hint_en": "Rome's zenith (Nerva to Marcus Aurelius)\nPeak of Pax Romana",
+    "articleUrl": "/articles/historical-cases/roman-empire-foundation/"
   },
   {
     "id": "030000",
@@ -387,7 +393,8 @@
     "rank": 1,
     "tags": ["Medieval", "China", "Dynasty"],
     "hint_ja": "中国文化の最盛期\nシルクロードの繁栄",
-    "hint_en": "Peak of Chinese culture\nHeight of Silk Road prosperity"
+    "hint_en": "Peak of Chinese culture\nHeight of Silk Road prosperity",
+    "articleUrl": "/articles/historical-cases/silk-road/"
   },
   {
     "id": "031000",

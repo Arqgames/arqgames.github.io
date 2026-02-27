@@ -802,24 +802,16 @@
             const itemsHtml = ids.map((id, i) => {
                 const ev = map.get(String(id));
                 const label = ev ? (ev[currentLang] ?? ev.ja ?? ev.en ?? id) : id;
-                const articlePath = `/btlq/article/${id}/index.html`;
+                
                 // 記事ボタン仮置き
                 let articleBtn = '';
-                // 記事存在チェック（キャッシュ優先）
-                if (articleExistCache[id] === true) {
+                
+                // articleUrl が指定されている場合
+                if (ev && ev.articleUrl) {
+                    const articlePath = ev.articleUrl;
                     articleBtn = `<button onclick="window.open('${articlePath}', '_blank', 'width=800,height=600')" class="article-link-btn" style="margin-left:8px; cursor:pointer; background:none; border:none; font-size:1.2em;" title="${currentLang === 'ja' ? '解説を読む' : 'Read Article'}">🔍</button>`;
-                } else if (articleExistCache[id] === false) {
-                    articleBtn = '';
-                } else {
-                    // 未チェックならHEADリクエスト
-                    fetch(articlePath, { method: 'HEAD' }).then(r => {
-                        articleExistCache[id] = r.ok;
-                        // 再描画（1回だけ）
-                        if (r.ok) renderResultEvents(ids);
-                    }).catch(() => {
-                        articleExistCache[id] = false;
-                    });
                 }
+                
                 return `<li class="result-event-item">${escapeHtml(label)}${articleBtn}</li>`;
             }).join("");
 
