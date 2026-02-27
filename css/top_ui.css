@@ -1,8 +1,8 @@
 :root {
-    --main-bg: #f4e4bc;
-    --card-bg: #fff9e6;
-    --accent: #fbc531;
-    --text: #5d3a1a;
+    --main-bg: #e3f2fd;
+    --card-bg: #f0f8ff;
+    --accent: #5dade2;
+    --text: #1e4d6b;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
     background: var(--card-bg);
     padding: 30px 20px;
     border-radius: 40px;
-    box-shadow: 0 10px 0 #d4af37;
+    box-shadow: 0 10px 0 #1e4d6b;
     width: 92%;
     max-width: 450px;
     text-align: center;
@@ -44,7 +44,7 @@ body {
     justify-content: center;
 
     cursor: pointer;
-    box-shadow: 0 4px 0 #d4af37;
+    box-shadow: 0 4px 0 #1e4d6b;
     z-index: 100;
 
     font-weight: bold;
@@ -76,9 +76,9 @@ body {
 
 .home-btn {
     left: 10px;
-    border-color: #8b5e3c;
-    box-shadow: 0 4px 0 #8b5e3c;
-    color: #8b5e3c;
+    border-color: #4a7c9d;
+    box-shadow: 0 4px 0 #4a7c9d;
+    color: #4a7c9d;
 }
 
 .lang-switch {
@@ -95,12 +95,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 0 #d4af37;
+    box-shadow: 0 4px 0 #1e4d6b;
 }
 
 .header-icon {
     font-size: 35px !important;
-    color: #f39c12;
+    color: #5dade2;
 }
 
 .quick-btn-container {
@@ -111,7 +111,7 @@ body {
 }
 
 .q-btn {
-    background: #8b5e3c;
+    background: #4a90c5;
     color: white;
     border: none;
     padding: 12px 5px;
@@ -119,17 +119,17 @@ body {
     font-size: 0.8em;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 0 #5d3a1a;
+    box-shadow: 0 4px 0 #1e4d6b;
 }
 
 .q-btn.full {
     grid-column: span 2;
-    background: #5d3a1a;
+    background: #1e4d6b;
 }
 
 .q-btn.active {
-    background: #d35400;
-    box-shadow: 0 4px 0 #a04000;
+    background: #64b5f6;
+    box-shadow: 0 4px 0 #1565c0;
     outline: 2px solid #fff;
 }
 
@@ -140,7 +140,7 @@ body {
     background: rgba(255, 255, 255, 0.6);
     padding: 12px;
     border-radius: 15px;
-    border: 2px solid #ecd4a1;
+    border: 2px solid #b3e5fc;
     margin: 10px 0;
 }
 
@@ -161,7 +161,7 @@ select {
 }
 
 .btn {
-    background: linear-gradient(to bottom, #ffc048, #ff9f1a);
+    background: linear-gradient(to bottom, #64b5f6, #42a5f5);
     color: #fff;
     border: none;
     padding: 18px;
@@ -169,19 +169,19 @@ select {
     cursor: pointer;
     font-weight: bold;
     font-size: 1.1em;
-    box-shadow: 0 6px 0 #cc8e35;
+    box-shadow: 0 6px 0 #1e4d6b;
     width: 100%;
     margin: 10px 0;
 }
 
 .btn:active {
     transform: translateY(3px);
-    box-shadow: 0 3px 0 #cc8e35;
+    box-shadow: 0 3px 0 #1e4d6b;
 }
 
 .btn-sub {
-    background: #8b5e3c;
-    box-shadow: 0 6px 0 #5d3a1a;
+    background: #4a90c5;
+    box-shadow: 0 6px 0 #1e4d6b;
 }
 
 #error-msg {
@@ -216,7 +216,7 @@ select {
     /* transform: scale(1.03); ← 削除 */
     opacity: 0.5;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    border-color: #fbc531;
+    border-color: #5dade2;
     background: #fff;
 }
 
@@ -229,8 +229,8 @@ select {
 }
 
 #hint-area {
-    background: #fff5d7;
-    border: 3px dashed #f39c12;
+    background: #f0f8ff;
+    border: 3px dashed #5dade2;
     border-radius: 20px;
     padding: 15px;
     margin-top: 15px;
@@ -243,13 +243,13 @@ select {
 .hint-item {
     margin-bottom: 10px;
     padding-bottom: 5px;
-    border-bottom: 1px solid #ecd4a1;
+    border-bottom: 1px solid #b3e5fc;
 }
 
 .hint-desc {
     font-weight: normal;
     font-size: 0.9em;
-    color: #8b5e3c;
+    color: #1e4d6b;
     margin-left: 1.2em;
     display: block;
 }
@@ -260,7 +260,7 @@ select {
     padding: 16px;
     text-align: left;
     background: rgba(255, 255, 255, 0.7);
-    border: 2px dashed #ecd4a1;
+    border: 2px dashed #b3e5fc;
     border-radius: 18px;
     box-shadow: 0 4px 0 rgba(0, 0, 0, 0.04);
 }
@@ -275,7 +275,7 @@ select {
 .section-lead {
     margin: 0 0 12px;
     font-size: 0.88em;
-    color: #6b4a2f;
+    color: #1e4d6b;
     line-height: 1.6;
 }
 
@@ -300,7 +300,7 @@ select {
 .info-card p {
     margin: 0 0 8px;
     font-size: 0.88em;
-    color: #6b4a2f;
+    color: #1e4d6b;
     line-height: 1.55;
 }
 
@@ -314,11 +314,11 @@ select {
     display: inline-block;
     padding: 2px 8px;
     border-radius: 999px;
-    background: #fbc531;
-    color: #5d3a1a;
+    background: #5dade2;
+    color: #fff;
     font-size: 0.7em;
     font-weight: 800;
-    box-shadow: 0 2px 0 #d4af37;
+    box-shadow: 0 2px 0 #1e4d6b;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -326,14 +326,14 @@ select {
 }
 
 .tag:hover {
-    background: #f39c12;
-    box-shadow: 0 6px 12px rgba(213, 175, 55, 0.5), 0 2px 0 #d4af37;
+    background: #42a5f5;
+    box-shadow: 0 6px 12px rgba(30, 77, 107, 0.5), 0 2px 0 #1e4d6b;
     transform: translateY(-4px) scale(1.05);
 }
 
 .tag:active {
     transform: translateY(-1px) scale(1.05);
-    box-shadow: 0 2px 4px rgba(213, 175, 55, 0.3), 0 1px 0 #d4af37;
+    box-shadow: 0 2px 4px rgba(30, 77, 107, 0.3), 0 1px 0 #1e4d6b;
 }
 
 .topic-list {
@@ -359,25 +359,25 @@ select {
     background: #fff;
     border-radius: 12px;
     padding: 12px;
-    border: 2px solid #fbc531;
+    border: 2px solid #5dade2;
     box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
 }
 
 .article-item a {
-    color: #5d3a1a;
+    color: #1e4d6b;
     text-decoration: none;
     font-weight: 800;
     display: block;
 }
 
 .article-item a:hover {
-    color: #f39c12;
+    color: #5dade2;
 }
 
 .article-desc {
     margin-top: 6px;
     font-size: 0.85em;
-    color: #6b4a2f;
+    color: #1e4d6b;
     line-height: 1.5;
 }
 
@@ -400,8 +400,8 @@ select {
 }
 
 .note-box {
-    background: #fff5d7;
-    border: 2px dashed #f39c12;
+    background: #f0f8ff;
+    border: 2px dashed #5dade2;
     border-radius: 14px;
     padding: 10px 12px;
     margin: 10px 0;
@@ -428,7 +428,7 @@ select {
     box-sizing: border-box;
 
     background: rgba(255, 255, 255, 0.55);
-    border: 2px dashed #ecd4a1;
+    border: 2px dashed #b3e5fc;
     border-radius: 18px;
 }
 
@@ -543,12 +543,12 @@ html {overflow-x: hidden; }
 }
 
 #screen-result.is-win .header-icon-box{
-  border-color: #ffd86b;
-  box-shadow: 0 6px 0 #d4af37, 0 0 0 6px rgba(251,197,49,.22);
+  border-color: #b3e5fc;
+  box-shadow: 0 6px 0 #1e4d6b, 0 0 0 6px rgba(93, 173, 226, .22);
 }
 
 #screen-result.is-win .btn{
-  box-shadow: 0 8px 0 #cc8e35, 0 0 0 6px rgba(251,197,49,.18);
+  box-shadow: 0 8px 0 #1e4d6b, 0 0 0 6px rgba(93, 173, 226, .18);
 }
 
 /* サブ文（任意で使う） */
@@ -556,4 +556,59 @@ html {overflow-x: hidden; }
   margin: 6px 0 2px;
   font-weight: 700;
   opacity: .85;
+}
+
+/* ===== Top page blue theme overrides ===== */
+p[style*="6b5d4f"],
+p[style*="6b4a2f"],
+p[style*="8b5e3c"] {
+  color: var(--text) !important;
+}
+
+li[style*="8b5e3c"] {
+  color: var(--text) !important;
+}
+
+button[style*="fbc531"] {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 4px 0 #1e4d6b !important;
+}
+
+.topic-list li {
+  color: var(--text) !important;
+}
+
+/* ===== Article pages color overrides ===== */
+.article-item h3 {
+  color: var(--text) !important;
+}
+
+.article-desc {
+  color: var(--text) !important;
+}
+
+.section-block h2 {
+  color: var(--text) !important;
+}
+
+.section-block p {
+  color: var(--text) !important;
+}
+
+article h2 {
+  color: var(--text) !important;
+}
+
+article h3 {
+  color: var(--text) !important;
+}
+
+article ul li {
+  color: var(--text) !important;
+}
+
+article p {
+  color: var(--text) !important;
 }

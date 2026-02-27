@@ -1,8 +1,8 @@
 :root {
-    --main-bg: #f4e4bc;
-    --card-bg: #fff9e6;
-    --accent: #fbc531;
-    --text: #5d3a1a;
+    --main-bg: #e8f5e9;
+    --card-bg: #f1f8f4;
+    --accent: #66bb6a;
+    --text: #2e5d3a;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
     background: var(--card-bg);
     padding: 30px 20px;
     border-radius: 40px;
-    box-shadow: 0 10px 0 #d4af37;
+    box-shadow: 0 10px 0 #2a4a38;
     width: 92%;
     max-width: 450px;
     text-align: center;
@@ -44,7 +44,7 @@ body {
     justify-content: center;
 
     cursor: pointer;
-    box-shadow: 0 4px 0 #d4af37;
+    box-shadow: 0 4px 0 #2a4a38;
     z-index: 100;
 
     font-weight: bold;
@@ -76,9 +76,9 @@ body {
 
 .home-btn {
     left: 10px;
-    border-color: #8b5e3c;
-    box-shadow: 0 4px 0 #8b5e3c;
-    color: #8b5e3c;
+    border-color: #4a7c59;
+    box-shadow: 0 4px 0 #4a7c59;
+    color: #4a7c59;
 }
 
 .lang-switch {
@@ -95,12 +95,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 0 #d4af37;
+    box-shadow: 0 4px 0 #4a7c59;
 }
 
 .header-icon {
     font-size: 35px !important;
-    color: #f39c12;
+    color: #66bb6a;
 }
 
 .quick-btn-container {
@@ -111,7 +111,7 @@ body {
 }
 
 .q-btn {
-    background: #8b5e3c;
+    background: #4a7c59;
     color: white;
     border: none;
     padding: 12px 5px;
@@ -119,17 +119,17 @@ body {
     font-size: 0.8em;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 0 #5d3a1a;
+    box-shadow: 0 4px 0 #2a4a38;
 }
 
 .q-btn.full {
     grid-column: span 2;
-    background: #5d3a1a;
+    background: #2a4a38;
 }
 
 .q-btn.active {
-    background: #d35400;
-    box-shadow: 0 4px 0 #a04000;
+    background: #7cb342;
+    box-shadow: 0 4px 0 #558b2e;
     outline: 2px solid #fff;
 }
 
@@ -142,7 +142,7 @@ body {
 }
 
 .level-btn {
-    background: #8b5e3c;
+    background: #4a7c59;
     color: white;
     border: none;
     padding: 15px 8px;
@@ -150,12 +150,12 @@ body {
     font-size: 1em;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 0 #5d3a1a;
+    box-shadow: 0 4px 0 #2a4a38;
 }
 
 .level-btn.active {
-    background: #d35400;
-    box-shadow: 0 4px 0 #a04000;
+    background: #7cb342;
+    box-shadow: 0 4px 0 #558b2e;
     outline: 3px solid #fff;
     outline-offset: 2px;
 }
@@ -167,7 +167,7 @@ body {
     background: rgba(255, 255, 255, 0.6);
     padding: 12px;
     border-radius: 15px;
-    border: 2px solid #ecd4a1;
+    border: 2px solid #c8e6c9;
     margin: 10px 0;
 }
 
@@ -188,7 +188,7 @@ select {
 }
 
 .btn {
-    background: linear-gradient(to bottom, #ffc048, #ff9f1a);
+    background: linear-gradient(to bottom, #7cb342, #558b2e);
     color: #fff;
     border: none;
     padding: 18px;
@@ -196,19 +196,19 @@ select {
     cursor: pointer;
     font-weight: bold;
     font-size: 1.1em;
-    box-shadow: 0 6px 0 #cc8e35;
+    box-shadow: 0 6px 0 #2a4a38;
     width: 100%;
     margin: 10px 0;
 }
 
 .btn:active {
     transform: translateY(3px);
-    box-shadow: 0 3px 0 #cc8e35;
+    box-shadow: 0 3px 0 #2a4a38;
 }
 
 .btn-sub {
-    background: #8b5e3c;
-    box-shadow: 0 6px 0 #5d3a1a;
+    background: #4a7c59;
+    box-shadow: 0 6px 0 #2a4a38;
 }
 
 #error-msg {
@@ -250,7 +250,7 @@ select {
     box-sizing: border-box;
 
     background: rgba(255, 255, 255, 0.55);
-    border: 2px dashed #ecd4a1;
+    border: 2px dashed #c8e6c9;
     border-radius: 18px;
 }
 
@@ -264,7 +264,7 @@ select {
     /* transform: scale(1.03); ← 削除 */
     opacity: 0.5;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    border-color: #fbc531;
+    border-color: #66bb6a;
     background: #fff;
 }
 
@@ -277,8 +277,8 @@ select {
 }
 
 #hint-area {
-    background: #fff5d7;
-    border: 3px dashed #f39c12;
+    background: #f1f8f4;
+    border: 3px dashed #66bb6a;
     border-radius: 20px;
     padding: 15px;
     margin-top: 15px;
@@ -291,13 +291,13 @@ select {
 .hint-item {
     margin-bottom: 10px;
     padding-bottom: 5px;
-    border-bottom: 1px solid #ecd4a1;
+    border-bottom: 1px solid #c8e6c9;
 }
 
 .hint-desc {
     font-weight: normal;
     font-size: 0.9em;
-    color: #8b5e3c;
+    color: #2e5d3a;
     margin-left: 1.2em;
     display: block;
 }
@@ -309,7 +309,7 @@ select {
     margin: 12px 0;
     border-radius: 15px;
     border: 3px dashed var(--accent);
-    background: rgba(251, 197, 49, 0.15);
+    background: rgba(102, 187, 106, 0.15);
 }
 
 /* --- AdSense：箱の外に置く広告枠（箱は広げない） --- */
@@ -323,7 +323,7 @@ select {
     box-sizing: border-box;
 
     background: rgba(255, 255, 255, 0.55);
-    border: 2px dashed #ecd4a1;
+    border: 2px dashed #c8e6c9;
     border-radius: 18px;
 }
 
@@ -432,18 +432,18 @@ html {overflow-x: hidden; }
 
 /* ===== 正解時だけ：勝利モードの強調 ===== */
 #screen-result.is-win #result-title{
-  color: #d18b00;
+  color: #2a4a38;
   text-shadow: 0 2px 0 rgba(0,0,0,.06);
   letter-spacing: .03em;
 }
 
 #screen-result.is-win .header-icon-box{
-  border-color: #ffd86b;
-  box-shadow: 0 6px 0 #d4af37, 0 0 0 6px rgba(251,197,49,.22);
+  border-color: #a5d6a7;
+  box-shadow: 0 6px 0 #2a4a38, 0 0 0 6px rgba(102,187,106,.22);
 }
 
 #screen-result.is-win .btn{
-  box-shadow: 0 8px 0 #cc8e35, 0 0 0 6px rgba(251,197,49,.18);
+  box-shadow: 0 8px 0 #2a4a38, 0 0 0 6px rgba(102,187,106,.18);
 }
 
 /* サブ文（任意で使う） */
@@ -461,10 +461,10 @@ html {overflow-x: hidden; }
 
 .article-meta {
   font-size: 0.85em;
-  color: #8b5e3c;
+  color: #2e5d3a;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #ecd4a1;
+  border-bottom: 2px solid #c8e6c9;
 }
 
 .article-body {
@@ -478,7 +478,7 @@ html {overflow-x: hidden; }
   margin-top: 25px;
   margin-bottom: 12px;
   font-size: 1.2em;
-  color: #8b5e3c;
+  color: #2e5d3a;
   border-left: 4px solid var(--accent);
   padding-left: 10px;
 }
