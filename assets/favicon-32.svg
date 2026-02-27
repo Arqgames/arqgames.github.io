@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Favicon 32x32: Puzzle A only -->
+  <g fill="#1e4d6b">
+    <path d="M4,28 L10,8 h12 l6,20 h-6 l-1.5,-5 h-9 l-1.5,5 Z M13,18 h6 l-3,-9 Z
+             M10,6 a2,2 0 0,1 0,-4 a2,2 0 0,1 0,4
+             M22,6 a2,2 0 0,1 0,-4 a2,2 0 0,1 0,4"/>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 50" width="280" height="50">
+  <!-- Font variation 5: Elegant thin with larger A -->
+  <g fill="#1e4d6b">
+    <!-- Puzzle piece shaped as A (larger and better balanced) -->
+    <path d="M6,38 L13,15 h10 l7,23 h-6.5 l-1.2,-5 h-7.6 l-1.2,5 Z M15,26 h5 l-2.5,-10 Z
+             M13,13 a2.5,2.5 0 0,1 0,-5 a2.5,2.5 0 0,1 0,5
+             M23,13 a2.5,2.5 0 0,1 0,-5 a2.5,2.5 0 0,1 0,5"/>
+    
+    <!-- RQ GAMES - Elegant thin -->
+    <text x="36" y="38" font-family="'Gill Sans', 'Helvetica Neue', sans-serif" font-size="28" font-weight="600" letter-spacing="3">
+      RQ GAMES
+    </text>
+  </g>
+</svg>

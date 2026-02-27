@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <!-- Apple Touch Icon 180x180: Puzzle A only with background -->
+  <rect width="180" height="180" fill="#e3f2fd" rx="40"/>
+  <g fill="#1e4d6b">
+    <path d="M30,150 L60,45 h60 l30,105 h-27 l-7.5,-24 h-45 l-7.5,24 Z M75,90 h30 l-15,-45 Z
+             M60,36 a9,9 0 0,1 0,-18 a9,9 0 0,1 0,18
+             M120,36 a9,9 0 0,1 0,-18 a9,9 0 0,1 0,18"/>
+  </g>
+</svg>
