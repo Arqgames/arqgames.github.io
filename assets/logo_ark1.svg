@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <!-- Design 1: Simple Ark Shape -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5dade2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e4d6b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Simple Ark Icon -->
+  <g transform="translate(8, 12)">
+    <!-- Hull (boat body) -->
+    <path d="M5,25 L2,30 L28,30 L25,25 Z" fill="#1e4d6b"/>
+    <!-- Cabin (house on boat) -->
+    <rect x="8" y="15" width="14" height="10" fill="#5dade2" stroke="#1e4d6b" stroke-width="1.5"/>
+    <!-- Roof -->
+    <path d="M6,15 L15,8 L24,15 Z" fill="#1e4d6b"/>
+    <!-- Window -->
+    <rect x="12" y="18" width="6" height="4" fill="#e3f2fd"/>
+  </g>
+  
+  <!-- ARQ text -->
+  <text x="45" y="35" font-family="Arial, sans-serif" font-size="28" font-weight="900" fill="url(#grad1)" letter-spacing="2">
+    ARQ
+  </text>
+  
+  <!-- GAMES text -->
+  <text x="45" y="51" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#1e4d6b" letter-spacing="3">
+    GAMES
+  </text>
+  
+  <!-- Wave decoration -->
+  <path d="M 118 30 Q 123 27 128 30 T 138 30" stroke="#5dade2" stroke-width="2" fill="none" opacity="0.4"/>
+</svg>

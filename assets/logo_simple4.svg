@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 50" width="280" height="50">
+  <!-- Minimalist: A-puzzle fusion in one line -->
+  <g fill="#1e4d6b">
+    <!-- Puzzle piece integrated with A -->
+    <path d="M10,38 L18,15 L26,38 L22,38 L20.5,32 L15.5,32 L14,38 Z 
+             M17,28 h2 l-1,-7 Z
+             M18,13 v-2 h-1.5 a1.5,1.5 0 0,1 0,-3 h1.5 v-2 h2 v2 h1.5 a1.5,1.5 0 0,1 0,3 h-1.5 v2 Z" 
+          fill-rule="evenodd"/>
+    
+    <!-- RQ GAMES text -->
+    <text x="32" y="38" font-family="Arial, sans-serif" font-size="28" font-weight="900" letter-spacing="2">
+      RQ GAMES
+    </text>
+  </g>
+</svg>

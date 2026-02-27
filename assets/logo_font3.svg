@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 50" width="280" height="50">
+  <!-- Font variation 3: Condensed modern -->
+  <g fill="#1e4d6b">
+    <!-- Puzzle piece shaped as A (closer to R) -->
+    <path d="M8,38 L14,18 h8 l6,20 h-6 l-1,-4 h-6 l-1,4 Z M16,28 h4 l-2,-8 Z
+             M14,16 a2,2 0 0,1 0,-4 a2,2 0 0,1 0,4
+             M22,16 a2,2 0 0,1 0,-4 a2,2 0 0,1 0,4"/>
+    
+    <!-- RQ GAMES - Condensed -->
+    <text x="30" y="38" font-family="'Arial Narrow', 'Arial', sans-serif" font-size="28" font-weight="900" letter-spacing="1">
+      RQ GAMES
+    </text>
+  </g>
+</svg>
