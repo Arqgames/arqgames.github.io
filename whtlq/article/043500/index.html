@@ -19,7 +19,7 @@
     <meta name="theme-color" content="#f4e4bc" />
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
+    <link rel="stylesheet" href="../../CSS/whtlq_article.css">
 
 </head>
 
@@ -53,7 +53,7 @@
                 <p data-ja="どの年代を採用するかは、何を優先するかによって異なります。学術的・歴史的観点から北イスラエル王国や王国分裂の年代整合を重視する場合はBC930前後が主流です。一方、列王第一の神殿建設や奉献式、祈りの儀式の年次整合を重視する場合はBC997説も十分に合理的です。このように、ソロモン神殿の完成年を巡る議論は、外部史料との照合と列王第一テキスト内部の整合という二つの基準の間で揺れ動いていることが分かります。" data-en="Which chronology to adopt depends on the criterion you prioritize. From a scholarly and historical perspective, emphasizing the archaeological evidence and the kingdom's division, BC 930 is the mainstream. From the perspective of 1 Kings' internal chronology, focusing on the Temple's construction, dedication, and prayer, the BC 997 theory is also reasonable. This demonstrates that discussions about the year of Solomon's Temple completion oscillate between aligning with external historical sources and maintaining internal consistency within 1 Kings.">どの年代を採用するかは、何を優先するかによって異なります。学術的・歴史的観点から北イスラエル王国や王国分裂の年代整合を重視する場合はBC930前後が主流です。一方、列王第一の神殿建設や奉献式、祈りの儀式の年次整合を重視する場合はBC997説も十分に合理的です。このように、ソロモン神殿の完成年を巡る議論は、外部史料との照合と列王第一テキスト内部の整合という二つの基準の間で揺れ動いていることが分かります。</p>
             </article>
 
-            <div style="margin-top: 30px; text-align: center;">
+            <div class="article-actions">
                 <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
             </div>
         </div>
@@ -67,7 +67,7 @@
                 localStorage.getItem('arq_lang') ||
                 localStorage.getItem('lang') ||
                 localStorage.getItem('language') ||
-                localStorage.getItem('btlq_lang');
+                localStorage.getItem('whtlq_lang');
 
             if (savedLang) { currentLang = savedLang; return; }
 
@@ -94,7 +94,7 @@
             window.close();
             // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
             setTimeout(() => {
-                location.href = '/btlq/';
+                location.href = '/whtlq/';
             }, 100);
         }
 
@@ -111,7 +111,7 @@
             const homeBtn = document.getElementById('homeBtn');
             if (homeBtn) {
                 homeBtn.addEventListener('click', () => {
-                    location.href = '/btlq/';
+                    location.href = '/whtlq/';
                 });
             }
 

@@ -19,7 +19,7 @@
     <meta name="theme-color" content="#f4e4bc" />
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
+    <link rel="stylesheet" href="../../CSS/whtlq_article.css">
 
 </head>
 
@@ -55,7 +55,7 @@
                 <p data-ja="したがって、捕囚終結は年代計算の重要な基準点ですが、その西暦換算については、聖書解釈の方法と聖書外史料をどう評価するかによって結論が異なります。" data-en="Thus, while the end of the exile is a crucial chronological anchor, its conversion to the Gregorian calendar depends on interpretive methods and the evaluation of extra-biblical sources.">したがって、捕囚終結は年代計算の重要な基準点ですが、その西暦換算については、聖書解釈の方法と聖書外史料をどう評価するかによって結論が異なります。</p>
             </article>
 
-            <div style="margin-top: 30px; text-align: center;">
+            <div class="article-actions">
                 <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
             </div>
         </div>
@@ -69,7 +69,7 @@
                 localStorage.getItem('arq_lang') ||
                 localStorage.getItem('lang') ||
                 localStorage.getItem('language') ||
-                localStorage.getItem('btlq_lang');
+                localStorage.getItem('whtlq_lang');
 
             if (savedLang) { currentLang = savedLang; return; }
 
@@ -96,7 +96,7 @@
             window.close();
             // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
             setTimeout(() => {
-                location.href = '/btlq/';
+                location.href = '/whtlq/';
             }, 100);
         }
 
@@ -117,7 +117,7 @@
             if (homeBtn) {
                 homeBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    location.href = '/btlq/';
+                    location.href = '/whtlq/';
                 });
             }
 

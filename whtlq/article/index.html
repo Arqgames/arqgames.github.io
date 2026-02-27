@@ -8,38 +8,14 @@
     <meta name="description" content="聖書年表に関する記事と解説のまとめページ。" />
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="/css/top_ui.css">
-    <style>
-        .article-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 15px;
-            margin: 10px 0;
-            border: 2px solid #fbc531;
-            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .article-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
-        }
-        .article-card a {
-            color: #5d3a1a;
-            text-decoration: none;
-            font-weight: bold;
-            display: block;
-        }
-        .article-card a:hover {
-            color: #f39c12;
-        }
-    </style>
+    <link rel="stylesheet" href="/whtlq/CSS/whtlq_article.css">
 </head>
 
 <body>
 
     <div class="container">
 
-        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home" onclick="location.href='/btlq/';">
+        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home" onclick="location.href='/whtlq/';">
             <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
                 <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
             </svg>
@@ -58,7 +34,7 @@
 
             <h3 data-i18n="articles_title">Available Articles</h3>
             
-            <div style="margin:20px 0;">
+            <div class="article-list">
                 <div class="article-card">
                     <a href="001500/" target="_blank" rel="noopener noreferrer" data-i18n="article_001500">創世から130年 - セツの誕生と聖書年表の基準点</a>
                 </div>
@@ -168,7 +144,7 @@
         function returnToGame() {
             window.close();
             setTimeout(() => {
-                location.href = '/btlq/';
+                location.href = '/whtlq/';
             }, 150);
         }
 

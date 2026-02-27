@@ -19,7 +19,7 @@
     <meta name="theme-color" content="#f4e4bc" />
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
+    <link rel="stylesheet" href="../../CSS/whtlq_article.css">
 
 </head>
 
@@ -50,7 +50,7 @@
                 <p data-ja="二つの預言書が同じ治世年を示すことで、再建期の宗教的・社会的活動を特定年に位置付けることができます。ダリウス第2年は、捕囚後の宗教復興の進行を具体的に年代化できる基準として重要です。年次を明確に示すハガイ書とゼカリヤ書は、神殿再建と共同体の再編という歴史的過程を理解するための本質的な枠組みを提供しています。" data-en="The fact that both prophetic books reference the same regnal year allows the religious and social activities of the restoration period to be anchored to a specific date. Year 2 of Darius serves as a key chronological marker for situating the post-exilic religious revival. These prophetic texts provide an essential historical framework for understanding the rebuilding of the Temple and the reorganization of the Jewish community.">二つの預言書が同じ治世年を示すことで、再建期の宗教的・社会的活動を特定年に位置付けることができます。ダリウス第2年は、捕囚後の宗教復興の進行を具体的に年代化できる基準として重要です。年次を明確に示すハガイ書とゼカリヤ書は、神殿再建と共同体の再編という歴史的過程を理解するための本質的な枠組みを提供しています。</p>
             </article>
 
-            <div style="margin-top: 30px; text-align: center;">
+            <div class="article-actions">
                 <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
             </div>
         </div>
@@ -64,7 +64,7 @@
                 localStorage.getItem('arq_lang') ||
                 localStorage.getItem('lang') ||
                 localStorage.getItem('language') ||
-                localStorage.getItem('btlq_lang');
+                localStorage.getItem('whtlq_lang');
 
             if (savedLang) { currentLang = savedLang; return; }
 
@@ -91,7 +91,7 @@
             window.close();
             // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
             setTimeout(() => {
-                location.href = '/btlq/';
+                location.href = '/whtlq/';
             }, 100);
         }
 
@@ -108,7 +108,7 @@
             const homeBtn = document.getElementById('homeBtn');
             if (homeBtn) {
                 homeBtn.addEventListener('click', () => {
-                    location.href = '/btlq/';
+                    location.href = '/whtlq/';
                 });
             }
 

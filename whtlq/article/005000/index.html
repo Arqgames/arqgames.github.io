@@ -19,7 +19,7 @@
     <meta name="theme-color" content="#f4e4bc" />
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
+    <link rel="stylesheet" href="../../CSS/whtlq_article.css">
 
 </head>
 
@@ -53,7 +53,7 @@
                 <p data-ja="聖書内部において、特定人物の特定年に出来事が起きたと明示される最初の事例が洪水です。このため、洪水は聖書年代計算の基準になる重要な出来事と位置づけられます。" data-en="Within the biblical narrative itself, the Flood represents the first event dated to a specific year of a named individual. For this reason, it functions as a major reference point in biblical chronological calculation.">聖書内部において、特定人物の特定年に出来事が起きたと明示される最初の事例が洪水です。このため、洪水は聖書年代計算の基準になる重要な出来事と位置づけられます。</p>
             </article>
 
-            <div style="margin-top: 30px; text-align: center;">
+            <div class="article-actions">
                 <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
             </div>
         </div>
@@ -67,7 +67,7 @@
                 localStorage.getItem('arq_lang') ||
                 localStorage.getItem('lang') ||
                 localStorage.getItem('language') ||
-                localStorage.getItem('btlq_lang');
+                localStorage.getItem('whtlq_lang');
 
             if (savedLang) { currentLang = savedLang; return; }
 
@@ -94,7 +94,7 @@
             window.close();
             // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
             setTimeout(() => {
-                location.href = '/btlq/';
+                location.href = '/whtlq/';
             }, 100);
         }
 
@@ -111,7 +111,7 @@
             const homeBtn = document.getElementById('homeBtn');
             if (homeBtn) {
                 homeBtn.addEventListener('click', () => {
-                    location.href = '/btlq/';
+                    location.href = '/whtlq/';
                 });
             }
 

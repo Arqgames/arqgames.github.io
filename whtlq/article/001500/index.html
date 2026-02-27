@@ -12,7 +12,7 @@
     <meta property="og:description" content="創世から130年目に生まれたセツは、聖書年表の最初の明確な基準点となる。" />
     <meta name="theme-color" content="#f4e4bc" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
+    <link rel="stylesheet" href="../../CSS/whtlq_article.css">
 </head>
 <body>
     <div class="container">
@@ -37,7 +37,7 @@
                 <h2 data-ja="絶対年代の計算と意義" data-en="Calculation and Meaning of Absolute Dates">絶対年代の計算と意義</h2>
                 <p data-ja="このように、セツの誕生は聖書内部で最初に固定される年代的基準点ですが、絶対年代の計算はどの伝承を採用するかによって異なります。" data-en="Thus, the birth of Seth is the first chronological anchor fixed within the Bible, but the calculation of absolute dates varies depending on which textual tradition is adopted.">このように、セツの誕生は聖書内部で最初に固定される年代的アンカーですが、絶対年代の計算はどの伝承を採用するかによって異なります。</p>
             </article>
-            <div style="margin-top: 30px; text-align: center;">
+            <div class="article-actions">
                 <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
             </div>
         </div>
@@ -51,7 +51,7 @@
                 localStorage.getItem('arq_lang') ||
                 localStorage.getItem('lang') ||
                 localStorage.getItem('language') ||
-                localStorage.getItem('btlq_lang');
+                localStorage.getItem('whtlq_lang');
 
             if (savedLang) { currentLang = savedLang; return; }
 
@@ -78,7 +78,7 @@
             window.close();
             // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
             setTimeout(() => {
-                location.href = '/btlq/';
+                location.href = '/whtlq/';
             }, 100);
         }
 
@@ -95,7 +95,7 @@
             const homeBtn = document.getElementById('homeBtn');
             if (homeBtn) {
                 homeBtn.addEventListener('click', () => {
-                    location.href = '/btlq/';
+                    location.href = '/whtlq/';
                 });
             }
 

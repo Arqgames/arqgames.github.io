@@ -19,7 +19,7 @@
     <meta name="theme-color" content="#f4e4bc" />
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
+    <link rel="stylesheet" href="../../CSS/whtlq_article.css">
 
 </head>
 
@@ -60,7 +60,7 @@
                 <p data-ja="諸説を前提に整理すると以下の通りです。ダニエル連行を起点にすると、前617年説・前605年説は聖書内部の年次整合を重視。外部史料を重視すると、前597年説が最も確実な固定点。捕囚の各事件（連行、王の捕囚、ゼデキヤ任命、貢ぎ物搬送）を年代説ごとに整理することで、ユダ王国史とバビロン帝国史の関係を整合的に理解できる。" data-en="When taking multiple theories into account: Using Daniel's exile as a starting point, the 617 BCE and 605 BCE theories prioritize internal biblical chronology. Prioritizing external sources, the 597 BCE theory provides the most secure fixed point. Organizing the key events of the exile—exile of the young men, Jehoiachin's capture, Zedekiah's appointment, and the transport of tribute—according to each theory allows for a coherent understanding of Judah's history in relation to Babylon's imperial expansion.">諸説を前提に整理すると以下の通りです。ダニエル連行を起点にすると、前617年説・前605年説は聖書内部の年次整合を重視。外部史料を重視すると、前597年説が最も確実な固定点。捕囚の各事件（連行、王の捕囚、ゼデキヤ任命、貢ぎ物搬送）を年代説ごとに整理することで、ユダ王国史とバビロン帝国史の関係を整合的に理解できる。</p>
             </article>
 
-            <div style="margin-top: 30px; text-align: center;">
+            <div class="article-actions">
                 <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
             </div>
         </div>
@@ -74,7 +74,7 @@
                 localStorage.getItem('arq_lang') ||
                 localStorage.getItem('lang') ||
                 localStorage.getItem('language') ||
-                localStorage.getItem('btlq_lang');
+                localStorage.getItem('whtlq_lang');
 
             if (savedLang) { currentLang = savedLang; return; }
 
@@ -101,7 +101,7 @@
             window.close();
             // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
             setTimeout(() => {
-                location.href = '/btlq/';
+                location.href = '/whtlq/';
             }, 100);
         }
 
@@ -118,7 +118,7 @@
             const homeBtn = document.getElementById('homeBtn');
             if (homeBtn) {
                 homeBtn.addEventListener('click', () => {
-                    location.href = '/btlq/';
+                    location.href = '/whtlq/';
                 });
             }
 

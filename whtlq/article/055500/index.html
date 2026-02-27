@@ -19,7 +19,7 @@
     <meta name="theme-color" content="#f4e4bc" />
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
+    <link rel="stylesheet" href="../../CSS/whtlq_article.css">
 
 </head>
 
@@ -53,7 +53,7 @@
                 <p data-ja="通説622年説は、列王第二の内部整合を重視した年代であり、宗教改革や王の治世と自然に結びつきます。一方、BC642年説は外部史料との整合性を重視し、数字の丸めや共治の影響を考慮した推定です。公式にはヨシヤ王の統治期間は31年間ですが、律法の書発見年を巡っては、622年説と642年説の間で約20年のズレが生じます。このズレは、聖書内部の記録と外部史料のどちらを優先するかによって変動するため、年代推定には一定の柔軟性が必要です。" data-en="The BC 622 theory emphasizes internal consistency within 2 Kings and aligns the discovery of the Book of the Law with the religious reforms and Josiah's reign. The BC 642 theory prioritizes consistency with external historical sources, taking into account rounding and co-regency factors. Officially, Josiah ruled for 31 years, but the year of the Book of the Law's discovery varies by approximately 20 years between BC 622 and BC 642. This discrepancy highlights that chronology depends on whether priority is given to internal biblical records or external historical evidence, and flexibility is required in dating these events.">通説622年説は、列王第二の内部整合を重視した年代であり、宗教改革や王の治世と自然に結びつきます。一方、BC642年説は外部史料との整合性を重視し、数字の丸めや共治の影響を考慮した推定です。公式にはヨシヤ王の統治期間は31年間ですが、律法の書発見年を巡っては、622年説と642年説の間で約20年のズレが生じます。このズレは、聖書内部の記録と外部史料のどちらを優先するかによって変動するため、年代推定には一定の柔軟性が必要です。</p>
             </article>
 
-            <div style="margin-top: 30px; text-align: center;">
+            <div class="article-actions">
                 <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
             </div>
         </div>
@@ -67,7 +67,7 @@
                 localStorage.getItem('arq_lang') ||
                 localStorage.getItem('lang') ||
                 localStorage.getItem('language') ||
-                localStorage.getItem('btlq_lang');
+                localStorage.getItem('whtlq_lang');
 
             if (savedLang) { currentLang = savedLang; return; }
 
@@ -94,7 +94,7 @@
             window.close();
             // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
             setTimeout(() => {
-                location.href = '/btlq/';
+                location.href = '/whtlq/';
             }, 100);
         }
 
@@ -111,7 +111,7 @@
             const homeBtn = document.getElementById('homeBtn');
             if (homeBtn) {
                 homeBtn.addEventListener('click', () => {
-                    location.href = '/btlq/';
+                    location.href = '/whtlq/';
                 });
             }
 
