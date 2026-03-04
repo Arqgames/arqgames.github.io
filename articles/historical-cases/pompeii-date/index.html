@@ -32,7 +32,7 @@
             </svg>
         </button>
 
-        <button class="top-btn lang-switch" type="button" title="Language">EN</button>
+        <button class="top-btn lang-switch" type="button" title="Articles" onclick="location.href='/articles/historical-cases/';">LIST</button>
 
         <div class="header-icon-box" aria-hidden="true">
             <span class="material-icons header-icon">local_fire_department</span>
@@ -76,16 +76,31 @@
                 年代の再検討は「史料の否定」ではなく、史料と物証を整合させるための重要な学問的作業です。過去の解釈を更新することで、より正確な歴史像に近づくことができます。
             </div>
 
-            <div style="margin-top:30px; padding:15px; background:#e8f4f8; border-radius:8px;">
-                <p style="margin:10px 0; font-weight:bold;" data-i18n="game_cta">年代知識を試してみませんか？</p>
-                <button type="button" class="btn" onclick="location.href='/whtlq/';" style="padding:10px 20px; font-size:0.95em;" data-i18n="game_btn">
-                    ゲームに挑戦する
+            <h2 data-i18n="applications_title">実際の応用例</h2>
+            <p data-i18n="applications_intro">
+                ローマ時代の火山災害の年代特定は、古典文献と考古学的証拠の相互検証が不可欠です。
+            </p>
+            <ul>
+                <li data-i18n="app1"><strong>プリニウスの手紙</strong> — 小プリニウスがタキトゥスに宛てた書簡が、噴火の目撃記録として最重要史料。</li>
+                <li data-i18n="app2"><strong>火山災害層の分析</strong> — 火砕流、軽石堆積層、町埋没状態を考古学的手法で検証。</li>
+                <li data-i18n="app3"><strong>出土品の季節性証拠</strong> — 保存された食品、衣服、農作物が季節を示唆。</li>
+                <li data-i18n="app4"><strong>貨幣の年代</strong> — 帝政期の硬貨発行年が埋没時刻の上限を示す。</li>
+                <li data-i18n="app5"><strong>碑文と落書き</strong> — ポンペイの壁のグラフィティには年月日や行事の記載が多数残る。</li>
+            </ul>
+
+            <div style="margin-top:30px; text-align:center; padding:20px; background:linear-gradient(135deg, #5dade2 0%, #4a90c5 100%); border-radius:8px;">
+                <p style="margin:0 0 12px; color:#fff; font-weight:bold; font-size:1.05em;" data-i18n="game_cta">
+                    年代知識を試してみませんか？
+                </p>
+                <button type="button" class="btn" onclick="window.open('/whtlq/', '_blank', 'noopener');" data-i18n="game_btn" 
+                        style="background:#fff; color:#4a90c5; font-weight:bold; padding:14px 28px; font-size:1.05em; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+                    世界史年表クイズ
                 </button>
             </div>
 
             <div class="back-to-articles" style="margin-top:20px; text-align:center; padding-top:20px; border-top:1px solid #e0d0bb;">
                 <button type="button" class="btn btn-sub" onclick="location.href='/articles/historical-cases/';" data-i18n="back_articles" style="padding:10px 20px; font-size:0.95em;">
-                    具体的歴史事例に戻る
+                    記事一覧に戻る
                 </button>
             </div>
         </div>
@@ -114,9 +129,16 @@
                 section4_title: "現在の研究と課題",
                 research_status: "21世紀に入り、デジタル技術やDNA分析、同位体分析など新しい手法がポンペイの研究に導入されています。2018年には、イタリアと国際的な研究チームによる進行中の調査で、火砕流や軽石層の詳細な分析がさらに進み、秋季説の信頼性がより高まっています。年代の再検討は、古い記録の否定ではなく、複数の視点から歴史を立体的に理解するための作業なのです。",
                 note: "年代の再検討は「史料の否定」ではなく、史料と物証を整合させるための重要な学問的作業です。過去の解釈を更新することで、より正確な歴史像に近づくことができます。",
+                applications_title: "実際の応用例",
+                applications_intro: "ローマ時代の火山災害の年代特定は、古典文献と考古学的証拠の相互検証が不可欠です。",
+                app1: "プリニウスの手紙 — 小プリニウスがタキトゥスに宛てた書簡が、噴火の目撃記録として最重要史料。",
+                app2: "火山災害層の分析 — 火砕流、軽石堆積層、町埋没状態を考古学的手法で検証。",
+                app3: "出土品の季節性証拠 — 保存された食品、衣服、農作物が季節を示唆。",
+                app4: "貨幣の年代 — 帝政期の硬貨発行年が埋没時刻の上限を示す。",
+                app5: "碑文と落書き — ポンペイの壁のグラフィティには年月日や行事の記載が多数残る。",
                 game_cta: "年代知識を試してみませんか？",
-                game_btn: "ゲームに挑戦する",
-                back_articles: "具体的歴史事例に戻る"
+                game_btn: "世界史年表クイズ",
+                back_articles: "記事一覧に戻る"
             },
             en: {
                 title: "Revisiting the Date of Pompeii",
@@ -135,8 +157,15 @@
                 section4_title: "Current Research and Challenges",
                 research_status: "Since the 21st century, digital technology, DNA analysis, and isotopic methods have been introduced to Pompeian research. By 2018, collaborative investigations by Italian and international teams had advanced detailed analysis of pyroclastic flows and ash layers, further strengthening the autumn theory's credibility. Date revision is not a rejection of ancient records but rather an effort to understand history from multiple perspectives and construct a more complete picture of the past.",
                 note: "Date revision is not 'denying sources' but rather an important scholarly task of reconciling sources with artifacts. Updating past interpretations allows us to approach a more accurate historical understanding.",
+                applications_title: "Real-World Applications",
+                applications_intro: "Dating volcanic disasters in Roman times requires cross-checking classical literature with archaeological evidence.",
+                app1: "Pliny's Letters — Correspondence from Pliny the Younger to Tacitus remains the most crucial eyewitness account of the eruption.",
+                app2: "Volcanic Disaster Layer Analysis — Pyroclastic flows, pumice deposits, and burial states verified using archaeological methods.",
+                app3: "Seasonal Evidence from Artifacts — Preserved foods, clothing, and crops suggest the season.",
+                app4: "Coin Dating — Imperial coinage provides an upper limit for the burial date.",
+                app5: "Inscriptions and Graffiti — Wall graffiti in Pompeii contain numerous dates and event references.",
                 game_cta: "Ready to test your chronology knowledge?",
-                game_btn: "Try the Game",
+                game_btn: "World History Timeline Quiz",
                 back_articles: "Back to Historical Cases"
             }
         };
