@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <!-- Large icon 512x512: Puzzle A with background -->
-  <rect width="512" height="512" fill="#e3f2fd" rx="100"/>
-  <g fill="#1e4d6b">
-    <path d="M90,430 L170,130 h172 l80,300 h-75 l-20,-70 h-130 l-20,70 Z M217,260 h78 l-39,-120 Z
-             M170,105 a25,25 0 0,1 0,-50 a25,25 0 0,1 0,50
-             M342,105 a25,25 0 0,1 0,-50 a25,25 0 0,1 0,50"/>
-  </g>
-</svg>

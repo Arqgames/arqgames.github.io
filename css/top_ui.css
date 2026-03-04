@@ -612,3 +612,32 @@ article ul li {
 article p {
   color: var(--text) !important;
 }
+
+/* 関連記事セクション */
+.related-articles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.related-article-card {
+  display: block;
+  padding: 10px 12px;
+  background: #fff;
+  text-decoration: none;
+  color: var(--text);
+  border-radius: 8px;
+  border-left: 3px solid var(--accent);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.related-article-card:hover {
+  background: var(--card-bg);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  transform: translateX(3px);
+  border-left-color: #4a7c9d;
+}

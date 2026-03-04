@@ -9,6 +9,27 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="/css/top_ui.css">
+    <style>
+        /* btlqスタイルの見出し */
+        .article-item h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.15em;
+            color: #4a7c9d;
+            border-left: 4px solid #5dade2;
+            padding-left: 10px;
+        }
+        .article-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 16px;
+            border-radius: 8px;
+        }
+        .article-item:hover {
+            background: #f0f8ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30,77,107,0.15);
+        }
+    </style>
 </head>
 
 <body>
@@ -33,50 +54,50 @@
 
         <div class="section-block">
             <div class="article-list">
-                <div class="article-item" onclick="window.open('radiocarbon/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f0f8ff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(30,77,107,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #1e4d6b;" data-i18n="article_radiocarbon">放射性炭素年代測定の原理</h3>
+                <div class="article-item" onclick="window.open('radiocarbon/', '_blank', 'noopener');">
+                    <h3 data-i18n="article_radiocarbon">放射性炭素年代測定の原理</h3>
                     <div class="article-desc" style="line-height: 1.7; color: #1e4d6b;" data-i18n="article_radiocarbon_desc">
                         C14 の崩壊とキャリブレーションで年代範囲を推定する方法。
                     </div>
                 </div>
-                <div class="article-item" onclick="window.open('dendrochronology/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f0f8ff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(30,77,107,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #1e4d6b;" data-i18n="article_dendrochronology">年輪年代学の仕組み</h3>
+                <div class="article-item" onclick="window.open('dendrochronology/', '_blank', 'noopener');">
+                    <h3 data-i18n="article_dendrochronology">年輪年代学の仕組み</h3>
                     <div class="article-desc" style="line-height: 1.7; color: #1e4d6b;" data-i18n="article_dendrochronology_desc">
                         年輪パターンの照合から年単位で年代を確定する技法。
                     </div>
                 </div>
-                <div class="article-item" onclick="window.open('stratigraphy/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f0f8ff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(30,77,107,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #1e4d6b;" data-i18n="article_stratigraphy">地層学と相対年代の考え方</h3>
+                <div class="article-item" onclick="window.open('stratigraphy/', '_blank', 'noopener');">
+                    <h3 data-i18n="article_stratigraphy">地層学と相対年代の考え方</h3>
                     <div class="article-desc" style="line-height: 1.7; color: #1e4d6b;" data-i18n="article_stratigraphy_desc">
                         地層の重なりと層序で時系列を復元する基本原理。
                     </div>
                 </div>
-                <div class="article-item" onclick="window.open('luminescence-dating/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f0f8ff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(30,77,107,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #1e4d6b;" data-i18n="article_luminescence">熱ルミネッセンス（TL）・OSL年代測定</h3>
+                <div class="article-item" onclick="window.open('luminescence-dating/', '_blank', 'noopener');">
+                    <h3 data-i18n="article_luminescence">熱ルミネッセンス（TL）・OSL年代測定</h3>
                     <div class="article-desc" style="line-height: 1.7; color: #1e4d6b;" data-i18n="article_luminescence_desc">
                         焼成土器や堆積物の最終加熱・照射時期を推定。
                     </div>
                 </div>
-                <div class="article-item" onclick="window.open('obsidian-hydration/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f0f8ff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(30,77,107,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #1e4d6b;" data-i18n="article_obsidian">黒曜石水和法</h3>
+                <div class="article-item" onclick="window.open('obsidian-hydration/', '_blank', 'noopener');">
+                    <h3 data-i18n="article_obsidian">黒曜石水和法</h3>
                     <div class="article-desc" style="line-height: 1.7; color: #1e4d6b;" data-i18n="article_obsidian_desc">
                         水和層の成長速度から使用時期を推定。
                     </div>
                 </div>
-                <div class="article-item" onclick="window.open('archaeomagnetism/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f0f8ff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(30,77,107,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #1e4d6b;" data-i18n="article_archaeomag">古地磁気年代測定</h3>
+                <div class="article-item" onclick="window.open('archaeomagnetism/', '_blank', 'noopener');">
+                    <h3 data-i18n="article_archaeomag">古地磁気年代測定</h3>
                     <div class="article-desc" style="line-height: 1.7; color: #1e4d6b;" data-i18n="article_archaeomag_desc">
                         地磁気の変動記録から焼成遺構を年代推定。
                     </div>
                 </div>
-                <div class="article-item" onclick="window.open('uranium-series/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f0f8ff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(30,77,107,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #1e4d6b;" data-i18n="article_uranium">ウラン系列年代測定</h3>
+                <div class="article-item" onclick="window.open('uranium-series/', '_blank', 'noopener');">
+                    <h3 data-i18n="article_uranium">ウラン系列年代測定</h3>
                     <div class="article-desc" style="line-height: 1.7; color: #1e4d6b;" data-i18n="article_uranium_desc">
                         炭酸塩や鍾乳石などの年代を推定。
                     </div>
                 </div>
-                <div class="article-item" onclick="window.open('amino-acid-racemization/', '_blank', 'noopener');" style="cursor: pointer; transition: all 0.3s ease; padding: 16px; border-radius: 8px;" onmouseover="this.style.background='#f0f8ff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(30,77,107,0.15)';" onmouseout="this.style.background='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    <h3 style="margin: 0 0 8px 0; font-size: 1.05em; color: #1e4d6b;" data-i18n="article_amino">アミノ酸ラセミ化年代測定</h3>
+                <div class="article-item" onclick="window.open('amino-acid-racemization/', '_blank', 'noopener');">
+                    <h3 data-i18n="article_amino">アミノ酸ラセミ化年代測定</h3>
                     <div class="article-desc" style="line-height: 1.7; color: #1e4d6b;" data-i18n="article_amino_desc">
                         有機物中のラセミ化率から年代を推定。
                     </div>

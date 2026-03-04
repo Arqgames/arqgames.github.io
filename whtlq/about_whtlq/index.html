@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About World History Timeline Quiz | ARQ Games</title>
+    <title>[WHTLQ] About World History Timeline Quiz | ARQ Games</title>
     <meta name="description" content="World History Timeline Quizについて。古代文明から現代までの世界史の出来事を時系列に並べるクイズゲームです。" />
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -70,13 +70,6 @@
                 The game includes major world history events spanning from ancient civilizations to the present day. Each event is based on widely accepted historical sources and chronologies.
             </p>
 
-            <p data-i18n="content_articles">
-                For deeper learning about world history and dating methods, explore our articles and resources page, which provides detailed explanations about various historical periods and chronological debates.
-            </p>
-
-            <div style="margin:10px 0;">
-                <button type="button" class="btn btn-sub" onclick="openArticles()" style="padding:12px; font-size:0.95em;" data-i18n="articles_btn">Articles & Resources</button>
-            </div>
 
             <p data-i18n="content_request">
                 If you'd like to suggest additional historical events or have feedback about the game, please feel free to contact us via our <a href="/footer/contact/" style="color:#f39c12; text-decoration:underline;">Contact page</a>. We'd love to hear your suggestions!
@@ -152,11 +145,6 @@
                 closing: "We hope this game enhances your understanding of world history and chronology. Enjoy arranging the events and discovering the sequence of major historical moments!"
             }
         };
-
-        function openArticles() {
-            const win = window.open('/whtlq/article/', '_blank');
-            if (win) win.opener = null;
-        }
 
         function returnToGame() {
             window.close();

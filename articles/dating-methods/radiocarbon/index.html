@@ -10,6 +10,17 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" href="/css/top_ui.css">
+    <style>
+        /* btlqスタイルの見出し */
+        .article-body h2 {
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            color: #4a7c9d;
+            border-left: 4px solid #5dade2;
+            padding-left: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -71,6 +82,13 @@
                 <li data-i18n="app5"><strong>縄文土器</strong> — 日本の縄文時代（約16,000年前～）の編年確立に貢献。</li>
             </ul>
 
+            <h2 data-i18n="related_title">関連する記事</h2>
+            <div class="related-articles">
+                <a href="/articles/dating-methods/dendrochronology/" class="related-article-card" data-i18n="related1">樹輪年代測定法</a>
+                <a href="/articles/source-reliability/detecting-forgeries/" class="related-article-card" data-i18n="related2">偽造の検出と年代測定</a>
+                <a href="/articles/chronological-debates/jomon-chronology/" class="related-article-card" data-i18n="related3">縄文時代の年代論争</a>
+            </div>
+
             <div style="margin-top:30px; text-align:center; padding:20px; background:linear-gradient(135deg, #5dade2 0%, #4a90c5 100%); border-radius:8px;">
                 <p style="margin:0 0 12px; color:#fff; font-weight:bold; font-size:1.05em;" data-i18n="game_cta">
                     年代知識を試してみませんか？
@@ -118,8 +136,13 @@
                 app3: "トリノの聖骸布 — 中世（1260-1390年）の布であることが判明。",
                 app4: "ラスコー洞窟壁画 — 約17,000年前の先史時代の芸術作品と確認。",
                 app5: "縄文土器 — 日本の縄文時代（約16,000年前～）の編年確立に貢献。",
+                related_title: "関連する記事",
+                related1: "樹輪年代測定法",
+                related2: "偽造の検出と年代測定",
+                related3: "縄文時代の年代論争",
                 game_cta: "年代知識を試してみませんか？",
                 game_btn: "ゲームに挑戦する",
+                back_dating_methods: "年代測定の方法に戻る",
                 back_articles: "記事一覧に戻る"
             },
             en: {
@@ -145,8 +168,13 @@
                 app3: "Shroud of Turin — Revealed to be medieval cloth (1260-1390 CE).",
                 app4: "Lascaux Cave Paintings — Confirmed as prehistoric art from approximately 17,000 years ago.",
                 app5: "Jōmon Pottery — Helped establish chronology of Japan's Jōmon period (ca. 16,000 years ago onwards).",
+                related_title: "Related Articles",
+                related1: "Dendrochronology",
+                related2: "Detecting Forgeries",
+                related3: "Jōmon Chronology Debates",
                 game_cta: "Ready to test your chronology knowledge?",
                 game_btn: "Try the Game",
+                back_dating_methods: "Back to Dating Methods",
                 back_articles: "Back to Articles"
             }
         };
