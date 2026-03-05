@@ -1,0 +1,133 @@
+{
+  "category": "articles/historical-cases",
+  "generated_at": "2026-03-05T07:27:58.160Z",
+  "article_count": 7,
+  "articles": [
+    {
+      "slug": "ancient-olympia",
+      "path": "/articles/historical-cases/ancient-olympia/",
+      "title_ja": "古代オリンピアの年代特定",
+      "title_en": "Chronology of Ancient Olympia",
+      "tags_ja": [
+        "古代ギリシア",
+        "オリンピア",
+        "年代特定",
+        "歴史事例"
+      ],
+      "tags_en": [
+        "ancient-greece",
+        "olympia",
+        "chronology",
+        "case-study"
+      ]
+    },
+    {
+      "slug": "egypt-new-kingdom",
+      "path": "/articles/historical-cases/egypt-new-kingdom/",
+      "title_ja": "エジプト新王国の年代本",
+      "title_en": "Chronological Framework of Egypt's New Kingdom",
+      "tags_ja": [
+        "古代エジプト",
+        "新王国",
+        "絶対年代",
+        "歴史事例"
+      ],
+      "tags_en": [
+        "ancient-egypt",
+        "new-kingdom",
+        "absolute-chronology",
+        "case-study"
+      ]
+    },
+    {
+      "slug": "inca-prehispanic",
+      "path": "/articles/historical-cases/inca-prehispanic/",
+      "title_ja": "インカ・プレインカ文明の年代",
+      "title_en": "Chronology of Inca and Prehispanic Civilization",
+      "tags_ja": [
+        "南米古代",
+        "インカ帝国",
+        "年代推定",
+        "歴史事例"
+      ],
+      "tags_en": [
+        "mesoamerica",
+        "inca",
+        "chronology",
+        "case-study"
+      ]
+    },
+    {
+      "slug": "pompeii-date",
+      "path": "/articles/historical-cases/pompeii-date/",
+      "title_ja": "ポンペイ埋没年の再検討",
+      "title_en": "Revisiting the Date of Pompeii",
+      "tags_ja": [
+        "歴史的事例",
+        "ローマ帝国",
+        "火山",
+        "79年"
+      ],
+      "tags_en": [
+        "pompeii",
+        "roman",
+        "volcano",
+        "79ce"
+      ]
+    },
+    {
+      "slug": "roman-empire-foundation",
+      "path": "/articles/historical-cases/roman-empire-foundation/",
+      "title_ja": "ローマ帝国成立年の史料的根拠",
+      "title_en": "Sources for the Founding of the Roman Empire",
+      "tags_ja": [
+        "歴史的事例",
+        "ローマ帝国",
+        "年代不確定",
+        "史料批判"
+      ],
+      "tags_en": [
+        "roman-empire",
+        "historical-case",
+        "uncertain-date",
+        "source-criticism"
+      ]
+    },
+    {
+      "slug": "silk-road",
+      "path": "/articles/historical-cases/silk-road/",
+      "title_ja": "シルクロード交易圏の形成年代",
+      "title_en": "Formation Chronology of Silk Road Trade Network",
+      "tags_ja": [
+        "シルクロード",
+        "交易圏",
+        "古代交易",
+        "歴史事例"
+      ],
+      "tags_en": [
+        "silk-road",
+        "trade-network",
+        "ancient-commerce",
+        "case-study"
+      ]
+    },
+    {
+      "slug": "yamatai-kingdom",
+      "path": "/articles/historical-cases/yamatai-kingdom/",
+      "title_ja": "邪馬台国の年代と所在地",
+      "title_en": "Chronology and Location of Yamato Kingdom",
+      "tags_ja": [
+        "日本古代",
+        "邪馬台国",
+        "年代論争",
+        "歴史事例"
+      ],
+      "tags_en": [
+        "japan-ancient",
+        "yamatai",
+        "chronological-debate",
+        "case-study"
+      ]
+    }
+  ]
+}

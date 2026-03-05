@@ -1,0 +1,151 @@
+{
+  "category": "articles/source-reliability",
+  "generated_at": "2026-03-05T07:28:07.705Z",
+  "article_count": 8,
+  "articles": [
+    {
+      "slug": "calendar-shifts",
+      "path": "/articles/source-reliability/calendar-shifts/",
+      "title_ja": "暦法の変遷と日付のずれ",
+      "title_en": "Calendar Changes and Date Shifts",
+      "tags_ja": [
+        "暦法",
+        "ユリウス暦",
+        "グレゴリオ暦",
+        "時間計測"
+      ],
+      "tags_en": [
+        "calendar",
+        "julian",
+        "gregorian",
+        "timekeeping"
+      ]
+    },
+    {
+      "slug": "detecting-forgeries",
+      "path": "/articles/source-reliability/detecting-forgeries/",
+      "title_ja": "文書偽造の検出方法",
+      "title_en": "Detecting Document Forgeries",
+      "tags_ja": [
+        "史料研究",
+        "文書批判",
+        "偽文書",
+        "検証方法"
+      ],
+      "tags_en": [
+        "forgery",
+        "document-criticism",
+        "verification",
+        "sources"
+      ]
+    },
+    {
+      "slug": "epigraphic-sources",
+      "path": "/articles/source-reliability/epigraphic-sources/",
+      "title_ja": "碑文・金石文の信頼性評価",
+      "title_en": "Epigraphic Sources Reliability",
+      "tags_ja": [
+        "史料研究",
+        "碑文学",
+        "金石文",
+        "信頼性評価"
+      ],
+      "tags_en": [
+        "epigraphy",
+        "inscriptions",
+        "reliability",
+        "sources"
+      ]
+    },
+    {
+      "slug": "manuscript-traditions",
+      "path": "/articles/source-reliability/manuscript-traditions/",
+      "title_ja": "異本比較と写本伝承",
+      "title_en": "Manuscript Comparison and Transmission",
+      "tags_ja": [
+        "史料研究",
+        "文献批判",
+        "異本",
+        "写本伝承"
+      ],
+      "tags_en": [
+        "textual-criticism",
+        "manuscripts",
+        "variants",
+        "transmission"
+      ]
+    },
+    {
+      "slug": "medieval-chronicles",
+      "path": "/articles/source-reliability/medieval-chronicles/",
+      "title_ja": "中世年代記の信頼性評価",
+      "title_en": "Assessing Medieval Chronicles",
+      "tags_ja": [
+        "歴史的事例",
+        "中世",
+        "文献批判",
+        "信頼性評価"
+      ],
+      "tags_en": [
+        "medieval",
+        "chronicles",
+        "textual-criticism",
+        "reliability"
+      ]
+    },
+    {
+      "slug": "numismatic-dating",
+      "path": "/articles/source-reliability/numismatic-dating/",
+      "title_ja": "貨幣資料が示す年代情報",
+      "title_en": "What Coins Reveal About Dates",
+      "tags_ja": [
+        "年代測定",
+        "考古学的方法",
+        "貨幣学",
+        "物質資料"
+      ],
+      "tags_en": [
+        "numismatics",
+        "archaeological-method",
+        "coins",
+        "material-evidence"
+      ]
+    },
+    {
+      "slug": "oral-traditions",
+      "path": "/articles/source-reliability/oral-traditions/",
+      "title_ja": "口承史料の評価",
+      "title_en": "Evaluating Oral Traditions",
+      "tags_ja": [
+        "史料研究",
+        "口承史料",
+        "伝承",
+        "民俗学"
+      ],
+      "tags_en": [
+        "oral-history",
+        "traditions",
+        "legends",
+        "folklore"
+      ]
+    },
+    {
+      "slug": "stratigraphic-interpretation",
+      "path": "/articles/source-reliability/stratigraphic-interpretation/",
+      "title_ja": "考古学的層序の解釈",
+      "title_en": "Interpreting Archaeological Stratigraphy",
+      "tags_ja": [
+        "考古学",
+        "層序学",
+        "相対年代",
+        "地層"
+      ],
+      "tags_en": [
+        "archaeology",
+        "stratigraphy",
+        "relative-dating",
+        "layers"
+      ]
+    }
+  ]
+}

@@ -83,7 +83,7 @@
             </ul>
 
             <h2 data-i18n="related_title">関連する記事</h2>
-            <div class="related-articles">
+            <div id="related-articles-container" class="related-articles">
                 <a href="/articles/dating-methods/dendrochronology/" class="related-article-card" data-i18n="related1">樹輪年代測定法</a>
                 <a href="/articles/dating-methods/ai-handwriting-analysis/" class="related-article-card" data-i18n="related2">AI筆跡分析による年代推定</a>
                 <a href="/articles/source-reliability/detecting-forgeries/" class="related-article-card" data-i18n="related3">偽造の検出と年代測定</a>
@@ -186,11 +186,96 @@
             });
             document.querySelector(".lang-switch").textContent = (lang === "ja") ? "EN" : "JA";
             localStorage.setItem("arq_lang", lang);
+
+            renderRelatedArticles(lang);
+        }
+
+        const RELATED_ARTICLE_COUNT = 3;
+        let relatedManifest = null;
+        let selectedRelatedSlugs = [];
+
+        function getCurrentSlug() {
+            const parts = window.location.pathname.split('/').filter(Boolean);
+            return parts[parts.length - 1] || "";
+        }
+
+        function getCurrentTagsEn() {
+            const meta = document.querySelector('meta[name="tags"]');
+            const raw = meta ? (meta.dataset.tags || "") : "";
+            return raw.split(',').map(tag => tag.trim()).filter(Boolean);
+        }
+
+        function shuffle(array) {
+            const copy = [...array];
+            for (let index = copy.length - 1; index > 0; index -= 1) {
+                const randomIndex = Math.floor(Math.random() * (index + 1));
+                [copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
+            }
+            return copy;
+        }
+
+        function pickRelatedArticles(articles, currentSlug, currentTagsEn, count) {
+            const currentTagSet = new Set(currentTagsEn);
+            const candidates = articles.filter(article => article.slug !== currentSlug);
+
+            const withScore = candidates.map(article => {
+                const overlap = (article.tags_en || []).filter(tag => currentTagSet.has(tag)).length;
+                return { article, overlap };
+            });
+
+            const matched = shuffle(withScore.filter(item => item.overlap > 0))
+                .sort((left, right) => right.overlap - left.overlap)
+                .map(item => item.article);
+
+            const unmatched = shuffle(withScore.filter(item => item.overlap === 0).map(item => item.article));
+
+            return [...matched, ...unmatched].slice(0, count).map(article => article.slug);
+        }
+
+        function renderRelatedArticles(lang) {
+            const container = document.getElementById('related-articles-container');
+            if (!container || !relatedManifest || selectedRelatedSlugs.length === 0) return;
+
+            const articleMap = new Map(relatedManifest.articles.map(article => [article.slug, article]));
+            const fragment = document.createDocumentFragment();
+
+            selectedRelatedSlugs.forEach(slug => {
+                const article = articleMap.get(slug);
+                if (!article) return;
+
+                const link = document.createElement('a');
+                link.href = article.path;
+                link.className = 'related-article-card';
+                link.textContent = (lang === 'ja') ? article.title_ja : article.title_en;
+                fragment.appendChild(link);
+            });
+
+            container.replaceChildren(fragment);
+        }
+
+        async function loadRelatedManifest() {
+            try {
+                const response = await fetch('/articles/dating-methods/related-articles-manifest.json');
+                if (!response.ok) return;
+
+                relatedManifest = await response.json();
+                selectedRelatedSlugs = pickRelatedArticles(
+                    relatedManifest.articles || [],
+                    getCurrentSlug(),
+                    getCurrentTagsEn(),
+                    RELATED_ARTICLE_COUNT
+                );
+
+                renderRelatedArticles(lang);
+            } catch (error) {
+                console.warn('Failed to load related articles manifest:', error);
+            }
         }
 
         const saved = localStorage.getItem("arq_lang");
         let lang = saved || (navigator.language && navigator.language.startsWith("ja") ? "ja" : "en");
         applyLang(lang);
+        loadRelatedManifest();
 
         document.querySelector(".lang-switch").onclick = () => {
             lang = (lang === "ja") ? "en" : "ja";

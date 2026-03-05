@@ -91,6 +91,11 @@
                 </button>
             </div>
 
+            <h2 data-i18n="related_title">関連する記事</h2>
+            <div id="related-articles-container" class="related-articles">
+                <!-- Dynamically populated -->
+            </div>
+
             <div class="back-to-articles" style="margin-top:20px; text-align:center; padding-top:20px; border-top:1px solid #e0d0bb;">
                 <button type="button" class="btn btn-sub" onclick="location.href='/articles/historical-cases/';" data-i18n="back_articles" style="padding:10px 20px; font-size:0.95em;">
                     記事一覧に戻る
@@ -129,7 +134,8 @@
                 app5: "ギリシア暦の体系化 — オリンピック記録を基準に、他地域の暦と照合。",
                 game_cta: "年代知識を試してみませんか？",
                 game_btn: "世界史年表クイズ",
-                back_articles: "具体的歴史事例カテゴリに戻る"
+                back_articles: "具体的歴史事例カテゴリに戻る",
+                related_title: "関連する記事"
             },
             en: {
                 title: "Chronology of Ancient Olympia",
@@ -155,7 +161,8 @@
                 app5: "Systematizing Greek Calendars — Using Olympic records as anchor, correlate with other regions' calendars.",
                 game_cta: "Ready to test your chronology knowledge?",
                 game_btn: "World History Timeline Quiz",
-                back_articles: "Back to Historical Cases"
+                back_articles: "Back to Historical Cases",
+                related_title: "Related Articles"
             }
         };
 
@@ -166,11 +173,96 @@
             });
             document.querySelector(".lang-switch").textContent = (lang === "ja") ? "EN" : "JA";
             localStorage.setItem("arq_lang", lang);
+
+            renderRelatedArticles(lang);
+        }
+
+        const RELATED_ARTICLE_COUNT = 3;
+        let relatedManifest = null;
+        let selectedRelatedSlugs = [];
+
+        function getCurrentSlug() {
+            const parts = window.location.pathname.split('/').filter(Boolean);
+            return parts[parts.length - 1] || "";
+        }
+
+        function getCurrentTagsEn() {
+            const meta = document.querySelector('meta[name="tags"]');
+            const raw = meta ? (meta.dataset.tags || "") : "";
+            return raw.split(',').map(tag => tag.trim()).filter(Boolean);
+        }
+
+        function shuffle(array) {
+            const copy = [...array];
+            for (let index = copy.length - 1; index > 0; index -= 1) {
+                const randomIndex = Math.floor(Math.random() * (index + 1));
+                [copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
+            }
+            return copy;
+        }
+
+        function pickRelatedArticles(articles, currentSlug, currentTagsEn, count) {
+            const currentTagSet = new Set(currentTagsEn);
+            const candidates = articles.filter(article => article.slug !== currentSlug);
+
+            const withScore = candidates.map(article => {
+                const overlap = (article.tags_en || []).filter(tag => currentTagSet.has(tag)).length;
+                return { article, overlap };
+            });
+
+            const matched = shuffle(withScore.filter(item => item.overlap > 0))
+                .sort((left, right) => right.overlap - left.overlap)
+                .map(item => item.article);
+
+            const unmatched = shuffle(withScore.filter(item => item.overlap === 0).map(item => item.article));
+
+            return [...matched, ...unmatched].slice(0, count).map(article => article.slug);
+        }
+
+        function renderRelatedArticles(lang) {
+            const container = document.getElementById('related-articles-container');
+            if (!container || !relatedManifest || selectedRelatedSlugs.length === 0) return;
+
+            const articleMap = new Map(relatedManifest.articles.map(article => [article.slug, article]));
+            const fragment = document.createDocumentFragment();
+
+            selectedRelatedSlugs.forEach(slug => {
+                const article = articleMap.get(slug);
+                if (!article) return;
+
+                const link = document.createElement('a');
+                link.href = article.path;
+                link.className = 'related-article-card';
+                link.textContent = (lang === 'ja') ? article.title_ja : article.title_en;
+                fragment.appendChild(link);
+            });
+
+            container.replaceChildren(fragment);
+        }
+
+        async function loadRelatedManifest() {
+            try {
+                const response = await fetch('/articles/historical-cases/related-articles-manifest.json');
+                if (!response.ok) return;
+
+                relatedManifest = await response.json();
+                selectedRelatedSlugs = pickRelatedArticles(
+                    relatedManifest.articles || [],
+                    getCurrentSlug(),
+                    getCurrentTagsEn(),
+                    RELATED_ARTICLE_COUNT
+                );
+
+                renderRelatedArticles(lang);
+            } catch (error) {
+                console.warn('Failed to load related articles manifest:', error);
+            }
         }
 
         const saved = localStorage.getItem("arq_lang");
         let lang = saved || (navigator.language && navigator.language.startsWith("ja") ? "ja" : "en");
         applyLang(lang);
+        loadRelatedManifest();
 
         document.querySelector(".lang-switch").onclick = () => {
             lang = (lang === "ja") ? "en" : "ja";
