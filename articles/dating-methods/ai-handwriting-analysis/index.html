@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI筆跡分析による年代推定 | ARQ Games</title>
+    <meta name="description" content="AI技術を用いた筆跡分析で、死海文書の実年代が従来説より古い可能性を確認。" />
+    <meta name="tags" content="年代測定, AI分析, 死海文書, 筆跡, 考古学" data-tags="ai,handwriting,dead-sea-scrolls,dating,archaeology" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="/css/top_ui.css">
+    <style>
+        /* btlqスタイルの見出し */
+        .article-body h2 {
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            color: #4a7c9d;
+            border-left: 4px solid #5dade2;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="top-btn home-btn" type="button" title="Home" onclick="location.href='/'">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
+
+        <button class="top-btn lang-switch" type="button" title="Articles" onclick="location.href='/articles/dating-methods/';">LIST</button>
+
+        <div class="header-icon-box" aria-hidden="true">
+            <span class="material-icons header-icon">science</span>
+        </div>
+
+        <h1 style="margin:10px 0 0; font-size:1.35em;" data-i18n="title">AI筆跡分析による年代推定</h1>
+
+        <div class="article-body">
+            <p data-i18n="intro">
+                ポポビッチ氏らの研究チームは、機械学習を用いた AIモデル「エノク」を開発し、放射性炭素年代測定の結果から筆跡パターンを学習させました。その結果、従来は紀元前2世紀とされていた死海文書の一部が、実は原著者の時代である紀元前3世紀にまで遡る可能性が判明しました。
+            </p>
+
+            <h2 data-i18n="section1_title">放射性炭素年代測定の問題点</h2>
+            <p data-i18n="carbon_intro">
+                放射性炭素年代測定は考古学の基本的な手法ですが、いくつかの弱点があります。
+            </p>
+            <ul>
+                <li data-i18n="carbon_point1">試料は分析の過程で破壊される。</li>
+                <li data-i18n="carbon_point2">結果によっては誤解を招く可能性がある。</li>
+                <li data-i18n="carbon_point3">死海文書の場合、保存材料（ヒマシ油）が年代測定に影響。</li>
+            </ul>
+
+            <h2 data-i18n="section2_title">ヒマシ油による汚染問題</h2>
+            <p data-i18n="preservation_issue">
+                従来の死海文書の分析結果は、その保存法である「ヒマシ油」の影響を十分に考慮していませんでした。
+            </p>
+            <ul>
+                <li data-i18n="preservation1">ヒマシ油は戦後の発明で、1950年代に研究者が文書を読みやすくするために使用した。</li>
+                <li data-i18n="preservation2">これは現代の汚染物質であり、測定結果をはるかに最近の年代にゆがめてしまう。</li>
+                <li data-i18n="preservation3">この問題を認識することで、より正確な年代推定が可能になる。</li>
+            </ul>
+
+            <h2 data-i18n="section3_title">AI「エノク」の開発と検証</h2>
+            <p data-i18n="enoch_intro">
+                研究チームは機械学習モデル「エノク」を開発し、その精度を複数のステップで検証しました。
+            </p>
+
+            <h3 style="margin-top:18px; margin-bottom:10px; font-size:1.1em; color:#4a7c9d; border-left:3px solid #5dade2; padding-left:10px;" data-i18n="enoch_validation_title">精度検証フェーズ</h3>
+            <p data-i18n="enoch_validation_desc">
+                エノクに対して、放射性炭素年代測定が行われた他の文書を提示し、年代については情報を伏せて年代測定させました。その結果、エノクは85％の確率で年代を正確に推測することに成功しました。
+            </p>
+            <div class="note-box" data-i18n="enoch_result_note">
+                多くの場合、エノクは炭素14年代測定よりも狭い範囲で写本の年代を推測することができました。この精度の高さは、機械学習が筆跡パターンを非常に詳細に学習していることを示しています。
+            </div>
+
+            <h3 style="margin-top:18px; margin-bottom:10px; font-size:1.1em; color:#4a7c9d; border-left:3px solid #5dade2; padding-left:10px;" data-i18n="enoch_application_title">死海文書への適用</h3>
+            <p data-i18n="enoch_application_desc">
+                次に、放射性炭素年代測定が行われていない135点の死海文書の画像をエノクに与え、その年代を推定させました。研究者は自身の古文書学の経験に基づいて、エノクの結果を「現実的」か「非現実的」かで評価しました。
+            </p>
+            <ul>
+                <li data-i18n="enoch_app1">エノクは79の試料で現実的な結果を算出。</li>
+                <li data-i18n="enoch_app2">評価不可の試料については、画像品質などの技術的問題が原因。</li>
+            </ul>
+
+            <h2 data-i18n="section4_title">研究から得られた知見</h2>
+            <p data-i18n="findings_intro">
+                この研究によって、死海文書の年代認識に大きな変更が必要なことが明らかになりました。
+            </p>
+            <ul>
+                <li data-i18n="finding1">研究対象となった写本の中には、これまで考えられていたよりも50～100年古いものが存在。</li>
+                <li data-i18n="finding2">「ダニエル書」の詩句が記されている巻物は、かつて紀元前2世紀とされていたが、実は原著者の時代まで遡る可能性。</li>
+                <li data-i18n="finding3">AIの結果を古文書学の知識で評価することで、より信頼性の高い年代推定が実現。</li>
+            </ul>
+
+            <div class="note-box" data-i18n="note_final">
+                この研究は、従来の単一の年代測定法だけでなく、複数の方法（年代測定＋AI筆跡分析＋古文書学的知識）の組み合わせが、より正確な年代推定に不可欠であることを示しています。
+            </div>
+
+            <h2 data-i18n="significance_title">考古学的な意義</h2>
+            <p data-i18n="significance_desc">
+                AI筆跡分析の成功は、考古学における機械学習の活用を示す重要な事例です。特に、保存状態が損なわれた資料や、従来の年代測定が困難な文書について、新たな分析手段をもたらします。
+            </p>
+            <ul>
+                <li data-i18n="sig1">他の古い文書資料への応用の可能性。</li>
+                <li data-i18n="sig2">筆跡による著者特定や時代認定の精度向上。</li>
+                <li data-i18n="sig3">破壊的年代測定（炭素14）では困難な試料への非破壊分析。</li>
+            </ul>
+
+            <h2 data-i18n="related_title">関連する記事</h2>
+            <div class="related-articles">
+                <a href="/articles/dating-methods/radiocarbon/" class="related-article-card" data-i18n="related1">放射性炭素年代測定の原理</a>
+                <a href="/articles/historical-cases/pompeii-date/" class="related-article-card" data-i18n="related2">ポンペイの年代特定</a>
+                <a href="/articles/source-reliability/detecting-forgeries/" class="related-article-card" data-i18n="related3">偽造の検出と年代測定</a>
+            </div>
+
+            <div style="margin-top:30px; text-align:center; padding:20px; background:linear-gradient(135deg, #5dade2 0%, #4a90c5 100%); border-radius:8px;">
+                <p style="margin:0 0 12px; color:#fff; font-weight:bold; font-size:1.05em;" data-i18n="game_cta">
+                    年代知識を試してみませんか？
+                </p>
+                <button type="button" class="btn" onclick="window.open('/whtlq/', '_blank', 'noopener');" data-i18n="game_btn" 
+                        style="background:#fff; color:#4a90c5; font-weight:bold; padding:14px 28px; font-size:1.05em; border:none; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+                    世界史年表クイズ
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
