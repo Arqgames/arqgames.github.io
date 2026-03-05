@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>熱ルミネッセンス（TL）・OSL年代測定 | 年代研究ノート</title>
+    <title>熱ルミネッセンス（TL）・OSL年代測定 | ARQ Games</title>
     <meta name="description" content="熱ルミネッセンス（TL）とOSLの原理と適用範囲を整理。" />
     <meta name="tags" content="年代測定, 発光, 堆積物, 考古学" data-tags="luminescence,tl,osl,archaeology" />
 
@@ -185,7 +185,23 @@
         fetch('/parts/footer.html')
             .then(r => r.text())
             .then(html => {
-                document.body.insertAdjacentHTML('beforeend', html);
+                const wrapper = document.createElement('div');
+                wrapper.innerHTML = html;
+
+                const scripts = Array.from(wrapper.querySelectorAll('script'));
+                scripts.forEach(s => s.remove());
+
+                document.body.append(...wrapper.childNodes);
+
+                scripts.forEach(oldScript => {
+                    const script = document.createElement('script');
+                    if (oldScript.src) {
+                        script.src = oldScript.src;
+                    } else {
+                        script.textContent = oldScript.textContent;
+                    }
+                    document.body.appendChild(script);
+                });
             });
     </script>
 

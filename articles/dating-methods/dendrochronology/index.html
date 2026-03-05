@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>年輪年代学の仕組み | 年代研究ノート</title>
+    <title>年輪年代学の仕組み | ARQ Games</title>
     <meta name="description" content="年輪年代学の基本原理と活用方法を整理。" />
     <meta name="tags" content="年代測定, 自然科学, 樹木, 考古学" data-tags="dendrochronology,natural,wood,archaeology" />
 
@@ -80,6 +80,13 @@
                 <li data-i18n="app5"><strong>火山噪火の年代</strong> — 樹木の成長障害から過去の火山活動を追跡。</li>
             </ul>
 
+            <h2 data-i18n="related_title">関連する記事</h2>
+            <div class="related-articles">
+                <a href="/articles/dating-methods/radiocarbon/" class="related-article-card" data-i18n="related1">放射性炭素年代測定の原理</a>
+                <a href="/articles/dating-methods/stratigraphy/" class="related-article-card" data-i18n="related2">地層学と相対年代の考え方</a>
+                <a href="/articles/dating-methods/uranium-series/" class="related-article-card" data-i18n="related3">ウラン系列年代測定</a>
+            </div>
+
             <div style="margin-top:30px; text-align:center; padding:20px; background:linear-gradient(135deg, #5dade2 0%, #4a90c5 100%); border-radius:8px;">
                 <p style="margin:0 0 12px; color:#fff; font-weight:bold; font-size:1.05em;" data-i18n="game_cta">
                     年代知識を試してみませんか？
@@ -125,6 +132,10 @@
                 app3: "ストラディバリウス — 17～18世紀の名器の製作年代を検証。",
                 app4: "江戸城の天守 — 江戸時代の再建築年代を木材から特定。",
                 app5: "火山噪火の年代 — 樹木の成長障害から過去の火山活動を追跡。",
+                related_title: "関連する記事",
+                related1: "放射性炭素年代測定の原理",
+                related2: "地層学と相対年代の考え方",
+                related3: "ウラン系列年代測定",
                 game_cta: "年代知識を試してみませんか？",
                 game_btn: "世界史年表クイズ",
                 back_dating_methods: "年代測定の方法に戻る",
@@ -151,6 +162,10 @@
                 app3: "Stradivarius Violins — Verified the manufacturing dates of 17th-18th century masterpieces.",
                 app4: "Edo Castle Tenshu — Identified reconstruction dates during the Edo period from timber.",
                 app5: "Volcanic Eruption Dating — Tracked past volcanic activity from growth disturbances in trees.",
+                related_title: "Related Articles",
+                related1: "Principles of Radiocarbon Dating",
+                related2: "Stratigraphy and Relative Dating",
+                related3: "Uranium-Series Dating",
                 game_cta: "Ready to test your chronology knowledge?",
                 game_btn: "World History Timeline Quiz",
                 back_dating_methods: "Back to Dating Methods",
@@ -179,7 +194,23 @@
         fetch('/parts/footer.html')
             .then(r => r.text())
             .then(html => {
-                document.body.insertAdjacentHTML('beforeend', html);
+                const wrapper = document.createElement('div');
+                wrapper.innerHTML = html;
+
+                const scripts = Array.from(wrapper.querySelectorAll('script'));
+                scripts.forEach(s => s.remove());
+
+                document.body.append(...wrapper.childNodes);
+
+                scripts.forEach(oldScript => {
+                    const script = document.createElement('script');
+                    if (oldScript.src) {
+                        script.src = oldScript.src;
+                    } else {
+                        script.textContent = oldScript.textContent;
+                    }
+                    document.body.appendChild(script);
+                });
             });
     </script>
 

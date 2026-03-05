@@ -6,3 +6,118 @@
     <a href="/footer/contact/" target="_blank" rel="noopener noreferrer">Contact</a>
 
 </footer>
+
+<script>
+(() => {
+    function getCurrentLang() {
+        const saved = localStorage.getItem('arq_lang');
+        if (saved === 'ja' || saved === 'en') return saved;
+        return (navigator.language && navigator.language.startsWith('ja')) ? 'ja' : 'en';
+    }
+
+    function buildSectionTitle(lang) {
+        return lang === 'ja' ? '関連する記事' : 'Related Articles';
+    }
+
+    function normalizePath(pathname) {
+        return pathname.endsWith('/') ? pathname : pathname + '/';
+    }
+
+    function parseArticlePath(pathname) {
+        const match = normalizePath(pathname).match(/^\/articles\/([^/]+)\/([^/]+)\/$/);
+        if (!match) return null;
+        return { category: match[1], slug: match[2] };
+    }
+
+    function extractRelatedFromCategoryPage(html, category, currentSlug) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const items = Array.from(doc.querySelectorAll('.article-item'));
+        const links = [];
+
+        for (const item of items) {
+            const onclick = item.getAttribute('onclick') || '';
+            const titleEl = item.querySelector('h3');
+            const title = (titleEl?.textContent || '').trim();
+            const slugMatch = onclick.match(/window\.open\('([^']+)'/);
+            if (!slugMatch || !title) continue;
+
+            const rawPath = slugMatch[1];
+            if (rawPath.includes('/btlq/')) continue;
+            if (rawPath.startsWith('/articles/')) {
+                const cleaned = rawPath.replace(/\/$/, '');
+                if (!cleaned || cleaned.endsWith('/' + currentSlug)) continue;
+                links.push({ href: cleaned + '/', title });
+                continue;
+            }
+
+            const slug = rawPath.replace(/\/$/, '');
+            if (!slug || slug === currentSlug) continue;
+            links.push({ href: '/articles/' + category + '/' + slug + '/', title });
+        }
+
+        return links.slice(0, 3);
+    }
+
+    function findInsertAnchor(articleBody) {
+        const cta = articleBody.querySelector('div[style*="margin-top:30px"][style*="linear-gradient"]');
+        if (cta) return cta;
+        const back = articleBody.querySelector('.back-to-articles');
+        if (back) return back;
+        return null;
+    }
+
+    function renderRelatedSection(articleBody, related, lang) {
+        if (!related.length) return;
+
+        const section = document.createElement('div');
+        section.className = 'auto-related-section';
+
+        const title = document.createElement('h2');
+        title.className = 'auto-related-title';
+        title.textContent = buildSectionTitle(lang);
+        section.appendChild(title);
+
+        const list = document.createElement('div');
+        list.className = 'related-articles';
+
+        for (const item of related) {
+            const link = document.createElement('a');
+            link.className = 'related-article-card';
+            link.href = item.href;
+            link.textContent = item.title;
+            list.appendChild(link);
+        }
+
+        section.appendChild(list);
+
+        const anchor = findInsertAnchor(articleBody);
+        if (anchor) {
+            articleBody.insertBefore(section, anchor);
+        } else {
+            articleBody.appendChild(section);
+        }
+    }
+
+    async function injectRelatedArticles() {
+        if (document.querySelector('.related-articles')) return;
+
+        const page = parseArticlePath(location.pathname);
+        if (!page) return;
+
+        const articleBody = document.querySelector('.article-body');
+        if (!articleBody) return;
+
+        try {
+            const res = await fetch('/articles/' + page.category + '/');
+            if (!res.ok) return;
+            const html = await res.text();
+            const related = extractRelatedFromCategoryPage(html, page.category, page.slug);
+            renderRelatedSection(articleBody, related, getCurrentLang());
+        } catch (_) {
+        }
+    }
+
+    injectRelatedArticles();
+})();
+</script>
