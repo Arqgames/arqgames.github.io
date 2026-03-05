@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>[BTLQ] About Bible Timeline Quiz | ARQ Games</title>
     <meta name="description" content="Biblical Timeline Quizについて。聖書の出来事を時系列に並べるクイズゲームです。" />
+    <meta name="theme-color" content="#f4e4bc" />
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="/css/top_ui.css">
+    <link rel="stylesheet" href="/btlq/CSS/btlq_ui.css">
 </head>
 
 <body>
@@ -27,9 +28,9 @@
             <span class="material-icons header-icon">auto_stories</span>
         </div>
 
-        <h1 style="margin:10px 0 0; font-size:1.4em;" data-i18n="title">About Bible Timeline Quiz</h1>
+        <h1 data-i18n="title">About Bible Timeline Quiz</h1>
 
-        <div style="text-align:left; margin-top:20px; line-height:1.7;">
+        <div class="content-section">
             <p data-i18n="intro"><strong>Bible Timeline Quiz</strong> is an interactive puzzle game where you arrange biblical events in chronological order. This page explains how the game works and what features it offers.</p>
 
             <h3 data-i18n="how_title">How the Game Works</h3>
@@ -43,7 +44,7 @@
             <p data-i18n="period_desc">
                 You can select from preset time periods or customize the exact range of years. The major periods include:
             </p>
-            <ul style="margin:10px 0; padding-left:20px;">
+            <ul>
                 <li data-i18n="period_genesis">Genesis to Patriarchs (Creation to ~1513 BCE)</li>
                 <li data-i18n="period_conquest">Conquest (~1513 to ~1070 BCE)</li>
                 <li data-i18n="period_kingdom">Kingdom & Exile (~1070 to ~280 BCE)</li>
@@ -74,27 +75,27 @@
                 For deeper learning about biblical history and chronology, explore our articles and resources page, which provides detailed explanations and links to relevant biblical passages.
             </p>
 
-            <div style="margin:10px 0;">
-                <button type="button" class="btn btn-sub" onclick="openArticles()" style="padding:12px; font-size:0.95em;" data-i18n="articles_btn">Articles & Resources</button>
+            <div class="button-container">
+                <button type="button" class="btn btn-sub" onclick="openArticles()" data-i18n="articles_btn">Articles & Resources</button>
             </div>
 
             <p data-i18n="content_request">
                 If you'd like to suggest additional biblical events or have feedback about the game, please feel free to contact us via our <a href="/footer/contact/" style="color:#f39c12; text-decoration:underline;">Contact page</a>. We'd love to hear your suggestions!
             </p>
 
-            <p data-i18n="closing" style="margin-top:20px;">
+            <p class="closing-text" data-i18n="closing">
                 We hope this game enhances your understanding and appreciation of the Biblical Timeline. Enjoy arranging the events and discovering the sequence of major biblical moments!
             </p>
 
-            <div style="margin-top:16px; text-align:center;">
-                <button type="button" class="btn btn-sub" onclick="returnToGame()" style="padding:12px; font-size:0.95em;" data-i18n="back_btn">Back to Game</button>
+            <div class="button-container-center">
+                <button type="button" class="btn btn-sub" onclick="returnToGame()" data-i18n="back_btn">Back to Game</button>
             </div>
         </div>
 
     </div>
 
     <div class="ad-outside">
-        <div style="text-align:center; font-weight:bold; color:#8b5e3c;">Ad space</div>
+        <div class="ad-label">Ad space</div>
     </div>
 
     <script>
@@ -122,7 +123,7 @@
                 content_events: "ゲームは現在、創造から紀元1世紀までを網羅する200以上の聖書の出来事を含んでいます。各出来事は広く認められている聖書年表と歴史的資料に基づいています。",
                 content_articles: "聖書の歴史と年表について詳しく学ぶために、記事とリソースページをご覧ください。詳しい解説と関連する聖書箇所へのリンクを掲載しています。",
                 articles_btn: "記事とリソース",
-                content_request: "追加してほしい聖書の出来事があればご提案いただくか、ゲームについてのご意見は <a href=\"/footer/contact/\" style=\"color:#f39c12; text-decoration:underline;\">お問い合わせページ</a>からお聞かせください。皆さんのご提案をお待ちしています！",
+                content_request: "追加してほしい聖書の出来事があればご提案いただくか、ゲームについてのご意見は <a href=\"/footer/contact/\">Contact</a>からお聞かせください。皆さんのご提案をお待ちしています！",
                 closing: "このゲームが聖書年表についての理解と知識を深める手助けになれば幸いです。出来事を並べて、聖書の主要な瞬間の順序を発見してください！"
             },
             en: {
@@ -148,7 +149,7 @@
                 content_events: "The game currently includes over 200 biblical events spanning from the creation account to the first century CE. Each event is based on widely accepted biblical chronologies and historical sources.",
                 content_articles: "For deeper learning about biblical history and chronology, explore our articles and resources page, which provides detailed explanations and links to relevant biblical passages.",
                 articles_btn: "Articles & Resources",
-                content_request: "If you'd like to suggest additional biblical events or have feedback about the game, please feel free to contact us via our <a href=\"/footer/contact/\" style=\"color:#f39c12; text-decoration:underline;\">Contact page</a>. We'd love to hear your suggestions!",
+                content_request: "If you'd like to suggest additional biblical events or have feedback about the game, please feel free to contact us via our <a href=\"/footer/contact/\">Contact page</a>. We'd love to hear your suggestions!",
                 closing: "We hope this game enhances your understanding and appreciation of the Biblical Timeline. Enjoy arranging the events and discovering the sequence of major biblical moments!"
             }
         };

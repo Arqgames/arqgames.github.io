@@ -6,33 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>[BTLQ] Articles | Bible Timeline Quiz</title>
     <meta name="description" content="聖書年表に関する記事と解説のまとめページ。" />
+    <meta name="theme-color" content="#f4e4bc" />
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="/css/top_ui.css">
-    <style>
-        .article-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 15px;
-            margin: 10px 0;
-            border: 2px solid #fbc531;
-            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .article-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
-        }
-        .article-card a {
-            color: #5d3a1a;
-            text-decoration: none;
-            font-weight: bold;
-            display: block;
-        }
-        .article-card a:hover {
-            color: #f39c12;
-        }
-    </style>
+    <link rel="stylesheet" href="/btlq/CSS/btlq_ui.css">
 </head>
 
 <body>
@@ -51,14 +28,14 @@
             <span class="material-icons header-icon">article</span>
         </div>
 
-        <h1 style="margin:10px 0 0; font-size:1.4em;" data-i18n="title">Articles & Resources</h1>
+        <h1 data-i18n="title">Articles & Resources</h1>
 
-        <div style="text-align:left; margin-top:20px; line-height:1.7;">
+        <div class="content-section">
             <p data-i18n="intro">This page provides links to articles and resources about biblical history, chronology, and related topics. Explore detailed explanations of events featured in the Bible Timeline Quiz.</p>
 
             <h3 data-i18n="articles_title">Available Articles</h3>
             
-            <div style="margin:20px 0;">
+            <div class="article-list">
                 <div class="article-card">
                     <a href="001500/" target="_blank" rel="noopener noreferrer" data-i18n="article_001500">創世から130年 - セツの誕生と聖書年表の基準点</a>
                 </div>
@@ -98,18 +75,18 @@
 
             <h3 data-i18n="suggestions_title">Suggestions Welcome</h3>
             <p data-i18n="suggestions_desc">
-                If you have ideas for article topics or specific events you'd like us to cover in detail, please let us know through our <a href="/footer/contact/" style="color:#f39c12; text-decoration:underline;">Contact page</a>. Your feedback helps us create valuable content that meets your interests!
+                If you have ideas for article topics or specific events you'd like us to cover in detail, please let us know through our <a href="/footer/contact/">Contact page</a>. Your feedback helps us create valuable content that meets your interests!
             </p>
 
-            <div style="margin-top:16px; text-align:center;">
-                <button type="button" class="btn btn-sub" onclick="returnToGame()" style="padding:12px; font-size:0.95em;" data-i18n="back_btn">Back to Game</button>
+            <div class="button-container-center">
+                <button type="button" class="btn btn-sub" onclick="returnToGame()" data-i18n="back_btn">Back to Game</button>
             </div>
         </div>
 
     </div>
 
     <div class="ad-outside">
-        <div style="text-align:center; font-weight:bold; color:#8b5e3c;">Ad space</div>
+        <div class="ad-label">Ad space</div>
     </div>
 
     <script>
@@ -132,7 +109,7 @@
                 coming_soon_title: "さらに記事を公開予定",
                 coming_soon_desc: "聖書の歴史の様々な時代をカバーする追加の記事を準備中です。定期的にご確認ください！",
                 suggestions_title: "ご提案をお待ちしています",
-                suggestions_desc: "もし記事のトピックのアイデアや、詳しく取り上げてほしい特定の出来事がありましたら、<a href=\"/footer/contact/\" style=\"color:#f39c12; text-decoration:underline;\">お問い合わせページ</a>からお知らせください。皆様のフィードバックが、お客様の関心に応える価値あるコンテンツを作成する手助けになります！"
+                suggestions_desc: "もし記事のトピックのアイデアや、詳しく取り上げてほしい特定の出来事がありましたら、<a href=\"/footer/contact/\" style=\"color:#f39c12; text-decoration:underline;\">Contact</a>からお知らせください。皆様のフィードバックが、お客様の関心に応える価値あるコンテンツを作成する手助けになります！"
             },
             en: {
                 title: "Articles & Resources",
@@ -152,7 +129,7 @@
                 coming_soon_title: "More Articles Coming Soon",
                 coming_soon_desc: "We're continuing to prepare additional articles covering various periods of biblical history. Please check back regularly for updates!",
                 suggestions_title: "Suggestions Welcome",
-                suggestions_desc: "If you have ideas for article topics or specific events you'd like us to cover in detail, please let us know through our <a href=\"/footer/contact/\" style=\"color:#f39c12; text-decoration:underline;\">Contact page</a>. Your feedback helps us create valuable content that meets your interests!"
+                suggestions_desc: "If you have ideas for article topics or specific events you'd like us to cover in detail, please let us know through our <a href=\"/footer/contact/\">Contact page</a>. Your feedback helps us create valuable content that meets your interests!"
             }
         };
 

@@ -600,3 +600,89 @@ html {overflow-x: hidden; }
   transform: translateX(3px);
   border-left-color: #8b5e3c;
 }
+
+/* About page styles */
+.container h1 {
+  margin: 10px 0 0;
+  font-size: 1.4em;
+}
+
+.container h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: var(--text);
+  font-size: 1.2em;
+}
+
+.container h4 {
+  margin-top: 15px;
+  margin-bottom: 8px;
+  color: var(--text);
+  font-size: 1.05em;
+}
+
+.container a {
+  color: #f39c12;
+  text-decoration: underline;
+}
+
+.container ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.content-section {
+  text-align: left;
+  margin-top: 20px;
+  line-height: 1.7;
+}
+
+.button-container {
+  margin: 10px 0;
+}
+
+.button-container-center {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.closing-text {
+  margin-top: 20px;
+}
+
+.ad-outside .ad-label {
+  text-align: center;
+  font-weight: bold;
+  color: #8b5e3c;
+}
+
+/* Article list page styles */
+.article-list {
+  margin: 20px 0;
+}
+
+.article-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 10px 0;
+  border: 2px solid var(--accent);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.article-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+}
+
+.article-card a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+}
+
+.article-card a:hover {
+  color: #f39c12;
+}
