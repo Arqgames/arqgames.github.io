@@ -1,0 +1,131 @@
+{
+  "category": "articles/chronological-debates",
+  "generated_at": "2026-03-05T05:40:49.047Z",
+  "article_count": 6,
+  "articles": [
+    {
+      "slug": "chronology-revisions",
+      "path": "/articles/chronological-debates/chronology-revisions/",
+      "title_ja": "歴史年代はなぜ修正されるのか",
+      "title_en": "Why Historical Dates Get Revised",
+      "tags_ja": [
+        "年代測定",
+        "年代修正",
+        "年代論争",
+        "研究動向",
+        "技術進歩",
+        "新発見",
+        "学術的合意",
+        "複合分析",
+        "証拠精度",
+        "修正プロセス",
+        "検証方法",
+        "科学的分析",
+        "歴史編年"
+      ],
+      "tags_en": [
+        "dating",
+        "date-revision",
+        "chronological-debates",
+        "research-trends",
+        "technological-advancement",
+        "new-discoveries",
+        "scholarly-consensus",
+        "multi-method-analysis",
+        "evidence-precision",
+        "revision-process",
+        "verification",
+        "scientific-analysis",
+        "historical-chronology"
+      ]
+    },
+    {
+      "slug": "egypt-old-kingdom",
+      "path": "/articles/chronological-debates/egypt-old-kingdom/",
+      "title_ja": "エジプト古王国の年代",
+      "title_en": "Chronology of Egypt's Old Kingdom",
+      "tags_ja": [
+        "エジプト古王国",
+        "ピラミッド",
+        "年代論争"
+      ],
+      "tags_en": [
+        "egypt-old-kingdom",
+        "pyramids",
+        "chronology"
+      ]
+    },
+    {
+      "slug": "indus-civilization",
+      "path": "/articles/chronological-debates/indus-civilization/",
+      "title_ja": "インド・インダス文明",
+      "title_en": "Indus Civilization Chronology",
+      "tags_ja": [
+        "インダス",
+        "インド",
+        "古代文明",
+        "年代論争"
+      ],
+      "tags_en": [
+        "indus",
+        "india",
+        "ancient-civilization",
+        "chronology"
+      ]
+    },
+    {
+      "slug": "jomon-chronology",
+      "path": "/articles/chronological-debates/jomon-chronology/",
+      "title_ja": "縄文時代の年代測定",
+      "title_en": "Jomon Period Chronology",
+      "tags_ja": [
+        "縄文",
+        "年代測定",
+        "弥生",
+        "編年"
+      ],
+      "tags_en": [
+        "jomon",
+        "radiocarbon",
+        "yayoi",
+        "chronology"
+      ]
+    },
+    {
+      "slug": "mesoamerican-calendar",
+      "path": "/articles/chronological-debates/mesoamerican-calendar/",
+      "title_ja": "メソアメリカ暦の年代決定",
+      "title_en": "Mesoamerican Calendar Dating",
+      "tags_ja": [
+        "マヤ",
+        "メソアメリカ",
+        "暦",
+        "年代"
+      ],
+      "tags_en": [
+        "maya",
+        "mesoamerica",
+        "calendar",
+        "chronology"
+      ]
+    },
+    {
+      "slug": "schliemann-controversy",
+      "path": "/articles/chronological-debates/schliemann-controversy/",
+      "title_ja": "シュリーマン年代論争",
+      "title_en": "The Schliemann Chronology Controversy",
+      "tags_ja": [
+        "トロイ",
+        "シュリーマン",
+        "古代ギリシア",
+        "層序"
+      ],
+      "tags_en": [
+        "troy",
+        "schliemann",
+        "ancient-greece",
+        "stratigraphy"
+      ]
+    }
+  ]
+}
