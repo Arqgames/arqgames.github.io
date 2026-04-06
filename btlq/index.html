@@ -67,7 +67,8 @@
 
             <!-- レベル選択 -->
             <div style="margin: 20px 0;">
-                <div style="font-size:1.3em; font-weight:bold; margin-bottom: 10px;" data-ja="レベル" data-en="Level">レベル</div>
+                <div style="font-size:1.3em; font-weight:bold; margin-bottom: 10px;" data-ja="レベル" data-en="Level">レベル
+                </div>
                 <div class="level-btn-container">
                     <button class="level-btn active" data-level="1" onclick="selectLevel(1)">1</button>
                     <button class="level-btn" data-level="2" onclick="selectLevel(2)">2</button>
@@ -114,7 +115,9 @@
             </select>
             <div id="error-msg"></div>
             <button class="btn" onclick="startGame()" data-ja="冒険を開始" data-en="Start Adventure">冒険を開始</button>
-            <button type="button" class="btn btn-sub" onclick="openAbout()" style="padding:12px; font-size:0.95em; margin-top:8px;" data-ja="このゲームについて" data-en="About This Game">このゲームについて</button>
+            <button type="button" class="btn btn-sub" onclick="openAbout()"
+                style="padding:12px; font-size:0.95em; margin-top:8px;" data-ja="このゲームについて"
+                data-en="About This Game">このゲームについて</button>
         </div>
 
         <div id="screen-game" class="hidden">
@@ -279,8 +282,8 @@
             const e = parseInt(document.getElementById('select-end').value);
             const count = parseInt(document.getElementById('count-select').value);
 
-            let filtered = EVENTS.filter(ev => 
-                ev.year >= s && 
+            let filtered = EVENTS.filter(ev =>
+                ev.year >= s &&
                 ev.year <= e &&
                 (ev.rank !== undefined ? ev.rank <= currentLevel : true)
             );
@@ -969,269 +972,198 @@
             showResultScreen(true);
         }
 
+        // ── 広告モック（後でSDKに差し替える箇所）──────────────────
+        function showRewardAd(callback) {
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+        position:fixed; inset:0; background:rgba(0,0,0,0.7);
+        display:flex; flex-direction:column;
+        align-items:center; justify-content:center;
+        z-index:9999; color:#fff; font-size:1.2em;
+    `;
+            overlay.innerHTML = `
+        <div style="background:#333; padding:30px; border-radius:12px; text-align:center; max-width:300px;">
+            <div style="margin-bottom:16px;">📺</div>
+            <div id="ad-countdown" style="font-size:2em; font-weight:bold;">5</div>
+            <div style="font-size:0.8em; margin-top:8px; color:#aaa;">
+                ${currentLang === 'ja' ? '広告を読み込み中...' : 'Loading ad...'}
+            </div>
+        </div>
+    `;
+            document.body.appendChild(overlay);
+
+            let count = 5;
+            const timer = setInterval(() => {
+                count--;
+                const el = document.getElementById('ad-countdown');
+                if (el) el.innerText = count;
+                if (count <= 0) {
+                    clearInterval(timer);
+                    document.body.removeChild(overlay);
+                    callback();
+                }
+            }, 1000);
+        }
+        // ────────────────────────────────────────────────────────────
+
         function showHint() {
-            const hintArea = document.getElementById('hint-area');
-            if (!hintArea) return;
 
-            const userIds = getUserIds();
-            const correctIds = getCorrectIds();
-
-            // まだゲームが成立してない保険
-            if (userIds.length === 0 || correctIds.length === 0) {
-                lastHintIds = [];
-                lastHintWasEmpty = true;
-                hintArea.innerHTML =
-                    `<strong>${currentLang === 'ja' ? "💡 調査の助け:" : "💡 Clues:"}</strong><br><br>` +
-                    (currentLang === 'ja' ? "まだ並び替え対象がありません。" : "No items to check yet.");
-                hintArea.classList.remove('hidden');
+            function retryThisTask() {
+                document.getElementById('hint-area').classList.add('hidden');
+                renderGame(false);
                 switchScreen('screen-game');
-                return;
-            }
 
-            // id → 正しい位置
-            const posMap = {};
-            correctIds.forEach((id, idx) => posMap[id] = idx);
-
-            // 異常系（重複・欠落・外部ID）
-            const userSet = new Set(userIds);
-            const correctSet = new Set(correctIds);
-            const hasDuplicate = userSet.size !== userIds.length;
-            const hasOutOfTask = userIds.some(id => !correctSet.has(id));
-            const hasMissing = correctIds.some(id => !userSet.has(id));
-
-            // 最初の「逆転している隣接ペア」を探す
-            let conflictPairIds = null;
-            for (let i = 0; i < userIds.length - 1; i++) {
-                const a = userIds[i];
-                const b = userIds[i + 1];
-                const pa = posMap[a];
-                const pb = posMap[b];
-                if (pa == null || pb == null) continue; // task外は保険で無視
-                if (pa > pb) { conflictPairIds = [a, b]; break; }
-            }
-
-            // ヒント対象（最大2）
-            const hintsToShow = conflictPairIds
-                ? conflictPairIds.map(id => EVENTS.find(e => e.id === id)).filter(Boolean)
-                : [];
-
-            // 言語切替の再描画用に保存
-            lastHintIds = hintsToShow.map(e => e.id);
-            lastHintWasEmpty = (hintsToShow.length === 0) && !(hasDuplicate || hasOutOfTask || hasMissing);
-
-            const title = currentLang === 'ja'
-                ? "💡 調査の助け:"
-                : "💡 Clues for misplaced items:";
-
-            let html = `<strong>${title}</strong><br><br>`;
-
-            // まずはセット異常を優先表示
-            if (hasDuplicate || hasOutOfTask || hasMissing) {
-                if (currentLang === 'ja') {
-                    html += "並びの内容に問題があるようです。<br>";
-                    if (hasDuplicate) html += "・同じカードが重複している可能性があります。<br>";
-                    if (hasOutOfTask) html += "・課題に含まれないカードが混ざっています。<br>";
-                    if (hasMissing) html += "・課題に必要なカードが欠けています。<br>";
-                    html += "<br>まずはカードの種類と枚数を整えてください。";
-                } else {
-                    html += "There seems to be a problem with the set of items.<br>";
-                    if (hasDuplicate) html += "• Some items may be duplicated.<br>";
-                    if (hasOutOfTask) html += "• An item not in this task is included.<br>";
-                    if (hasMissing) html += "• A required item is missing.<br>";
-                    html += "<br>Please fix the set of cards first.";
-                }
-            } else if (hintsToShow.length === 0) {
-                // セット正常＆逆転なし → 並び順OK（少なくとも「逆転」はない）
-                html += currentLang === 'ja'
-                    ? "並び順は合っているようです。"
-                    : "The order seems correct.";
-            } else {
-                // 逆転ペアの比較ヒント（あなたの意図どおり）
-                for (const ev of hintsToShow) {
-                    const name = ev[currentLang] || ev.ja || "";
-                    const hintDesc = ev['hint_' + currentLang] || ev.hint_ja || "";
-                    html += `<div class="hint-item">・${name} (${formatRef(ev.ref)})`;
-                    if (hintDesc) html += `<span class="hint-desc">${hintDesc}</span>`;
-                    html += `</div>`;
+                const isTimeAttack = document.getElementById('time-attack-select').value === 'on';
+                if (isTimeAttack) {
+                    const count = parseInt(document.getElementById('count-select').value);
+                    timeLeft = count * 15;
+                    updateTimerDisplay();
+                    clearInterval(timerInterval);
+                    timerInterval = setInterval(() => {
+                        timeLeft--;
+                        updateTimerDisplay();
+                        if (timeLeft <= 0) {
+                            clearInterval(timerInterval);
+                            alert(currentLang === 'ja' ? "時間切れ！" : "Time's Up!");
+                            checkOrder();
+                        }
+                    }, 1000);
                 }
             }
 
-            hintArea.innerHTML = html;
-            hintArea.classList.remove('hidden');
-            switchScreen('screen-game');
-
-            // タイムアタックONの場合のみタイマー再始動（timeLeftは維持）
-            const isTimeAttack = document.getElementById('time-attack-select')?.value === 'on';
-            if (isTimeAttack) {
-                clearInterval(timerInterval);
-                timerInterval = setInterval(() => {
-                    timeLeft--;
-                    updateTimerDisplay();
-                    if (timeLeft <= 0) {
-                        clearInterval(timerInterval);
-                        alert(currentLang === 'ja' ? "時間切れ！" : "Time's Up!");
-                        checkOrder();
-                    }
-                }, 1000);
+            function switchScreen(id) {
+                document.getElementById('screen-setup').classList.add('hidden');
+                document.getElementById('screen-game').classList.add('hidden');
+                document.getElementById('screen-result').classList.add('hidden');
+                document.getElementById(id).classList.remove('hidden');
             }
-        }
+            /* ページを開いた瞬間にやること（初期化） */
+            window.onload = () => {
+                // 1) ブラウザ言語 or 保存済み言語を見て currentLang を決める
+                detectLanguage();
+                document.documentElement.lang = currentLang;
 
-        function retryThisTask() {
-            document.getElementById('hint-area').classList.add('hidden');
-            renderGame(false);
-            switchScreen('screen-game');
+                // 2) 言語ボタン（JA/EN）の表示を currentLang に合わせる
+                const langBtn = document.getElementById('langBtn');
+                if (langBtn) {
+                    langBtn.innerText = currentLang === 'ja' ? 'EN' : 'JA';
+                }
 
-            const isTimeAttack = document.getElementById('time-attack-select').value === 'on';
-            if (isTimeAttack) {
-                const count = parseInt(document.getElementById('count-select').value);
-                timeLeft = count * 15;
-                updateTimerDisplay();
-                clearInterval(timerInterval);
-                timerInterval = setInterval(() => {
-                    timeLeft--;
-                    updateTimerDisplay();
-                    if (timeLeft <= 0) {
-                        clearInterval(timerInterval);
-                        alert(currentLang === 'ja' ? "時間切れ！" : "Time's Up!");
-                        checkOrder();
-                    }
-                }, 1000);
-            }
-        }
-
-        function switchScreen(id) {
-            document.getElementById('screen-setup').classList.add('hidden');
-            document.getElementById('screen-game').classList.add('hidden');
-            document.getElementById('screen-result').classList.add('hidden');
-            document.getElementById(id).classList.remove('hidden');
-        }
-        /* ページを開いた瞬間にやること（初期化） */
-        window.onload = () => {
-            // 1) ブラウザ言語 or 保存済み言語を見て currentLang を決める
-            detectLanguage();
-            document.documentElement.lang = currentLang;
-
-            // 2) 言語ボタン（JA/EN）の表示を currentLang に合わせる
-            const langBtn = document.getElementById('langBtn');
-            if (langBtn) {
-                langBtn.innerText = currentLang === 'ja' ? 'EN' : 'JA';
-            }
-
-            // 3) data-ja / data-en の文言を currentLang の言語に切り替える
-            document.querySelectorAll('[data-ja]').forEach(el => {
-                el.innerText = el.getAttribute('data-' + currentLang);
-            });
-
-            // ✅ここでは initPickers() を呼ばない（イベント未ロードで壊れる）
-            // ✅ここでは startSel/endSel の value を触らない
-        };
-
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- HOME ---
-            const homeBtn = document.getElementById('homeBtn');
-            if (homeBtn) {
-                homeBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    // GitHub Pagesの /btlq/ に戻すならこっち推奨
-                    location.href = '/btlq/';
-                    // ルート（ arqgames.github.io/ ）に戻したいなら '/' のままでOK
-                    // location.href = '/';
+                // 3) data-ja / data-en の文言を currentLang の言語に切り替える
+                document.querySelectorAll('[data-ja]').forEach(el => {
+                    el.innerText = el.getAttribute('data-' + currentLang);
                 });
-            }
 
-            // --- LANG（確実版）---
-            const langBtn0 = document.getElementById('langBtn');
-            if (langBtn0) {
-                const langBtn = langBtn0.cloneNode(true);
-                langBtn0.parentNode.replaceChild(langBtn, langBtn0);
+                // ✅ここでは initPickers() を呼ばない（イベント未ロードで壊れる）
+                // ✅ここでは startSel/endSel の value を触らない
+            };
 
-                langBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
 
-                    if (typeof window.toggleLang === 'function') { window.toggleLang(); return; }
-                    if (typeof window.toggleLanguage === 'function') { window.toggleLanguage(); return; }
-                    if (typeof window.switchLanguage === 'function') { window.switchLanguage(); return; }
-                    if (typeof window.setLanguage === 'function') { window.setLanguage(); return; }
-
-                    const saved =
-                        localStorage.getItem('arq_lang') ||
-                        localStorage.getItem('lang') ||
-                        localStorage.getItem('language') ||
-                        localStorage.getItem('btlq_lang');
-
-                    const current = saved || (navigator.language?.startsWith('ja') ? 'ja' : 'en');
-                    const next = (current === 'ja') ? 'en' : 'ja';
-
-                    localStorage.setItem('arq_lang', next);
-                    localStorage.setItem('lang', next);
-                    localStorage.setItem('language', next);
-                    localStorage.setItem('btlq_lang', next);
-
-                    if (typeof window.applyLang === 'function') {
-                        window.applyLang(next);
-                        return;
-                    }
-                    location.reload();
-                }, true);
-            }
-
-            async function loadEvents() {
-                const url = "data/events/events_all.json";
-
-                try {
-                    const res = await fetch(url, { cache: "no-store" });
-
-                    if (!res.ok) {
-                        const text = await res.text();
-                        console.error("Fetch failed:", res.status, res.statusText, "url=", url);
-                        console.error("Response head:", text.slice(0, 200));
-                        return;
-                    }
-
-                    const data = await res.json();
-
-                    if (!Array.isArray(data)) {
-                        console.error("Invalid JSON: expected an Array, got:", typeof data, data);
-                        return;
-                    }
-
-                    EVENTS = data;
-                    window.EVENTS = data;
-
-                    console.log("EVENTS loaded:", EVENTS.length);
-
-                    // ★① セレクト構築
-                    initPickers();
-
-                    // ★② デフォルト期間をここで設定（重要）
-                    const startSel = document.getElementById('select-start');
-                    const endSel = document.getElementById('select-end');
-
-                    if (startSel && endSel) {
-                        startSel.value = EVENTS[0].year;                         // 最古
-                        endSel.value = EVENTS[EVENTS.length - 1].year;           // 最新
-                    }
-
-                    // ★③ エラーメッセージ消去（保険）
-                    document.getElementById('error-msg').innerText = "";
-
-                } catch (e) {
-                    console.error("Event load failed:", e, "url=", url);
+            document.addEventListener('DOMContentLoaded', () => {
+                // --- HOME ---
+                const homeBtn = document.getElementById('homeBtn');
+                if (homeBtn) {
+                    homeBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        // GitHub Pagesの /btlq/ に戻すならこっち推奨
+                        location.href = '/btlq/';
+                        // ルート（ arqgames.github.io/ ）に戻したいなら '/' のままでOK
+                        // location.href = '/';
+                    });
                 }
-            }
 
-            // 外側が DOMContentLoaded なので、ここは直接呼ぶだけでOK
-            loadEvents();
-        });
+                // --- LANG（確実版）---
+                const langBtn0 = document.getElementById('langBtn');
+                if (langBtn0) {
+                    const langBtn = langBtn0.cloneNode(true);
+                    langBtn0.parentNode.replaceChild(langBtn, langBtn0);
 
-        fetch('../parts/footer.html')
-            .then(r => r.text())
-            .then(html => {
-                document.body.insertAdjacentHTML('beforeend', html);
+                    langBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+                        if (typeof window.toggleLang === 'function') { window.toggleLang(); return; }
+                        if (typeof window.toggleLanguage === 'function') { window.toggleLanguage(); return; }
+                        if (typeof window.switchLanguage === 'function') { window.switchLanguage(); return; }
+                        if (typeof window.setLanguage === 'function') { window.setLanguage(); return; }
+
+                        const saved =
+                            localStorage.getItem('arq_lang') ||
+                            localStorage.getItem('lang') ||
+                            localStorage.getItem('language') ||
+                            localStorage.getItem('btlq_lang');
+
+                        const current = saved || (navigator.language?.startsWith('ja') ? 'ja' : 'en');
+                        const next = (current === 'ja') ? 'en' : 'ja';
+
+                        localStorage.setItem('arq_lang', next);
+                        localStorage.setItem('lang', next);
+                        localStorage.setItem('language', next);
+                        localStorage.setItem('btlq_lang', next);
+
+                        if (typeof window.applyLang === 'function') {
+                            window.applyLang(next);
+                            return;
+                        }
+                        location.reload();
+                    }, true);
+                }
+
+                async function loadEvents() {
+                    const url = "data/events/events_all.json";
+
+                    try {
+                        const res = await fetch(url, { cache: "no-store" });
+
+                        if (!res.ok) {
+                            const text = await res.text();
+                            console.error("Fetch failed:", res.status, res.statusText, "url=", url);
+                            console.error("Response head:", text.slice(0, 200));
+                            return;
+                        }
+
+                        const data = await res.json();
+
+                        if (!Array.isArray(data)) {
+                            console.error("Invalid JSON: expected an Array, got:", typeof data, data);
+                            return;
+                        }
+
+                        EVENTS = data;
+                        window.EVENTS = data;
+
+                        console.log("EVENTS loaded:", EVENTS.length);
+
+                        // ★① セレクト構築
+                        initPickers();
+
+                        // ★② デフォルト期間をここで設定（重要）
+                        const startSel = document.getElementById('select-start');
+                        const endSel = document.getElementById('select-end');
+
+                        if (startSel && endSel) {
+                            startSel.value = EVENTS[0].year;                         // 最古
+                            endSel.value = EVENTS[EVENTS.length - 1].year;           // 最新
+                        }
+
+                        // ★③ エラーメッセージ消去（保険）
+                        document.getElementById('error-msg').innerText = "";
+
+                    } catch (e) {
+                        console.error("Event load failed:", e, "url=", url);
+                    }
+                }
+
+                // 外側が DOMContentLoaded なので、ここは直接呼ぶだけでOK
+                loadEvents();
             });
+
+            fetch('../parts/footer.html')
+                .then(r => r.text())
+                .then(html => {
+                    document.body.insertAdjacentHTML('beforeend', html);
+                });
 
     </script>
 
