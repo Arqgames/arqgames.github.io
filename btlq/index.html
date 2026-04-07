@@ -1037,47 +1037,49 @@
         }
 
         function showHint() {
+            // 広告を表示してからヒントを表示
+            showRewardAd(() => {
+                const title = currentLang === 'ja' ? 'ヒント' : 'Hint';
+                document.getElementById('hint-title').innerText = title;
 
-            const title = currentLang === 'ja' ? 'ヒント' : 'Hint';
-            document.getElementById('hint-title').innerText = title;
+                const hintArea = document.getElementById('hint-area');
+                let html = `<strong>${title}</strong><br><br>`;
 
-            const hintArea = document.getElementById('hint-area');
-            let html = `<strong>${title}</strong><br><br>`;
+                /* 「並び順は合っている」ケース */
+                if (lastHintWasEmpty) {
+                    html += currentLang === 'ja'
+                        ? "並び順は合っているようです。"
+                        : "The order seems correct.";
 
-            /* 「並び順は合っている」ケース */
-            if (lastHintWasEmpty) {
-                html += currentLang === 'ja'
-                    ? "並び順は合っているようです。"
-                    : "The order seems correct.";
+                    hintArea.innerHTML = html;
+                    return;
+                }
+
+                /* 通常ケース：lastHintIds からイベントを引いて再構築 */
+                const hints = (lastHintIds || [])
+                    .map(id => EVENTS.find(e => e.id === id))
+                    .filter(Boolean);
+
+                /* 念のため：復元できなかったら空扱いにする */
+                if (hints.length === 0) {
+                    html += currentLang === 'ja'
+                        ? "並び順は合っているようです。"
+                        : "The order seems correct.";
+
+                    hintArea.innerHTML = html;
+                    return;
+                }
+
+                hints.forEach(s => {
+                    const hintDesc = s['hint_' + currentLang] || "";
+                    html += `<div class="hint-item">
+                        ・${s[currentLang]} (${formatRef(s.ref)})
+                        <span class="hint-desc">${hintDesc}</span>
+                     </div>`;
+                });
 
                 hintArea.innerHTML = html;
-                return;
-            }
-
-            /* 通常ケース：lastHintIds からイベントを引いて再構築 */
-            const hints = (lastHintIds || [])
-                .map(id => EVENTS.find(e => e.id === id))
-                .filter(Boolean);
-
-            /* 念のため：復元できなかったら空扱いにする */
-            if (hints.length === 0) {
-                html += currentLang === 'ja'
-                    ? "並び順は合っているようです。"
-                    : "The order seems correct.";
-
-                hintArea.innerHTML = html;
-                return;
-            }
-
-            hints.forEach(s => {
-                const hintDesc = s['hint_' + currentLang] || "";
-                html += `<div class="hint-item">
-                    ・${s[currentLang]} (${formatRef(s.ref)})
-                    <span class="hint-desc">${hintDesc}</span>
-                 </div>`;
             });
-
-            hintArea.innerHTML = html;
         }
 
         /* ページを開いた瞬間にやること（初期化） */
