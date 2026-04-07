@@ -1006,37 +1006,37 @@
         }
         // ────────────────────────────────────────────────────────────
 
-        function showHint() {
+        function switchScreen(id) {
+            document.getElementById('screen-setup').classList.add('hidden');
+            document.getElementById('screen-game').classList.add('hidden');
+            document.getElementById('screen-result').classList.add('hidden');
+            document.getElementById(id).classList.remove('hidden');
+        }
 
-            function retryThisTask() {
-                document.getElementById('hint-area').classList.add('hidden');
-                renderGame(false);
-                switchScreen('screen-game');
+        function retryThisTask() {
+            document.getElementById('hint-area').classList.add('hidden');
+            renderGame(false);
+            switchScreen('screen-game');
 
-                const isTimeAttack = document.getElementById('time-attack-select').value === 'on';
-                if (isTimeAttack) {
-                    const count = parseInt(document.getElementById('count-select').value);
-                    timeLeft = count * 15;
+            const isTimeAttack = document.getElementById('time-attack-select').value === 'on';
+            if (isTimeAttack) {
+                const count = parseInt(document.getElementById('count-select').value);
+                timeLeft = count * 15;
+                updateTimerDisplay();
+                clearInterval(timerInterval);
+                timerInterval = setInterval(() => {
+                    timeLeft--;
                     updateTimerDisplay();
-                    clearInterval(timerInterval);
-                    timerInterval = setInterval(() => {
-                        timeLeft--;
-                        updateTimerDisplay();
-                        if (timeLeft <= 0) {
-                            clearInterval(timerInterval);
-                            alert(currentLang === 'ja' ? "時間切れ！" : "Time's Up!");
-                            checkOrder();
-                        }
-                    }, 1000);
-                }
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        alert(currentLang === 'ja' ? "時間切れ！" : "Time's Up!");
+                        checkOrder();
+                    }
+                }, 1000);
             }
+        }
 
-            function switchScreen(id) {
-                document.getElementById('screen-setup').classList.add('hidden');
-                document.getElementById('screen-game').classList.add('hidden');
-                document.getElementById('screen-result').classList.add('hidden');
-                document.getElementById(id).classList.remove('hidden');
-            }
+        function showHint() {
 
             const title = currentLang === 'ja' ? 'ヒント' : 'Hint';
             document.getElementById('hint-title').innerText = title;
