@@ -1039,6 +1039,9 @@
         function showHint() {
             // 広告を表示してからヒントを表示
             showRewardAd(() => {
+                // ゲーム画面に戻ってヒントを表示
+                switchScreen('screen-game');
+
                 const title = currentLang === 'ja' ? 'ヒント' : 'Hint';
                 document.getElementById('hint-title').innerText = title;
 
@@ -1052,6 +1055,7 @@
                         : "The order seems correct.";
 
                     hintArea.innerHTML = html;
+                    hintArea.classList.remove('hidden');
                     return;
                 }
 
@@ -1067,6 +1071,7 @@
                         : "The order seems correct.";
 
                     hintArea.innerHTML = html;
+                    hintArea.classList.remove('hidden');
                     return;
                 }
 
@@ -1079,6 +1084,7 @@
                 });
 
                 hintArea.innerHTML = html;
+                hintArea.classList.remove('hidden');
             });
         }
 
