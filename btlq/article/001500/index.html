@@ -194,3 +194,47 @@
 </body>
 
 </html>
+
+    <script>
+        let currentLang = 'ja';
+
+        function detectLanguage() {
+            const savedLang =
+                localStorage.getItem('arq_lang') ||
+                localStorage.getItem('lang') ||
+                localStorage.getItem('language') ||
+                localStorage.getItem('btlq_lang');
+
+            if (savedLang) { currentLang = savedLang; return; }
+
+            const browserLang = navigator.language || navigator.userLanguage || '';
+            currentLang = browserLang.toLowerCase().startsWith('ja') ? 'ja' : 'en';
+        }
+
+        function toggleLang() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            document.documentElement.lang = currentLang;
+            localStorage.setItem('lang', currentLang);
+            document.getElementById('langBtn').innerText = currentLang === 'ja' ? 'EN' : 'JA';
+            document.querySelectorAll('[data-ja]').forEach(el => {
+                el.innerText = el.getAttribute('data-' + currentLang);
+            });
+        }
+
+        function goBack() {
+            window.close();
+        }
+
+        window.onload = () => {
+            detectLanguage();
+            document.documentElement.lang = currentLang;
+            document.getElementById('langBtn').innerText = currentLang === 'ja' ? 'EN' : 'JA';
+            document.querySelectorAll('[data-ja]').forEach(el => {
+                el.innerText = el.getAttribute('data-' + currentLang);
+            });
+        };
+    </script>
+
+</body>
+
+</html>
