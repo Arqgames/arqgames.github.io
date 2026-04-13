@@ -686,3 +686,8 @@ html {overflow-x: hidden; }
 .article-card a:hover {
   color: #f39c12;
 }
+
+.related-articles,
+h2[data-ja="関連する記事"] {
+    display: none;
+}
