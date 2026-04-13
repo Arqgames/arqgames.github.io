@@ -185,19 +185,30 @@
             const browserLang = navigator.language || navigator.userLanguage || '';
             currentLang = browserLang.toLowerCase().startsWith('ja') ? 'ja' : 'en';
         }
-        /* 関連記事非表示 */
-        .related-articles,
-        h2[data-ja="関連する記事"] {
-            display: none !important;
+
+        function toggleLang() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            document.documentElement.lang = currentLang;
+            localStorage.setItem('lang', currentLang);
+            document.getElementById('langBtn').innerText = currentLang === 'ja' ? 'EN' : 'JA';
+            document.querySelectorAll('[data-ja]').forEach(el => {
+                el.innerText = el.getAttribute('data-' + currentLang);
+            });
         }
-        /* 基本スタイル */
-        :root {
-            --main-bg: #f4e4bc;
-            --card-bg: #fff9e6;
-            --accent: #fbc531;
-            --text: #5d3a1a;
+
+        function goBack() {
+            window.close();
         }
-        body {
+
+        window.onload = () => {
+            detectLanguage();
+            document.documentElement.lang = currentLang;
+            document.getElementById('langBtn').innerText = currentLang === 'ja' ? 'EN' : 'JA';
+            document.querySelectorAll('[data-ja]').forEach(el => {
+                el.innerText = el.getAttribute('data-' + currentLang);
+            });
+        };
+    </script>
             font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
             background-color: var(--main-bg);
             margin: 0;

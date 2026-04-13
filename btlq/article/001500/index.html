@@ -118,3 +118,79 @@
         }
 
     </style>
+
+<body>
+
+    <div class="container">
+        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
+
+        <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
+
+        <div id="article-content" class="article-wrapper">
+            <div class="header-icon-box"><span class="material-icons header-icon">article</span></div>
+
+            <h1 id="article-title" data-ja="創世から130年 - セツの誕生と聖書年表の基準点" data-en="130 Years from Creation - Birth of Seth and the Chronological Anchor in the Bible">創世から130年 - セツの誕生と聖書年表の基準点</h1>
+
+            <article class="article-body">
+                <p data-ja="聖書年表の最初の明確な基準点は、アダムが130歳でセツをもうけた出来事です（創世記5章）。この年齢はマソラ本文に基づくもので、聖書内部で最初に明示される年代データとなります。" data-en="The first clear chronological anchor in the biblical timeline is the event of Adam begetting Seth at the age of 130 (Genesis 5). This age is based on the Masoretic Text and is the first explicitly stated chronological data within the Bible.">聖書年表の最初の明確な基準点は、アダムが130歳でセツをもうけた出来事です（創世記5章）。この年齢はマソラ本文に基づくもので、聖書内部で最初に明示される年代データとなります。</p>
+
+                <h2 data-ja="セツの誕生と系譜の意義" data-en="The Significance of Seth's Birth and Genealogies">セツの誕生と系譜の意義</h2>
+                <p data-ja="この系譜は『ユダヤ古代誌』や『ルカによる福音書』にも反映されており、セツの系統が正統な血統として理解されていたことが分かります。創世記5章は、アダムからノアまでの各族長が何歳で次の子をもうけたかを詳細に記録しており、この年齢データを積算することで年代計算が可能になります。" data-en="This genealogy is reflected in works such as Josephus's &quot;Antiquities of the Jews&quot; and the Gospel of Luke, showing that Seth's lineage was understood as the legitimate bloodline. Genesis 5 records in detail at what age each patriarch from Adam to Noah begot the next generation, making it possible to calculate dates by summing these age data.">この系譜は『ユダヤ古代誌』や『ルカによる福音書』にも反映されており、セツの系統が正統な血統として理解されていたことが分かります。創世記5章は、アダムからノアまでの各族長が何歳で次の子をもうけたかを詳細に記録しており、この年齢データを積算することで年代計算が可能になります。</p>
+                <p data-ja="さらに創世記7章では、ノアが洪水時に600歳であったことが明記されます。これらの情報を組み合わせると、マソラ本文に基づく計算では創世から洪水までの期間が1,656年となります。この数値は、聖書年表を構築する上での最初の重要な時間枠を提供します。" data-en="Furthermore, Genesis 7 explicitly states that Noah was 600 years old at the time of the Flood. Combining this information, calculations based on the Masoretic Text yield a period of 1,656 years from Creation to the Flood. This figure provides the first important timeframe in constructing a biblical chronology.">さらに創世記7章では、ノアが洪水時に600歳であったことが明記されます。これらの情報を組み合わせると、マソラ本文に基づく計算では創世から洪水までの期間が1,656年となります。この数値は、聖書年表を構築する上での最初の重要な時間枠を提供します。</p>
+
+                <div class="note-box" data-ja="<strong>年代計算：</strong>創世→洪水 = 1,656年（マソラ本文）" data-en="<strong>Chronology:</strong> Creation → Flood = 1,656 years (Masoretic Text)"><strong>年代計算：</strong>創世→洪水 = 1,656年（マソラ本文）</div>
+            </article>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'ja';
+
+        function detectLanguage() {
+            const savedLang =
+                localStorage.getItem('arq_lang') ||
+                localStorage.getItem('lang') ||
+                localStorage.getItem('language') ||
+                localStorage.getItem('btlq_lang');
+
+            if (savedLang) { currentLang = savedLang; return; }
+
+            const browserLang = navigator.language || navigator.userLanguage || '';
+            currentLang = browserLang.toLowerCase().startsWith('ja') ? 'ja' : 'en';
+        }
+
+        function toggleLang() {
+            currentLang = currentLang === 'ja' ? 'en' : 'ja';
+            document.documentElement.lang = currentLang;
+            localStorage.setItem('lang', currentLang);
+            document.getElementById('langBtn').innerText = currentLang === 'ja' ? 'EN' : 'JA';
+            document.querySelectorAll('[data-ja]').forEach(el => {
+                el.innerText = el.getAttribute('data-' + currentLang);
+            });
+        }
+
+        function goBack() {
+            window.close();
+        }
+
+        window.onload = () => {
+            detectLanguage();
+            document.documentElement.lang = currentLang;
+            document.getElementById('langBtn').innerText = currentLang === 'ja' ? 'EN' : 'JA';
+            document.querySelectorAll('[data-ja]').forEach(el => {
+                el.innerText = el.getAttribute('data-' + currentLang);
+            });
+        };
+    </script>
+
+</body>
+
+</html>
