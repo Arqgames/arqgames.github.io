@@ -19,12 +19,18 @@
     <meta name="theme-color" content="#f4e4bc" />
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="/btlq/CSS/btlq_ui.css">
+    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
     <style>
         /* タイトルサイズをarqgamesに合わせる */
         .article-wrapper h1 {
             font-size: 1.35em;
         }
+        /* 関連記事非表示 */
+        .related-articles,
+        h2[data-ja="関連する記事"] {
+            display: none !important;
+        }
+    </style>
         /* 点線ボックス（arqgamesスタイル） */
         .note-box {
             background: #fff9e6;
@@ -34,6 +40,23 @@
             margin: 10px 0;
             line-height: 1.7;
         }
+        /* 関連記事非表示 */
+        .related-articles,
+        h2[data-ja="関連する記事"] {
+            display: none !important;
+        }
+    </style>
+        /* 関連記事非表示 */
+        .related-articles,
+        h2[data-ja="関連する記事"] {
+            display: none !important;
+        }
+        /* 関連記事非表示 */
+        .related-articles,
+        h2[data-ja="関連する記事"] {
+            display: none !important;
+        }
+    </style>
     </style>
 
 </head>
@@ -96,6 +119,12 @@
             const browserLang = navigator.language || navigator.userLanguage || '';
             currentLang = browserLang.toLowerCase().startsWith('ja') ? 'ja' : 'en';
         }
+        /* 関連記事非表示 */
+        .related-articles,
+        h2[data-ja="関連する記事"] {
+            display: none !important;
+        }
+    </style>
 
         function toggleLang() {
             currentLang = currentLang === 'ja' ? 'en' : 'ja';
@@ -105,12 +134,24 @@
                 currentLang === 'ja' ? 'EN' : 'JA';
             updateTexts();
         }
+        /* 関連記事非表示 */
+        .related-articles,
+        h2[data-ja="関連する記事"] {
+            display: none !important;
+        }
+    </style>
 
         function updateTexts() {
             document.querySelectorAll('[data-ja]').forEach(el => {
                 el.innerHTML = el.getAttribute('data-' + currentLang);
             });
         }
+        /* 関連記事非表示 */
+        .related-articles,
+        h2[data-ja="関連する記事"] {
+            display: none !important;
+        }
+    </style>
 
         function goBack() {
             window.close();
@@ -119,6 +160,12 @@
                 location.href = '/btlq/';
             }, 100);
         }
+        /* 関連記事非表示 */
+        .related-articles,
+        h2[data-ja="関連する記事"] {
+            display: none !important;
+        }
+    </style>
 
         window.onload = () => {
             detectLanguage();
@@ -129,6 +176,12 @@
                 langBtn.innerText = currentLang === 'ja' ? 'EN' : 'JA';
                 langBtn.addEventListener('click', toggleLang);
             }
+        /* 関連記事非表示 */
+        .related-articles,
+        h2[data-ja="関連する記事"] {
+            display: none !important;
+        }
+    </style>
 
             const homeBtn = document.getElementById('homeBtn');
             if (homeBtn) {
@@ -136,6 +189,12 @@
                     location.href = '/btlq/';
                 });
             }
+        /* 関連記事非表示 */
+        .related-articles,
+        h2[data-ja="関連する記事"] {
+            display: none !important;
+        }
+    </style>
 
             updateTexts();
         };

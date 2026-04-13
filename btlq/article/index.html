@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#f4e4bc" />
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="/btlq/CSS/btlq_ui.css">
+    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
 </head>
 
 <body>
@@ -131,6 +131,12 @@
                 suggestions_title: "Suggestions Welcome",
                 suggestions_desc: "If you have ideas for article topics or specific events you'd like us to cover in detail, please let us know through our <a href=\"/footer/contact/\">Contact page</a>. Your feedback helps us create valuable content that meets your interests!"
             }
+        /* 関連記事非表示 */
+        .related-articles,
+        h2[data-ja="関連する記事"] {
+            display: none !important;
+        }
+    </style>
         };
 
         function applyLang(lang) {
@@ -141,6 +147,12 @@
             document.getElementById("langBtn").textContent = (lang === "ja") ? "EN" : "JA";
             localStorage.setItem("arq_lang", lang);
         }
+        /* 関連記事非表示 */
+        .related-articles,
+        h2[data-ja="関連する記事"] {
+            display: none !important;
+        }
+    </style>
 
         function returnToGame() {
             window.close();
@@ -148,6 +160,12 @@
                 location.href = '/btlq/';
             }, 150);
         }
+        /* 関連記事非表示 */
+        .related-articles,
+        h2[data-ja="関連する記事"] {
+            display: none !important;
+        }
+    </style>
 
         const saved = localStorage.getItem("arq_lang");
         let lang = saved || (navigator.language && navigator.language.startsWith("ja") ? "ja" : "en");
