@@ -34,97 +34,58 @@
             margin: 10px 0;
             line-height: 1.7;
         }
-        /* 関連記事非表示 */
-        .related-articles,
-        h2[data-ja="関連する記事"] {
-            display: none !important;
-        }
-        /* 基本スタイル */
-        :root {
-            --main-bg: #f4e4bc;
-            --card-bg: #fff9e6;
-            --accent: #fbc531;
-            --text: #5d3a1a;
-        }
-        body {
-            font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
-            background-color: var(--main-bg);
-            margin: 0;
-            padding: 20px;
-            color: var(--text);
-            touch-action: manipulation;
-        }
-        .container {
-            background: var(--card-bg);
-            padding: 30px 20px;
-            border-radius: 40px;
-            box-shadow: 0 10px 0 #d4af37;
-            width: 92%;
-            max-width: 450px;
-            text-align: center;
-            border: 8px solid var(--accent);
-            position: relative;
-            margin: 40px auto;
-            box-sizing: border-box;
-        }
-        .article-body {
-            text-align: left;
-            line-height: 1.6;
-            margin: 20px 0;
-        }
-        .btn {
-            background: var(--accent);
-            color: var(--text);
-            border: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 1em;
-            font-weight: bold;
-            box-shadow: 0 4px 0 #d4af37;
-        }
-        .top-btn {
-            position: absolute;
-            top: -65px;
-            width: 50px;
-            height: 50px;
-            background: #fff;
-            border-radius: 50%;
-            border: 3px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 0 #d4af37;
-            z-index: 100;
-        }
-        .header-icon-box {
-            margin-bottom: 10px;
-        }
-        .header-icon {
-            font-size: 3em;
-            color: var(--accent);
-        }
-        h1 {
-            font-size: 1.35em;
-            margin: 10px 0;
-            color: var(--text);
-        }
-        h2 {
-            font-size: 1.1em;
-            margin: 20px 0 10px 0;
-            color: var(--text);
-        }
-        .note-box {
-            background: #fff9e6;
-            border: 2px dashed #fbc531;
-            border-radius: 14px;
-            padding: 10px 12px;
-            margin: 10px 0;
-            line-height: 1.7;
-        }
-
     </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
+
+        <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
+
+        <div id="article-content" class="article-wrapper">
+            <div class="header-icon-box"><span class="material-icons header-icon">article</span></div>
+            
+            <h1 id="article-title" data-ja="西暦前537年（または前538年）&lt;br&gt;バビロン捕囚の終結と年代計算の基準点" data-en="537 BCE (or 538 BCE)&lt;br&gt;End of the Babylonian Exile and Chronological Anchor">西暦前537年（または前538年）<br>バビロン捕囚の終結と年代計算の基準点</h1>
+
+            <article class="article-body">
+                <p data-ja="聖書中の年代計算で重要な基準となる出来事の一つは、バビロン捕囚の終結です。『エレミヤ書』25章11–12節および29章10節は、ユダが七十年間バビロンに仕えると明記しています。この七十年は『歴代第二』36章20–23節において、ペルシャ王キュロスの布告による帰還と結び付けられています。また『ダニエル書』9章2節は、この七十年を預言の成就として理解していたことを示しており、『エズラ記』1章1–4節は、キュロスの第一年に帰還命令が出されたと記しています。これら複数の書の相互証言により、捕囚終結は聖書内部だけでも年代計算の軸となり得る出来事です。" data-en="One of the most important chronological anchors in biblical dating is the end of the Babylonian Exile. Jeremiah 25:11–12 and 29:10 explicitly state that Judah would serve Babylon for seventy years. This period is linked in 2 Chronicles 36:20–23 to the return under the decree of Cyrus, king of Persia. Daniel 9:2 shows that this seventy years was understood as a fulfillment of prophecy, and Ezra 1:1–4 records the return order in Cyrus's first year. The mutual testimony of these books makes the end of the exile a pivotal event for biblical chronology, even within the internal scriptural framework.">聖書中の年代計算で重要な基準となる出来事の一つは、バビロン捕囚の終結です。『エレミヤ書』25章11–12節および29章10節は、ユダが七十年間バビロンに仕えると明記しています。この七十年は『歴代第二』36章20–23節において、ペルシャ王キュロスの布告による帰還と結び付けられています。また『ダニエル書』9章2節は、この七十年を預言の成就として理解していたことを示しており、『エズラ記』1章1–4節は、キュロスの第一年に帰還命令が出されたと記しています。これら複数の書の相互証言により、捕囚終結は聖書内部だけでも年代計算の軸となり得る出来事です。</p>
+
+                <h2 data-ja="前537年説" data-en="The 537 BCE View">前537年説</h2>
+                
+                <p data-ja="ただし、その絶対年代については立場が分かれます。前537年とする説は、七十年を文字通りの期間と理解し、エルサレムの完全な荒廃開始を前607年とする立場に基づいています。この見解では、七十年の満了が帰還開始の年、すなわち前537年となります。" data-en="However, the absolute date is debated. The 537 BCE view takes the seventy years as a literal period, starting with the complete desolation of Jerusalem in 607 BCE. In this view, the seventy years end with the beginning of the return, i.e., 537 BCE.">ただし、その絶対年代については立場が分かれます。前537年とする説は、七十年を文字通りの期間と理解し、エルサレムの完全な荒廃開始を前607年とする立場に基づいています。この見解では、七十年の満了が帰還開始の年、すなわち前537年となります。</p>
+
+                <div class="note-box" data-ja="<strong>70年の解釈：</strong>文字通りの期間 vs 象徴的期間" data-en="<strong>70 years interpretation:</strong> Literal period vs symbolic period"><strong>70年の解釈：</strong>文字通りの期間 vs 象徴的期間</div>
+
+                <h2 data-ja="主流の歴史学的見解" data-en="Mainstream Historical View">主流の歴史学的見解</h2>
+                
+                <p data-ja="一方、主流の歴史学および聖書学では、エルサレム陥落を前587/586年とし、キュロスのバビロン征服を前539年、帰還布告を前538年としています。七十年は厳密な年代ではなく、バビロン支配全体を指す象徴的・神学的期間と理解されることが多くあります。この年代は『バビロン年代記』、ナボニドゥス円筒、天文学的粘土板VAT4956などの古代資料に基づき固定されています。" data-en="In another view, mainstream history and biblical scholarship date the fall of Jerusalem to 587/586 BCE, the conquest of Babylon by Cyrus to 539 BCE, and the return decree to 538 BCE. The seventy years are often understood as a symbolic or theologicalperiod representing the entire span of Babylonian dominance, rather than a strict chronological interval. These dates are supported by ancient sources such as the Babylonian Chronicle, the Nabonidus Cylinder, and the astronomical clay tablet VAT4956.">一方、主流の歴史学および聖書学では、エルサレム陥落を前587/586年とし、キュロスのバビロン征服を前539年、帰還布告を前538年としています。七十年は厳密な年代ではなく、バビロン支配全体を指す象徴的・神学的期間と理解されることが多くあります。この年代は『バビロン年代記』、ナボニドゥス円筒、天文学的粘土板VAT4956などの古代資料に基づき固定されています。</p>
+
+                <div class="note-box" data-ja="<strong>主流説：</strong>キュロス布告BC538／バビロン年代記・天文学的証拠に基づく" data-en="<strong>Mainstream:</strong> Cyrus decree BC 538 / Based on Babylonian Chronicle and astronomy"><strong>主流説：</strong>キュロス布告BC538／バビロン年代記・天文学的証拠に基づく</div>
+
+                <h2 data-ja="年代計算の課題" data-en="Issues in Chronological Calculation">年代計算の課題</h2>
+
+                <p data-ja="したがって、捕囚終結は年代計算の重要な基準点ですが、その西暦換算については、聖書解釈の方法と聖書外史料をどう評価するかによって結論が異なります。" data-en="Thus, while the end of the exile is a crucial chronological anchor, its conversion to the Gregorian calendar depends on interpretive methods and the evaluation of extra-biblical sources.">したがって、捕囚終結は年代計算の重要な基準点ですが、その西暦換算については、聖書解釈の方法と聖書外史料をどう評価するかによって結論が異なります。</p>
+
+                <h2 data-ja="関連する記事" data-en="Related Articles">関連する記事</h2>
+                <div class="related-articles">
+                    <a href="/articles/source-reliability/calendar-shifts/" class="related-article-card" data-ja="暦の変更と年代決定" data-en="Calendar Shifts and Dating">暦の変更と年代決定</a>
+                    <a href="/articles/chronological-debates/chronology-revisions/" class="related-article-card" data-ja="年代論の修正と論争" data-en="Chronological Revisions">年代論の修正と論争</a>
+                    <a href="/articles/source-reliability/epigraphic-sources/" class="related-article-card" data-ja="碑文資料と年代決定" data-en="Epigraphic Sources">碑文資料と年代決定</a>
+                </div>
+            </article>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         let currentLang = 'ja';
@@ -146,24 +107,66 @@
             currentLang = currentLang === 'ja' ? 'en' : 'ja';
             document.documentElement.lang = currentLang;
             localStorage.setItem('lang', currentLang);
-            document.getElementById('langBtn').innerText = currentLang === 'ja' ? 'EN' : 'JA';
+            document.getElementById('langBtn').innerText =
+                currentLang === 'ja' ? 'EN' : 'JA';
+            updateTexts();
+        }
+
+        function updateTexts() {
             document.querySelectorAll('[data-ja]').forEach(el => {
-                el.innerText = el.getAttribute('data-' + currentLang);
+                el.innerHTML = el.getAttribute('data-' + currentLang);
             });
         }
 
         function goBack() {
             window.close();
+            // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
+            setTimeout(() => {
+                location.href = '/btlq/';
+            }, 100);
         }
 
         window.onload = () => {
             detectLanguage();
             document.documentElement.lang = currentLang;
-            document.getElementById('langBtn').innerText = currentLang === 'ja' ? 'EN' : 'JA';
-            document.querySelectorAll('[data-ja]').forEach(el => {
-                el.innerText = el.getAttribute('data-' + currentLang);
-            });
+            
+            const langBtn = document.getElementById('langBtn');
+            if (langBtn) {
+                langBtn.innerText = currentLang === 'ja' ? 'EN' : 'JA';
+            }
+
+            updateTexts();
         };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const homeBtn = document.getElementById('homeBtn');
+            if (homeBtn) {
+                homeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    location.href = '/btlq/';
+                });
+            }
+
+            const langBtn0 = document.getElementById('langBtn');
+            if (langBtn0) {
+                const langBtn = langBtn0.cloneNode(true);
+                langBtn0.parentNode.replaceChild(langBtn, langBtn0);
+
+                langBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+                    toggleLang();
+                }, true);
+            }
+        });
+
+        fetch('../../../../parts/footer.html')
+            .then(r => r.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+            });
+
     </script>
 
 </body>

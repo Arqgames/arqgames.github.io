@@ -34,97 +34,56 @@
             margin: 10px 0;
             line-height: 1.7;
         }
-        /* 関連記事非表示 */
-        .related-articles,
-        h2[data-ja="関連する記事"] {
-            display: none !important;
-        }
-        /* 基本スタイル */
-        :root {
-            --main-bg: #f4e4bc;
-            --card-bg: #fff9e6;
-            --accent: #fbc531;
-            --text: #5d3a1a;
-        }
-        body {
-            font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
-            background-color: var(--main-bg);
-            margin: 0;
-            padding: 20px;
-            color: var(--text);
-            touch-action: manipulation;
-        }
-        .container {
-            background: var(--card-bg);
-            padding: 30px 20px;
-            border-radius: 40px;
-            box-shadow: 0 10px 0 #d4af37;
-            width: 92%;
-            max-width: 450px;
-            text-align: center;
-            border: 8px solid var(--accent);
-            position: relative;
-            margin: 40px auto;
-            box-sizing: border-box;
-        }
-        .article-body {
-            text-align: left;
-            line-height: 1.6;
-            margin: 20px 0;
-        }
-        .btn {
-            background: var(--accent);
-            color: var(--text);
-            border: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 1em;
-            font-weight: bold;
-            box-shadow: 0 4px 0 #d4af37;
-        }
-        .top-btn {
-            position: absolute;
-            top: -65px;
-            width: 50px;
-            height: 50px;
-            background: #fff;
-            border-radius: 50%;
-            border: 3px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 0 #d4af37;
-            z-index: 100;
-        }
-        .header-icon-box {
-            margin-bottom: 10px;
-        }
-        .header-icon {
-            font-size: 3em;
-            color: var(--accent);
-        }
-        h1 {
-            font-size: 1.35em;
-            margin: 10px 0;
-            color: var(--text);
-        }
-        h2 {
-            font-size: 1.1em;
-            margin: 20px 0 10px 0;
-            color: var(--text);
-        }
-        .note-box {
-            background: #fff9e6;
-            border: 2px dashed #fbc531;
-            border-radius: 14px;
-            padding: 10px 12px;
-            margin: 10px 0;
-            line-height: 1.7;
-        }
-
     </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home">
+            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
+                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
+            </svg>
+        </button>
+
+        <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
+
+        <div id="article-content" class="article-wrapper">
+            <div class="header-icon-box"><span class="material-icons header-icon">article</span></div>
+
+            <h1 id="article-title" data-ja="ノア六百歳 - 洪水の年" data-en="Noah's 600th Year - The Date of the Flood">ノア六百歳 - 洪水の年</h1>
+
+            <article class="article-body">
+                <h2 data-ja="年代が明示された出来事" data-en="The Chronological Statement">年代が明示された出来事</h2>
+                <p data-ja="創世記7章には、洪水がノア六百歳の時に始まったことが記されています。さらに月日まで示されており、原初史の中でも極めて具体的な年代表示をもつ出来事です。このような精度は古代文学の中でも特徴的です。" data-en="Genesis 7 records that the Flood began when Noah was six hundred years old. The text also specifies the month and the day, making it one of the most precise chronological notices in the Primeval History. This precision distinguishes the Flood narrative from many other ancient traditions.">『創世記』7章には、洪水がノア六百歳の時に始まったことが記されています。さらに月日まで示されており、原初史の中でも極めて具体的な年代表示をもつ出来事です。このような精度は古代文学の中でも特徴的です。</p>
+
+                <h2 data-ja="系譜との連続性" data-en="Integration into Genealogical Structure">系譜との連続性</h2>
+                <p data-ja="創世記5章では、各父祖が何歳で次の世代をもうけたかが規則的に記録されています。これらを累積すると、マソラ本文に基づく場合、創造から洪水まで1,656年と算出できます。ノアの年齢も明示されているため、外部資料に依存せず内部計算が可能です。" data-en="Genesis 5 provides the ages of each patriarch at the birth of his successor. By cumulative calculation from Adam to Noah, the Flood occurs 1,656 years after creation according to the Masoretic textual tradition. Because both the genealogical data and Noah's age are explicitly stated, the event can be positioned internally without reliance on external sources.">『創世記』5章では、各父祖が何歳で次の世代をもうけたかが規則的に記録されています。これらを累積すると、マソラ本文に基づく場合、創造から洪水まで1,656年と算出できます。ノアの年齢も明示されているため、外部資料に依存せず内部計算が可能です。</p>
+
+                <div class="note-box" data-ja="<strong>年代計算：</strong>創世→洪水 = 1,656年（マソラ本文）／ノアの年齢：600歳" data-en="<strong>Chronology:</strong> Creation → Flood = 1,656 years (Masoretic) / Noah's age: 600"><strong>年代計算：</strong>創世→洪水 = 1,656年（マソラ本文）／ノアの年齢：600歳</div>
+
+                <h2 data-ja="本文伝承の差異" data-en="Textual Considerations">本文伝承の差異</h2>
+                <p data-ja="洪水時のノアの年齢自体は主要伝承間で一致していますが、洪水以前の総年数は本文系統により異なります。七十人訳およびサマリア五書は父祖の年齢に差異を伝えており、総計は数百年変動します。学術版ヘブライ語聖書（Biblia Hebraica Stuttgartensia、Biblia Hebraica Quinta）はこれらの異読を整理しています。マソラ本文は創造から洪水まで1,656年とするのに対し、七十人訳では2,242年、サマリア五書では1,307年と計算され、これら本文伝承の選択により600年以上の差が生じます。" data-en="The Masoretic Text, the Septuagint, and the Samaritan Pentateuch differ in the patriarchal ages before the Flood. While Noah's age at the Flood remains consistent, the total years from creation vary significantly depending on the textual base adopted. Modern critical editions such as Biblia Hebraica Stuttgartensia and Biblia Hebraica Quinta document these variants. The Masoretic tradition places the Flood 1,656 years after creation, while the Septuagint reaches 2,242 years and the Samaritan 1,307 years—a spread of over 600 years.">洪水時のノアの年齢自体は主要伝承間で一致していますが、洪水以前の総年数は本文系統により異なります。七十人訳およびサマリア五書は父祖の年齢に差異を伝えており、総計は数百年変動します。学術版ヘブライ語聖書（Biblia Hebraica Stuttgartensia、Biblia Hebraica Quinta）はこれらの異読を整理しています。マソラ本文は創造から洪水まで1,656年とするのに対し、七十人訳では2,242年、サマリア五書では1,307年と計算され、これら本文伝承の選択により600年以上の差が生じます。</p>
+
+                <div class="note-box" data-ja="<strong>写本による違い：</strong>マソラ1,656年／七十人訳2,242年／サマリア1,307年" data-en="<strong>Manuscript variation:</strong> MT 1,656 years / LXX 2,242 / Samaritan 1,307"><strong>写本による違い：</strong>マソラ1,656年／七十人訳2,242年／サマリア1,307年</div>
+
+                <h2 data-ja="年代計算上の位置づけ" data-en="Chronological Significance">年代計算上の位置づけ</h2>
+                <p data-ja="聖書内部において、特定人物の特定年に出来事が起きたと明示される最初の事例が洪水です。このため、洪水は聖書年代計算の基準になる重要な出来事と位置づけられます。" data-en="Within the biblical narrative itself, the Flood represents the first event dated to a specific year of a named individual. For this reason, it functions as a major reference point in biblical chronological calculation.">聖書内部において、特定人物の特定年に出来事が起きたと明示される最初の事例が洪水です。このため、洪水は聖書年代計算の基準になる重要な出来事と位置づけられます。</p>
+
+                <h2 data-ja="関連する記事" data-en="Related Articles">関連する記事</h2>
+                <div class="related-articles">
+                    <a href="/articles/source-reliability/manuscript-traditions/" class="related-article-card" data-ja="写本伝承と本文批評" data-en="Manuscript Traditions and Textual Criticism">写本伝承と本文批評</a>
+                    <a href="/articles/chronological-debates/chronology-revisions/" class="related-article-card" data-ja="年代論の修正と論争" data-en="Chronological Revisions and Debates">年代論の修正と論争</a>
+                    <a href="/articles/dating-methods/stratigraphy/" class="related-article-card" data-ja="層位学と相対年代測定" data-en="Stratigraphy and Relative Dating">層位学と相対年代測定</a>
+                </div>
+            </article>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         let currentLang = 'ja';
@@ -146,24 +105,51 @@
             currentLang = currentLang === 'ja' ? 'en' : 'ja';
             document.documentElement.lang = currentLang;
             localStorage.setItem('lang', currentLang);
-            document.getElementById('langBtn').innerText = currentLang === 'ja' ? 'EN' : 'JA';
+            document.getElementById('langBtn').innerText =
+                currentLang === 'ja' ? 'EN' : 'JA';
+            updateTexts();
+        }
+
+        function updateTexts() {
             document.querySelectorAll('[data-ja]').forEach(el => {
-                el.innerText = el.getAttribute('data-' + currentLang);
+                el.innerHTML = el.getAttribute('data-' + currentLang);
             });
         }
 
         function goBack() {
             window.close();
+            // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
+            setTimeout(() => {
+                location.href = '/btlq/';
+            }, 100);
         }
 
         window.onload = () => {
             detectLanguage();
             document.documentElement.lang = currentLang;
-            document.getElementById('langBtn').innerText = currentLang === 'ja' ? 'EN' : 'JA';
-            document.querySelectorAll('[data-ja]').forEach(el => {
-                el.innerText = el.getAttribute('data-' + currentLang);
-            });
+
+            const langBtn = document.getElementById('langBtn');
+            if (langBtn) {
+                langBtn.innerText = currentLang === 'ja' ? 'EN' : 'JA';
+                langBtn.addEventListener('click', toggleLang);
+            }
+
+            const homeBtn = document.getElementById('homeBtn');
+            if (homeBtn) {
+                homeBtn.addEventListener('click', () => {
+                    location.href = '/btlq/';
+                });
+            }
+
+            updateTexts();
         };
+
+        fetch('../../../../parts/footer.html')
+            .then(r => r.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+            });
+
     </script>
 
 </body>
