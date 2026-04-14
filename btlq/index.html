@@ -1173,6 +1173,9 @@
             hintArea.innerHTML = html;
             hintArea.classList.remove('hidden');
             switchScreen('screen-game');
+
+            // タイムアタックONの場合のみタイマー再始動（timeLeftは維持）
+            const isTimeAttack = document.getElementById('time-attack-select')?.value === 'on';
         }
 
         /* ページを開いた瞬間にやること（初期化） */
