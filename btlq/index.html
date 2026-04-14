@@ -1084,71 +1084,95 @@
         }
 
         function showHintContent() {
+            const hintArea = document.getElementById('hint-area');
+            if (!hintArea) return;
+
             const userIds = getUserIds();
             const correctIds = getCorrectIds();
 
+            // まだゲームが成立してない保険
             if (userIds.length === 0 || correctIds.length === 0) {
                 lastHintIds = [];
                 lastHintWasEmpty = true;
-            } else {
-                const posMap = {};
-                correctIds.forEach((id, idx) => posMap[id] = idx);
-
-                const wrong = userIds.filter((id, idx) => posMap[id] !== idx);
-
-                if (wrong.length === 0) {
-                    lastHintIds = [];
-                    lastHintWasEmpty = true;
-                } else {
-                    lastHintIds = wrong;
-                    lastHintWasEmpty = false;
-                }
+                hintArea.innerHTML =
+                    `<strong>${currentLang === 'ja' ? "💡 ヒント:" : "💡 Hint:"}</strong><br><br>` +
+                    (currentLang === 'ja' ? "まだ並び替え対象がありません。" : "No items to check yet.");
+                hintArea.classList.remove('hidden');
+                switchScreen('screen-game');
+                return;
             }
-            // ゲーム画面に戻ってヒントを表示
-            switchScreen('screen-game');
 
-            const title = currentLang === 'ja' ? 'ヒント' : 'Hint';
+            // id → 正しい位置
+            const posMap = {};
+            correctIds.forEach((id, idx) => posMap[id] = idx);
 
-            const hintArea = document.getElementById('hint-area');
+            // 異常系（重複・欠落・外部ID）
+            const userSet = new Set(userIds);
+            const correctSet = new Set(correctIds);
+            const hasDuplicate = userSet.size !== userIds.length;
+            const hasOutOfTask = userIds.some(id => !correctSet.has(id));
+            const hasMissing = correctIds.some(id => !userSet.has(id));
+
+            // 最初の「逆転している隣接ペア」を探す
+            let conflictPairIds = null;
+            for (let i = 0; i < userIds.length - 1; i++) {
+                const a = userIds[i];
+                const b = userIds[i + 1];
+                const pa = posMap[a];
+                const pb = posMap[b];
+                if (pa == null || pb == null) continue; // task外は保険で無視
+                if (pa > pb) { conflictPairIds = [a, b]; break; }
+            }
+
+            // ヒント対象（最大2）
+            const hintsToShow = conflictPairIds
+                ? conflictPairIds.map(id => EVENTS.find(e => e.id === id)).filter(Boolean)
+                : [];
+
+            // 言語切替の再描画用に保存
+            lastHintIds = hintsToShow.map(e => e.id);
+            lastHintWasEmpty = (hintsToShow.length === 0) && !(hasDuplicate || hasOutOfTask || hasMissing);
+
+            const title = currentLang === 'ja'
+                ? "💡 ヒント:"
+                : "💡 Hints for misplaced items:";
+
             let html = `<strong>${title}</strong><br><br>`;
 
-            /* 「並び順は合っている」ケース */
-            if (lastHintWasEmpty) {
+            // まずはセット異常を優先表示
+            if (hasDuplicate || hasOutOfTask || hasMissing) {
+                if (currentLang === 'ja') {
+                    html += "並びの内容に問題があるようです。<br>";
+                    if (hasDuplicate) html += "・同じカードが重複している可能性があります。<br>";
+                    if (hasOutOfTask) html += "・課題に含まれないカードが混ざっています。<br>";
+                    if (hasMissing) html += "・課題に必要なカードが欠けています。<br>";
+                    html += "<br>まずはカードの種類と枚数を整えてください。";
+                } else {
+                    html += "There seems to be a problem with the set of items.<br>";
+                    if (hasDuplicate) html += "• Some items may be duplicated.<br>";
+                    if (hasOutOfTask) html += "• An item not in this task is included.<br>";
+                    if (hasMissing) html += "• A required item is missing.<br>";
+                    html += "<br>Please fix the set of cards first.";
+                }
+            } else if (hintsToShow.length === 0) {
+                // セット正常＆逆転なし → 並び順OK（少なくとも「逆転」はない）
                 html += currentLang === 'ja'
                     ? "並び順は合っているようです。"
                     : "The order seems correct.";
-
-                hintArea.innerHTML = html;
-                hintArea.classList.remove('hidden');
-                return;
+            } else {
+                // 逆転ペアの比較ヒント（あなたの意図どおり）
+                for (const ev of hintsToShow) {
+                    const name = ev[currentLang] || ev.ja || "";
+                    const hintDesc = ev['hint_' + currentLang] || ev.hint_ja || "";
+                    html += `<div class="hint-item">・${name} (${formatRef(ev.ref)})`;
+                    if (hintDesc) html += `<span class="hint-desc">${hintDesc}</span>`;
+                    html += `</div>`;
+                }
             }
-
-            /* 通常ケース：lastHintIds からイベントを引いて再構築 */
-            const hints = (lastHintIds || [])
-                .map(id => EVENTS.find(e => e.id === id))
-                .filter(Boolean);
-
-            /* 念のため：復元できなかったら空扱いにする */
-            if (hints.length === 0) {
-                html += currentLang === 'ja'
-                    ? "並び順は合っているようです。"
-                    : "The order seems correct.";
-
-                hintArea.innerHTML = html;
-                hintArea.classList.remove('hidden');
-                return;
-            }
-
-            hints.forEach(s => {
-                const hintDesc = s['hint_' + currentLang] || "";
-                html += `<div class="hint-item">
-                    ・${s[currentLang]} (${formatRef(s.ref)})
-                    <span class="hint-desc">${hintDesc}</span>
-                 </div>`;
-            });
 
             hintArea.innerHTML = html;
             hintArea.classList.remove('hidden');
+            switchScreen('screen-game');
         }
 
         /* ページを開いた瞬間にやること（初期化） */
