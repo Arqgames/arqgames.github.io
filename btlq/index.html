@@ -1176,6 +1176,18 @@
 
             // タイムアタックONの場合のみタイマー再始動（timeLeftは維持）
             const isTimeAttack = document.getElementById('time-attack-select')?.value === 'on';
+            if (isTimeAttack && timeLeft > 0) {
+                clearInterval(timerInterval);
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    updateTimerDisplay();
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        alert(currentLang === 'ja' ? "時間切れ！" : "Time's Up!");
+                        checkOrder();
+                    }
+                }, 1000);
+            }
         }
 
         /* ページを開いた瞬間にやること（初期化） */
