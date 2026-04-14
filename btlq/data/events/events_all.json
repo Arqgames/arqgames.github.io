@@ -9,7 +9,7 @@
     "ref": "Gen 2:7",
     "rank": 1,
     "tags": ["Genesis", "Creation", "ChronologyAnchor"],
-    "hint_ja": "族長系譜の出発点（ここから年代が積算される）\n創5:3以降の父年齢連鎖の起点として固定",
+    "hint_ja": "族長系譜の出発点（ここから年代が積算される）\n創5:3以降の父年齢連鎖の起点の基準になる",
     "hint_en": "Starting point of the patriarch timeline (ages begin accumulating here)\nFix it as the anchor for the father-age chain in Genesis 5:3 onward"
   },
   {
@@ -35,12 +35,12 @@
     "ref": "Gen 5:18",
     "rank": 4,
     "tags": ["Genesis", "Genealogy"],
-    "hint_ja": "5章父年齢を連鎖追跡し洪水年代へ収束する流れを観察",
+    "hint_ja": "5章の年齢を追って、洪水年代へつながる流れを調べる",
     "hint_en": "Trace genealogy chain toward Flood timeline"
   },
   {
     "id": "002500",
-    "ja": "メトセラ誕生",
+    "ja": "メトセラの誕生",
     "en": "Birth of Methuselah",
     "year": -3339,
     "month": 1,
@@ -48,7 +48,7 @@
     "ref": "Gen 5:21",
     "rank": 3,
     "tags": ["Genesis", "Lifespan", "Chronology"],
-    "hint_ja": "寿命記録と7:6洪水年を照合し同時代重複を確認",
+    "hint_ja": "年齢の記録と7:6の洪水を比較して、同時代の重なりを確認する",
     "hint_en": "Cross-check lifespan with Flood year Gen 7:6"
   },
   {
@@ -61,12 +61,12 @@
     "ref": "Gen 5:5",
     "rank": 3,
     "tags": ["Genesis", "Lifespan"],
-    "hint_ja": "系譜人物との重複期間を調べ年代連続性を感じ取る",
+    "hint_ja": "系譜人物の重なっている期間を調べ、この時代の流れを確認する",
     "hint_en": "Observe overlap continuity with genealogy figures"
   },
   {
     "id": "004000",
-    "ja": "ノア誕生",
+    "ja": "ノアの誕生",
     "en": "Birth of Noah",
     "year": -2970,
     "month": 1,
@@ -74,7 +74,7 @@
     "ref": "Gen 5:28-29",
     "rank": 2,
     "tags": ["Genesis", "Flood", "ChronologyAnchor"],
-    "hint_ja": "7:6の年齢固定点へ接続する重要節点として計算",
+    "hint_ja": "7:6の年齢につながっていく重要な部分",
     "hint_en": "Connect genealogy to Flood anchor age"
   },
   {
@@ -87,7 +87,7 @@
     "ref": "Gen 7:11",
     "rank": 1,
     "tags": ["Genesis", "Flood", "MajorAnchor"],
-    "hint_ja": "「ノア600歳で洪水」＝大洪水年の絶対基準\n創5章の積算がここに収束する到達点（創7:6,11）",
+    "hint_ja": "「ノア600歳で洪水」＝大洪水年の絶対基準\n創5章の年代計算がここに収束（創7:6,11）",
     "hint_en": "Noah at 600 when the Flood begins = a firm absolute anchor\nThe accumulated ages of Genesis 5 converge here (Gen 7:6,11)"
   },
   {
@@ -100,7 +100,7 @@
     "ref": "Gen 8:14",
     "rank": 2,
     "tags": ["Genesis", "Flood"],
-    "hint_ja": "7:11との比較で期間算出し時間感覚を養う",
+    "hint_ja": "7:11との比較で期間を計算",
     "hint_en": "Compare markers to compute duration"
   },
   {
@@ -113,7 +113,7 @@
     "ref": "Gen 11:9",
     "rank": 1,
     "tags": ["Genesis", "Nations"],
-    "hint_ja": "洪水後の世界分岐点（言語が混乱し散らされる）\n創10（民族表）→創11（年代系譜）の接続で位置固定",
+    "hint_ja": "洪水後の世界分岐点（言語が混乱し散らされる）\n創10（民族表）→創11（年代系譜）のつながりでおおよその時期を割り出す",
     "hint_en": "Post-Flood turning point: languages confused and people scattered\nFix its place by linking Gen 10 (nations) → Gen 11 (chronology)"
   },
   {
@@ -131,7 +131,7 @@
   },
   {
     "id": "008500",
-    "ja": "アブラハム誕生",
+    "ja": "アブラハムの誕生",
     "en": "Birth of Abraham",
     "year": -2018,
     "month": 1,
@@ -144,20 +144,20 @@
   },
   {
     "id": "009500",
-    "ja": "ハラン出発",
-    "en": "Departure from Haran",
+    "ja": "アブラハムがハランを出てカナンに入る",
+    "en": "Departure from Haran and entry into Canaan",
     "year": -1943,
     "month": 1,
     "day": 1,
-    "ref": "Gen 12:4",
+    "ref": "Gen 12:4-5",
     "rank": 1,
     "tags": ["Patriarch","ChronologyAnchor"],
-    "hint_ja": "族長時代の強アンカー（アブラハム75歳で出発）\n出12:40の430年比較に接続する起点（創12:4）",
+    "hint_ja": "族長時代の強い基準点（75歳で出発）\n出12:40の430年比較につながる（創12:4）",
     "hint_en": "Strong patriarch anchor: Abraham departs at age 75\nUse it as a start-point when linking to the 430 years of Ex 12:40 (Gen 12:4)"
   },
   {
   "id": "010600",
-  "ja": "イシュマエル誕生",
+  "ja": "イシュマエルの誕生",
   "en": "Birth of Ishmael",
   "year": -1932,
   "month": 1,
@@ -165,12 +165,12 @@
   "ref": "Gen 16:15",
   "rank": 3,
   "tags": ["Patriarch", "Genealogy"],
-  "hint_ja": "17章契約更新との年齢差を比較し配置を確認",
+  "hint_ja": "17章の契約との年齢差を比較し年代を確認",
   "hint_en": "Compare age gap to covenant renewal"
 },
 {
   "id": "011000",
-  "ja": "イサク誕生",
+  "ja": "イサクの誕生",
   "en": "Birth of Isaac",
   "year": -1918,
   "month": 1,
@@ -178,12 +178,12 @@
   "ref": "Gen 21:2",
   "rank": 1,
   "tags": ["Patriarch", "PromiseLine", "Anchor"],
-  "hint_ja": "約束の系統が確定する中心固定点\n族長年代の基準として後続（ヤコブ等）を相対配置",
+  "hint_ja": "約束の系譜が確定する基準点\n族長年代の基準として後続（ヤコブ等）を配置する",
   "hint_en": "Central fixed point where the promised line is established\nUse it to place later patriarch events (Jacob, etc.) relatively"
 },
 {
   "id": "012000",
-  "ja": "イサク奉献試練",
+  "ja": "イサクを捧げるように命じられる",
   "en": "Binding of Isaac",
   "year": -1890,
   "month": 1,
@@ -191,12 +191,12 @@
   "ref": "Gen 22:2",
   "rank": 2,
   "tags": ["Patriarch", "FaithTest"],
-  "hint_ja": "誕生節と比較し年齢推定しながら位置把握",
+  "hint_ja": "誕生した年と比較し年齢を推定",
   "hint_en": "Estimate placement from birth anchor"
 },
 {
   "id": "013000",
-  "ja": "ヤコブ誕生",
+  "ja": "ヤコブの誕生",
   "en": "Birth of Jacob",
   "year": -1858,
   "month": 1,
@@ -204,13 +204,13 @@
   "ref": "Gen 25:26",
   "rank": 1,
   "tags": ["Patriarch", "IsraelLine"],
-  "hint_ja": "イスラエルの家系（12部族）へ直結する起点\n創47:9の寿命情報と連結して後年側を固定できる",
+  "hint_ja": "イスラエルの家系（12部族）へ直結する起点\n創47:9の情報とつなげて後年を配置できる",
   "hint_en": "Starting point for Israel’s line (leading to the 12 tribes)\nLink with Gen 47:9 (lifespan statement) to anchor later placement"
 },
 {
   "id": "013600",
-  "ja": "ハラン逃亡",
-  "en": "Jacob flees",
+  "ja": "ヤコブがハランに逃亡する",
+  "en": "Jacob flees to Haran",
   "year": -1781,
   "month": 1,
   "day": 1,
@@ -222,7 +222,7 @@
 },
 {
   "id": "014000",
-  "ja": "ヨセフ誕生",
+  "ja": "ヨセフの誕生",
   "en": "Birth of Joseph",
   "year": -1767,
   "month": 1,
@@ -243,7 +243,7 @@
   "ref": "Gen 37:28",
   "rank": 1,
   "tags": ["Patriarch", "Egypt"],
-  "hint_ja": "物語の転換点（エジプトへの道が開く）\n創41章（30歳で宰相）との年齢差で相対固定しやすい",
+  "hint_ja": "物語の転換点（エジプトへの道が開く）\n創41章（30歳で宰相）との年齢差で計算",
   "hint_en": "Major turning point: the road to Egypt opens\nFix it relatively by comparing with Gen 41 (Joseph becomes governor at 30)"
 },
 {
@@ -256,7 +256,7 @@
   "ref": "Gen 41:41",
   "rank": 1,
   "tags": ["Patriarch", "Egypt", "ChronologyAnchor"],
-  "hint_ja": "「30歳で宰相」＝飢饉と移住へつながる鍵\n創41:46＋飢饉年数（45章）で移住年へ接続",
+  "hint_ja": "「30歳で宰相」＝飢饉と移住へつながる鍵\n創41:46＋飢饉年数（45章）で移住年へつなげる",
   "hint_en": "“Governor at 30” = key link to famine and migration\nUse Gen 41:46 plus the famine-year framework (Gen 45) to connect to the move"
 },
 {
@@ -269,7 +269,7 @@
   "ref": "Gen 46:6",
   "rank": 1,
   "tags": ["Patriarch", "Egypt", "MajorAnchor"],
-  "hint_ja": "イスラエルがエジプトへ入る決定的アンカー\n出12:40の居住期間計算に直結（創46章）",
+  "hint_ja": "イスラエルがエジプトへ入る起点となる\n出12:40の居住期間計算に直結（創46章）",
   "hint_en": "Decisive anchor: Israel enters Egypt\nConnects directly to the residence-duration statement in Ex 12:40 (Gen 46)"
 },
 {
@@ -282,12 +282,12 @@
   "ref": "Gen 50:26",
   "rank": 2,
   "tags": ["Patriarch", "Transition"],
-  "hint_ja": "出1:8王交代との時間距離を確認し次時代接続",
+  "hint_ja": "出1:8王交代との時間距離を確認し次時代へとつながる",
   "hint_en": "Observe transition into Exodus era"
 },
 {
   "id": "017000",
-  "ja": "モーセ誕生",
+  "ja": "モーセの誕生",
   "en": "Birth of Moses",
   "year": -1593,
   "month": 1,
@@ -295,12 +295,12 @@
   "ref": "Exo 2:2",
   "rank": 2,
   "tags": ["Exodus", "Moses", "Chronology"],
-  "hint_ja": "出7:7の年齢情報と比較し出エジプト時点から逆算して位置確認",
+  "hint_ja": "出7:7の年齢情報と比較し出エジプト時点から逆算",
   "hint_en": "Back-calc from Moses age at Exodus anchor"
 },
 {
   "id": "017500",
-  "ja": "ミディアン逃亡",
+  "ja": "モーセがミディアンに逃亡する",
   "en": "Moses flees to Midian",
   "year": -1553,
   "month": 1,
@@ -313,7 +313,7 @@
 },
 {
   "id": "018000",
-  "ja": "燃える柴",
+  "ja": "燃えるいばら",
   "en": "Burning bush encounter",
   "year": -1513,
   "month": 1,
@@ -321,7 +321,7 @@
   "ref": "Exo 3:2",
   "rank": 1,
   "tags": ["Exodus", "Calling", "Anchor"],
-  "hint_ja": "出エジプト直前の召命（ここから一気に脱出へ）\n出7:7（80歳）と照合して前年アンカーとして固定",
+  "hint_ja": "出エジプト直前の任命（ここから一気に脱出へ）\n出7:7（80歳）と照合",
   "hint_en": "Pre-Exodus calling scene that launches the deliverance sequence\nTie to Ex 7:7 (Moses’ age) to fix it as a near-Exodus anchor"
 },
 {
@@ -334,7 +334,7 @@
   "ref": "Exo 7:14-12:30",
   "rank": 1,
   "tags": ["Exodus", "Plagues"],
-  "hint_ja": "物語が“過越→脱出”へ雪崩れ込む直前区間\n出12章（過越制定）へ連結して順序を固定",
+  "hint_ja": "物語が“過越→脱出”へ雪崩れ込む直前区間\n出12章（過越制定）へとつながる",
   "hint_en": "The run-up that drives straight into Passover → Exodus\nLock the sequence by linking directly into Exodus 12"
 },
 {
@@ -360,7 +360,7 @@
   "ref": "Exo 12:41",
   "rank": 1,
   "tags": ["Exodus", "MajorAnchor"],
-  "hint_ja": "旧約年代の超重要アンカー\n列王上6:1（480年）につながる起点",
+  "hint_ja": "旧約年代の超重要な基準点\n王一6:1（480年）につながる起点",
   "hint_en": "One of the strongest OT chronology anchors\nStarting point leading to 1Ki 6:1"
 },
 {
@@ -373,12 +373,12 @@
   "ref": "Exo 16:15",
   "rank": 3,
   "tags": ["Exodus", "Wilderness"],
-  "hint_ja": "ヨシュ5:12終了節と対比し荒野期間理解",
+  "hint_ja": "ヨシュ5:12と対比し荒野期間を理解",
   "hint_en": "Compare with cessation reference later"
 },
 {
   "id": "020000",
-  "ja": "律法契約",
+  "ja": "律法契約が結ばれる",
   "en": "Law covenant established",
   "year": -1513,
   "month": 6,
@@ -391,8 +391,8 @@
 },
 {
   "id": "020500",
-  "ja": "黄金子牛事件",
-  "en": "Golden calf incident",
+  "ja": "アロンが金の子牛の像を作る",
+  "en": "Aaron makes the Golden calf",
   "year": -1513,
   "month": 8,
   "day": 1,
@@ -404,7 +404,7 @@
 },
 {
   "id": "021000",
-  "ja": "幕屋完成",
+  "ja": "幕屋が完成する",
   "en": "Tabernacle completed",
   "year": -1512,
   "month": 1,
@@ -417,7 +417,7 @@
 },
 {
   "id": "022000",
-  "ja": "12偵察派遣",
+  "ja": "12人の偵察を派遣する",
   "en": "Twelve spies sent",
   "year": -1512,
   "month": 9,
@@ -425,12 +425,12 @@
   "ref": "Num 13:1",
   "rank": 2,
   "tags": ["Wilderness", "Recon"],
-  "hint_ja": "40年裁き宣告節へ接続",
+  "hint_ja": "荒野を放浪する期間が40年になる基準の出来事",
   "hint_en": "Link to 40-year judgment statement"
 },
 {
   "id": "023000",
-  "ja": "カデシュ反逆",
+  "ja": "カデシュでの反逆",
   "en": "Rebellion at Kadesh",
   "year": -1512,
   "month": 10,
@@ -448,10 +448,10 @@
   "year": -1474,
   "month": 5,
   "day": 1,
-  "ref": "Num 20:28",
+  "ref": "Num 20:28,33:39",
   "rank": 2,
   "tags": ["Wilderness", "Priesthood"],
-  "hint_ja": "旅程記録と照合し終盤位置確認",
+  "hint_ja": "旅の記録と照合し、モーセの死と合わせて覚える",
   "hint_en": "Cross-check itinerary placement"
 },
 {
@@ -464,7 +464,7 @@
   "ref": "Deut 34:5",
   "rank": 1,
   "tags": ["Transition", "Leadership"],
-  "hint_ja": "40年荒野終点\n申1:3と合わせ期間枠閉鎖",
+  "hint_ja": "40年荒野終点\n申1:3と合わせ期間を確認",
   "hint_en": "End of 40-year period\nClose frame via Deut 1:3"
 },
 {
@@ -482,7 +482,7 @@
 },
 {
   "id": "026000",
-  "ja": "エリコ陥落",
+  "ja": "エリコが陥落する",
   "en": "Fall of Jericho",
   "year": -1473,
   "month": 1,
@@ -495,7 +495,7 @@
 },
 {
   "id": "026400",
-  "ja": "アイ陥落",
+  "ja": "アイが陥落する",
   "en": "Fall of Ai",
   "year": -1473,
   "month": 2,
@@ -508,7 +508,7 @@
 },
 {
   "id": "026600",
-  "ja": "太陽停止",
+  "ja": "太陽が停止する",
   "en": "Sun stands still",
   "year": -1470,
   "month": 1,
@@ -534,7 +534,7 @@
 },
 {
   "id": "028000",
-  "ja": "オトニエルの解放",
+  "ja": "オテニエルの解放",
   "en": "Deliverance by Othniel",
   "year": -1394,
   "month": 1,
@@ -542,8 +542,8 @@
   "ref": "Judg 3:9",
   "rank": 2,
   "tags": ["Judges", "Deliverer"],
-  "hint_ja": "士3:8の支配期間と3:11の安息年数を比較し周期構造確認",
-  "hint_en": "Compare oppression/rest durations in Judg 3"
+  "hint_ja": "ヨシュア以降の最初のリーダー",
+  "hint_en": "First leader after Joshua"
 },
 {
   "id": "028500",
@@ -555,7 +555,7 @@
   "ref": "Judg 3:15",
   "rank": 2,
   "tags": ["Judges", "Deliverer"],
-  "hint_ja": "3:14の18年と3:30の80年を対比し累積的でない時代進行理解",
+  "hint_ja": "3:14の18年と3:30の80年を対比し累積的でない時代の流れを理解する",
   "hint_en": "Observe non-linear timeline segments"
 },
 {
@@ -566,14 +566,14 @@
   "month": 1,
   "day": 1,
   "ref": "Judg 4:4",
-  "rank": 1,
+  "rank": 2,
   "tags": ["Judges", "Prophet"],
   "hint_ja": "士師時代の代表的救出（歌と戦記で記憶しやすい）\n士4章（出来事）＋士5章（歌）の対応で位置固定",
   "hint_en": "A flagship deliverance in Judges (easy to remember via song + narrative)\nFix its placement by pairing Judg 4 (event) with Judg 5 (song)"
 },
 {
   "id": "029500",
-  "ja": "ギデオン召命",
+  "ja": "ギデオンの任命",
   "en": "Gideon called",
   "year": -1245,
   "month": 1,
@@ -586,7 +586,7 @@
 },
 {
   "id": "030000",
-  "ja": "アビメレク支配",
+  "ja": "アビメレクの支配",
   "en": "Rule of Abimelech",
   "year": -1205,
   "month": 1,
@@ -677,7 +677,7 @@
 },
 {
   "id": "034000",
-  "ja": "ダビデ油注ぎ",
+  "ja": "ダビデに油を注ぐ",
   "en": "David anointed",
   "year": -1107,
   "month": 1,
@@ -690,7 +690,7 @@
 },
 {
   "id": "034500",
-  "ja": "ゴリアテ撃破",
+  "ja": "ゴリアテを倒す",
   "en": "Defeat of Goliath",
   "year": -1100,
   "month": 1,
@@ -729,7 +729,7 @@
 },
 {
   "id": "036500",
-  "ja": "全イスラエルの王となる",
+  "ja": "ダビデが全イスラエルの王となる",
   "en": "David made king over all Israel",
   "year": -1070,
   "month": 1,
@@ -781,7 +781,7 @@
 },
 {
   "id": "038500",
-  "ja": "ダビデの罪とナタンの譴責",
+  "ja": "ダビデの罪とナタンの叱責",
   "en": "David’s sin and Nathan’s rebuke",
   "year": -1054,
   "month": 1,
@@ -1353,7 +1353,7 @@
 },
 {
   "id": "060000",
-  "ja": "バビロン陥落",
+  "ja": "バビロンの陥落",
   "en": "Fall of Babylon",
   "year": -539,
   "month": 10,
@@ -1366,7 +1366,7 @@
 },
 {
   "id": "060500",
-  "ja": "ダニエルがライオンの穴に",
+  "ja": "ダニエルがライオンの穴に落とされる",
   "en": "Daniel in the lions' den",
   "year": -538,
   "month": 1,
@@ -1379,7 +1379,7 @@
 },
 {
   "id": "061000",
-  "ja": "エルサレム帰還",
+  "ja": "エルサレムに帰還する",
   "en": "Return to Jerusalem",
   "year": -537,
   "month": 10,
@@ -1470,7 +1470,7 @@
 },
 {
   "id": "064500",
-  "ja": "ネヘミヤがエルサレムへ",
+  "ja": "ネヘミヤがエルサレムへ派遣される",
   "en": "Nehemiah sent to Jerusalem",
   "year": -455,
   "month": 1,
@@ -1624,7 +1624,7 @@
   "hint_ja": "ルカ2:41-52は少年期唯一の具体記事で、前後の沈黙期を区切る\n「約30歳」（ルカ3:23）へ跳ぶ前の中間アンカーとして便利",
   "hint_en": "Luke 2:41-52 is the lone detailed youth account, dividing the silent years\nUseful midpoint anchor before Luke 3:23 (~30)"
 },
-  {
+{
     "id": "070000",
     "ja": "バプテスマを施すヨハネが宣教を開始する",
     "en": "John the Baptist begins preaching",
@@ -1704,7 +1704,7 @@
   },
   {
     "id": "075000",
-    "ja": "イエスが12使徒を選出する",
+    "ja": "イエスが12使徒を選ぶ",
     "en": "Jesus chooses the twelve apostles",
     "year": 31,
     "month": 1,
@@ -1730,7 +1730,7 @@
   },
   {
     "id": "076500",
-    "ja": "イエスが5000人に給食する",
+    "ja": "イエスが奇跡で5000人をもてなす",
     "en": "Jesus feeds the 5,000",
     "year": 32,
     "month": 4,
@@ -1738,7 +1738,7 @@
     "ref": "John 6:10-13",
     "rank": 3,
     "tags": ["Jesus", "Miracle", "Galilee"],
-    "hint_ja": "ヨハ6章は給食→反応→後続出来事へ続くので順序が安定する\n次の「水の上を歩く」（マタ14:25）とセットで覚えやすい",
+    "hint_ja": "ヨハ6章は奇跡→反応→後続出来事へ続くので順序が安定する\n次の「水の上を歩く」（マタ14:25）とセットで覚えやすい",
     "hint_en": "John 6 flows feeding→reaction→follow-up, stabilizing the sequence\nPairs naturally with walking on water (Matt 14:25)"
   },
   {
@@ -1751,7 +1751,7 @@
     "ref": "Matt 14:25",
     "rank": 4,
     "tags": ["Jesus", "Miracle", "Faith"],
-    "hint_ja": "給食直後の夜の出来事として福音書内で連結され、並びが固い\n同じ区間で「嵐」関連記事を比較すると記憶に残る",
+    "hint_ja": "5000人をもてなす奇跡直後の夜の出来事として確定\n同じ区間で「嵐」関連記事を比較すると記憶に残る",
     "hint_en": "Linked as a night event following the feeding, fixing its position\nComparing storm-related parallels helps retention"
   },
   {
@@ -1821,7 +1821,7 @@
   },
   {
     "id": "079000",
-    "ja": "イエスが神殿を清める（受難週）",
+    "ja": "イエスが神殿を清める（最後の週）",
     "en": "Jesus cleanses the temple (final week)",
     "year": 33,
     "month": 3,
@@ -1860,8 +1860,8 @@
   },
   {
     "id": "080000",
-    "ja": "最後の晩餐",
-    "en": "Last Supper",
+    "ja": "主の晩餐を制定してパンと杯を渡す",
+    "en": "Jesus institutes the Lord’s Supper, gives bread and cup",
     "year": 33,
     "month": 4,
     "day": 1,
@@ -1881,7 +1881,7 @@
     "ref": "John 13:34",
     "rank": 2,
     "tags": ["Jesus", "Love", "Commandment"],
-    "hint_ja": "ヨハ13章の文脈で“最後の夜の教え”として位置が固定できる\n以後の会衆の特徴（互いの愛）へ接続するテーマアンカー",
+    "hint_ja": "ヨハ13章の文脈で“最後の夜の教え”として書かれている\n以後の会衆の特徴（互いの愛）へつながる",
     "hint_en": "Fixed in John 13 as part of the last-night instruction\nTheme anchor that connects into congregation identity (love)"
   },
   {
@@ -1912,16 +1912,16 @@
   },
   {
     "id": "082000",
-    "ja": "イエスが裁判にかけられる",
-    "en": "Jesus is put on trial",
+    "ja": "イエスがピラトの前に立つ",
+    "en": "Jesus stands before Pilate",
     "year": 33,
     "month": 4,
     "day": 1,
-    "ref": "John 18:28",
+    "ref": "John 18:33","Luke 1:6"
     "rank": 3,
     "tags": ["Jesus", "Trial", "Pilate"],
-    "hint_ja": "ヨハ18:28以降で裁判段階が追いやすい\n夜の出来事（逮捕）から朝の裁判へ移る節目として置ける",
-    "hint_en": "John 18:28 onward traces the trial stages clearly\nActs as the hinge from night arrest to morning proceedings"
+    "hint_ja": "ピラトの1度目の尋問",
+    "hint_en": "First questioning before Pilate"
   },
   {
     "id": "082500",
