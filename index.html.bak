@@ -799,9 +799,6 @@
         function sortEventsChrono(a, b) {
             return Number(a.id) - Number(b.id);
         }
-
-        // ✅ 共通：currentTask から正解ID配列を作る
-        function getCorrectIds() {
             if (!Array.isArray(currentTask) || currentTask.length === 0) return [];
             return [...currentTask].sort(sortEventsChrono).map(e => String(e.id));
         }
