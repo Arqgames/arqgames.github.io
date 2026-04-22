@@ -247,7 +247,7 @@
             currentLang = currentLang === 'ja' ? 'en' : 'ja';
             document.documentElement.lang = currentLang;
             /* 次回アクセス時も同じ言語で開くために保存する */
-            localStorage.setItem('lang', currentLang);
+            localStorage.setItem('arq_lang', currentLang);
             /* ボタン表示を更新（今が日本語なら "JA"、英語なら "EN"） */
             document.getElementById('langBtn').innerText =
                 currentLang === 'ja' ? 'EN' : 'JA';
@@ -1260,10 +1260,10 @@
                     const current = saved || (navigator.language?.startsWith('ja') ? 'ja' : 'en');
                     const next = (current === 'ja') ? 'en' : 'ja';
 
-                    localStorage.setItem('arq_lang', next);
-                    localStorage.setItem('lang', next);
-                    localStorage.setItem('language', next);
-                    localStorage.setItem('btlq_lang', next);
+            localStorage.setItem('arq_lang', next);
+            localStorage.setItem('lang', next);
+            localStorage.setItem('language', next);
+            localStorage.setItem('btlq_lang', next);
 
                     if (typeof window.applyLang === 'function') {
                         window.applyLang(next);
