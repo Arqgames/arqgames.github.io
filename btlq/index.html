@@ -271,10 +271,6 @@
                 const data = EVENTS.find(e => e.id == card.dataset.id);
                 if (data) {
                     card.querySelector('.event-name').innerText = data[currentLang];
-                    const yearEl = card.querySelector('.event-year');
-                    if (yearEl) {
-                        yearEl.innerText = formatYear(data.year);
-                    }
                 }
             });
         }
@@ -386,13 +382,9 @@
                 el.dataset.id = item.id;
                 el.draggable = true;
 
-                const yearStr = formatYear(item.year);
                 el.innerHTML =
                     `<span class="material-icons drag-handle" style="color:#ccc">drag_indicator</span>` +
-                    `<div style="flex:1">` +
-                    `<div class="event-name">${item[currentLang]}</div>` +
-                    `<div class="event-year" style="font-size:0.8em; color:#8b5e3c; font-weight:normal; margin-top:3px;">${yearStr}</div>` +
-                    `</div>`;
+                    `<div class="event-name" style="flex:1">${item[currentLang]}</div>`;
 
                 el.addEventListener('dragstart', (e) => {
                     draggingItemPC = el;
