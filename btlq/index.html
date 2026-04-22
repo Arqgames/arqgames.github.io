@@ -214,6 +214,14 @@
                 : (refMap[bookEn] || bookEn);
         }
 
+        function formatYear(year) {
+            if (currentLang === 'ja') {
+                return year < 0 ? `前 ${Math.abs(year)}年` : `西暦 ${year}年`;
+            } else {
+                return year < 0 ? `BCE ${Math.abs(year)}` : `CE ${year}`;
+            }
+        }
+
         /* ==========================================================
         言語の自動判定（初回アクセス時）
         - 以前ユーザーが手動で選んだ言語があれば、それを優先する
@@ -261,7 +269,13 @@
         function updateCardTexts() {
             document.querySelectorAll('.event-card').forEach(card => {
                 const data = EVENTS.find(e => e.id == card.dataset.id);
-                if (data) card.querySelector('.event-name').innerText = data[currentLang];
+                if (data) {
+                    card.querySelector('.event-name').innerText = data[currentLang];
+                    const yearEl = card.querySelector('.event-year');
+                    if (yearEl) {
+                        yearEl.innerText = formatYear(data.year);
+                    }
+                }
             });
         }
 
@@ -372,9 +386,13 @@
                 el.dataset.id = item.id;
                 el.draggable = true;
 
+                const yearStr = formatYear(item.year);
                 el.innerHTML =
                     `<span class="material-icons drag-handle" style="color:#ccc">drag_indicator</span>` +
-                    `<div class="event-name" style="flex:1">${item[currentLang]}</div>`;
+                    `<div style="flex:1">` +
+                    `<div class="event-name">${item[currentLang]}</div>` +
+                    `<div class="event-year" style="font-size:0.8em; color:#8b5e3c; font-weight:normal; margin-top:3px;">${yearStr}</div>` +
+                    `</div>`;
 
                 el.addEventListener('dragstart', (e) => {
                     draggingItemPC = el;
@@ -841,6 +859,7 @@
             const itemsHtml = ids.map((id, i) => {
                 const ev = map.get(String(id));
                 const label = ev ? (ev[currentLang] ?? ev.ja ?? ev.en ?? id) : id;
+                const yearStr = ev ? formatYear(ev.year) : '';
                 const articlePath = `/btlq/article/${id}/index.html`;
                 // 記事ボタン仮置き
                 let articleBtn = '';
@@ -859,7 +878,7 @@
                         articleExistCache[id] = false;
                     });
                 }
-                return `<li class="result-event-item">${escapeHtml(label)}${articleBtn}</li>`;
+                return `<li class="result-event-item"><div style="display:flex; justify-content:space-between; align-items:center;"><span>${escapeHtml(label)}</span><span style="font-size:0.9em; color:#8b5e3c; font-weight:normal; margin-left:8px;">${yearStr}</span></div>${articleBtn}</li>`;
             }).join("");
 
             wrap.innerHTML = `
@@ -1292,12 +1311,17 @@
                     initPickers();
 
                     // ★② デフォルト期間をここで設定（重要）
+                    // JSONはソートされていないため、全イベントから最小値と最大値を取得
+                    const allYears = EVENTS.map(e => e.year).sort((a, b) => a - b);
+                    const minYear = allYears[0];
+                    const maxYear = allYears[allYears.length - 1];
+
                     const startSel = document.getElementById('select-start');
                     const endSel = document.getElementById('select-end');
 
                     if (startSel && endSel) {
-                        startSel.value = EVENTS[0].year;                         // 最古
-                        endSel.value = EVENTS[EVENTS.length - 1].year;           // 最新
+                        startSel.value = minYear;
+                        endSel.value = maxYear;
                     }
 
                     // ★③ エラーメッセージ消去（保険）
