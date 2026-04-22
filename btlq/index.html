@@ -851,7 +851,6 @@
             const itemsHtml = ids.map((id, i) => {
                 const ev = map.get(String(id));
                 const label = ev ? (ev[currentLang] ?? ev.ja ?? ev.en ?? id) : id;
-                const yearStr = ev ? formatYear(ev.year) : '';
                 const articlePath = `/btlq/article/${id}/index.html`;
                 // 記事ボタン仮置き
                 let articleBtn = '';
@@ -870,7 +869,7 @@
                         articleExistCache[id] = false;
                     });
                 }
-                return `<li class="result-event-item"><div style="display:flex; justify-content:space-between; align-items:center;"><span>${escapeHtml(label)}</span><span style="font-size:0.9em; color:#8b5e3c; font-weight:normal; margin-left:8px;">${yearStr}</span></div>${articleBtn}</li>`;
+                return `<li class="result-event-item">${escapeHtml(label)}${articleBtn}</li>`;
             }).join("");
 
             wrap.innerHTML = `
