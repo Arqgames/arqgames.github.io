@@ -3,12 +3,12 @@
 
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBEKWTGNP2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-NBEKWTGNP2');
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBEKWTGNP2">
+    </script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-NBEKWTGNP2');
     </script>
 
     <meta charset="UTF-8" />
@@ -41,8 +41,11 @@
 
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 
+    <!-- Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <!-- adsense -->
-    
+
     <link rel="stylesheet" href="css/btlq_ui.css">
 
 </head>
@@ -1245,10 +1248,10 @@
                     const current = saved || (navigator.language?.startsWith('ja') ? 'ja' : 'en');
                     const next = (current === 'ja') ? 'en' : 'ja';
 
-            localStorage.setItem('arq_lang', next);
-            localStorage.setItem('lang', next);
-            localStorage.setItem('language', next);
-            localStorage.setItem('btlq_lang', next);
+                    localStorage.setItem('arq_lang', next);
+                    localStorage.setItem('lang', next);
+                    localStorage.setItem('language', next);
+                    localStorage.setItem('btlq_lang', next);
 
                     if (typeof window.applyLang === 'function') {
                         window.applyLang(next);
