@@ -691,3 +691,31 @@ html {overflow-x: hidden; }
 h2[data-ja="関連する記事"] {
     display: none;
 }
+
+/* ===== Auth Button ===== */
+.auth-btn {
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+}
+
+.auth-user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.auth-user-initial {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9em;
+}

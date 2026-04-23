@@ -49,6 +49,8 @@
 
     <link rel="stylesheet" href="css/btlq_ui.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 
 </head>
 
@@ -62,6 +64,10 @@
         </button>
 
         <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
+
+        <button class="top-btn auth-btn" type="button" id="authBtn" onclick="handleAuthClick()" title="Google ログイン">
+            <span class="material-icons" style="font-size:20px;">account_circle</span>
+        </button>
 
         <div id="screen-setup">
             <div class="header-icon-box">
@@ -1322,6 +1328,51 @@
             .then(html => {
                 document.body.insertAdjacentHTML('beforeend', html);
             });
+
+        // ===== Firebase Auth =====
+        (function () {
+            const firebaseConfig = {
+                apiKey: "AIzaSyAZYr8n1VEaRRkc8RCfRtGVij8D1MrMSiA",
+                authDomain: "btlq-9ebb1.firebaseapp.com",
+                projectId: "btlq-9ebb1",
+                storageBucket: "btlq-9ebb1.firebasestorage.app",
+                messagingSenderId: "910907866177",
+                appId: "1:910907866177:web:6f7fb5dfd53d0ddfba5ac0",
+                measurementId: "G-V6TQVBJVVD"
+            };
+            firebase.initializeApp(firebaseConfig);
+            const auth = firebase.auth();
+
+            auth.onAuthStateChanged(updateAuthUI);
+
+            window.handleAuthClick = function () {
+                if (auth.currentUser) {
+                    const msg = (typeof currentLang !== 'undefined' && currentLang === 'en')
+                        ? 'Sign out?' : 'ログアウトしますか？';
+                    if (confirm(msg)) auth.signOut();
+                } else {
+                    const provider = new firebase.auth.GoogleAuthProvider();
+                    auth.signInWithPopup(provider).catch(err => console.error('Auth error:', err));
+                }
+            };
+
+            function updateAuthUI(user) {
+                const btn = document.getElementById('authBtn');
+                if (!btn) return;
+                if (user) {
+                    if (user.photoURL) {
+                        btn.innerHTML = `<img src="${user.photoURL}" class="auth-user-avatar" alt="user">`;
+                    } else {
+                        const initial = (user.displayName || user.email || '?')[0].toUpperCase();
+                        btn.innerHTML = `<div class="auth-user-initial">${initial}</div>`;
+                    }
+                    btn.title = user.displayName || user.email || '';
+                } else {
+                    btn.innerHTML = '<span class="material-icons" style="font-size:20px;">account_circle</span>';
+                    btn.title = 'Google ログイン';
+                }
+            }
+        })();
 
     </script>
 
