@@ -843,7 +843,7 @@
             const itemsHtml = ids.map((id, i) => {
                 const ev = map.get(String(id));
                 const label = ev ? (ev[currentLang] ?? ev.ja ?? ev.en ?? id) : id;
-                const articlePath = `/btlq/article/${id}/index.html`;
+                const articlePath = `/article/${id}/index.html`;
                 // 記事ボタン仮置き
                 let articleBtn = '';
                 // 記事存在チェック（キャッシュ優先）
