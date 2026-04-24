@@ -66,7 +66,8 @@
 
         <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
 
-        <button class="top-btn" type="button" id="statsBtn" title="成績" style="left:130px;" onclick="openStatsModal()">
+        <button class="top-btn" type="button" id="statsBtn" title="成績" style="right:70px;" onclick="openStatsModal()">
+            <span class="material-icons" style="font-size:20px;">bar_chart</span>
         </button>
 
         <button class="top-btn auth-btn" type="button" id="authBtn" onclick="handleAuthClick()" title="Google ログイン">
@@ -181,17 +182,19 @@
             max-width:400px; width:92%; box-shadow:0 4px 20px rgba(0,0,0,0.25);
             max-height:85vh; overflow-y:auto; box-sizing:border-box;">
             <h2 style="color:#5d3a1a; margin:0 0 16px; text-align:center; font-size:1.2em;">
-                📊 <span data-ja="成績" data-en="Stats">成績</span>
+                <span data-ja="成績" data-en="Stats">成績</span>
             </h2>
             <div style="display:flex; gap:8px; margin-bottom:12px;">
-                <select id="stats-level" style="flex:1; padding:8px; border-radius:8px; border:2px solid #fbc531; background:#fff; color:#5d3a1a; font-size:0.9em;">
+                <select id="stats-level"
+                    style="flex:1; padding:8px; border-radius:8px; border:2px solid #fbc531; background:#fff; color:#5d3a1a; font-size:0.9em;">
                     <option value="1" data-ja="レベル 1" data-en="Level 1">レベル 1</option>
                     <option value="2" data-ja="レベル 2" data-en="Level 2">レベル 2</option>
                     <option value="3" data-ja="レベル 3" data-en="Level 3">レベル 3</option>
                     <option value="4" data-ja="レベル 4" data-en="Level 4">レベル 4</option>
                     <option value="5" data-ja="レベル 5" data-en="Level 5">レベル 5</option>
                 </select>
-                <select id="stats-period" style="flex:1.5; padding:8px; border-radius:8px; border:2px solid #fbc531; background:#fff; color:#5d3a1a; font-size:0.9em;">
+                <select id="stats-period"
+                    style="flex:1.5; padding:8px; border-radius:8px; border:2px solid #fbc531; background:#fff; color:#5d3a1a; font-size:0.9em;">
                     <option value="全期間" data-ja="全期間" data-en="All Periods">全期間</option>
                     <option value="創世記" data-ja="創世記" data-en="Genesis">創世記</option>
                     <option value="征服" data-ja="征服" data-en="Conquest">征服</option>
@@ -199,13 +202,14 @@
                     <option value="キリスト" data-ja="キリスト" data-en="Christ">キリスト</option>
                 </select>
             </div>
-            <label style="display:flex; align-items:center; gap:8px; margin-bottom:16px; color:#5d3a1a; cursor:pointer; font-size:0.95em;">
+            <label
+                style="display:flex; align-items:center; gap:8px; margin-bottom:16px; color:#5d3a1a; cursor:pointer; font-size:0.95em;">
                 <input type="checkbox" id="stats-timeattack" style="width:18px; height:18px; accent-color:#fbc531;">
                 <span data-ja="タイムアタックのみ" data-en="Time Attack only">タイムアタックのみ</span>
             </label>
             <div id="stats-content" style="min-height:80px;"></div>
-            <button class="btn" onclick="closeStatsModal()" style="margin-top:16px; width:100%;"
-                data-ja="閉じる" data-en="Close">閉じる</button>
+            <button class="btn" onclick="closeStatsModal()" style="margin-top:16px; width:100%;" data-ja="閉じる"
+                data-en="Close">閉じる</button>
         </div>
     </div>
 
