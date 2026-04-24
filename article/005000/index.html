@@ -19,7 +19,7 @@
     <meta name="theme-color" content="#f4e4bc" />
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="/btlq/CSS/btlq_ui.css">
+    <link rel="stylesheet" href="/css/btlq_ui.css">
     <style>
         /* タイトルサイズをarqgamesに合わせる */
         .article-wrapper h1 {
@@ -125,7 +125,7 @@
             window.close();
             // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
             setTimeout(() => {
-                location.href = '/btlq/';
+                location.href = '/';
             }, 100);
         }
 
@@ -142,14 +142,14 @@
             const homeBtn = document.getElementById('homeBtn');
             if (homeBtn) {
                 homeBtn.addEventListener('click', () => {
-                    location.href = '/btlq/';
+                    location.href = '/';
                 });
             }
 
             updateTexts();
         };
 
-        fetch('../../../../parts/footer.html')
+        fetch('../../parts/footer.html')
             .then(r => r.text())
             .then(html => {
                 document.body.insertAdjacentHTML('beforeend', html);
