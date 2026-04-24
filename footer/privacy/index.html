@@ -45,6 +45,10 @@
             <p data-i18n="contact_text">For inquiries regarding this policy, please contact us via the <a href="/footer/contact/">Contact</a> page.</p>
         </div>
 
+        <div style="margin-top:24px; text-align:center;">
+            <button class="btn" onclick="goBack()" data-i18n="close_btn">Close and Return to Game</button>
+        </div>
+
     </div>
 
     <div class="ad-outside">
@@ -68,7 +72,9 @@
                 changes_heading: "プライバシーポリシーの変更",
                 changes_text: "本ポリシーの内容は、予告なく変更されることがあります。変更後の内容は当ページにて速やかに公開されます。",
                 contact_heading: "お問い合わせ",
-                contact_text: "本ポリシーに関するお問い合わせは、<a href=\"/footer/contact/\">Contact</a>ページよりご連絡ください。"
+                contact_text: "本ポリシーに関するお問い合わせは、<a href=\"/footer/contact/\">Contact</a>ページよりご連絡ください。",
+                close_btn: "画面を閉じてゲームに戻る"
+
             },
             en: {
                 title: "Privacy Policy",
@@ -85,7 +91,9 @@
                 changes_heading: "Changes to This Policy",
                 changes_text: "This privacy policy may be updated without prior notice. Any changes will be posted on this page promptly.",
                 contact_heading: "Contact",
-                contact_text: "For inquiries regarding this policy, please contact us via the <a href=\"/footer/contact/\">Contact</a> page."
+                contact_text: "For inquiries regarding this policy, please contact us via the <a href=\"/footer/contact/\">Contact</a> page.",
+                close_btn: "Close and Return to Game"
+
             }
         };
 
@@ -106,6 +114,11 @@
             lang = (lang === "ja") ? "en" : "ja";
             applyLang(lang);
         };
+
+        function goBack() {
+            window.close();
+            setTimeout(() => { location.href = '/'; }, 100);
+        }
 
         fetch('/parts/footer.html')
             .then(r => r.text())

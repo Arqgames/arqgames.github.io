@@ -9,18 +9,12 @@
     <meta name="theme-color" content="#f4e4bc" />
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="/btlq/CSS/btlq_ui.css">
+    <link rel="stylesheet" href="/css/btlq_ui.css">
 </head>
 
 <body>
 
     <div class="container">
-
-        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home" onclick="location.href='/btlq/';">
-            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
-                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
-            </svg>
-        </button>
 
         <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
 
@@ -155,14 +149,14 @@
         };
 
         function openArticles() {
-            const win = window.open('/btlq/article/', '_blank');
+            const win = window.open('/article/', '_blank');
             if (win) win.opener = null;
         }
 
         function returnToGame() {
             window.close();
             setTimeout(() => {
-                location.href = '/btlq/';
+                location.href = '/';
             }, 150);
         }
 

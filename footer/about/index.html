@@ -48,6 +48,10 @@
             <p data-i18n="operated" style="margin-top:20px; font-size:0.9em;">Operated by: BTLQ (Independent project)</p>
         </div>
 
+        <div style="margin-top:24px; text-align:center;">
+            <button class="btn" onclick="goBack()" data-i18n="close_btn">Close and Return to Game</button>
+        </div>
+
     </div>
 
     <div class="ad-outside">
@@ -64,7 +68,9 @@
                 disclaimer: "BTLQ は、特定の宗教団体・思想・信条を推奨または代表するものではありません。コンテンツは一般的な学習素材およびインタラクティブな娯楽として提供されています。",
                 future: "今後も、BTLQの改善と、さらに多くの聖書の出来事や機能の充実を予定しています。",
                 thanks: "ご訪問ありがとうございます。学びとゲームの両方を、ぜひ気軽にお楽しみください。",
-                operated: "運営：BTLQ（個人プロジェクト）"
+                operated: "運営：BTLQ（個人プロジェクト）",
+                close_btn: "画面を閉じてゲームに戻る"
+
             },
             en: {
                 title: "About BTLQ",
@@ -74,7 +80,9 @@
                 disclaimer: "BTLQ does not promote or represent any specific religious organization or belief. The content is provided as general educational material and interactive entertainment.",
                 future: "We plan to continue improving BTLQ with more biblical events and enhanced features.",
                 thanks: "Thank you for visiting. We hope you enjoy both learning and playing.",
-                operated: "Operated by: BTLQ (Independent project)"
+                operated: "Operated by: BTLQ (Independent project)",
+                close_btn: "Close and Return to Game"
+
             }
         };
 
@@ -95,6 +103,11 @@
             lang = (lang === "ja") ? "en" : "ja";
             applyLang(lang);
         };
+
+        function goBack() {
+            window.close();
+            setTimeout(() => { location.href = '/'; }, 100);
+        }
 
         fetch('/parts/footer.html')
             .then(r => r.text())

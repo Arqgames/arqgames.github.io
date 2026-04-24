@@ -50,6 +50,10 @@
 
         </div>
 
+        <div style="margin-top:24px; text-align:center;">
+            <button class="btn" onclick="goBack()" data-i18n="close_btn">Close and Return to Game</button>
+        </div>
+
     </div>
 
     <div class="ad-outside">
@@ -75,7 +79,9 @@
                 modifications_heading: "変更",
                 modifications_text: "BTLQは、ウェブサイトのこれらの利用規約をいつでも予告なく改訂することができます。本ウェブサイトの使用により、あなたはこれらの利用規約の当時の現在のバージョンに拘束されることに同意していることになります。",
                 governing_heading: "準拠法",
-                governing_text: "これらの条件および条項は、日本の法律に準拠して構築されており、あなたはそこの裁判所の排他的管轄権に遵意します。"
+                governing_text: "これらの条件および条項は、日本の法律に準拠して構築されており、あなたはそこの裁判所の排他的管轄権に遵意します。",
+                close_btn: "画面を閉じてゲームに戻る"
+
             },
             en: {
                 title: "Terms of Service",
@@ -94,7 +100,9 @@
                 modifications_heading: "Modifications",
                 modifications_text: "BTLQ may revise these terms of service for its website at any time without notice. By using this website, you are agreeing to be bound by the then current version of these terms of service.",
                 governing_heading: "Governing Law",
-                governing_text: "These terms and conditions are governed by and construed in accordance with the laws of Japan, and you irrevocably submit to the exclusive jurisdiction of the courts in that location."
+                governing_text: "These terms and conditions are governed by and construed in accordance with the laws of Japan, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.",
+                close_btn: "Close and Return to Game"
+
             }
         };
 
@@ -115,6 +123,11 @@
             lang = (lang === "ja") ? "en" : "ja";
             applyLang(lang);
         };
+
+        function goBack() {
+            window.close();
+            setTimeout(() => { location.href = '/'; }, 100);
+        }
 
         fetch('/parts/footer.html')
             .then(r => r.text())

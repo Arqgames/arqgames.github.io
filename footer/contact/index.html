@@ -59,6 +59,10 @@
 
         </div>
 
+        <div style="margin-top:24px; text-align:center;">
+            <button class="btn" onclick="goBack()" data-i18n="close_btn">Close and Return to Game</button>
+        </div>
+
     </div>
 
     <div class="ad-outside">
@@ -72,14 +76,18 @@
                 intro: "BTLQに関するご質問、ご意見、ご提案がございましたら、以下のフォームからお気軽にお問い合わせください。",
                 privacy: "<strong>プライバシーに関するお知らせ：</strong>このお問い合わせフォームからいただいた個人情報は、ご返信および必要な連絡の目的に限ってのみ利用させていただき、第三者に開示・提供することはありません。",
                 end_en: "",
-                end_ja: "内容によっては返信できない場合がありますので、あらかじめご了承ください。"
+                end_ja: "内容によっては返信できない場合がありますので、あらかじめご了承ください。",
+                close_btn: "画面を閉じてゲームに戻る"
+
             },
             en: {
                 title: "Contact",
                 intro: "If you have any questions, feedback, or suggestions regarding BTLQ, please feel free to contact us using the form below.",
                 privacy: "<strong>Privacy Notice:</strong> Personal information collected through this contact form will be used solely for responding to your inquiry and providing necessary communications. We will not disclose your information to third parties.",
                 end_en: "please feel free to contact us using the form below.",
-                end_ja: ""
+                end_ja: "",
+                close_btn: "Close and Return to Game"
+
             }
         };
 
@@ -102,6 +110,11 @@
             lang = (lang === "ja") ? "en" : "ja";
             applyLang(lang);
         };
+
+        function goBack() {
+            window.close();
+            setTimeout(() => { location.href = '/'; }, 100);
+        }
 
         fetch('/parts/footer.html')
             .then(r => r.text())

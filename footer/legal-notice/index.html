@@ -67,6 +67,10 @@
 
         </div>
 
+        <div style="margin-top:24px; text-align:center;">
+            <button class="btn" onclick="goBack()" data-i18n="close_btn">Close and Return to Game</button>
+        </div>
+
     </div>
 
     <div class="ad-outside">
@@ -97,7 +101,9 @@
                 refund_heading: "返金ポリシー",
                 refund_text: "デジタル製品の性質上、購入後の返金は原則として提供されていません。ただし、技術的な問題が発生した場合はサポートを提供します。",
                 compliance_heading: "法的遵守",
-                compliance_text: "本サービスは、オンライン取引に関連する適用法および規制を遵守しています。"
+                compliance_text: "本サービスは、オンライン取引に関連する適用法および規制を遵守しています。",
+                close_btn: "画面を閉じてゲームに戻る"
+
             },
             en: {
                 title: "Legal Notice",
@@ -121,7 +127,9 @@
                 refund_heading: "Refund Policy",
                 refund_text: "Due to the nature of digital products, refunds are generally not provided after purchase. However, support will be provided in case of technical issues.",
                 compliance_heading: "Legal Compliance",
-                compliance_text: "This service complies with applicable laws and regulations regarding online transactions."
+                compliance_text: "This service complies with applicable laws and regulations regarding online transactions.",
+                close_btn: "Close and Return to Game"
+
             }
         };
 
@@ -142,6 +150,11 @@
             lang = (lang === "ja") ? "en" : "ja";
             applyLang(lang);
         };
+
+        function goBack() {
+            window.close();
+            setTimeout(() => { location.href = '/'; }, 100);
+        }
 
         fetch('/parts/footer.html')
             .then(r => r.text())
