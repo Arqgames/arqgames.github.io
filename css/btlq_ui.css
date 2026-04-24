@@ -694,8 +694,7 @@ h2[data-ja="関連する記事"] {
 
 /* ===== Auth Button ===== */
 .auth-btn {
-    left: 50%;
-    transform: translateX(-50%);
+    left: 70px;
     overflow: hidden;
 }
 
