@@ -46,12 +46,6 @@
 <body>
 
     <div class="container">
-        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home">
-            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
-                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
-            </svg>
-        </button>
-
         <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
 
         <div id="article-content" class="article-wrapper">
@@ -88,6 +82,10 @@
                 <button class="btn" onclick="goBack()" data-ja="画面を閉じてゲームに戻る" data-en="Close and Return to Game">画面を閉じてゲームに戻る</button>
             </div>
         </div>
+    </div>
+
+    <div class="ad-outside">
+        <div style="text-align:center; font-weight:bold; color:#8b5e3c;">Ad space</div>
     </div>
 
     <script>
@@ -137,13 +135,6 @@
             if (langBtn) {
                 langBtn.innerText = currentLang === 'ja' ? 'EN' : 'JA';
                 langBtn.addEventListener('click', toggleLang);
-            }
-
-            const homeBtn = document.getElementById('homeBtn');
-            if (homeBtn) {
-                homeBtn.addEventListener('click', () => {
-                    location.href = '/';
-                });
             }
 
             updateTexts();
