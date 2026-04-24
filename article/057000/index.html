@@ -19,7 +19,7 @@
     <meta name="theme-color" content="#f4e4bc" />
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" href="../../CSS/btlq_ui.css">
+    <link rel="stylesheet" href="/css/btlq_ui.css">
     <style>
         /* タイトルサイズをarqgamesに合わせる */
         .article-wrapper h1 {
@@ -41,11 +41,6 @@
 <body>
 
     <div class="container">
-        <button class="top-btn home-btn" type="button" id="homeBtn" title="Home">
-            <svg width="22" height="22" viewBox="0 0 24 24" style="display:block;">
-                <path d="M12 3.2 3 10.3V21a1 1 0 0 0 1 1h5v-7h6v7h5a1 1 0 0 0 1-1V10.3l-9-7.1z" fill="currentColor" />
-            </svg>
-        </button>
 
         <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
 
@@ -90,6 +85,10 @@
         </div>
     </div>
 
+    <div class="ad-outside">
+        <div style="text-align:center; font-weight:bold; color:#8b5e3c;">Ad space</div>
+    </div>
+
     <script>
         let currentLang = 'ja';
 
@@ -125,7 +124,7 @@
             window.close();
             // 閉じられない場合（手動で開いたタブ）はゲーム画面に戻る
             setTimeout(() => {
-                location.href = '/btlq/';
+                location.href = '/';
             }, 100);
         }
 
@@ -139,17 +138,11 @@
                 langBtn.addEventListener('click', toggleLang);
             }
 
-            const homeBtn = document.getElementById('homeBtn');
-            if (homeBtn) {
-                homeBtn.addEventListener('click', () => {
-                    location.href = '/btlq/';
-                });
-            }
 
             updateTexts();
         };
 
-        fetch('../../../../parts/footer.html')
+        fetch('../../parts/footer.html')
             .then(r => r.text())
             .then(html => {
                 document.body.insertAdjacentHTML('beforeend', html);
