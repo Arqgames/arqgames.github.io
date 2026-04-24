@@ -130,9 +130,9 @@
             </select>
             <div id="error-msg"></div>
             <button class="btn" onclick="startGame()" data-ja="冒険を開始" data-en="Start Adventure">冒険を開始</button>
-            <button type="button" class="btn btn-sub" onclick="openAbout()"
-                style="padding:12px; font-size:0.95em; margin-top:8px;" data-ja="このゲームについて"
-                data-en="About This Game">このゲームについて</button>
+            <button type="button" class="btn btn-sub" onclick="openHowToPlay()"
+                style="padding:12px; font-size:0.95em; margin-top:8px;" data-ja="遊び方"
+                data-en="How to Play">遊び方</button>
         </div>
 
         <div id="screen-game" class="hidden">
@@ -342,8 +342,8 @@
             });
         }
 
-        function openAbout() {
-            const win = window.open('about_btlq/', '_blank');
+        function openHowToPlay() {
+            const win = window.open('howtoplay/', '_blank');
             if (win) win.opener = null;
         }
 
@@ -1151,7 +1151,7 @@
 
             if (!user) {
                 statsContent.innerHTML = currentLang === 'ja'
-                    ? '<div style="text-align:center;color:#8b5e3c;padding:20px 0;">ログインして成績を確認できます</div>'
+                    ? '<div style="text-align:center;color:#8b5e3c;padding:20px 0;">ログインすると成績を確認できます</div>'
                     : '<div style="text-align:center;color:#8b5e3c;padding:20px 0;">Sign in to view your stats</div>';
                 return;
             }
