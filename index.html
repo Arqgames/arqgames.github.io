@@ -51,6 +51,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 
 </head>
 
@@ -64,6 +65,10 @@
         </button>
 
         <button class="top-btn lang-switch" type="button" id="langBtn" title="Language">EN</button>
+
+        <button class="top-btn" type="button" id="statsBtn" title="成績" style="left:130px;" onclick="openStatsModal()">
+            <span class="material-icons" style="font-size:20px;">bar_chart</span>
+        </button>
 
         <button class="top-btn auth-btn" type="button" id="authBtn" onclick="handleAuthClick()" title="Google ログイン">
             <span class="material-icons" style="font-size:20px;">account_circle</span>
@@ -169,6 +174,60 @@
         </div>
     </div>
 
+    <!-- 成績モーダル -->
+    <div id="modal-stats" class="hidden" style="
+        position:fixed; inset:0; background:rgba(0,0,0,0.6);
+        display:flex; align-items:center; justify-content:center; z-index:9999;">
+        <div style="background:#fff8ee; padding:24px 20px; border-radius:16px;
+            max-width:400px; width:92%; box-shadow:0 4px 20px rgba(0,0,0,0.25);
+            max-height:85vh; overflow-y:auto; box-sizing:border-box;">
+            <h2 style="color:#5d3a1a; margin:0 0 16px; text-align:center; font-size:1.2em;">
+                📊 <span data-ja="成績" data-en="Stats">成績</span>
+            </h2>
+            <div style="display:flex; gap:8px; margin-bottom:12px;">
+                <select id="stats-level" style="flex:1; padding:8px; border-radius:8px; border:2px solid #fbc531; background:#fff; color:#5d3a1a; font-size:0.9em;">
+                    <option value="1" data-ja="レベル 1" data-en="Level 1">レベル 1</option>
+                    <option value="2" data-ja="レベル 2" data-en="Level 2">レベル 2</option>
+                    <option value="3" data-ja="レベル 3" data-en="Level 3">レベル 3</option>
+                    <option value="4" data-ja="レベル 4" data-en="Level 4">レベル 4</option>
+                    <option value="5" data-ja="レベル 5" data-en="Level 5">レベル 5</option>
+                </select>
+                <select id="stats-period" style="flex:1.5; padding:8px; border-radius:8px; border:2px solid #fbc531; background:#fff; color:#5d3a1a; font-size:0.9em;">
+                    <option value="全期間" data-ja="全期間" data-en="All Periods">全期間</option>
+                    <option value="創世記" data-ja="創世記" data-en="Genesis">創世記</option>
+                    <option value="征服" data-ja="征服" data-en="Conquest">征服</option>
+                    <option value="王国" data-ja="王国" data-en="Kings">王国</option>
+                    <option value="キリスト" data-ja="キリスト" data-en="Christ">キリスト</option>
+                </select>
+            </div>
+            <label style="display:flex; align-items:center; gap:8px; margin-bottom:16px; color:#5d3a1a; cursor:pointer; font-size:0.95em;">
+                <input type="checkbox" id="stats-timeattack" style="width:18px; height:18px; accent-color:#fbc531;">
+                <span data-ja="タイムアタックのみ" data-en="Time Attack only">タイムアタックのみ</span>
+            </label>
+            <div id="stats-content" style="min-height:80px;"></div>
+            <button class="btn" onclick="closeStatsModal()" style="margin-top:16px; width:100%;"
+                data-ja="閉じる" data-en="Close">閉じる</button>
+        </div>
+    </div>
+
+    <!-- ホーム確認モーダル -->
+    <div id="modal-home-confirm" class="hidden" style="
+        position:fixed; inset:0; background:rgba(0,0,0,0.6);
+        display:flex; align-items:center; justify-content:center; z-index:9999;">
+        <div style="background:#fff8ee; padding:32px 24px; border-radius:16px;
+            text-align:center; max-width:320px; width:88%; box-shadow:0 4px 20px rgba(0,0,0,0.25);">
+            <div style="font-size:1.8em; margin-bottom:12px;">🏠</div>
+            <div style="font-weight:bold; font-size:1.0em; margin-bottom:20px; color:#5d3a1a; line-height:1.7;">
+                <span data-ja="ゲームを中断しますか？" data-en="Quit the game?">ゲームを中断しますか？</span><br>
+                <span data-ja="記録は失敗となります。" data-en="This will be recorded as a failure.">記録は失敗となります。</span>
+            </div>
+            <div style="display:flex; gap:12px; justify-content:center;">
+                <button class="btn" id="homeConfirmYes" data-ja="中断する" data-en="Quit">中断する</button>
+                <button class="btn btn-sub" id="homeConfirmNo" data-ja="戻る" data-en="Back">戻る</button>
+            </div>
+        </div>
+    </div>
+
     <div class="ad-outside">
         <div style="text-align:center; font-weight:bold; color:#8b5e3c;">Ad space</div>
     </div>
@@ -189,6 +248,10 @@
         let currentLevel = 1;
         /* ヒント表示回数カウント（広告表示頻度制御用） */
         let hintDisplayCount = 0;
+        /* 成績記録用フラグ */
+        let hintUsed = false;
+        let timedOut = false;
+        let isRetry = false;
 
         const refMap = {
             "Gen": "創", "Exo": "出", "Lev": "レビ", "Num": "民", "Deut": "申",
@@ -321,6 +384,10 @@
         }
 
         function startGame() {
+            hintUsed = false;
+            timedOut = false;
+            isRetry = false;
+
             const s = parseInt(document.getElementById('select-start').value);
             const e = parseInt(document.getElementById('select-end').value);
             const count = parseInt(document.getElementById('count-select').value);
@@ -352,6 +419,7 @@
                     updateTimerDisplay();
                     if (timeLeft <= 0) {
                         clearInterval(timerInterval);
+                        timedOut = true;
                         alert(currentLang === 'ja' ? "時間切れ！" : "Time's Up!");
                         checkOrder();
                     }
@@ -891,6 +959,8 @@
 
             const isWin = (userIds.length > 0) && arraysEqual(userIds, correctIds);
 
+            saveRecord(isWin);
+
             if (isWin) {
                 const fire = (typeof confetti === 'function') ? confetti : (window.confetti || null);
                 if (fire) {
@@ -1000,6 +1070,164 @@
             }
         }
 
+        // ===== 成績記録 =====
+
+        function getPeriodLabel() {
+            const s = parseInt(document.getElementById('select-start').value);
+            const e = parseInt(document.getElementById('select-end').value);
+            if (s === -4026 && e === 98) return '全期間';
+            if (s === -4026 && e === -1513) return '創世記';
+            if (s === -1513 && e === -1070) return '征服';
+            if (s === -1070 && e === -280) return '王国';
+            if (s === -2 && e === 98) return 'キリスト';
+            return '全期間';
+        }
+
+        async function saveRecord(isWin) {
+            try {
+                const user = firebase.auth().currentUser;
+                if (!user) return;
+                const db = firebase.firestore();
+                await db.collection('users').doc(user.uid).collection('records').add({
+                    level: currentLevel,
+                    period: getPeriodLabel(),
+                    count: parseInt(document.getElementById('count-select').value),
+                    timeAttack: document.getElementById('time-attack-select').value === 'on',
+                    hintUsed: hintUsed,
+                    timedOut: timedOut,
+                    retired: false,
+                    isRetry: isRetry,
+                    success: isWin,
+                    playedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            } catch (err) {
+                console.error('saveRecord:', err);
+            }
+        }
+
+        async function saveRetiredRecord() {
+            try {
+                const user = firebase.auth().currentUser;
+                if (!user) return;
+                const db = firebase.firestore();
+                await db.collection('users').doc(user.uid).collection('records').add({
+                    level: currentLevel,
+                    period: getPeriodLabel(),
+                    count: parseInt(document.getElementById('count-select').value),
+                    timeAttack: document.getElementById('time-attack-select').value === 'on',
+                    hintUsed: hintUsed,
+                    timedOut: false,
+                    retired: true,
+                    isRetry: isRetry,
+                    success: false,
+                    playedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            } catch (err) {
+                console.error('saveRetiredRecord:', err);
+            }
+        }
+
+        // ===== 成績モーダル =====
+
+        function openStatsModal() {
+            const modal = document.getElementById('modal-stats');
+            modal.classList.remove('hidden');
+            document.querySelectorAll('#modal-stats [data-ja]').forEach(el => {
+                el.innerText = el.getAttribute('data-' + currentLang);
+            });
+            loadStats();
+        }
+
+        function closeStatsModal() {
+            document.getElementById('modal-stats').classList.add('hidden');
+        }
+
+        async function loadStats() {
+            const statsContent = document.getElementById('stats-content');
+            const user = firebase.auth().currentUser;
+
+            if (!user) {
+                statsContent.innerHTML = currentLang === 'ja'
+                    ? '<div style="text-align:center;color:#8b5e3c;padding:20px 0;">ログインして成績を確認できます</div>'
+                    : '<div style="text-align:center;color:#8b5e3c;padding:20px 0;">Sign in to view your stats</div>';
+                return;
+            }
+
+            statsContent.innerHTML = `<div style="text-align:center;color:#8b5e3c;padding:20px 0;">${currentLang === 'ja' ? '読み込み中...' : 'Loading...'}</div>`;
+
+            try {
+                const level = parseInt(document.getElementById('stats-level').value);
+                const period = document.getElementById('stats-period').value;
+                const timeAttackOnly = document.getElementById('stats-timeattack').checked;
+
+                const db = firebase.firestore();
+                const snapshot = await db.collection('users').doc(user.uid).collection('records')
+                    .where('level', '==', level)
+                    .where('period', '==', period)
+                    .where('timeAttack', '==', timeAttackOnly)
+                    .get();
+
+                const records = snapshot.docs.map(d => d.data());
+                const counts = [3, 5, 8, 12, 20];
+                const ja = currentLang === 'ja';
+
+                const countLabel = c => {
+                    const labels = { 3: ja ? '3問' : '3', 5: ja ? '5問' : '5', 8: ja ? '8問' : '8', 12: ja ? '12問' : '12', 20: ja ? '20問 ⚡' : '20 ⚡' };
+                    return labels[c] || c;
+                };
+
+                let html = '<table style="width:100%;border-collapse:collapse;color:#5d3a1a;font-size:0.9em;">';
+
+                if (timeAttackOnly) {
+                    html += `<tr style="background:#fbc531;font-weight:bold;">
+                        <td style="padding:8px 6px;">${ja ? '問題数' : 'Count'}</td>
+                        <td style="padding:8px 4px;text-align:center;">${ja ? '成功' : 'Win'}</td>
+                        <td style="padding:8px 4px;text-align:center;">${ja ? '時間切れ' : 'Timeout'}</td>
+                        <td style="padding:8px 4px;text-align:center;">${ja ? 'ヒント' : 'Hint'}</td>
+                    </tr>`;
+                    counts.forEach((c, i) => {
+                        const recs = records.filter(r => r.count === c);
+                        const win = recs.filter(r => r.success && !r.hintUsed && !r.timedOut && !r.retired).length;
+                        const tout = recs.filter(r => r.timedOut).length;
+                        const hint = recs.filter(r => r.hintUsed && !r.timedOut).length;
+                        const bg = i % 2 === 0 ? '#fff9e6' : '#fff5d7';
+                        html += `<tr style="background:${bg};">
+                            <td style="padding:8px 6px;font-weight:bold;">${countLabel(c)}</td>
+                            <td style="padding:8px 4px;text-align:center;color:${win > 0 ? '#27ae60' : '#bbb'};font-weight:bold;">${win}</td>
+                            <td style="padding:8px 4px;text-align:center;color:${tout > 0 ? '#d63031' : '#bbb'};">${tout}</td>
+                            <td style="padding:8px 4px;text-align:center;color:${hint > 0 ? '#e67e22' : '#bbb'};">${hint}</td>
+                        </tr>`;
+                    });
+                } else {
+                    html += `<tr style="background:#fbc531;font-weight:bold;">
+                        <td style="padding:8px 6px;">${ja ? '問題数' : 'Count'}</td>
+                        <td style="padding:8px 6px;text-align:center;">${ja ? '成功' : 'Win'}</td>
+                        <td style="padding:8px 6px;text-align:center;">${ja ? '失敗' : 'Fail'}</td>
+                    </tr>`;
+                    counts.forEach((c, i) => {
+                        const recs = records.filter(r => r.count === c);
+                        const win = recs.filter(r => r.success && !r.hintUsed && !r.retired).length;
+                        const fail = recs.filter(r => !r.success || r.hintUsed || r.retired).length;
+                        const bg = i % 2 === 0 ? '#fff9e6' : '#fff5d7';
+                        html += `<tr style="background:${bg};">
+                            <td style="padding:8px 6px;font-weight:bold;">${countLabel(c)}</td>
+                            <td style="padding:8px 6px;text-align:center;color:${win > 0 ? '#27ae60' : '#bbb'};font-weight:bold;">${win}</td>
+                            <td style="padding:8px 6px;text-align:center;color:${fail > 0 ? '#d63031' : '#bbb'};">${fail}</td>
+                        </tr>`;
+                    });
+                }
+
+                html += '</table>';
+                const total = records.length;
+                html += `<div style="text-align:right;color:#8b5e3c;font-size:0.82em;margin-top:8px;">${ja ? `合計: ${total}回` : `Total: ${total} plays`}</div>`;
+                statsContent.innerHTML = html;
+
+            } catch (err) {
+                console.error('loadStats:', err);
+                statsContent.innerHTML = `<div style="text-align:center;color:#d63031;padding:16px 0;">${currentLang === 'ja' ? 'エラーが発生しました' : 'An error occurred'}</div>`;
+            }
+        }
+
         // ===== 記事モーダル関連（削除済み） =====
 
         function testResultScreen() {
@@ -1054,6 +1282,10 @@
         }
 
         function retryThisTask() {
+            isRetry = true;
+            hintUsed = false;
+            timedOut = false;
+
             document.getElementById('hint-area').classList.add('hidden');
             renderGame(false);
             switchScreen('screen-game');
@@ -1069,6 +1301,7 @@
                     updateTimerDisplay();
                     if (timeLeft <= 0) {
                         clearInterval(timerInterval);
+                        timedOut = true;
                         alert(currentLang === 'ja' ? "時間切れ！" : "Time's Up!");
                         checkOrder();
                     }
@@ -1077,6 +1310,7 @@
         }
 
         function showHint() {
+            hintUsed = true;
             hintDisplayCount++;
 
             // 3回に1回広告を表示
@@ -1226,9 +1460,34 @@
             if (homeBtn) {
                 homeBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    // ルートに戻す
-                    location.href = '/';
+                    if (!document.getElementById('screen-game').classList.contains('hidden')) {
+                        document.getElementById('modal-home-confirm').classList.remove('hidden');
+                    } else {
+                        location.href = '/';
+                    }
                 });
+            }
+
+            // --- HOME CONFIRM MODAL ---
+            document.getElementById('homeConfirmYes').addEventListener('click', async () => {
+                document.getElementById('modal-home-confirm').classList.add('hidden');
+                await saveRetiredRecord();
+                location.href = '/';
+            });
+            document.getElementById('homeConfirmNo').addEventListener('click', () => {
+                document.getElementById('modal-home-confirm').classList.add('hidden');
+            });
+
+            // --- STATS MODAL FILTER HANDLERS ---
+            ['stats-level', 'stats-period', 'stats-timeattack'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener('change', loadStats);
+            });
+
+            // --- URL ?stats でデバッグ用に成績モーダルを直接開く ---
+            if (new URLSearchParams(location.search).has('stats')) {
+                // イベント読み込み完了後に開く
+                window.addEventListener('load', () => setTimeout(openStatsModal, 300));
             }
 
             // --- LANG（確実版）---
