@@ -433,6 +433,7 @@
 
             renderGame(true);
             switchScreen('screen-game');
+            saveInProgress();
         }
 
         function updateTimerDisplay() {
@@ -963,6 +964,7 @@
             const isWin = (userIds.length > 0) && arraysEqual(userIds, correctIds);
 
             saveRecord(isWin);
+            deleteInProgress();
 
             if (isWin) {
                 const fire = (typeof confetti === 'function') ? confetti : (window.confetti || null);
@@ -1070,6 +1072,71 @@
             } else {
                 const wrap = document.getElementById("result-events");
                 if (wrap) wrap.innerHTML = "";      // 残念時は表示しない
+            }
+        }
+
+        // ===== 進行中フラグ管理（リロード不正対策） =====
+
+        async function saveInProgress() {
+            try {
+                const user = firebase.auth().currentUser;
+                if (!user) return;
+                const db = firebase.firestore();
+                await db.collection('users').doc(user.uid).set({
+                    inProgress: {
+                        level: currentLevel,
+                        period: getPeriodLabel(),
+                        count: parseInt(document.getElementById('count-select').value),
+                        timeAttack: document.getElementById('time-attack-select').value === 'on',
+                        startTime: firebase.firestore.FieldValue.serverTimestamp()
+                    }
+                }, { merge: true });
+            } catch (err) {
+                console.error('saveInProgress:', err);
+            }
+        }
+
+        async function deleteInProgress() {
+            try {
+                const user = firebase.auth().currentUser;
+                if (!user) return;
+                const db = firebase.firestore();
+                await db.collection('users').doc(user.uid).update({
+                    inProgress: firebase.firestore.FieldValue.delete()
+                });
+            } catch (err) {
+                console.error('deleteInProgress:', err);
+            }
+        }
+
+        async function checkAndHandleInProgress() {
+            try {
+                const user = firebase.auth().currentUser;
+                if (!user) return;
+                const db = firebase.firestore();
+                const doc = await db.collection('users').doc(user.uid).get();
+                const data = doc.data();
+                if (!data || !data.inProgress) return;
+
+                const ip = data.inProgress;
+                await db.collection('users').doc(user.uid).collection('records').add({
+                    level: ip.level ?? 1,
+                    period: ip.period ?? '全期間',
+                    count: ip.count ?? 5,
+                    timeAttack: ip.timeAttack ?? false,
+                    hintUsed: false,
+                    timedOut: false,
+                    retired: false,
+                    isRetry: false,
+                    reloadAbort: true,
+                    success: false,
+                    playedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                await db.collection('users').doc(user.uid).update({
+                    inProgress: firebase.firestore.FieldValue.delete()
+                });
+            } catch (err) {
+                console.error('checkAndHandleInProgress:', err);
             }
         }
 
@@ -1475,6 +1542,7 @@
             document.getElementById('homeConfirmYes').addEventListener('click', async () => {
                 document.getElementById('modal-home-confirm').classList.add('hidden');
                 await saveRetiredRecord();
+                await deleteInProgress();
                 location.href = '/';
             });
             document.getElementById('homeConfirmNo').addEventListener('click', () => {
@@ -1605,7 +1673,14 @@
             firebase.initializeApp(firebaseConfig);
             const auth = firebase.auth();
 
-            auth.onAuthStateChanged(updateAuthUI);
+            let _inProgressChecked = false;
+            auth.onAuthStateChanged(async (user) => {
+                updateAuthUI(user);
+                if (user && !_inProgressChecked) {
+                    _inProgressChecked = true;
+                    await checkAndHandleInProgress();
+                }
+            });
 
             window.handleAuthClick = function () {
                 if (auth.currentUser) {
