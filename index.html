@@ -249,6 +249,8 @@
         let lastHintWasEmpty = null;
         /* レベル選択 */
         let currentLevel = 1;
+        /* 管理者フラグ（Firestoreの /admin-users/{uid} から動的に判定） */
+        let isAdmin = false;
         /* ヒント表示回数カウント（広告表示頻度制御用） */
         let hintDisplayCount = 0;
         /* 成績記録用フラグ */
@@ -373,8 +375,7 @@
         }
 
         function selectLevel(level) {
-            if (level === 5) {
-                // レベル5はComing Soon モーダルを表示
+            if (level === 5 && !isAdmin) {
                 document.getElementById('modal-level5').classList.remove('hidden');
                 return;
             }
@@ -1272,7 +1273,7 @@
                     html += `<tr style="background:#fbc531;font-weight:bold;">
                         <td style="padding:8px 6px;">${ja ? '問題数' : 'Count'}</td>
                         <td style="padding:8px 6px;text-align:center;">${ja ? '成功' : 'Win'}</td>
-                        <td style="padding:8px 6px;text-align:center;">${ja ? '失敗' : 'Fail'}</td>
+                        <td style="padding:8px 6px;text-align:center;">${ja ? 'ヒント/失敗' : 'Hint/Fail'}</td>
                     </tr>`;
                     counts.forEach((c, i) => {
                         const recs = records.filter(r => r.count === c);
@@ -1659,6 +1660,19 @@
                 document.body.insertAdjacentHTML('beforeend', html);
             });
 
+        // ===== 管理者チェック =====
+
+        async function checkAdminStatus(user) {
+            try {
+                const db = firebase.firestore();
+                const doc = await db.collection('admin-users').doc(user.uid).get();
+                isAdmin = doc.exists && doc.data()?.isAdmin === true;
+            } catch (err) {
+                isAdmin = false;
+                console.error('checkAdminStatus:', err);
+            }
+        }
+
         // ===== Firebase Auth =====
         (function () {
             const firebaseConfig = {
@@ -1676,9 +1690,14 @@
             let _inProgressChecked = false;
             auth.onAuthStateChanged(async (user) => {
                 updateAuthUI(user);
-                if (user && !_inProgressChecked) {
-                    _inProgressChecked = true;
-                    await checkAndHandleInProgress();
+                if (user) {
+                    if (!_inProgressChecked) {
+                        _inProgressChecked = true;
+                        await checkAndHandleInProgress();
+                    }
+                    await checkAdminStatus(user);
+                } else {
+                    isAdmin = false;
                 }
             });
 
