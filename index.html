@@ -257,6 +257,8 @@
         let hintUsed = false;
         let timedOut = false;
         let isRetry = false;
+        /* 1ゲーム1レコード管理（同じゲーム内の2回目以降は update で上書き） */
+        let currentGameRecordRef = null;
 
         const refMap = {
             "Gen": "創", "Exo": "出", "Lev": "レビ", "Num": "民", "Deut": "申",
@@ -391,6 +393,7 @@
             hintUsed = false;
             timedOut = false;
             isRetry = false;
+            currentGameRecordRef = null;
 
             const s = parseInt(document.getElementById('select-start').value);
             const e = parseInt(document.getElementById('select-end').value);
@@ -1159,7 +1162,7 @@
                 const user = firebase.auth().currentUser;
                 if (!user) return;
                 const db = firebase.firestore();
-                await db.collection('users').doc(user.uid).collection('records').add({
+                const data = {
                     level: currentLevel,
                     period: getPeriodLabel(),
                     count: parseInt(document.getElementById('count-select').value),
@@ -1170,7 +1173,12 @@
                     isRetry: isRetry,
                     success: isWin,
                     playedAt: firebase.firestore.FieldValue.serverTimestamp()
-                });
+                };
+                if (currentGameRecordRef) {
+                    await currentGameRecordRef.update(data);
+                } else {
+                    currentGameRecordRef = await db.collection('users').doc(user.uid).collection('records').add(data);
+                }
             } catch (err) {
                 console.error('saveRecord:', err);
             }
@@ -1354,7 +1362,6 @@
 
         function retryThisTask() {
             isRetry = true;
-            hintUsed = false;
             timedOut = false;
 
             document.getElementById('hint-area').classList.add('hidden');
