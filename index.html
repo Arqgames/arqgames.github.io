@@ -117,13 +117,16 @@
                         data-en="End">終了</span><select id="select-end"></select></div>
             </div>
 
-            <select id="count-select" style="width:100%; margin-top:15px;">
-                <option value="3" data-ja="3問 【初級】" data-en="3 Events [Easy]">3問 【初級】</option>
-                <option value="5" selected data-ja="5問 【ノーマル】" data-en="5 Events [Normal]">5問 【ノーマル】</option>
-                <option value="8" data-ja="8問 【ハード】" data-en="8 Events [Hard]">8問 【ハード】</option>
-                <option value="12" data-ja="12問 【レジェンド】" data-en="12 Events [Legend]">12問 【レジェンド】</option>
-                <option value="20" data-ja="20問 【ゴッド】" data-en="20 Events [God Mode]">20問 【ゴッド】</option>
-            </select>
+            <div style="margin-top:15px;">
+                <div style="font-size:0.85em; font-weight:bold; color:#5d3a1a; margin-bottom:6px; text-align:center;" data-ja="問題数" data-en="Events">問題数</div>
+                <div class="level-btn-container" id="count-btn-container">
+                    <button type="button" class="level-btn" onclick="selectCount(3)">3</button>
+                    <button type="button" class="level-btn active" onclick="selectCount(5)">5</button>
+                    <button type="button" class="level-btn" onclick="selectCount(8)">8</button>
+                    <button type="button" class="level-btn" onclick="selectCount(12)">12</button>
+                    <button type="button" class="level-btn" onclick="selectCount(20)">20</button>
+                </div>
+            </div>
             <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-top:10px;">
                 <span style="font-weight:bold; color:#5d3a1a; font-size:1em;" data-ja="タイムアタック" data-en="Time Attack">タイムアタック</span>
                 <div style="display:flex; gap:6px;">
@@ -280,6 +283,7 @@
         let timedOut = false;
         let isRetry = false;
         let timeAttackOn = false;
+        let selectedCount = 5;
         /* 1ゲーム1レコード管理（同じゲーム内の2回目以降は update で上書き） */
         let currentGameRecordRef = null;
         /* レベル5解放フラグ・進捗キャッシュ */
@@ -411,6 +415,13 @@
             document.getElementById('error-msg').innerText = "";
         }
 
+        function selectCount(n) {
+            selectedCount = n;
+            document.querySelectorAll('#count-btn-container .level-btn').forEach(btn => {
+                btn.classList.toggle('active', parseInt(btn.textContent) === n);
+            });
+        }
+
         function setTimeAttack(isOn) {
             timeAttackOn = isOn;
             document.getElementById('ta-btn-on').classList.toggle('active', isOn);
@@ -438,7 +449,7 @@
 
             const s = parseInt(document.getElementById('select-start').value);
             const e = parseInt(document.getElementById('select-end').value);
-            const count = parseInt(document.getElementById('count-select').value);
+            const count = selectedCount;
 
             let filtered = EVENTS.filter(ev =>
                 ev.year >= s &&
@@ -1012,7 +1023,7 @@
             deleteInProgress();
 
             if (isWin) {
-                const count = parseInt(document.getElementById('count-select').value);
+                const count = selectedCount;
                 const isTA = timeAttackOn;
                 if (!isAdmin && currentLevel === 4 && count === 20 && isTA && !hintUsed) {
                     updateLevel5Progress();
@@ -1136,7 +1147,7 @@
                     inProgress: {
                         level: currentLevel,
                         period: getPeriodLabel(),
-                        count: parseInt(document.getElementById('count-select').value),
+                        count: selectedCount,
                         timeAttack: timeAttackOn,
                         startTime: firebase.firestore.FieldValue.serverTimestamp()
                     }
@@ -1211,7 +1222,7 @@
                 const data = {
                     level: currentLevel,
                     period: getPeriodLabel(),
-                    count: parseInt(document.getElementById('count-select').value),
+                    count: selectedCount,
                     timeAttack: timeAttackOn,
                     hintUsed: hintUsed,
                     timedOut: timedOut,
@@ -1238,7 +1249,7 @@
                 await db.collection('users').doc(user.uid).collection('records').add({
                     level: currentLevel,
                     period: getPeriodLabel(),
-                    count: parseInt(document.getElementById('count-select').value),
+                    count: selectedCount,
                     timeAttack: timeAttackOn,
                     hintUsed: hintUsed,
                     timedOut: false,
@@ -1398,7 +1409,7 @@
 
             const isTimeAttack = timeAttackOn;
             if (isTimeAttack) {
-                const count = parseInt(document.getElementById('count-select').value);
+                const count = selectedCount;
                 timeLeft = count * 8;
                 updateTimerDisplay();
                 clearInterval(timerInterval);
