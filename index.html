@@ -270,8 +270,9 @@
         let isRetry = false;
         /* 1ゲーム1レコード管理（同じゲーム内の2回目以降は update で上書き） */
         let currentGameRecordRef = null;
-        /* レベル5解放フラグ */
+        /* レベル5解放フラグ・進捗キャッシュ */
         let level5Unlocked = false;
+        let cachedProgress = {};
 
         const refMap = {
             "Gen": "創", "Exo": "出", "Lev": "レビ", "Num": "民", "Deut": "申",
@@ -1715,8 +1716,10 @@
                 const doc = await db.collection('users').doc(user.uid).get();
                 const progress = doc.data()?.progress || {};
                 level5Unlocked = progress.level5Unlocked === true;
+                cachedProgress = progress;
             } catch (err) {
                 level5Unlocked = false;
+                cachedProgress = {};
                 console.error('checkProgressStatus:', err);
             }
         }
@@ -1739,17 +1742,15 @@
                 if ((progress[fieldKey] || 0) >= LEVEL5_GOAL) return;
 
                 const newCount = (progress[fieldKey] || 0) + 1;
-                const updateData = { [`progress.${fieldKey}`]: newCount };
-
                 const allDone = Object.values(PERIOD_FIELD_MAP).every(f =>
                     (f === fieldKey ? newCount : (progress[f] || 0)) >= LEVEL5_GOAL
                 );
 
-                if (allDone) {
-                    updateData['progress.level5Unlocked'] = true;
-                }
+                const newProgress = { ...progress, [fieldKey]: newCount };
+                if (allDone) newProgress.level5Unlocked = true;
 
-                await docRef.update(updateData);
+                await docRef.set({ progress: newProgress }, { merge: true });
+                cachedProgress = newProgress;
 
                 if (allDone) {
                     level5Unlocked = true;
@@ -1791,7 +1792,7 @@
             }
         }
 
-        async function loadProgressContent() {
+        function loadProgressContent() {
             const user = firebase.auth().currentUser;
             const container = document.getElementById('stats-progress-content');
             const ja = currentLang === 'ja';
@@ -1801,59 +1802,50 @@
                 return;
             }
 
-            container.innerHTML = `<div style="text-align:center;color:#8b5e3c;padding:20px 0;">${ja ? '読み込み中...' : 'Loading...'}</div>`;
-
-            try {
-                const db = firebase.firestore();
-                const doc = await db.collection('users').doc(user.uid).get();
-                const progress = doc.data()?.progress || {};
-
-                if (isAdmin) {
-                    container.innerHTML = `<div style="text-align:center;color:#27ae60;font-weight:bold;padding:20px 0;">${ja ? '管理者権限でレベル5が有効です' : 'Level 5 enabled (Admin)'}</div>`;
-                    return;
-                }
-
-                if (progress.level5Unlocked) {
-                    container.innerHTML = `<div style="text-align:center;color:#27ae60;font-weight:bold;padding:20px 0;font-size:1.1em;">🎉 ${ja ? 'レベル5解放済み！' : 'Level 5 Unlocked!'}</div>`;
-                    return;
-                }
-
-                const conditionText = ja
-                    ? '条件：レベル4 / 20問 / タイムアタック / ヒントなし'
-                    : 'Condition: Level 4 / 20 Events / Time Attack / No Hint';
-
-                const periods = [
-                    { key: 'allPeriods', ja: '全期間',   en: 'All Periods' },
-                    { key: 'genesis',    ja: '創世記',   en: 'Genesis' },
-                    { key: 'conquest',   ja: '征服',     en: 'Conquest' },
-                    { key: 'kingdom',    ja: '王国',     en: 'Kings' },
-                    { key: 'christ',     ja: 'キリスト', en: 'Christ' },
-                ];
-
-                let html = `<div style="font-size:0.82em;color:#8b5e3c;margin-bottom:14px;line-height:1.5;">${conditionText}<br>× ${LEVEL5_GOAL}${ja ? '回' : ' times each'}</div>`;
-
-                periods.forEach(p => {
-                    const count = Math.min(progress[p.key] || 0, LEVEL5_GOAL);
-                    const label = ja ? p.ja : p.en;
-                    const pct = (count / LEVEL5_GOAL) * 100;
-                    const done = count >= LEVEL5_GOAL;
-                    html += `
-                    <div style="margin-bottom:10px;">
-                        <div style="display:flex;justify-content:space-between;font-size:0.88em;color:#5d3a1a;margin-bottom:3px;">
-                            <span>${label}</span>
-                            <span style="font-weight:bold;color:${done ? '#27ae60' : '#5d3a1a'};">${count}/${LEVEL5_GOAL}${done ? ' ✓' : ''}</span>
-                        </div>
-                        <div style="background:#f0e6d0;border-radius:6px;height:10px;overflow:hidden;">
-                            <div style="background:${done ? '#27ae60' : '#fbc531'};height:100%;width:${pct}%;border-radius:6px;"></div>
-                        </div>
-                    </div>`;
-                });
-
-                container.innerHTML = html;
-            } catch (err) {
-                console.error('loadProgressContent:', err);
-                container.innerHTML = `<div style="text-align:center;color:#d63031;padding:16px 0;">${ja ? 'エラーが発生しました' : 'An error occurred'}</div>`;
+            if (isAdmin) {
+                container.innerHTML = `<div style="text-align:center;color:#27ae60;font-weight:bold;padding:20px 0;">${ja ? '管理者権限でレベル5が有効です' : 'Level 5 enabled (Admin)'}</div>`;
+                return;
             }
+
+            const progress = cachedProgress;
+
+            if (progress.level5Unlocked) {
+                container.innerHTML = `<div style="text-align:center;color:#27ae60;font-weight:bold;padding:20px 0;font-size:1.1em;">🎉 ${ja ? 'レベル5解放済み！' : 'Level 5 Unlocked!'}</div>`;
+                return;
+            }
+
+            const conditionText = ja
+                ? '条件：レベル4 / 20問 / タイムアタック / ヒントなし'
+                : 'Condition: Level 4 / 20 Events / Time Attack / No Hint';
+
+            const periods = [
+                { key: 'allPeriods', ja: '全期間',   en: 'All Periods' },
+                { key: 'genesis',    ja: '創世記',   en: 'Genesis' },
+                { key: 'conquest',   ja: '征服',     en: 'Conquest' },
+                { key: 'kingdom',    ja: '王国',     en: 'Kings' },
+                { key: 'christ',     ja: 'キリスト', en: 'Christ' },
+            ];
+
+            let html = `<div style="font-size:0.82em;color:#8b5e3c;margin-bottom:14px;line-height:1.5;">${conditionText}<br>× ${LEVEL5_GOAL}${ja ? '回' : ' times each'}</div>`;
+
+            periods.forEach(p => {
+                const count = Math.min(progress[p.key] || 0, LEVEL5_GOAL);
+                const label = ja ? p.ja : p.en;
+                const pct = (count / LEVEL5_GOAL) * 100;
+                const done = count >= LEVEL5_GOAL;
+                html += `
+                <div style="margin-bottom:10px;">
+                    <div style="display:flex;justify-content:space-between;font-size:0.88em;color:#5d3a1a;margin-bottom:3px;">
+                        <span>${label}</span>
+                        <span style="font-weight:bold;color:${done ? '#27ae60' : '#5d3a1a'};">${count}/${LEVEL5_GOAL}${done ? ' ✓' : ''}</span>
+                    </div>
+                    <div style="background:#f0e6d0;border-radius:6px;height:10px;overflow:hidden;">
+                        <div style="background:${done ? '#27ae60' : '#fbc531'};height:100%;width:${pct}%;border-radius:6px;"></div>
+                    </div>
+                </div>`;
+            });
+
+            container.innerHTML = html;
         }
 
         // ===== Firebase Auth =====
@@ -1883,6 +1875,7 @@
                 } else {
                     isAdmin = false;
                     level5Unlocked = false;
+                    cachedProgress = {};
                 }
             });
 
