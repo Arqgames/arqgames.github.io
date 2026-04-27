@@ -124,11 +124,11 @@
                 <option value="12" data-ja="12問 【レジェンド】" data-en="12 Events [Legend]">12問 【レジェンド】</option>
                 <option value="20" data-ja="20問 【ゴッド】" data-en="20 Events [God Mode]">20問 【ゴッド】</option>
             </select>
-            <div style="display:flex; align-items:center; gap:10px; margin-top:10px;">
+            <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-top:10px;">
                 <span style="font-weight:bold; color:#5d3a1a; font-size:1em;" data-ja="タイムアタック" data-en="Time Attack">タイムアタック</span>
-                <div style="display:flex; gap:6px; margin-left:auto;">
-                    <button type="button" id="ta-btn-off" class="level-btn active" style="padding:8px 20px; font-size:0.95em;" onclick="setTimeAttack(false)">OFF</button>
+                <div style="display:flex; gap:6px;">
                     <button type="button" id="ta-btn-on" class="level-btn" style="padding:8px 20px; font-size:0.95em;" onclick="setTimeAttack(true)">ON</button>
+                    <button type="button" id="ta-btn-off" class="level-btn active" style="padding:8px 20px; font-size:0.95em;" onclick="setTimeAttack(false)">OFF</button>
                 </div>
             </div>
             <div id="error-msg"></div>
