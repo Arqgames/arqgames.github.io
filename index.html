@@ -150,6 +150,11 @@
             <div id="fail-options" class="hidden">
                 <button class="btn" onclick="showHint()" data-ja="ヒント" data-en="Hint">ヒント</button>
                 <button class="btn btn-sub" onclick="retryThisTask()" data-ja="再挑戦" data-en="Retry">再挑戦</button>
+                <p data-ja="（並び順はランダムに変わります。タイムアタックONの場合、時間はリセットされます）"
+                   data-en="(Order randomizes. Timer resets if Time Attack is ON.)"
+                   style="font-size:0.78em; color:#8b5e3c; margin:6px 0 0; line-height:1.5; text-align:center;">
+                    （並び順はランダムに変わります。タイムアタックONの場合、時間はリセットされます）
+                </p>
             </div>
             <div id="success-options" class="hidden">
                 <button class="btn" onclick="location.reload()" data-ja="次へ" data-en="Next">次へ</button>
@@ -1285,44 +1290,26 @@
 
                 let html = '<table style="width:100%;border-collapse:collapse;color:#5d3a1a;font-size:0.9em;">';
 
-                if (timeAttackOnly) {
-                    html += `<tr style="background:#fbc531;font-weight:bold;">
-                        <td style="padding:8px 6px;">${ja ? '問題数' : 'Count'}</td>
-                        <td style="padding:8px 4px;text-align:center;">${ja ? '成功' : 'Win'}</td>
-                        <td style="padding:8px 4px;text-align:center;">${ja ? '時間切れ' : 'Timeout'}</td>
-                        <td style="padding:8px 4px;text-align:center;">${ja ? 'ヒント' : 'Hint'}</td>
+                const col3label = timeAttackOnly ? (ja ? '時間切れ' : 'Timeout') : (ja ? 'リタイア' : 'Retire');
+                html += `<tr style="background:#fbc531;font-weight:bold;">
+                    <td style="padding:8px 6px;">${ja ? '問題数' : 'Count'}</td>
+                    <td style="padding:8px 4px;text-align:center;">${ja ? '成功' : 'Win'}</td>
+                    <td style="padding:8px 4px;text-align:center;">${ja ? 'ヒント・再挑戦' : 'Hint/Retry'}</td>
+                    <td style="padding:8px 4px;text-align:center;">${col3label}</td>
+                </tr>`;
+                counts.forEach((c, i) => {
+                    const recs = records.filter(r => r.count === c);
+                    const win       = recs.filter(r => r.success && !r.hintUsed && !r.isRetry).length;
+                    const hintRetry = recs.filter(r => r.success && (r.hintUsed || r.isRetry)).length;
+                    const fail      = recs.filter(r => !r.success).length;
+                    const bg = i % 2 === 0 ? '#fff9e6' : '#fff5d7';
+                    html += `<tr style="background:${bg};">
+                        <td style="padding:8px 6px;font-weight:bold;">${countLabel(c)}</td>
+                        <td style="padding:8px 4px;text-align:center;color:${win > 0 ? '#27ae60' : '#bbb'};font-weight:bold;">${win}</td>
+                        <td style="padding:8px 4px;text-align:center;color:${hintRetry > 0 ? '#e67e22' : '#bbb'};">${hintRetry}</td>
+                        <td style="padding:8px 4px;text-align:center;color:${fail > 0 ? '#d63031' : '#bbb'};">${fail}</td>
                     </tr>`;
-                    counts.forEach((c, i) => {
-                        const recs = records.filter(r => r.count === c);
-                        const win = recs.filter(r => r.success && !r.hintUsed && !r.timedOut && !r.retired).length;
-                        const tout = recs.filter(r => r.timedOut).length;
-                        const hint = recs.filter(r => r.hintUsed && !r.timedOut).length;
-                        const bg = i % 2 === 0 ? '#fff9e6' : '#fff5d7';
-                        html += `<tr style="background:${bg};">
-                            <td style="padding:8px 6px;font-weight:bold;">${countLabel(c)}</td>
-                            <td style="padding:8px 4px;text-align:center;color:${win > 0 ? '#27ae60' : '#bbb'};font-weight:bold;">${win}</td>
-                            <td style="padding:8px 4px;text-align:center;color:${tout > 0 ? '#d63031' : '#bbb'};">${tout}</td>
-                            <td style="padding:8px 4px;text-align:center;color:${hint > 0 ? '#e67e22' : '#bbb'};">${hint}</td>
-                        </tr>`;
-                    });
-                } else {
-                    html += `<tr style="background:#fbc531;font-weight:bold;">
-                        <td style="padding:8px 6px;">${ja ? '問題数' : 'Count'}</td>
-                        <td style="padding:8px 6px;text-align:center;">${ja ? '成功' : 'Win'}</td>
-                        <td style="padding:8px 6px;text-align:center;">${ja ? 'ヒント/失敗' : 'Hint/Fail'}</td>
-                    </tr>`;
-                    counts.forEach((c, i) => {
-                        const recs = records.filter(r => r.count === c);
-                        const win = recs.filter(r => r.success && !r.hintUsed && !r.retired).length;
-                        const fail = recs.filter(r => !r.success || r.hintUsed || r.retired).length;
-                        const bg = i % 2 === 0 ? '#fff9e6' : '#fff5d7';
-                        html += `<tr style="background:${bg};">
-                            <td style="padding:8px 6px;font-weight:bold;">${countLabel(c)}</td>
-                            <td style="padding:8px 6px;text-align:center;color:${win > 0 ? '#27ae60' : '#bbb'};font-weight:bold;">${win}</td>
-                            <td style="padding:8px 6px;text-align:center;color:${fail > 0 ? '#d63031' : '#bbb'};">${fail}</td>
-                        </tr>`;
-                    });
-                }
+                });
 
                 html += '</table>';
                 const total = records.length;
@@ -1399,7 +1386,7 @@
             const isTimeAttack = document.getElementById('time-attack-select').value === 'on';
             if (isTimeAttack) {
                 const count = parseInt(document.getElementById('count-select').value);
-                timeLeft = count * 15;
+                timeLeft = count * 8;
                 updateTimerDisplay();
                 clearInterval(timerInterval);
                 timerInterval = setInterval(() => {
