@@ -181,33 +181,44 @@
         <div style="background:#fff8ee; padding:24px 20px; border-radius:16px;
             max-width:400px; width:92%; box-shadow:0 4px 20px rgba(0,0,0,0.25);
             max-height:85vh; overflow-y:auto; box-sizing:border-box;">
-            <h2 style="color:#5d3a1a; margin:0 0 16px; text-align:center; font-size:1.2em;">
+            <h2 style="color:#5d3a1a; margin:0 0 12px; text-align:center; font-size:1.2em;">
                 <span data-ja="成績" data-en="Stats">成績</span>
             </h2>
-            <div style="display:flex; gap:8px; margin-bottom:12px;">
-                <select id="stats-level"
-                    style="flex:1; padding:8px; border-radius:8px; border:2px solid #fbc531; background:#fff; color:#5d3a1a; font-size:0.9em;">
-                    <option value="1" data-ja="レベル 1" data-en="Level 1">レベル 1</option>
-                    <option value="2" data-ja="レベル 2" data-en="Level 2">レベル 2</option>
-                    <option value="3" data-ja="レベル 3" data-en="Level 3">レベル 3</option>
-                    <option value="4" data-ja="レベル 4" data-en="Level 4">レベル 4</option>
-                    <option value="5" data-ja="レベル 5" data-en="Level 5">レベル 5</option>
-                </select>
-                <select id="stats-period"
-                    style="flex:1.5; padding:8px; border-radius:8px; border:2px solid #fbc531; background:#fff; color:#5d3a1a; font-size:0.9em;">
-                    <option value="全期間" data-ja="全期間" data-en="All Periods">全期間</option>
-                    <option value="創世記" data-ja="創世記" data-en="Genesis">創世記</option>
-                    <option value="征服" data-ja="征服" data-en="Conquest">征服</option>
-                    <option value="王国" data-ja="王国" data-en="Kings">王国</option>
-                    <option value="キリスト" data-ja="キリスト" data-en="Christ">キリスト</option>
-                </select>
+            <div style="display:flex; margin-bottom:12px; border-radius:8px; overflow:hidden; border:2px solid #fbc531;">
+                <button id="tab-btn-stats" onclick="switchStatsTab('stats')"
+                    style="flex:1; padding:8px; background:#fbc531; border:none; color:#5d3a1a; font-weight:bold; cursor:pointer; font-size:0.9em;"
+                    data-ja="成績" data-en="Stats">成績</button>
+                <button id="tab-btn-progress" onclick="switchStatsTab('progress')"
+                    style="flex:1; padding:8px; background:#fff; border:none; color:#8b5e3c; cursor:pointer; font-size:0.9em;"
+                    data-ja="解放進捗" data-en="Unlock Progress">解放進捗</button>
             </div>
-            <label
-                style="display:flex; align-items:center; gap:8px; margin-bottom:16px; color:#5d3a1a; cursor:pointer; font-size:0.95em;">
-                <input type="checkbox" id="stats-timeattack" style="width:18px; height:18px; accent-color:#fbc531;">
-                <span data-ja="タイムアタック" data-en="Time Attack">タイムアタック</span>
-            </label>
+            <div id="stats-filter-area">
+                <div style="display:flex; gap:8px; margin-bottom:12px;">
+                    <select id="stats-level"
+                        style="flex:1; padding:8px; border-radius:8px; border:2px solid #fbc531; background:#fff; color:#5d3a1a; font-size:0.9em;">
+                        <option value="1" data-ja="レベル 1" data-en="Level 1">レベル 1</option>
+                        <option value="2" data-ja="レベル 2" data-en="Level 2">レベル 2</option>
+                        <option value="3" data-ja="レベル 3" data-en="Level 3">レベル 3</option>
+                        <option value="4" data-ja="レベル 4" data-en="Level 4">レベル 4</option>
+                        <option value="5" data-ja="レベル 5" data-en="Level 5">レベル 5</option>
+                    </select>
+                    <select id="stats-period"
+                        style="flex:1.5; padding:8px; border-radius:8px; border:2px solid #fbc531; background:#fff; color:#5d3a1a; font-size:0.9em;">
+                        <option value="全期間" data-ja="全期間" data-en="All Periods">全期間</option>
+                        <option value="創世記" data-ja="創世記" data-en="Genesis">創世記</option>
+                        <option value="征服" data-ja="征服" data-en="Conquest">征服</option>
+                        <option value="王国" data-ja="王国" data-en="Kings">王国</option>
+                        <option value="キリスト" data-ja="キリスト" data-en="Christ">キリスト</option>
+                    </select>
+                </div>
+                <label
+                    style="display:flex; align-items:center; gap:8px; margin-bottom:16px; color:#5d3a1a; cursor:pointer; font-size:0.95em;">
+                    <input type="checkbox" id="stats-timeattack" style="width:18px; height:18px; accent-color:#fbc531;">
+                    <span data-ja="タイムアタック" data-en="Time Attack">タイムアタック</span>
+                </label>
+            </div>
             <div id="stats-content" style="min-height:80px;"></div>
+            <div id="stats-progress-content" class="hidden" style="min-height:80px;"></div>
             <button class="btn" onclick="closeStatsModal()" style="margin-top:16px; width:100%;" data-ja="閉じる"
                 data-en="Close">閉じる</button>
         </div>
@@ -259,6 +270,8 @@
         let isRetry = false;
         /* 1ゲーム1レコード管理（同じゲーム内の2回目以降は update で上書き） */
         let currentGameRecordRef = null;
+        /* レベル5解放フラグ */
+        let level5Unlocked = false;
 
         const refMap = {
             "Gen": "創", "Exo": "出", "Lev": "レビ", "Num": "民", "Deut": "申",
@@ -274,6 +287,15 @@
             "1Pet": "ペテ一", "2Pet": "ペテ二", "1John": "ヨハ一", "2John": "ヨハ二", "3John": "ヨハ三",
             "Jude": "ユダ", "Rev": "啓"
         };
+
+        const PERIOD_FIELD_MAP = {
+            '全期間': 'allPeriods',
+            '創世記': 'genesis',
+            '征服': 'conquest',
+            '王国': 'kingdom',
+            'キリスト': 'christ'
+        };
+        const LEVEL5_GOAL = 20;
 
         function formatRef(ref) {
             if (currentLang === 'en') return ref;
@@ -377,7 +399,7 @@
         }
 
         function selectLevel(level) {
-            if (level === 5 && !isAdmin) {
+            if (level === 5 && !isAdmin && !level5Unlocked) {
                 document.getElementById('modal-level5').classList.remove('hidden');
                 return;
             }
@@ -971,6 +993,11 @@
             deleteInProgress();
 
             if (isWin) {
+                const count = parseInt(document.getElementById('count-select').value);
+                const isTA = document.getElementById('time-attack-select').value === 'on';
+                if (!isAdmin && currentLevel === 4 && count === 20 && isTA && !hintUsed) {
+                    updateLevel5Progress();
+                }
                 const fire = (typeof confetti === 'function') ? confetti : (window.confetti || null);
                 if (fire) {
                     fire({ particleCount: 150, spread: 70, origin: { x: 0.5, y: 0.5 } });
@@ -1214,7 +1241,7 @@
             document.querySelectorAll('#modal-stats [data-ja]').forEach(el => {
                 el.innerText = el.getAttribute('data-' + currentLang);
             });
-            loadStats();
+            switchStatsTab('stats');
         }
 
         function closeStatsModal() {
@@ -1680,6 +1707,155 @@
             }
         }
 
+        // ===== レベル5解放進捗 =====
+
+        async function checkProgressStatus(user) {
+            try {
+                const db = firebase.firestore();
+                const doc = await db.collection('users').doc(user.uid).get();
+                const progress = doc.data()?.progress || {};
+                level5Unlocked = progress.level5Unlocked === true;
+            } catch (err) {
+                level5Unlocked = false;
+                console.error('checkProgressStatus:', err);
+            }
+        }
+
+        async function updateLevel5Progress() {
+            const user = firebase.auth().currentUser;
+            if (!user) return;
+
+            const period = getPeriodLabel();
+            const fieldKey = PERIOD_FIELD_MAP[period];
+            if (!fieldKey) return;
+
+            const db = firebase.firestore();
+            const docRef = db.collection('users').doc(user.uid);
+
+            try {
+                const doc = await docRef.get();
+                const progress = doc.data()?.progress || {};
+
+                if ((progress[fieldKey] || 0) >= LEVEL5_GOAL) return;
+
+                const newCount = (progress[fieldKey] || 0) + 1;
+                const updateData = { [`progress.${fieldKey}`]: newCount };
+
+                const allDone = Object.values(PERIOD_FIELD_MAP).every(f =>
+                    (f === fieldKey ? newCount : (progress[f] || 0)) >= LEVEL5_GOAL
+                );
+
+                if (allDone) {
+                    updateData['progress.level5Unlocked'] = true;
+                }
+
+                await docRef.update(updateData);
+
+                if (allDone) {
+                    level5Unlocked = true;
+                    showLevel5UnlockNotification();
+                }
+            } catch (err) {
+                console.error('updateLevel5Progress:', err);
+            }
+        }
+
+        function showLevel5UnlockNotification() {
+            const fire = (typeof confetti === 'function') ? confetti : (window.confetti || null);
+            if (fire) fire({ particleCount: 250, spread: 100, origin: { x: 0.5, y: 0.3 } });
+            const msg = currentLang === 'ja'
+                ? '🎉 レベル5が解放されました！'
+                : '🎉 Level 5 Unlocked!';
+            setTimeout(() => alert(msg), 600);
+        }
+
+        function switchStatsTab(tab) {
+            const isStats = tab === 'stats';
+            document.getElementById('stats-filter-area').classList.toggle('hidden', !isStats);
+            document.getElementById('stats-content').classList.toggle('hidden', !isStats);
+            document.getElementById('stats-progress-content').classList.toggle('hidden', isStats);
+
+            const btnStats = document.getElementById('tab-btn-stats');
+            const btnProg = document.getElementById('tab-btn-progress');
+            btnStats.style.background = isStats ? '#fbc531' : '#fff';
+            btnStats.style.color = isStats ? '#5d3a1a' : '#8b5e3c';
+            btnStats.style.fontWeight = isStats ? 'bold' : 'normal';
+            btnProg.style.background = isStats ? '#fff' : '#fbc531';
+            btnProg.style.color = isStats ? '#8b5e3c' : '#5d3a1a';
+            btnProg.style.fontWeight = isStats ? 'normal' : 'bold';
+
+            if (isStats) {
+                loadStats();
+            } else {
+                loadProgressContent();
+            }
+        }
+
+        async function loadProgressContent() {
+            const user = firebase.auth().currentUser;
+            const container = document.getElementById('stats-progress-content');
+            const ja = currentLang === 'ja';
+
+            if (!user) {
+                container.innerHTML = `<div style="text-align:center;color:#8b5e3c;padding:20px 0;">${ja ? 'ログインすると進捗を確認できます' : 'Sign in to view your progress'}</div>`;
+                return;
+            }
+
+            container.innerHTML = `<div style="text-align:center;color:#8b5e3c;padding:20px 0;">${ja ? '読み込み中...' : 'Loading...'}</div>`;
+
+            try {
+                const db = firebase.firestore();
+                const doc = await db.collection('users').doc(user.uid).get();
+                const progress = doc.data()?.progress || {};
+
+                if (isAdmin) {
+                    container.innerHTML = `<div style="text-align:center;color:#27ae60;font-weight:bold;padding:20px 0;">${ja ? '管理者権限でレベル5が有効です' : 'Level 5 enabled (Admin)'}</div>`;
+                    return;
+                }
+
+                if (progress.level5Unlocked) {
+                    container.innerHTML = `<div style="text-align:center;color:#27ae60;font-weight:bold;padding:20px 0;font-size:1.1em;">🎉 ${ja ? 'レベル5解放済み！' : 'Level 5 Unlocked!'}</div>`;
+                    return;
+                }
+
+                const conditionText = ja
+                    ? '条件：レベル4 / 20問 / タイムアタック / ヒントなし'
+                    : 'Condition: Level 4 / 20 Events / Time Attack / No Hint';
+
+                const periods = [
+                    { key: 'allPeriods', ja: '全期間',   en: 'All Periods' },
+                    { key: 'genesis',    ja: '創世記',   en: 'Genesis' },
+                    { key: 'conquest',   ja: '征服',     en: 'Conquest' },
+                    { key: 'kingdom',    ja: '王国',     en: 'Kings' },
+                    { key: 'christ',     ja: 'キリスト', en: 'Christ' },
+                ];
+
+                let html = `<div style="font-size:0.82em;color:#8b5e3c;margin-bottom:14px;line-height:1.5;">${conditionText}<br>× ${LEVEL5_GOAL}${ja ? '回' : ' times each'}</div>`;
+
+                periods.forEach(p => {
+                    const count = Math.min(progress[p.key] || 0, LEVEL5_GOAL);
+                    const label = ja ? p.ja : p.en;
+                    const pct = (count / LEVEL5_GOAL) * 100;
+                    const done = count >= LEVEL5_GOAL;
+                    html += `
+                    <div style="margin-bottom:10px;">
+                        <div style="display:flex;justify-content:space-between;font-size:0.88em;color:#5d3a1a;margin-bottom:3px;">
+                            <span>${label}</span>
+                            <span style="font-weight:bold;color:${done ? '#27ae60' : '#5d3a1a'};">${count}/${LEVEL5_GOAL}${done ? ' ✓' : ''}</span>
+                        </div>
+                        <div style="background:#f0e6d0;border-radius:6px;height:10px;overflow:hidden;">
+                            <div style="background:${done ? '#27ae60' : '#fbc531'};height:100%;width:${pct}%;border-radius:6px;"></div>
+                        </div>
+                    </div>`;
+                });
+
+                container.innerHTML = html;
+            } catch (err) {
+                console.error('loadProgressContent:', err);
+                container.innerHTML = `<div style="text-align:center;color:#d63031;padding:16px 0;">${ja ? 'エラーが発生しました' : 'An error occurred'}</div>`;
+            }
+        }
+
         // ===== Firebase Auth =====
         (function () {
             const firebaseConfig = {
@@ -1703,8 +1879,10 @@
                         await checkAndHandleInProgress();
                     }
                     await checkAdminStatus(user);
+                    await checkProgressStatus(user);
                 } else {
                     isAdmin = false;
+                    level5Unlocked = false;
                 }
             });
 
