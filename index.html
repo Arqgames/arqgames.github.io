@@ -124,10 +124,13 @@
                 <option value="12" data-ja="12問 【レジェンド】" data-en="12 Events [Legend]">12問 【レジェンド】</option>
                 <option value="20" data-ja="20問 【ゴッド】" data-en="20 Events [God Mode]">20問 【ゴッド】</option>
             </select>
-            <select id="time-attack-select" style="width:100%; margin-top:10px;">
-                <option value="off" data-ja="タイムアタック：OFF" data-en="Time Attack: OFF">タイムアタック：OFF</option>
-                <option value="on" data-ja="タイムアタック：ON" data-en="Time Attack: ON">タイムアタック：ON</option>
-            </select>
+            <div style="display:flex; align-items:center; gap:10px; margin-top:10px;">
+                <span style="font-weight:bold; color:#5d3a1a; font-size:1em;" data-ja="タイムアタック" data-en="Time Attack">タイムアタック</span>
+                <div style="display:flex; gap:6px; margin-left:auto;">
+                    <button type="button" id="ta-btn-off" class="level-btn active" style="padding:8px 20px; font-size:0.95em;" onclick="setTimeAttack(false)">OFF</button>
+                    <button type="button" id="ta-btn-on" class="level-btn" style="padding:8px 20px; font-size:0.95em;" onclick="setTimeAttack(true)">ON</button>
+                </div>
+            </div>
             <div id="error-msg"></div>
             <button class="btn" onclick="startGame()" data-ja="冒険を開始" data-en="Start Adventure">冒険を開始</button>
             <button type="button" class="btn btn-sub" onclick="openHowToPlay()"
@@ -173,9 +176,9 @@
         <div style="background:#fff8ee; padding:32px; border-radius:16px;
             text-align:center; max-width:300px; box-shadow:0 4px 20px rgba(0,0,0,0.2);">
             <div style="font-size:2em; margin-bottom:12px;">🔒</div>
-            <div style="font-weight:bold; font-size:1.1em; margin-bottom:12px;" data-ja="レベル5は今後のアップデートで対応予定です。お楽しみに！"
-                data-en="Level 5 coming soon in a future update. Stay tuned!">
-                レベル5は今後のアップデートで対応予定です。お楽しみに！
+            <div style="font-weight:bold; font-size:1.1em; margin-bottom:12px;" data-ja="レベル5はまだ解放されていません。解放条件は「遊び方」を確認してください。"
+                data-en="Level 5 is not yet unlocked. See &quot;How to Play&quot; for unlock conditions.">
+                レベル5はまだ解放されていません。解放条件は「遊び方」を確認してください。
             </div>
             <button class="btn" onclick="document.getElementById('modal-level5').classList.add('hidden')" data-ja="閉じる"
                 data-en="Close">閉じる</button>
@@ -276,6 +279,7 @@
         let hintUsed = false;
         let timedOut = false;
         let isRetry = false;
+        let timeAttackOn = false;
         /* 1ゲーム1レコード管理（同じゲーム内の2回目以降は update で上書き） */
         let currentGameRecordRef = null;
         /* レベル5解放フラグ・進捗キャッシュ */
@@ -407,6 +411,12 @@
             document.getElementById('error-msg').innerText = "";
         }
 
+        function setTimeAttack(isOn) {
+            timeAttackOn = isOn;
+            document.getElementById('ta-btn-on').classList.toggle('active', isOn);
+            document.getElementById('ta-btn-off').classList.toggle('active', !isOn);
+        }
+
         function selectLevel(level) {
             if (level === 5 && !isAdmin && !level5Unlocked) {
                 document.getElementById('modal-level5').classList.remove('hidden');
@@ -445,7 +455,7 @@
             currentTask = filtered.sort(() => 0.5 - Math.random()).slice(0, count);
 
             // タイムアタック設定
-            const isTimeAttack = document.getElementById('time-attack-select').value === 'on';
+            const isTimeAttack = timeAttackOn;
             clearInterval(timerInterval);
 
             if (isTimeAttack) {
@@ -1003,7 +1013,7 @@
 
             if (isWin) {
                 const count = parseInt(document.getElementById('count-select').value);
-                const isTA = document.getElementById('time-attack-select').value === 'on';
+                const isTA = timeAttackOn;
                 if (!isAdmin && currentLevel === 4 && count === 20 && isTA && !hintUsed) {
                     updateLevel5Progress();
                 }
@@ -1127,7 +1137,7 @@
                         level: currentLevel,
                         period: getPeriodLabel(),
                         count: parseInt(document.getElementById('count-select').value),
-                        timeAttack: document.getElementById('time-attack-select').value === 'on',
+                        timeAttack: timeAttackOn,
                         startTime: firebase.firestore.FieldValue.serverTimestamp()
                     }
                 }, { merge: true });
@@ -1202,7 +1212,7 @@
                     level: currentLevel,
                     period: getPeriodLabel(),
                     count: parseInt(document.getElementById('count-select').value),
-                    timeAttack: document.getElementById('time-attack-select').value === 'on',
+                    timeAttack: timeAttackOn,
                     hintUsed: hintUsed,
                     timedOut: timedOut,
                     retired: false,
@@ -1229,7 +1239,7 @@
                     level: currentLevel,
                     period: getPeriodLabel(),
                     count: parseInt(document.getElementById('count-select').value),
-                    timeAttack: document.getElementById('time-attack-select').value === 'on',
+                    timeAttack: timeAttackOn,
                     hintUsed: hintUsed,
                     timedOut: false,
                     retired: true,
@@ -1386,7 +1396,7 @@
             renderGame(false);
             switchScreen('screen-game');
 
-            const isTimeAttack = document.getElementById('time-attack-select').value === 'on';
+            const isTimeAttack = timeAttackOn;
             if (isTimeAttack) {
                 const count = parseInt(document.getElementById('count-select').value);
                 timeLeft = count * 8;
@@ -1513,7 +1523,7 @@
             switchScreen('screen-game');
 
             // タイムアタックONの場合のみタイマー再始動（timeLeftは維持）
-            const isTimeAttack = document.getElementById('time-attack-select')?.value === 'on';
+            const isTimeAttack = timeAttackOn;
             if (isTimeAttack && timeLeft > 0) {
                 clearInterval(timerInterval);
                 timerInterval = setInterval(() => {
