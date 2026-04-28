@@ -153,6 +153,8 @@
         <div id="screen-result" class="hidden">
             <div class="header-icon-box"><span class="material-icons header-icon" id="result-icon">star</span></div>
             <h2 id="result-title"></h2>
+            <p id="timedout-msg" class="hidden"
+               style="font-size:0.9rem; color:#d35400; margin-top:8px; text-align:center;"></p>
             <div id="fail-options" class="hidden">
                 <button class="btn" onclick="showHint()" data-ja="ヒント" data-en="Hint">ヒント</button>
                 <p data-ja="並び順そのまま・時間継続" data-en="Order unchanged, timer continues"
@@ -1036,9 +1038,11 @@
                         }
                     }
                 }
-                const fire = (typeof confetti === 'function') ? confetti : (window.confetti || null);
-                if (fire) {
-                    fire({ particleCount: 150, spread: 70, origin: { x: 0.5, y: 0.5 } });
+                if (!timedOut) {
+                    const fire = (typeof confetti === 'function') ? confetti : (window.confetti || null);
+                    if (fire) {
+                        fire({ particleCount: 150, spread: 70, origin: { x: 0.5, y: 0.5 } });
+                    }
                 }
             }
 
@@ -1051,6 +1055,16 @@
             document.getElementById('result-title').innerText = lastIsWin
                 ? (currentLang === 'ja' ? "正解！" : "Correct!")
                 : (currentLang === 'ja' ? "残念" : "Oops");
+
+            const timedoutMsg = document.getElementById('timedout-msg');
+            if (lastIsWin && timedOut) {
+                timedoutMsg.textContent = currentLang === 'ja'
+                    ? '成績は時間切れに記録されます'
+                    : 'Recorded as timeout';
+                timedoutMsg.classList.remove('hidden');
+            } else {
+                timedoutMsg.classList.add('hidden');
+            }
 
             // ✅ 正解時のみ：結果画面が出ている時だけ、一覧も言語で更新
             if (!document.getElementById('screen-result').classList.contains('hidden') && lastIsWin) {
