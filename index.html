@@ -430,6 +430,60 @@
             document.getElementById('ta-btn-off').classList.toggle('active', !isOn);
         }
 
+        function saveLastSettings() {
+            const s = parseInt(document.getElementById('select-start').value);
+            const e = parseInt(document.getElementById('select-end').value);
+            localStorage.setItem('arq_last_settings', JSON.stringify({
+                level: currentLevel,
+                startYear: s,
+                endYear: e,
+                count: selectedCount,
+                timeAttack: timeAttackOn
+            }));
+        }
+
+        function restoreLastSettings() {
+            let saved;
+            try {
+                const raw = localStorage.getItem('arq_last_settings');
+                if (!raw) return;
+                saved = JSON.parse(raw);
+            } catch (err) {
+                return;
+            }
+
+            if (saved.level && [1, 2, 3, 4, 5].includes(saved.level)) {
+                currentLevel = saved.level;
+                document.querySelectorAll('.level-btn[data-level]').forEach(btn => {
+                    btn.classList.toggle('active', parseInt(btn.dataset.level) === saved.level);
+                });
+            }
+
+            if (saved.startYear !== undefined && saved.endYear !== undefined) {
+                const startSel = document.getElementById('select-start');
+                const endSel = document.getElementById('select-end');
+                if (startSel && endSel) {
+                    startSel.value = String(saved.startYear);
+                    endSel.value = String(saved.endYear);
+                    document.querySelectorAll('.q-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        const m = (btn.getAttribute('onclick') || '').match(/quickSet\((-?\d+),\s*(-?\d+)/);
+                        if (m && parseInt(m[1]) === saved.startYear && parseInt(m[2]) === saved.endYear) {
+                            btn.classList.add('active');
+                        }
+                    });
+                }
+            }
+
+            if ([3, 5, 8, 12, 20].includes(saved.count)) {
+                selectCount(saved.count);
+            }
+
+            if (typeof saved.timeAttack === 'boolean') {
+                setTimeAttack(saved.timeAttack);
+            }
+        }
+
         function selectLevel(level) {
             if (level === 5 && !isAdmin && !level5Unlocked) {
                 document.getElementById('modal-level5').classList.remove('hidden');
@@ -465,6 +519,7 @@
                 return;
             }
             document.getElementById('error-msg').innerText = "";
+            saveLastSettings();
             currentTask = filtered.sort(() => 0.5 - Math.random()).slice(0, count);
 
             // タイムアタック設定
@@ -1690,6 +1745,8 @@
                         startSel.value = minYear;
                         endSel.value = maxYear;
                     }
+
+                    restoreLastSettings();
 
                     // ★③ エラーメッセージ消去（保険）
                     document.getElementById('error-msg').innerText = "";
