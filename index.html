@@ -1025,8 +1025,11 @@
             if (isWin) {
                 const count = selectedCount;
                 const isTA = timeAttackOn;
+                console.log('[Lv5] 条件チェック:', { currentLevel, count, isTA, hintUsed, isAdmin });
                 if (!isAdmin && currentLevel === 4 && count === 20 && isTA && !hintUsed) {
                     updateLevel5Progress();
+                } else {
+                    console.log('[Lv5] 条件不一致のため updateLevel5Progress() スキップ');
                 }
                 const fire = (typeof confetti === 'function') ? confetti : (window.confetti || null);
                 if (fire) {
@@ -1735,12 +1738,14 @@
         }
 
         async function updateLevel5Progress() {
+            console.log('[Lv5] updateLevel5Progress() 呼び出し開始');
             const user = firebase.auth().currentUser;
-            if (!user) return;
+            if (!user) { console.log('[Lv5] ユーザー未ログイン → スキップ'); return; }
 
             const period = getPeriodLabel();
             const fieldKey = PERIOD_FIELD_MAP[period];
-            if (!fieldKey) return;
+            console.log('[Lv5] period:', period, '/ fieldKey:', fieldKey);
+            if (!fieldKey) { console.log('[Lv5] fieldKey が見つからない → スキップ'); return; }
 
             const db = firebase.firestore();
             const docRef = db.collection('users').doc(user.uid);
@@ -1748,18 +1753,24 @@
             try {
                 const doc = await docRef.get();
                 const progress = doc.data()?.progress || {};
+                console.log('[Lv5] 現在の progress:', progress);
 
-                if ((progress[fieldKey] || 0) >= LEVEL5_GOAL) return;
+                if ((progress[fieldKey] || 0) >= LEVEL5_GOAL) {
+                    console.log('[Lv5] すでに目標達成済み → スキップ');
+                    return;
+                }
 
                 const newCount = (progress[fieldKey] || 0) + 1;
                 const allDone = Object.values(PERIOD_FIELD_MAP).every(f =>
                     (f === fieldKey ? newCount : (progress[f] || 0)) >= LEVEL5_GOAL
                 );
+                console.log('[Lv5] newCount:', newCount, '/ allDone:', allDone);
 
                 const newProgress = { ...progress, [fieldKey]: newCount };
                 if (allDone) newProgress.level5Unlocked = true;
 
                 await docRef.set({ progress: newProgress }, { merge: true });
+                console.log('[Lv5] Firestore 保存成功:', newProgress);
                 cachedProgress = newProgress;
 
                 if (allDone) {
@@ -1767,7 +1778,7 @@
                     showLevel5UnlockNotification();
                 }
             } catch (err) {
-                console.error('updateLevel5Progress:', err);
+                console.error('[Lv5] updateLevel5Progress エラー:', err);
             }
         }
 
