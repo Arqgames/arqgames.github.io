@@ -1146,48 +1146,32 @@
 
         // ===== 進行中フラグ管理（リロード不正対策） =====
 
-        async function saveInProgress() {
-            try {
-                const user = firebase.auth().currentUser;
-                if (!user) return;
-                const db = firebase.firestore();
-                await db.collection('users').doc(user.uid).set({
-                    inProgress: {
-                        level: currentLevel,
-                        period: getPeriodLabel(),
-                        count: selectedCount,
-                        timeAttack: timeAttackOn,
-                        startTime: firebase.firestore.FieldValue.serverTimestamp()
-                    }
-                }, { merge: true });
-            } catch (err) {
-                console.error('saveInProgress:', err);
-            }
+        function saveInProgress() {
+            const user = firebase.auth().currentUser;
+            if (!user) return;
+            localStorage.setItem(`btlq_ip_${user.uid}`, JSON.stringify({
+                level: currentLevel,
+                period: getPeriodLabel(),
+                count: selectedCount,
+                timeAttack: timeAttackOn,
+                startTime: Date.now()
+            }));
         }
 
-        async function deleteInProgress() {
-            try {
-                const user = firebase.auth().currentUser;
-                if (!user) return;
-                const db = firebase.firestore();
-                await db.collection('users').doc(user.uid).update({
-                    inProgress: firebase.firestore.FieldValue.delete()
-                });
-            } catch (err) {
-                console.error('deleteInProgress:', err);
-            }
+        function deleteInProgress() {
+            const user = firebase.auth().currentUser;
+            if (!user) return;
+            localStorage.removeItem(`btlq_ip_${user.uid}`);
         }
 
         async function checkAndHandleInProgress() {
             try {
                 const user = firebase.auth().currentUser;
                 if (!user) return;
+                const raw = localStorage.getItem(`btlq_ip_${user.uid}`);
+                if (!raw) return;
+                const ip = JSON.parse(raw);
                 const db = firebase.firestore();
-                const doc = await db.collection('users').doc(user.uid).get();
-                const data = doc.data();
-                if (!data || !data.inProgress) return;
-
-                const ip = data.inProgress;
                 await db.collection('users').doc(user.uid).collection('records').add({
                     level: ip.level ?? 1,
                     period: ip.period ?? '全期間',
@@ -1201,9 +1185,7 @@
                     success: false,
                     playedAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
-                await db.collection('users').doc(user.uid).update({
-                    inProgress: firebase.firestore.FieldValue.delete()
-                });
+                localStorage.removeItem(`btlq_ip_${user.uid}`);
             } catch (err) {
                 console.error('checkAndHandleInProgress:', err);
             }
