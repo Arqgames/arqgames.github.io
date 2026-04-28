@@ -349,6 +349,22 @@
   },
   {
     "id": "011500",
+    "ja": "イサクを捧げるように命じられる",
+    "en": "Binding of Isaac",
+    "year": -1900,
+    "month": 1,
+    "day": 1,
+    "ref": "Gen 22:2",
+    "rank": 2,
+    "tags": [
+      "Patriarch",
+      "FaithTest"
+    ],
+    "hint_ja": "誕生した年と比較し年齢を推定",
+    "hint_en": "Estimate placement from birth anchor"
+  },
+  {
+    "id": "012000",
     "ja": "イサクとリベカの結婚",
     "en": "Marriage of Isaac and Rebekah",
     "year": -1878,
@@ -363,22 +379,6 @@
     ],
     "hint_ja": "イサク40歳の時。サラの死後にアブラハムが遣わした僕がリベカを連れ帰った",
     "hint_en": "When Isaac was 40. Abraham's servant brought Rebekah after Sarah's death"
-  },
-  {
-    "id": "012000",
-    "ja": "イサクを捧げるように命じられる",
-    "en": "Binding of Isaac",
-    "year": -1890,
-    "month": 1,
-    "day": 1,
-    "ref": "Gen 22:2",
-    "rank": 2,
-    "tags": [
-      "Patriarch",
-      "FaithTest"
-    ],
-    "hint_ja": "誕生した年と比較し年齢を推定",
-    "hint_en": "Estimate placement from birth anchor"
   },
   {
     "id": "012500",
