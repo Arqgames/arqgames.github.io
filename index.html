@@ -1313,9 +1313,9 @@
                 </tr>`;
                 counts.forEach((c, i) => {
                     const recs = records.filter(r => r.count === c);
-                    const win       = recs.filter(r => r.success && !r.hintUsed && !r.isRetry).length;
-                    const hintRetry = recs.filter(r => r.success && (r.hintUsed || r.isRetry)).length;
-                    const fail      = recs.filter(r => !r.success).length;
+                    const win       = recs.filter(r => r.success && !r.hintUsed && !r.isRetry && !r.timedOut).length;
+                    const hintRetry = recs.filter(r => r.success && (r.hintUsed || r.isRetry) && !r.timedOut).length;
+                    const fail      = recs.filter(r => !r.success || r.timedOut).length;
                     const bg = i % 2 === 0 ? '#fff9e6' : '#fff5d7';
                     html += `<tr style="background:${bg};">
                         <td style="padding:8px 6px;font-weight:bold;">${countLabel(c)}</td>
