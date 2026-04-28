@@ -2551,7 +2551,7 @@
       "PassionWeek",
       "MajorAnchor"
     ],
-    "hint_ja": "受難週の入口として固定できる出来事\n直後の神殿行動（21:12-17）と連結すると流れが掴める",
+    "hint_ja": "イエス最後の週の最初として固定できる出来事\n直後の神殿行動（21:12-17）と連結すると流れが掴める",
     "hint_en": "Anchor for the start of the final week\nLink it to the temple action (Matt 21:12-17) to keep the flow"
   },
   {
@@ -2586,8 +2586,8 @@
       "OlivetDiscourse",
       "MajorAnchor"
     ],
-    "hint_ja": "受難週後半の強アンカー（逮捕前の教え）\nマタ24章＋ルカ21章を照合して要点と位置を固定",
-    "hint_en": "Strong late-final-week anchor (teaching before the arrest)\nFix its placement by aligning Matt 24 with Luke 21"
+    "hint_ja": "イエス最後の週の出来事（逮捕前の教え）\nマタ24章＋ルカ21章を照合して要点と位置を固定",
+    "hint_en": "late-final-week (teaching before the arrest)\nFix its placement by aligning Matt 24 with Luke 21"
   },
   {
     "id": "079500",
